@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Conta Corrente Google 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@400..800&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Uma coluna de painéis sobre o azul-noite da Insula; âmbar só no que é saldo. */
+:root{
+  --ground:#0A1020; --surface:#111931; --surface-2:#1A2440; --line:#222E4E; --line-2:#2D3A5E;
+  --text:#E9E5DC; --text-2:#B3BACE; --text-3:#7F889F;
+  --amber:#D9A566; --steel:#A7AEC2; --cream:#E9E5DC; --slate:#6F7893; --bronze:#8F7148; --dusk:#535869;
+  --ok:#8FC79A; --warn:#D9A566; --bad:#E08A7A;
+  --display:"Mulish","Helvetica Neue",Arial,sans-serif;
+  --sans:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --maxw:76rem; --r:2px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--ground)}
+body{margin:0;background:var(--ground);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-block:40px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:44px}
+h1,h2,h3,p{margin:0}
+.k{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-3)}
+header{display:grid;gap:12px;padding-bottom:24px;border-bottom:1px solid var(--amber)}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(32px,5vw,46px);line-height:1.05;letter-spacing:-.01em;text-wrap:balance}
+.lede{color:var(--text-2);max-width:65ch;font-size:16px}
+.lede b{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums}
+
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));gap:12px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px 18px 16px;display:grid;gap:6px;align-content:start;min-width:0}
+.tile.main{border-top:2px solid var(--amber)}
+.big{font-family:var(--display);font-weight:600;font-size:clamp(20px,1.9vw,26px);line-height:1.15;font-variant-numeric:tabular-nums;white-space:nowrap}
+.note{font-size:12.5px;color:var(--text-3);line-height:1.45}
+.note b{color:var(--text-2);font-weight:600;font-variant-numeric:tabular-nums}
+
+section{display:grid;gap:14px}
+h2{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:-.005em}
+.sub{color:var(--text-2);max-width:70ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:12px}
+.grid.one{grid-template-columns:minmax(0,1fr)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:10px;align-content:start;min-width:0}
+h3{font-family:var(--sans);font-weight:600;font-size:15px}
+
+.legend{display:flex;flex-wrap:wrap;gap:4px 16px;list-style:none;margin:0;padding:0;font-size:12.5px;color:var(--text-2)}
+.legend li{display:inline-flex;align-items:center;gap:6px}
+.sw{display:inline-block;width:10px;height:10px;border-radius:1px;flex:none}
+
+.chart{position:relative;min-height:288px}
+.chart.short{min-height:240px}
+.chart svg{display:block}
+.tick{font-family:var(--mono);font-size:10.5px;fill:var(--text-3);font-variant-numeric:tabular-nums}
+.vlabel{font-family:var(--mono);font-size:10.5px;fill:var(--text);font-variant-numeric:tabular-nums}
+.xl{font-size:12px;fill:var(--text-2)}
+.tip{position:absolute;z-index:2;pointer-events:none;background:var(--surface-2);border:1px solid var(--line-2);border-radius:var(--r);box-shadow:0 8px 24px rgba(0,0,0,.35);padding:8px 10px;font-size:12.5px;min-width:10rem;max-width:16rem;display:grid;gap:2px}
+.tip[hidden]{display:none}
+.tip-t{color:var(--text-3)}
+.tip-r{display:flex;align-items:center;gap:6px}
+.tip-v{margin-left:auto;padding-left:10px;font-variant-numeric:tabular-nums}
+
+.donut{display:flex;flex-wrap:wrap;align-items:center;gap:20px;position:relative;min-height:220px}
+.donut svg{flex:none}
+.dl{flex:1 1 12rem;min-width:0;display:grid;gap:4px;list-style:none;margin:0;padding:0;font-size:12.5px}
+.dl li{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:8px;padding-block:2px;transition:opacity .15s}
+.dl .nm{min-width:0;overflow-wrap:anywhere}
+.dl small{display:block;color:var(--text-3);font-size:inherit}
+.dl .vl{text-align:right;font-variant-numeric:tabular-nums}
+.cbig{font-family:var(--display);font-weight:600;fill:var(--text);font-variant-numeric:tabular-nums}
+.csmall{font-size:11.5px;fill:var(--text-3)}
+
+.chip{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;line-height:1.5;padding:0 7px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.chip.ok{color:var(--ok)} .chip.warn{color:var(--warn)} .chip.bad{color:var(--bad)} .chip.neutral{color:var(--text-3)}
+
+.bars{display:grid;gap:16px;min-height:11rem;align-content:start}
+.bar{display:grid;gap:6px}
+.bar-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;font-size:12.5px}
+.bar-top .nm{font-weight:600}
+.bar-top .sv{color:var(--text-3);flex:1 1 10rem;min-width:0}
+.bar-top .vl{font-variant-numeric:tabular-nums;margin-left:auto}
+.track{height:12px;border-radius:1px;background:var(--line);overflow:hidden}
+.fill{height:100%;border-radius:1px}
+
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);padding:8px 10px;border-bottom:1px solid var(--line-2);white-space:nowrap}
+td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+th.num,td.num{text-align:right}
+td small{display:block;color:var(--text-3);font-size:11.5px;white-space:nowrap}
+td.muted{color:var(--text-3)}
+
+.cats{display:flex;flex-wrap:wrap;gap:6px}
+.cat{font:inherit;font-size:13px;padding:6px 12px;border-radius:999px;border:1px solid var(--line-2);background:transparent;color:var(--text-2);cursor:pointer}
+.cat:hover{color:var(--text)}
+.cat[aria-pressed="true"]{background:var(--amber);border-color:var(--amber);color:var(--ground);font-weight:600}
+.cat:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:12px;font-size:13px;color:var(--text-2)}
+.team ul{margin:6px 0 0;padding-left:18px}
+.team strong{color:var(--text);font-weight:600}
+
+.empty{color:var(--text-3);font-size:13px}
+footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);padding-top:16px}
+@media (prefers-reduced-motion:no-preference){
+  @keyframes rise{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+  .anim{transform-box:fill-box;transform-origin:bottom;animation:rise .5s cubic-bezier(.2,.7,.2,1) both}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="k">Insula AI · Google · 2026</p>
+    <h1>Conta corrente Google 2026</h1>
+    <p class="lede">Dos <b data-f="credito_liquido">—</b> de crédito líquido recebido do Google, <b data-f="consumido">—</b> já foram usados em projetos entregues (<b data-f="pct_consumido" data-fmt="pct">—</b>). O saldo disponível é de <b data-f="saldo">—</b>.</p>
+  </header>
+
+  <div class="tiles" aria-label="Resumo">
+    <div class="tile main"><span class="k">Saldo disponível</span><span class="big" data-f="saldo">—</span><span class="note">Crédito líquido menos o que já foi debitado</span></div>
+    <div class="tile"><span class="k">Crédito líquido</span><span class="big" data-f="credito_liquido">—</span><span class="note"><b data-f="credito_bruto">—</b> em POs pagos, menos <b data-f="impostos">—</b> de impostos</span></div>
+    <div class="tile"><span class="k">Consumido</span><span class="big" data-f="consumido">—</span><span class="note"><b data-f="projetos_debitados" data-fmt="int">—</b> projetos debitados</span></div>
+    <div class="tile"><span class="k">POs a faturar</span><span class="big" data-f="a_faturar">—</span><span class="note"><b data-f="pos_a_faturar" data-fmt="int">—</b> POs aprovados, ainda não faturados</span></div>
+    <div class="tile"><span class="k">Em contingência</span><span class="big" data-f="contingencia">—</span><span class="note">Projetos congelados ou cancelados</span></div>
+  </div>
+
+  <section id="movimento">
+    <h2>Movimento da conta</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Do crédito ao saldo</h3>
+        <p class="note">Cada lançamento em ordem de data: créditos sobem, débitos descem.</p>
+        <ul class="legend"><li><i class="sw" style="background:var(--cream)"></i>Crédito</li><li><i class="sw" style="background:var(--slate)"></i>Débito</li><li><i class="sw" style="background:var(--amber)"></i>Saldo</li></ul>
+        <div class="chart" id="cascata"></div>
+      </div>
+      <div class="card">
+        <h3>Para onde foi o crédito</h3>
+        <p class="note">Crédito líquido dividido entre os projetos debitados e o saldo.</p>
+        <div class="donut" id="destino"></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Extrato</h3>
+      <p class="note">Todos os lançamentos da conta em 2026.</p>
+      <div class="tw"><table>
+        <thead><tr><th>Data</th><th>Tipo</th><th>Lançamento</th><th>PO</th><th>Job</th><th class="num">Valor bruto</th><th class="num">Impostos</th><th class="num">Valor na conta</th><th>Observação</th></tr></thead>
+        <tbody id="extrato"></tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <section id="aprovado">
+    <h2>Aprovado, a faturar e em produção</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>POs aprovados em 2026</h3>
+        <p class="note">POs já pagos, pelo valor bruto, e POs aprovados que ainda não foram faturados.</p>
+        <div class="donut" id="pos"></div>
+      </div>
+      <div class="card">
+        <h3>Projetos em produção</h3>
+        <p class="note">Contingência são os projetos congelados ou cancelados: <b data-f="contingencia">—</b>. Em andamento: <b data-f="em_andamento">—</b>.</p>
+        <div class="bars" id="producao"></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>POs a faturar</h3>
+      <p class="note">Pendentes de faturamento.</p>
+      <div class="tw"><table>
+        <thead><tr><th>Cliente</th><th>Serviço</th><th>ID do projeto</th><th>PO</th><th class="num">Valor</th></tr></thead>
+        <tbody id="afaturar"></tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <section id="precos">
+    <h2>Tabela de preços</h2>
+    <p class="sub">Valores da tabela Ticket Google. Pacotes maiores têm desconto sobre o preço unitário. Acima de 60", acrescentar 30% a cada 30" adicionais.</p>
+    <div class="cats" role="group" aria-label="Categoria">
+      <button type="button" class="cat" data-cat="Filme novo" aria-pressed="true">Filme novo</button>
+      <button type="button" class="cat" data-cat="Adaptação do filme hero" aria-pressed="false">Adaptação do filme hero</button>
+      <button type="button" class="cat" data-cat="Redução ou corte do filme hero" aria-pressed="false">Redução ou corte</button>
+      <button type="button" class="cat" data-cat="Formato 9:16 e 1:1" aria-pressed="false">Formato 9:16 e 1:1</button>
+    </div>
+    <div class="grid one">
+      <div class="card">
+        <h3>Preço unitário por duração</h3>
+        <p class="note">Uma peça, sem pacote.</p>
+        <div class="chart short" id="precos-chart"></div>
+      </div>
+      <div class="card">
+        <h3>Valor por pacote</h3>
+        <p class="note">Total do pacote, com a quantidade de peças e o desconto aplicado.</p>
+        <div class="tw"><table>
+          <thead><tr><th>Duração</th><th class="num">Unitário</th><th class="num">P</th><th class="num">M</th><th class="num">G</th><th class="num">OOH 1</th><th class="num">OOH 2</th></tr></thead>
+          <tbody id="precos-tabela"></tbody>
+        </table></div>
+      </div>
+    </div>
+    <div class="card team">
+      <div><strong>Equipe incluída</strong><ul><li>Atendimento</li><li>IA Artist</li><li>Editor/Motion</li><li>Color</li><li>Diretor de cena (Brasil)</li><li>Técnico de áudio (trilha, efeitos, locução e mix/master)</li></ul></div>
+      <div><strong>Custos extras, quando necessários</strong><ul><li>Diretor de criação</li><li>Produtor de figurino</li><li>Diretor de arte</li><li>Processos tradicionais de composição</li><li>DA</li></ul></div>
+    </div>
+  </section>
+
+  <footer id="rodape">Dados das planilhas de controle da Insula AI.</footer>
+</div>
+
+<script src="vendor/d3.min.js"></script>
+<script>
+(() => {
+  const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const C = { amber: css('--amber'), steel: css('--steel'), cream: css('--cream'), slate: css('--slate'), bronze: css('--bronze'), dusk: css('--dusk') };
+  const SERIES = [C.amber, C.steel, C.cream, C.slate, C.bronze, C.dusk];
+  const brl = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+  const compact = new Intl.NumberFormat('pt-BR', { notation: 'compact', maximumFractionDigits: 1 });
+  const pct = new Intl.NumberFormat('pt-BR', { style: 'percent', maximumFractionDigits: 1 });
+  const num = (v) => (v === null || v === undefined || v === '' ? null : Number(v));
+  const money = (v) => (num(v) === null || Number.isNaN(num(v)) ? '–' : brl.format(num(v)));
+  const comp = (v) => 'R$ ' + compact.format(v);
+  const date = (s) => { if (!s) return '–'; const [y, m, d] = String(s).slice(0, 10).split('-'); return `${d}/${m}/${y}`; };
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
+  const soma = (rows, f) => rows.reduce((s, r) => s + (Number(r[f]) || 0), 0);
+  const r2 = (v) => Math.round(v * 100) / 100;
+  let D = null, cat = 'Filme novo';
+
+  function resumo() {
+    const cred = D.movimentos.filter((r) => r.tipo === 'Crédito'), deb = D.movimentos.filter((r) => r.tipo === 'Débito');
+    const credito_liquido = soma(cred, 'valor'), consumido = soma(deb, 'valor');
+    return {
+      credito_bruto: soma(cred, 'valor_bruto'), impostos: soma(cred, 'impostos'), credito_liquido, consumido,
+      pct_consumido: credito_liquido ? consumido / credito_liquido : 0, projetos_debitados: deb.length,
+      saldo: r2(credito_liquido - consumido), a_faturar: soma(D.a_faturar, 'valor'), pos_a_faturar: D.a_faturar.length,
+      contingencia: soma(D.producao.filter((r) => r.status === 'Congelado' || r.status === 'Cancelado'), 'valor'),
+      em_andamento: soma(D.producao.filter((r) => r.status === 'Em andamento'), 'valor')
+    };
+  }
+
+  function tip(box) {
+    const t = el('div', 'tip'); t.hidden = true; box.appendChild(t);
+    return {
+      show(ev, title, lines) {
+        t.replaceChildren(el('div', 'tip-t', title));
+        for (const l of lines) {
+          const r = el('div', 'tip-r');
+          if (l.color) { const s = el('i', 'sw'); s.style.background = l.color; r.appendChild(s); }
+          r.append(el('span', '', l.label), el('span', 'tip-v', l.value)); t.appendChild(r);
+        }
+        t.hidden = false;
+        const b = box.getBoundingClientRect();
+        let x = ev.clientX - b.left + 14, y = ev.clientY - b.top + 14;
+        if (x + t.offsetWidth > box.clientWidth) x = Math.max(0, ev.clientX - b.left - t.offsetWidth - 14);
+        if (y + t.offsetHeight > box.clientHeight) y = Math.max(0, ev.clientY - b.top - t.offsetHeight - 14);
+        t.style.left = x + 'px'; t.style.top = y + 'px';
+      },
+      hide() { t.hidden = true; }
+    };
+  }
+
+  function yAxis(svg, y, W, ml) {
+    const ticks = y.ticks(4), g = svg.append('g');
+    g.selectAll('line').data(ticks).join('line').attr('x1', ml).attr('x2', W - 2).attr('y1', y).attr('y2', y).attr('stroke', css('--line')).attr('stroke-width', 1);
+    g.selectAll('text').data(ticks).join('text').attr('class', 'tick').attr('x', ml - 8).attr('y', y).attr('dy', '0.32em').attr('text-anchor', 'end').text(comp);
+  }
+  function leftMargin(svg, y) {
+    const p = svg.append('text').attr('class', 'tick'); let m = 0;
+    for (const t of y.ticks(4)) { p.text(comp(t)); m = Math.max(m, p.node().getComputedTextLength()); }
+    p.remove(); return m + 10;
+  }
+
+  function drawResumo() {
+    const R = resumo();
+    for (const n of document.querySelectorAll('[data-f]')) {
+      const v = R[n.dataset.f], f = n.dataset.fmt;
+      n.textContent = f === 'pct' ? pct.format(v) : f === 'int' ? String(v) : money(v);
+    }
+  }
+
+  function drawCascata() {
+    const box = document.getElementById('cascata'); box.replaceChildren();
+    const ord = D.movimentos.slice().sort((a, b) => String(a.data).localeCompare(String(b.data)) || Number(a.id) - Number(b.id));
+    let acc = 0;
+    const rows = ord.map((r) => { const v = Number(r.valor) || 0, inicio = acc; acc = r2(acc + (r.tipo === 'Crédito' ? v : -v)); return { etapa: r.lancamento, data: r.data, tipo: r.tipo, valor: v, inicio, fim: acc }; });
+    rows.push({ etapa: 'Saldo', data: null, tipo: 'Saldo', valor: acc, inicio: 0, fim: acc });
+    const W = Math.max(280, box.clientWidth), narrow = W < 520, H = narrow ? 300 : 288, mt = 22, mb = narrow ? 64 : 40;
+    const svg = d3.select(box).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Cascata do crédito ao saldo');
+    const y = d3.scaleLinear([0, d3.max(rows, (r) => Math.max(r.inicio, r.fim)) || 1], [H - mb, mt]).nice(4);
+    const ml = leftMargin(svg, y); yAxis(svg, y, W, ml);
+    const x = d3.scaleBand(rows.map((r, i) => i), [ml, W - 2]).padding(0.3);
+    const color = (r) => (r.tipo === 'Crédito' ? C.cream : r.tipo === 'Débito' ? C.slate : C.amber);
+    const g = svg.append('g');
+    g.selectAll('line').data(rows.slice(0, -1)).join('line').attr('x1', (r, i) => x(i) + x.bandwidth()).attr('x2', (r, i) => x(i + 1))
+      .attr('y1', (r) => y(r.fim)).attr('y2', (r) => y(r.fim)).attr('stroke', css('--text-3')).attr('stroke-dasharray', '3 3');
+    const bars = g.selectAll('rect.b').data(rows).join('rect').attr('class', 'b anim').attr('x', (r, i) => x(i)).attr('width', x.bandwidth())
+      .attr('y', (r) => y(Math.max(r.inicio, r.fim))).attr('height', (r) => Math.max(1, Math.abs(y(r.inicio) - y(r.fim)))).attr('rx', 1).attr('fill', color);
+    g.selectAll('text.v').data(narrow ? rows.filter((r) => r.tipo === 'Saldo') : rows).join('text').attr('class', 'vlabel').attr('text-anchor', narrow ? 'end' : 'middle').attr('x', (r) => x(rows.indexOf(r)) + x.bandwidth() / (narrow ? 1 : 2))
+      .attr('y', (r) => (r.tipo === 'Débito' ? y(r.fim) + 14 : y(Math.max(r.inicio, r.fim)) - 6)).text((r) => (r.tipo === 'Débito' ? '−' : r.tipo === 'Crédito' ? '+' : '') + comp(r.valor));
+    if (narrow) {
+      g.selectAll('text.x').data(rows).join('text').attr('class', 'xl').attr('text-anchor', 'end')
+        .attr('transform', (r, i) => `translate(${x(i) + x.bandwidth() / 2 + 4},${H - mb + 14}) rotate(-35)`).text((r) => r.etapa);
+    } else g.selectAll('text.x').data(rows).join('text').attr('class', 'xl').attr('text-anchor', 'middle').attr('y', H - mb + 16).each(function (r, i) {
+      const w = String(r.etapa).split(' '), lines = w.length > 1 && x.step() < 90 ? [w[0], w.slice(1).join(' ')] : [String(r.etapa)];
+      d3.select(this).selectAll('tspan').data(lines).join('tspan').attr('x', x(i) + x.bandwidth() / 2).attr('dy', (l, j) => (j ? '1.15em' : 0)).text((l) => l);
+    });
+    const t = tip(box);
+    g.selectAll('rect.h').data(rows).join('rect').attr('class', 'h').attr('x', (r, i) => x(i) - (x.step() - x.bandwidth()) / 2).attr('width', x.step())
+      .attr('y', mt).attr('height', H - mb - mt).attr('fill', 'transparent')
+      .on('pointermove', (ev, r) => {
+        const i = rows.indexOf(r); bars.attr('opacity', (b, j) => (j === i ? 1 : 0.45));
+        const lines = [{ color: color(r), label: r.tipo, value: money(r.valor) }];
+        if (r.tipo !== 'Saldo') lines.push({ label: 'Saldo depois', value: money(r.fim) });
+        t.show(ev, r.data ? `${r.etapa} · ${date(r.data)}` : r.etapa, lines);
+      }).on('pointerleave', () => { bars.attr('opacity', 1); t.hide(); });
+  }
+
+  function donut(box, rows, opts) {
+    box.replaceChildren();
+    const total = d3.sum(rows, (r) => r.valor), size = Math.min(220, Math.max(160, box.clientWidth * 0.42)), r = size / 2;
+    const svg = d3.select(box).append('svg').attr('width', size).attr('height', size).attr('viewBox', `${-r} ${-r} ${size} ${size}`).attr('role', 'img').attr('aria-label', opts.label);
+    const pie = d3.pie().sort(null).value((d) => d.valor)(rows);
+    const arc = d3.arc().innerRadius(r * 0.64).outerRadius(r - 3).cornerRadius(1), arcH = d3.arc().innerRadius(r * 0.64).outerRadius(r).cornerRadius(1);
+    const col = (i) => SERIES[i % SERIES.length];
+    const t = tip(box);
+    const paths = svg.append('g').selectAll('path').data(pie).join('path').attr('d', arc).attr('fill', (d, i) => col(i)).attr('stroke', css('--surface')).attr('stroke-width', 2);
+    const big = svg.append('text').attr('class', 'cbig').attr('text-anchor', 'middle').attr('dy', '-0.1em').attr('font-size', Math.round(r * 0.2));
+    const small = svg.append('text').attr('class', 'csmall').attr('text-anchor', 'middle').attr('dy', '1.5em');
+    const rest = () => { big.text(comp(total)); small.text(opts.center); }; rest();
+    const items = d3.select(box).append('ul').attr('class', 'dl').selectAll('li').data(pie).join('li');
+    items.append('i').attr('class', 'sw').style('background', (d, i) => col(i));
+    const nm = items.append('span').attr('class', 'nm').text((d) => d.data.nome);
+    if (opts.sub) nm.append('small').text((d) => opts.sub(d.data));
+    items.append('span').attr('class', 'vl').text((d) => money(d.data.valor)).append('small').text((d) => pct.format(total ? d.data.valor / total : 0));
+    const focus = (idx) => {
+      paths.attr('d', (d, i) => (i === idx ? arcH(d) : arc(d))).attr('opacity', (d, i) => (idx === null || i === idx ? 1 : 0.45));
+      items.style('opacity', (d, i) => (idx === null || i === idx ? 1 : 0.55));
+      if (idx === null) rest(); else { big.text(comp(pie[idx].data.valor)); small.text(pct.format(total ? pie[idx].data.valor / total : 0)); }
+    };
+    paths.on('pointermove', (ev, d) => { focus(d.index); t.show(ev, d.data.nome, [{ color: col(d.index), label: opts.sub ? opts.sub(d.data) : 'Valor', value: money(d.data.valor) }, { label: 'Participação', value: pct.format(total ? d.data.valor / total : 0) }]); })
+      .on('pointerleave', () => { focus(null); t.hide(); });
+    items.on('pointerenter', (ev, d) => focus(d.index)).on('pointerleave', () => focus(null));
+  }
+
+  function drawDestino() {
+    const R = resumo();
+    const rows = [{ nome: 'Saldo disponível', valor: R.saldo }, ...D.movimentos.filter((r) => r.tipo === 'Débito').map((r) => ({ nome: r.lancamento, valor: Number(r.valor) }))];
+    donut(document.getElementById('destino'), rows, { label: 'Divisão do crédito líquido', center: 'crédito líquido' });
+  }
+  function drawPos() {
+    const rows = [
+      ...D.movimentos.filter((r) => r.tipo === 'Crédito').map((r) => ({ po: String(r.po), nome: r.lancamento, valor: Number(r.valor_bruto), situacao: 'Pago' })),
+      ...D.a_faturar.map((r) => ({ po: String(r.po), nome: r.cliente, valor: Number(r.valor), situacao: 'A faturar' }))
+    ];
+    donut(document.getElementById('pos'), rows, { label: 'POs aprovados em 2026', center: 'em POs', sub: (r) => `${r.situacao} · PO ${r.po}` });
+  }
+
+  function drawProducao() {
+    const box = document.getElementById('producao'); box.replaceChildren();
+    const max = d3.max(D.producao, (r) => Number(r.valor)) || 1, cls = { 'Em andamento': 'ok', 'Congelado': 'warn', 'Cancelado': 'bad' };
+    if (!D.producao.length) { box.appendChild(el('p', 'empty', 'Nenhum projeto em produção.')); return; }
+    for (const r of D.producao) {
+      const item = el('div', 'bar'), top = el('div', 'bar-top');
+      top.append(el('span', 'nm', r.projeto), el('span', 'sv', r.servico + (r.job ? ` · job ${r.job}` : '')), el('span', 'chip ' + (cls[r.status] || 'neutral'), r.status), el('span', 'vl', money(r.valor)));
+      const track = el('div', 'track'), fill = el('div', 'fill');
+      fill.style.width = (Number(r.valor) / max * 100) + '%';
+      fill.style.background = r.status === 'Em andamento' ? C.amber : C.dusk;
+      track.appendChild(fill); item.append(top, track); box.appendChild(item);
+    }
+  }
+
+  function drawTabelas() {
+    const ex = document.getElementById('extrato'); ex.replaceChildren();
+    for (const r of D.movimentos.slice().sort((a, b) => String(a.data).localeCompare(String(b.data)) || Number(a.id) - Number(b.id))) {
+      const tr = el('tr'), tipo = el('td'); tipo.appendChild(el('span', 'chip ' + (r.tipo === 'Crédito' ? 'ok' : 'neutral'), r.tipo));
+      tr.append(el('td', '', date(r.data)), tipo, el('td', '', r.lancamento), el('td', 'muted', r.po || '–'), el('td', 'muted', r.job || '–'),
+        el('td', 'num', money(r.valor_bruto)), el('td', 'num', money(r.impostos)), el('td', 'num', money(r.valor)), el('td', 'muted', r.observacao || ''));
+      ex.appendChild(tr);
+    }
+    const af = document.getElementById('afaturar'); af.replaceChildren();
+    for (const r of D.a_faturar) {
+      const tr = el('tr');
+      tr.append(el('td', '', r.cliente), el('td', 'muted', r.servico), el('td', 'muted', r.id_projeto), el('td', '', String(r.po)), el('td', 'num', money(r.valor)));
+      af.appendChild(tr);
+    }
+  }
+
+  function drawPrecosChart() {
+    const box = document.getElementById('precos-chart'); box.replaceChildren();
+    const rows = D.precos.filter((r) => r.categoria === cat && r.pacote === 'Unitário').map((r) => ({ dur: Number(r.duracao_s), valor: Number(r.valor_por_peca) })).sort((a, b) => a.dur - b.dur);
+    const W = Math.max(260, box.clientWidth), H = 240, mt = 22, mb = 26;
+    const svg = d3.select(box).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Preço unitário por duração');
+    const y = d3.scaleLinear([0, d3.max(rows, (r) => r.valor) || 1], [H - mb, mt]).nice(4);
+    const ml = leftMargin(svg, y); yAxis(svg, y, W, ml);
+    const x = d3.scaleBand(rows.map((r) => r.dur), [ml, W - 2]).padding(0.32), bw = Math.min(40, x.bandwidth()), off = (x.bandwidth() - bw) / 2;
+    const g = svg.append('g');
+    const bars = g.selectAll('rect.b').data(rows).join('rect').attr('class', 'b anim').attr('x', (r) => x(r.dur) + off).attr('width', bw)
+      .attr('y', (r) => y(r.valor)).attr('height', (r) => Math.max(1, y(0) - y(r.valor))).attr('rx', 1).attr('fill', C.amber);
+    g.selectAll('text.v').data(rows).join('text').attr('class', 'vlabel').attr('text-anchor', 'middle').attr('x', (r) => x(r.dur) + x.bandwidth() / 2).attr('y', (r) => y(r.valor) - 6).text((r) => comp(r.valor));
+    g.selectAll('text.x').data(rows).join('text').attr('class', 'tick').attr('text-anchor', 'middle').attr('x', (r) => x(r.dur) + x.bandwidth() / 2).attr('y', H - 8).text((r) => `${r.dur}"`);
+    const t = tip(box);
+    g.selectAll('rect.h').data(rows).join('rect').attr('x', (r) => x(r.dur) - (x.step() - x.bandwidth()) / 2).attr('width', x.step()).attr('y', mt).attr('height', H - mb - mt).attr('fill', 'transparent')
+      .on('pointermove', (ev, r) => { bars.attr('opacity', (b) => (b === r ? 1 : 0.45)); t.show(ev, `${cat} · ${r.dur}"`, [{ label: 'Preço unitário', value: money(r.valor) }]); })
+      .on('pointerleave', () => { bars.attr('opacity', 1); t.hide(); });
+  }
+
+  function drawPrecosTabela() {
+    const campo = { 'Unitário': 'unitario', 'P': 'p', 'M': 'm', 'G': 'g', 'OOH 1': 'ooh1', 'OOH 2': 'ooh2' }, m = new Map();
+    for (const r of D.precos.filter((x) => x.categoria === cat)) {
+      if (!m.has(r.duracao_s)) m.set(r.duracao_s, { duracao_s: Number(r.duracao_s) });
+      const o = m.get(r.duracao_s), f = campo[r.pacote];
+      o[f] = Number(r.valor_total); o[f + '_qtd'] = Number(r.qtd); o[f + '_desc'] = Number(r.desconto);
+    }
+    const tb = document.getElementById('precos-tabela'); tb.replaceChildren();
+    for (const r of [...m.values()].sort((a, b) => a.duracao_s - b.duracao_s)) {
+      const tr = el('tr'); tr.appendChild(el('td', '', `${r.duracao_s}"`));
+      for (const f of ['unitario', 'p', 'm', 'g', 'ooh1', 'ooh2']) {
+        const td = el('td', 'num');
+        if (r[f] === undefined) { td.textContent = '–'; td.classList.add('muted'); }
+        else { td.textContent = money(r[f]); if (f !== 'unitario') td.appendChild(el('small', '', `${r[f + '_qtd']} peças${r[f + '_desc'] > 0 ? ` · −${pct.format(r[f + '_desc'])}` : ''}`)); }
+        tr.appendChild(td);
+      }
+      tb.appendChild(tr);
+    }
+  }
+
+  function drawAll() {
+    drawResumo(); drawCascata(); drawDestino(); drawPos(); drawProducao(); drawTabelas(); drawPrecosChart(); drawPrecosTabela();
+    if (D.atualizado_em) {
+      const d = new Date(D.atualizado_em);
+      document.getElementById('rodape').textContent = `Dados das planilhas de controle da Insula AI, atualizados em ${d.toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short', timeZone: 'America/Sao_Paulo' })}.`;
+    }
+  }
+
+  for (const b of document.querySelectorAll('.cat')) {
+    b.addEventListener('click', () => {
+      cat = b.dataset.cat;
+      for (const o of document.querySelectorAll('.cat')) o.setAttribute('aria-pressed', String(o === b));
+      if (D) { drawPrecosChart(); drawPrecosTabela(); }
+    });
+  }
+  let rt; let lastW = window.innerWidth;
+  window.addEventListener('resize', () => { if (window.innerWidth === lastW) return; lastW = window.innerWidth; clearTimeout(rt); rt = setTimeout(() => D && drawAll(), 150); });
+
+  fetch('dados.json', { cache: 'no-store' }).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then((j) => { D = j; drawAll(); })
+    .catch(() => { for (const id of ['cascata', 'destino', 'pos', 'producao']) document.getElementById(id).replaceChildren(el('p', 'empty', 'Não foi possível carregar os dados. Recarregue a página.')); });
+})();
+</script>
+</body>
+</html>

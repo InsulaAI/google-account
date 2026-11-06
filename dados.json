@@ -1,0 +1,1170 @@
+{
+ "atualizado_em": "2026-11-06T18:07:27Z",
+ "origem": {
+  "cuentas": "2026-09-25T20:29:02.947Z",
+  "latam": "2026-09-25T20:36:29.700Z",
+  "afaturar": "2026-09-30T18:34:39.223Z"
+ },
+ "movimentos": [
+  {
+   "id": "1",
+   "data": "2026-01-23",
+   "tipo": "Crédito",
+   "lancamento": "PO Cases",
+   "servico": "IA_Cases_Google",
+   "po": "4100723952",
+   "job": "387",
+   "valor_bruto": 120000.0,
+   "impostos": 0.0,
+   "valor": 120000.0,
+   "observacao": "Crédito para os dois primeiros cases"
+  },
+  {
+   "id": "2",
+   "data": "2026-01-26",
+   "tipo": "Crédito",
+   "lancamento": "PO Trimestral",
+   "servico": "Jobs Trimestral",
+   "po": "4100715016",
+   "job": "",
+   "valor_bruto": 638312.5,
+   "impostos": 63073.9,
+   "valor": 575238.6,
+   "observacao": "USD 125.000"
+  },
+  {
+   "id": "3",
+   "data": "2026-01-26",
+   "tipo": "Débito",
+   "lancamento": "Brilhante",
+   "servico": "Case",
+   "po": "",
+   "job": "387",
+   "valor_bruto": null,
+   "impostos": null,
+   "valor": 60000.0,
+   "observacao": "Case com 50% de desconto"
+  },
+  {
+   "id": "4",
+   "data": "2026-01-26",
+   "tipo": "Débito",
+   "lancamento": "Clear",
+   "servico": "Case",
+   "po": "",
+   "job": "389",
+   "valor_bruto": null,
+   "impostos": null,
+   "valor": 60000.0,
+   "observacao": "Case com 50% de desconto"
+  },
+  {
+   "id": "5",
+   "data": "2026-09-30",
+   "tipo": "Débito",
+   "lancamento": "SuperBet",
+   "servico": "SuperBet",
+   "po": "4100868559",
+   "job": "405",
+   "valor_bruto": null,
+   "impostos": null,
+   "valor": 160445.0,
+   "observacao": "Projeto de R$ 330.000"
+  }
+ ],
+ "a_faturar": [
+  {
+   "id_projeto": "7-8100000041112",
+   "cliente": "Mercado Pago",
+   "servico": "General Creative Production & Optimization",
+   "po": "4100827982",
+   "valor": 110000.0
+  },
+  {
+   "id_projeto": "5-5366000040483",
+   "cliente": "Unilever",
+   "servico": "General Creative Production & Optimization",
+   "po": "4100827663",
+   "valor": 110000.0
+  },
+  {
+   "id_projeto": "1-0774000041163",
+   "cliente": "Madeira Madeira",
+   "servico": "General Creative Production & Optimization",
+   "po": "4100825695",
+   "valor": 110000.0
+  },
+  {
+   "id_projeto": "6-4445000041296",
+   "cliente": "SuperBet",
+   "servico": "General Creative Production & Optimization",
+   "po": "4100868559",
+   "valor": 330000.0
+  }
+ ],
+ "producao": [
+  {
+   "projeto": "SuperBet",
+   "servico": "IA Bet",
+   "job": "404",
+   "valor": 330000.0,
+   "status": "Em andamento"
+  },
+  {
+   "projeto": "Madeira Madeira",
+   "servico": "Projected Balance, 30\" + 3 adaptações (a definir)",
+   "job": "",
+   "valor": 144200.0,
+   "status": "Congelado"
+  },
+  {
+   "projeto": "Clear",
+   "servico": "Entregas extras, 30\" (a definir)",
+   "job": "",
+   "valor": 97850.0,
+   "status": "Cancelado"
+  }
+ ],
+ "precos": [
+  {
+   "id": "Filme novo · 5s · Unitário",
+   "categoria": "Filme novo",
+   "duracao_s": 5,
+   "pacote": "Unitário",
+   "qtd": 1,
+   "desconto": 0.0,
+   "valor_total": 38635.0,
+   "valor_por_peca": 38635.0
+  },
+  {
+   "id": "Filme novo · 5s · P",
+   "categoria": "Filme novo",
+   "duracao_s": 5,
+   "pacote": "P",
+   "qtd": 5,
+   "desconto": 0.0,
+   "valor_total": 193175.0,
+   "valor_por_peca": 38635.0
+  },
+  {
+   "id": "Filme novo · 5s · M",
+   "categoria": "Filme novo",
+   "duracao_s": 5,
+   "pacote": "M",
+   "qtd": 10,
+   "desconto": 0.1,
+   "valor_total": 347715.0,
+   "valor_por_peca": 34771.5
+  },
+  {
+   "id": "Filme novo · 5s · G",
+   "categoria": "Filme novo",
+   "duracao_s": 5,
+   "pacote": "G",
+   "qtd": 15,
+   "desconto": 0.15,
+   "valor_total": 492596.25,
+   "valor_por_peca": 32839.75
+  },
+  {
+   "id": "Filme novo · 5s · OOH 1",
+   "categoria": "Filme novo",
+   "duracao_s": 5,
+   "pacote": "OOH 1",
+   "qtd": 25,
+   "desconto": 0.18,
+   "valor_total": 792017.5,
+   "valor_por_peca": 31680.7
+  },
+  {
+   "id": "Filme novo · 5s · OOH 2",
+   "categoria": "Filme novo",
+   "duracao_s": 5,
+   "pacote": "OOH 2",
+   "qtd": 50,
+   "desconto": 0.2,
+   "valor_total": 1545400.0,
+   "valor_por_peca": 30908.0
+  },
+  {
+   "id": "Filme novo · 10s · Unitário",
+   "categoria": "Filme novo",
+   "duracao_s": 10,
+   "pacote": "Unitário",
+   "qtd": 1,
+   "desconto": 0.0,
+   "valor_total": 51500.0,
+   "valor_por_peca": 51500.0
+  },
+  {
+   "id": "Filme novo · 10s · P",
+   "categoria": "Filme novo",
+   "duracao_s": 10,
+   "pacote": "P",
+   "qtd": 5,
+   "desconto": 0.0,
+   "valor_total": 257500.0,
+   "valor_por_peca": 51500.0
+  },
+  {
+   "id": "Filme novo · 10s · M",
+   "categoria": "Filme novo",
+   "duracao_s": 10,
+   "pacote": "M",
+   "qtd": 10,
+   "desconto": 0.1,
+   "valor_total": 463500.0,
+   "valor_por_peca": 46350.0
+  },
+  {
+   "id": "Filme novo · 10s · G",
+   "categoria": "Filme novo",
+   "duracao_s": 10,
+   "pacote": "G",
+   "qtd": 15,
+   "desconto": 0.15,
+   "valor_total": 656625.0,
+   "valor_por_peca": 43775.0
+  },
+  {
+   "id": "Filme novo · 10s · OOH 1",
+   "categoria": "Filme novo",
+   "duracao_s": 10,
+   "pacote": "OOH 1",
+   "qtd": 25,
+   "desconto": 0.18,
+   "valor_total": 1055750.0,
+   "valor_por_peca": 42230.0
+  },
+  {
+   "id": "Filme novo · 10s · OOH 2",
+   "categoria": "Filme novo",
+   "duracao_s": 10,
+   "pacote": "OOH 2",
+   "qtd": 50,
+   "desconto": 0.2,
+   "valor_total": 2060000.0,
+   "valor_por_peca": 41200.0
+  },
+  {
+   "id": "Filme novo · 15s · Unitário",
+   "categoria": "Filme novo",
+   "duracao_s": 15,
+   "pacote": "Unitário",
+   "qtd": 1,
+   "desconto": 0.0,
+   "valor_total": 64375.0,
+   "valor_por_peca": 64375.0
+  },
+  {
+   "id": "Filme novo · 15s · P",
+   "categoria": "Filme novo",
+   "duracao_s": 15,
+   "pacote": "P",
+   "qtd": 5,
+   "desconto": 0.0,
+   "valor_total": 321875.0,
+   "valor_por_peca": 64375.0
+  },
+  {
+   "id": "Filme novo · 15s · M",
+   "categoria": "Filme novo",
+   "duracao_s": 15,
+   "pacote": "M",
+   "qtd": 10,
+   "desconto": 0.1,
+   "valor_total": 579375.0,
+   "valor_por_peca": 57937.5
+  },
+  {
+   "id": "Filme novo · 15s · G",
+   "categoria": "Filme novo",
+   "duracao_s": 15,
+   "pacote": "G",
+   "qtd": 15,
+   "desconto": 0.15,
+   "valor_total": 820781.25,
+   "valor_por_peca": 54718.75
+  },
+  {
+   "id": "Filme novo · 15s · OOH 1",
+   "categoria": "Filme novo",
+   "duracao_s": 15,
+   "pacote": "OOH 1",
+   "qtd": 25,
+   "desconto": 0.18,
+   "valor_total": 1319687.5,
+   "valor_por_peca": 52787.5
+  },
+  {
+   "id": "Filme novo · 15s · OOH 2",
+   "categoria": "Filme novo",
+   "duracao_s": 15,
+   "pacote": "OOH 2",
+   "qtd": 50,
+   "desconto": 0.2,
+   "valor_total": 2575000.0,
+   "valor_por_peca": 51500.0
+  },
+  {
+   "id": "Filme novo · 30s · Unitário",
+   "categoria": "Filme novo",
+   "duracao_s": 30,
+   "pacote": "Unitário",
+   "qtd": 1,
+   "desconto": 0.0,
+   "valor_total": 97850.0,
+   "valor_por_peca": 97850.0
+  },
+  {
+   "id": "Filme novo · 30s · P",
+   "categoria": "Filme novo",
+   "duracao_s": 30,
+   "pacote": "P",
+   "qtd": 5,
+   "desconto": 0.0,
+   "valor_total": 489250.0,
+   "valor_por_peca": 97850.0
+  },
+  {
+   "id": "Filme novo · 30s · M",
+   "categoria": "Filme novo",
+   "duracao_s": 30,
+   "pacote": "M",
+   "qtd": 10,
+   "desconto": 0.1,
+   "valor_total": 880650.0,
+   "valor_por_peca": 88065.0
+  },
+  {
+   "id": "Filme novo · 30s · G",
+   "categoria": "Filme novo",
+   "duracao_s": 30,
+   "pacote": "G",
+   "qtd": 15,
+   "desconto": 0.15,
+   "valor_total": 1247587.5,
+   "valor_por_peca": 83172.5
+  },
+  {
+   "id": "Filme novo · 45s · Unitário",
+   "categoria": "Filme novo",
+   "duracao_s": 45,
+   "pacote": "Unitário",
+   "qtd": 1,
+   "desconto": 0.0,
+   "valor_total": 128750.0,
+   "valor_por_peca": 128750.0
+  },
+  {
+   "id": "Filme novo · 45s · P",
+   "categoria": "Filme novo",
+   "duracao_s": 45,
+   "pacote": "P",
+   "qtd": 5,
+   "desconto": 0.0,
+   "valor_total": 643750.0,
+   "valor_por_peca": 128750.0
+  },
+  {
+   "id": "Filme novo · 45s · M",
+   "categoria": "Filme novo",
+   "duracao_s": 45,
+   "pacote": "M",
+   "qtd": 10,
+   "desconto": 0.1,
+   "valor_total": 1158750.0,
+   "valor_por_peca": 115875.0
+  },
+  {
+   "id": "Filme novo · 45s · G",
+   "categoria": "Filme novo",
+   "duracao_s": 45,
+   "pacote": "G",
+   "qtd": 15,
+   "desconto": 0.15,
+   "valor_total": 1641562.5,
+   "valor_por_peca": 109437.5
+  },
+  {
+   "id": "Filme novo · 60s · Unitário",
+   "categoria": "Filme novo",
+   "duracao_s": 60,
+   "pacote": "Unitário",
+   "qtd": 1,
+   "desconto": 0.0,
+   "valor_total": 146775.0,
+   "valor_por_peca": 146775.0
+  },
+  {
+   "id": "Filme novo · 60s · P",
+   "categoria": "Filme novo",
+   "duracao_s": 60,
+   "pacote": "P",
+   "qtd": 5,
+   "desconto": 0.0,
+   "valor_total": 733875.0,
+   "valor_por_peca": 146775.0
+  },
+  {
+   "id": "Filme novo · 60s · M",
+   "categoria": "Filme novo",
+   "duracao_s": 60,
+   "pacote": "M",
+   "qtd": 10,
+   "desconto": 0.1,
+   "valor_total": 1320975.0,
+   "valor_por_peca": 132097.5
+  },
+  {
+   "id": "Filme novo · 60s · G",
+   "categoria": "Filme novo",
+   "duracao_s": 60,
+   "pacote": "G",
+   "qtd": 15,
+   "desconto": 0.15,
+   "valor_total": 1871381.25,
+   "valor_por_peca": 124758.75
+  },
+  {
+   "id": "Adaptação do filme hero · 5s · Unitário",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 5,
+   "pacote": "Unitário",
+   "qtd": 1,
+   "desconto": 0.0,
+   "valor_total": 15450.0,
+   "valor_por_peca": 15450.0
+  },
+  {
+   "id": "Adaptação do filme hero · 5s · P",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 5,
+   "pacote": "P",
+   "qtd": 5,
+   "desconto": 0.0,
+   "valor_total": 77250.0,
+   "valor_por_peca": 15450.0
+  },
+  {
+   "id": "Adaptação do filme hero · 5s · M",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 5,
+   "pacote": "M",
+   "qtd": 10,
+   "desconto": 0.1,
+   "valor_total": 139050.0,
+   "valor_por_peca": 13905.0
+  },
+  {
+   "id": "Adaptação do filme hero · 5s · G",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 5,
+   "pacote": "G",
+   "qtd": 15,
+   "desconto": 0.15,
+   "valor_total": 196987.5,
+   "valor_por_peca": 13132.5
+  },
+  {
+   "id": "Adaptação do filme hero · 5s · OOH 1",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 5,
+   "pacote": "OOH 1",
+   "qtd": 25,
+   "desconto": 0.18,
+   "valor_total": 316725.0,
+   "valor_por_peca": 12669.0
+  },
+  {
+   "id": "Adaptação do filme hero · 5s · OOH 2",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 5,
+   "pacote": "OOH 2",
+   "qtd": 50,
+   "desconto": 0.15,
+   "valor_total": 656625.0,
+   "valor_por_peca": 13132.5
+  },
+  {
+   "id": "Adaptação do filme hero · 10s · Unitário",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 10,
+   "pacote": "Unitário",
+   "qtd": 1,
+   "desconto": 0.0,
+   "valor_total": 19312.5,
+   "valor_por_peca": 19312.5
+  },
+  {
+   "id": "Adaptação do filme hero · 10s · P",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 10,
+   "pacote": "P",
+   "qtd": 5,
+   "desconto": 0.0,
+   "valor_total": 96562.5,
+   "valor_por_peca": 19312.5
+  },
+  {
+   "id": "Adaptação do filme hero · 10s · M",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 10,
+   "pacote": "M",
+   "qtd": 10,
+   "desconto": 0.1,
+   "valor_total": 173812.5,
+   "valor_por_peca": 17381.25
+  },
+  {
+   "id": "Adaptação do filme hero · 10s · G",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 10,
+   "pacote": "G",
+   "qtd": 15,
+   "desconto": 0.15,
+   "valor_total": 246234.38,
+   "valor_por_peca": 16415.62
+  },
+  {
+   "id": "Adaptação do filme hero · 10s · OOH 1",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 10,
+   "pacote": "OOH 1",
+   "qtd": 25,
+   "desconto": 0.18,
+   "valor_total": 395906.25,
+   "valor_por_peca": 15836.25
+  },
+  {
+   "id": "Adaptação do filme hero · 10s · OOH 2",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 10,
+   "pacote": "OOH 2",
+   "qtd": 50,
+   "desconto": 0.15,
+   "valor_total": 820781.25,
+   "valor_por_peca": 16415.62
+  },
+  {
+   "id": "Adaptação do filme hero · 15s · Unitário",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 15,
+   "pacote": "Unitário",
+   "qtd": 1,
+   "desconto": 0.0,
+   "valor_total": 29355.0,
+   "valor_por_peca": 29355.0
+  },
+  {
+   "id": "Adaptação do filme hero · 15s · P",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 15,
+   "pacote": "P",
+   "qtd": 5,
+   "desconto": 0.0,
+   "valor_total": 146775.0,
+   "valor_por_peca": 29355.0
+  },
+  {
+   "id": "Adaptação do filme hero · 15s · M",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 15,
+   "pacote": "M",
+   "qtd": 10,
+   "desconto": 0.1,
+   "valor_total": 264195.0,
+   "valor_por_peca": 26419.5
+  },
+  {
+   "id": "Adaptação do filme hero · 15s · G",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 15,
+   "pacote": "G",
+   "qtd": 15,
+   "desconto": 0.15,
+   "valor_total": 374276.25,
+   "valor_por_peca": 24951.75
+  },
+  {
+   "id": "Adaptação do filme hero · 15s · OOH 1",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 15,
+   "pacote": "OOH 1",
+   "qtd": 25,
+   "desconto": 0.18,
+   "valor_total": 601777.5,
+   "valor_por_peca": 24071.1
+  },
+  {
+   "id": "Adaptação do filme hero · 15s · OOH 2",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 15,
+   "pacote": "OOH 2",
+   "qtd": 50,
+   "desconto": 0.15,
+   "valor_total": 1247587.5,
+   "valor_por_peca": 24951.75
+  },
+  {
+   "id": "Adaptação do filme hero · 30s · Unitário",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 30,
+   "pacote": "Unitário",
+   "qtd": 1,
+   "desconto": 0.0,
+   "valor_total": 38625.0,
+   "valor_por_peca": 38625.0
+  },
+  {
+   "id": "Adaptação do filme hero · 30s · P",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 30,
+   "pacote": "P",
+   "qtd": 5,
+   "desconto": 0.0,
+   "valor_total": 193125.0,
+   "valor_por_peca": 38625.0
+  },
+  {
+   "id": "Adaptação do filme hero · 30s · M",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 30,
+   "pacote": "M",
+   "qtd": 10,
+   "desconto": 0.1,
+   "valor_total": 347625.0,
+   "valor_por_peca": 34762.5
+  },
+  {
+   "id": "Adaptação do filme hero · 30s · G",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 30,
+   "pacote": "G",
+   "qtd": 15,
+   "desconto": 0.15,
+   "valor_total": 492468.75,
+   "valor_por_peca": 32831.25
+  },
+  {
+   "id": "Redução ou corte do filme hero · 5s · Unitário",
+   "categoria": "Redução ou corte do filme hero",
+   "duracao_s": 5,
+   "pacote": "Unitário",
+   "qtd": 1,
+   "desconto": 0.0,
+   "valor_total": 10300.0,
+   "valor_por_peca": 10300.0
+  },
+  {
+   "id": "Redução ou corte do filme hero · 5s · P",
+   "categoria": "Redução ou corte do filme hero",
+   "duracao_s": 5,
+   "pacote": "P",
+   "qtd": 5,
+   "desconto": 0.0,
+   "valor_total": 51500.0,
+   "valor_por_peca": 10300.0
+  },
+  {
+   "id": "Redução ou corte do filme hero · 5s · M",
+   "categoria": "Redução ou corte do filme hero",
+   "duracao_s": 5,
+   "pacote": "M",
+   "qtd": 10,
+   "desconto": 0.1,
+   "valor_total": 92700.0,
+   "valor_por_peca": 9270.0
+  },
+  {
+   "id": "Redução ou corte do filme hero · 5s · G",
+   "categoria": "Redução ou corte do filme hero",
+   "duracao_s": 5,
+   "pacote": "G",
+   "qtd": 15,
+   "desconto": 0.15,
+   "valor_total": 131325.0,
+   "valor_por_peca": 8755.0
+  },
+  {
+   "id": "Redução ou corte do filme hero · 5s · OOH 1",
+   "categoria": "Redução ou corte do filme hero",
+   "duracao_s": 5,
+   "pacote": "OOH 1",
+   "qtd": 25,
+   "desconto": 0.18,
+   "valor_total": 211150.0,
+   "valor_por_peca": 8446.0
+  },
+  {
+   "id": "Redução ou corte do filme hero · 5s · OOH 2",
+   "categoria": "Redução ou corte do filme hero",
+   "duracao_s": 5,
+   "pacote": "OOH 2",
+   "qtd": 50,
+   "desconto": 0.15,
+   "valor_total": 437750.0,
+   "valor_por_peca": 8755.0
+  },
+  {
+   "id": "Redução ou corte do filme hero · 10s · Unitário",
+   "categoria": "Redução ou corte do filme hero",
+   "duracao_s": 10,
+   "pacote": "Unitário",
+   "qtd": 1,
+   "desconto": 0.0,
+   "valor_total": 12875.0,
+   "valor_por_peca": 12875.0
+  },
+  {
+   "id": "Redução ou corte do filme hero · 10s · P",
+   "categoria": "Redução ou corte do filme hero",
+   "duracao_s": 10,
+   "pacote": "P",
+   "qtd": 5,
+   "desconto": 0.0,
+   "valor_total": 64375.0,
+   "valor_por_peca": 12875.0
+  },
+  {
+   "id": "Redução ou corte do filme hero · 10s · M",
+   "categoria": "Redução ou corte do filme hero",
+   "duracao_s": 10,
+   "pacote": "M",
+   "qtd": 10,
+   "desconto": 0.1,
+   "valor_total": 115875.0,
+   "valor_por_peca": 11587.5
+  },
+  {
+   "id": "Redução ou corte do filme hero · 10s · G",
+   "categoria": "Redução ou corte do filme hero",
+   "duracao_s": 10,
+   "pacote": "G",
+   "qtd": 15,
+   "desconto": 0.15,
+   "valor_total": 164156.25,
+   "valor_por_peca": 10943.75
+  },
+  {
+   "id": "Redução ou corte do filme hero · 10s · OOH 1",
+   "categoria": "Redução ou corte do filme hero",
+   "duracao_s": 10,
+   "pacote": "OOH 1",
+   "qtd": 25,
+   "desconto": 0.18,
+   "valor_total": 263937.5,
+   "valor_por_peca": 10557.5
+  },
+  {
+   "id": "Redução ou corte do filme hero · 10s · OOH 2",
+   "categoria": "Redução ou corte do filme hero",
+   "duracao_s": 10,
+   "pacote": "OOH 2",
+   "qtd": 50,
+   "desconto": 0.15,
+   "valor_total": 547187.5,
+   "valor_por_peca": 10943.75
+  },
+  {
+   "id": "Redução ou corte do filme hero · 15s · Unitário",
+   "categoria": "Redução ou corte do filme hero",
+   "duracao_s": 15,
+   "pacote": "Unitário",
+   "qtd": 1,
+   "desconto": 0.0,
+   "valor_total": 19570.0,
+   "valor_por_peca": 19570.0
+  },
+  {
+   "id": "Redução ou corte do filme hero · 15s · P",
+   "categoria": "Redução ou corte do filme hero",
+   "duracao_s": 15,
+   "pacote": "P",
+   "qtd": 5,
+   "desconto": 0.0,
+   "valor_total": 97850.0,
+   "valor_por_peca": 19570.0
+  },
+  {
+   "id": "Redução ou corte do filme hero · 15s · M",
+   "categoria": "Redução ou corte do filme hero",
+   "duracao_s": 15,
+   "pacote": "M",
+   "qtd": 10,
+   "desconto": 0.1,
+   "valor_total": 176130.0,
+   "valor_por_peca": 17613.0
+  },
+  {
+   "id": "Redução ou corte do filme hero · 15s · G",
+   "categoria": "Redução ou corte do filme hero",
+   "duracao_s": 15,
+   "pacote": "G",
+   "qtd": 15,
+   "desconto": 0.15,
+   "valor_total": 249517.5,
+   "valor_por_peca": 16634.5
+  },
+  {
+   "id": "Redução ou corte do filme hero · 15s · OOH 1",
+   "categoria": "Redução ou corte do filme hero",
+   "duracao_s": 15,
+   "pacote": "OOH 1",
+   "qtd": 25,
+   "desconto": 0.18,
+   "valor_total": 401185.0,
+   "valor_por_peca": 16047.4
+  },
+  {
+   "id": "Redução ou corte do filme hero · 15s · OOH 2",
+   "categoria": "Redução ou corte do filme hero",
+   "duracao_s": 15,
+   "pacote": "OOH 2",
+   "qtd": 50,
+   "desconto": 0.15,
+   "valor_total": 831725.0,
+   "valor_por_peca": 16634.5
+  },
+  {
+   "id": "Redução ou corte do filme hero · 30s · Unitário",
+   "categoria": "Redução ou corte do filme hero",
+   "duracao_s": 30,
+   "pacote": "Unitário",
+   "qtd": 1,
+   "desconto": 0.0,
+   "valor_total": 25750.0,
+   "valor_por_peca": 25750.0
+  },
+  {
+   "id": "Redução ou corte do filme hero · 30s · P",
+   "categoria": "Redução ou corte do filme hero",
+   "duracao_s": 30,
+   "pacote": "P",
+   "qtd": 5,
+   "desconto": 0.0,
+   "valor_total": 128750.0,
+   "valor_por_peca": 25750.0
+  },
+  {
+   "id": "Redução ou corte do filme hero · 30s · M",
+   "categoria": "Redução ou corte do filme hero",
+   "duracao_s": 30,
+   "pacote": "M",
+   "qtd": 10,
+   "desconto": 0.1,
+   "valor_total": 231750.0,
+   "valor_por_peca": 23175.0
+  },
+  {
+   "id": "Redução ou corte do filme hero · 30s · G",
+   "categoria": "Redução ou corte do filme hero",
+   "duracao_s": 30,
+   "pacote": "G",
+   "qtd": 15,
+   "desconto": 0.15,
+   "valor_total": 328312.5,
+   "valor_por_peca": 21887.5
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 5s · Unitário",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 5,
+   "pacote": "Unitário",
+   "qtd": 1,
+   "desconto": 0.0,
+   "valor_total": 614.9,
+   "valor_por_peca": 614.9
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 5s · P",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 5,
+   "pacote": "P",
+   "qtd": 10,
+   "desconto": 0.0,
+   "valor_total": 6149.0,
+   "valor_por_peca": 614.9
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 5s · M",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 5,
+   "pacote": "M",
+   "qtd": 20,
+   "desconto": 0.1,
+   "valor_total": 11068.2,
+   "valor_por_peca": 553.41
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 5s · G",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 5,
+   "pacote": "G",
+   "qtd": 30,
+   "desconto": 0.15,
+   "valor_total": 15679.95,
+   "valor_por_peca": 522.67
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 5s · OOH 1",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 5,
+   "pacote": "OOH 1",
+   "qtd": 25,
+   "desconto": 0.12,
+   "valor_total": 13527.8,
+   "valor_por_peca": 541.11
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 5s · OOH 2",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 5,
+   "pacote": "OOH 2",
+   "qtd": 50,
+   "desconto": 0.2,
+   "valor_total": 24596.0,
+   "valor_por_peca": 491.92
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 10s · Unitário",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 10,
+   "pacote": "Unitário",
+   "qtd": 1,
+   "desconto": 0.0,
+   "valor_total": 1072.5,
+   "valor_por_peca": 1072.5
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 10s · P",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 10,
+   "pacote": "P",
+   "qtd": 10,
+   "desconto": 0.0,
+   "valor_total": 10725.0,
+   "valor_por_peca": 1072.5
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 10s · M",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 10,
+   "pacote": "M",
+   "qtd": 20,
+   "desconto": 0.1,
+   "valor_total": 19305.0,
+   "valor_por_peca": 965.25
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 10s · G",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 10,
+   "pacote": "G",
+   "qtd": 30,
+   "desconto": 0.15,
+   "valor_total": 27348.75,
+   "valor_por_peca": 911.62
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 10s · OOH 1",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 10,
+   "pacote": "OOH 1",
+   "qtd": 25,
+   "desconto": 0.12,
+   "valor_total": 23595.0,
+   "valor_por_peca": 943.8
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 10s · OOH 2",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 10,
+   "pacote": "OOH 2",
+   "qtd": 50,
+   "desconto": 0.2,
+   "valor_total": 42900.0,
+   "valor_por_peca": 858.0
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 15s · Unitário",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 15,
+   "pacote": "Unitário",
+   "qtd": 1,
+   "desconto": 0.0,
+   "valor_total": 1358.5,
+   "valor_por_peca": 1358.5
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 15s · P",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 15,
+   "pacote": "P",
+   "qtd": 10,
+   "desconto": 0.0,
+   "valor_total": 13585.0,
+   "valor_por_peca": 1358.5
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 15s · M",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 15,
+   "pacote": "M",
+   "qtd": 20,
+   "desconto": 0.1,
+   "valor_total": 24453.0,
+   "valor_por_peca": 1222.65
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 15s · G",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 15,
+   "pacote": "G",
+   "qtd": 30,
+   "desconto": 0.15,
+   "valor_total": 34641.75,
+   "valor_por_peca": 1154.72
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 15s · OOH 1",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 15,
+   "pacote": "OOH 1",
+   "qtd": 25,
+   "desconto": 0.12,
+   "valor_total": 29887.0,
+   "valor_por_peca": 1195.48
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 15s · OOH 2",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 15,
+   "pacote": "OOH 2",
+   "qtd": 50,
+   "desconto": 0.2,
+   "valor_total": 54340.0,
+   "valor_por_peca": 1086.8
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 30s · Unitário",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 30,
+   "pacote": "Unitário",
+   "qtd": 1,
+   "desconto": 0.0,
+   "valor_total": 2862.5,
+   "valor_por_peca": 2862.5
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 30s · P",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 30,
+   "pacote": "P",
+   "qtd": 10,
+   "desconto": 0.0,
+   "valor_total": 28625.0,
+   "valor_por_peca": 2862.5
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 30s · M",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 30,
+   "pacote": "M",
+   "qtd": 20,
+   "desconto": 0.1,
+   "valor_total": 51525.0,
+   "valor_por_peca": 2576.25
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 30s · G",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 30,
+   "pacote": "G",
+   "qtd": 30,
+   "desconto": 0.15,
+   "valor_total": 72993.75,
+   "valor_por_peca": 2433.12
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 45s · Unitário",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 45,
+   "pacote": "Unitário",
+   "qtd": 1,
+   "desconto": 0.0,
+   "valor_total": 2359.5,
+   "valor_por_peca": 2359.5
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 45s · P",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 45,
+   "pacote": "P",
+   "qtd": 10,
+   "desconto": 0.0,
+   "valor_total": 23595.0,
+   "valor_por_peca": 2359.5
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 45s · M",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 45,
+   "pacote": "M",
+   "qtd": 20,
+   "desconto": 0.1,
+   "valor_total": 42471.0,
+   "valor_por_peca": 2123.55
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 45s · G",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 45,
+   "pacote": "G",
+   "qtd": 30,
+   "desconto": 0.15,
+   "valor_total": 60167.25,
+   "valor_por_peca": 2005.58
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 60s · Unitário",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 60,
+   "pacote": "Unitário",
+   "qtd": 1,
+   "desconto": 0.0,
+   "valor_total": 2817.1,
+   "valor_por_peca": 2817.1
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 60s · P",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 60,
+   "pacote": "P",
+   "qtd": 10,
+   "desconto": 0.0,
+   "valor_total": 28171.0,
+   "valor_por_peca": 2817.1
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 60s · M",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 60,
+   "pacote": "M",
+   "qtd": 20,
+   "desconto": 0.1,
+   "valor_total": 50707.8,
+   "valor_por_peca": 2535.39
+  },
+  {
+   "id": "Formato 9:16 e 1:1 · 60s · G",
+   "categoria": "Formato 9:16 e 1:1",
+   "duracao_s": 60,
+   "pacote": "G",
+   "qtd": 30,
+   "desconto": 0.15,
+   "valor_total": 71836.05,
+   "valor_por_peca": 2394.54
+  }
+ ]
+}
