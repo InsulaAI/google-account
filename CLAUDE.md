@@ -18,6 +18,7 @@ Existe também uma cópia como dashboard no claude.ai
 index.html                página inteira: HTML, CSS e JS inline, sem build
 dados.json                os números que a página mostra (gerado, não editar à mão)
 vendor/d3.min.js          d3 v7.9.0, servido daqui para não depender de CDN
+img/insula-logo.webp      logo da Insula (versão "SEM BG" da pasta INSULA AI no Drive), 234×240
 functions/_middleware.js  login: tela, sessão e lista do que pode ser servido
 scripts/atualizar.py      gera dados.json a partir das planilhas (nunca servido)
 robots.txt
@@ -64,6 +65,8 @@ python3 -I scripts/atualizar.py cuentas.xlsx latam.xlsx afaturar.xlsx \
   âmbar #D9A566 só no que é saldo ou destaque. Títulos em Mulish 600, corpo em Archivo,
   rótulos em JetBrains Mono, como no InfoMemo.
 - Tema escuro único, por escolha.
+- **Logo da Insula** no topo da página e na tela de login (lá embutido no middleware em
+  base64, porque a tela de login sai antes da sessão e não pode carregar arquivo).
 
 ## Login
 
