@@ -101,7 +101,7 @@ function page(next, error) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive">
-<title>Conta Corrente Google · Acesso restrito</title>
+<title>Insula AI · Acesso restrito</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@400..800&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -124,7 +124,7 @@ function page(next, error) {
   .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-3);margin:0 0 18px}
   h1{
     font-family:var(--display);font-weight:600;letter-spacing:-.01em;
-    -webkit-font-smoothing:auto;font-size:40px;line-height:1.05;margin:0 0 14px;
+    -webkit-font-smoothing:auto;font-size:46px;line-height:1.05;margin:0 0 14px;
   }
   p{color:var(--text-2);margin:0 0 28px}
   label{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin:0 0 7px}
@@ -144,9 +144,9 @@ function page(next, error) {
 </head>
 <body>
 <main>
-  <p class="k">Insula AI · Confidencial</p>
-  <h1>Conta corrente Google</h1>
-  <p>Página de acesso restrito. Entre com o usuário e a senha que você recebeu.</p>
+  <p class="k">Relatório de projetos · Confidencial</p>
+  <h1>Insula AI</h1>
+  <p>Relatório da Insula AI sobre os projetos produzidos para o Google em 2026. Entre com o usuário e a senha que a Insula enviou a você.</p>
   ${error ? '<p class="err" role="alert">Usuário ou senha incorretos.</p>' : ""}
   <form method="post" action="/__login">
     <input type="hidden" name="next" value="${esc(next)}">
@@ -156,7 +156,7 @@ function page(next, error) {
     <input id="s" name="senha" type="password" autocomplete="current-password" required${error ? " autofocus" : ""}>
     <button type="submit">Entrar</button>
   </form>
-  <p class="foot">Conteúdo confidencial, compartilhado entre a Insula AI e o Google.</p>
+  <p class="foot">Página da Insula AI (insula-ai.com). Esta não é uma página do Google: não use aqui sua senha de conta Google.</p>
 </main>
 </body>
 </html>`;

@@ -67,6 +67,13 @@ python3 -I scripts/atualizar.py cuentas.xlsx latam.xlsx afaturar.xlsx \
 
 ## Login
 
+**A tela de login é da Insula, não do Google.** Título "Insula AI", sem "Google" no `<title>`,
+e um aviso de que não é página do Google. Uma tela "Conta Google" pedindo senha num endereço
+com "google" no nome é indistinguível de phishing (o Claude no navegador recusou ajudar por
+isso, em 07/11). Pelo mesmo motivo, o projeto no Cloudflare Pages não leva "google" no nome:
+`insula-conta-corrente`, e não `google-account`.
+
+
 Sessão de 12 horas, em cookie HttpOnly e Secure assinado com HMAC. A assinatura inclui o hash
 da senha, então **trocar a senha derruba todas as sessões abertas**. Para trocar: gerar sal e
 hash novos e substituir `SALT` e `PASS_HASH` no middleware.
