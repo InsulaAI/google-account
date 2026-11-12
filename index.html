@@ -80,6 +80,8 @@ h3{font-family:var(--sans);font-weight:600;font-size:15px}
 
 .bars{display:grid;gap:16px;min-height:11rem;align-content:start}
 .bar{display:grid;gap:6px}
+.bar.off{opacity:.6}
+.sep{padding-top:12px;border-top:1px solid var(--line)}
 .bar-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;font-size:12.5px}
 .bar-top .nm{font-weight:600}
 .bar-top .sv{color:var(--text-3);flex:1 1 10rem;min-width:0}
@@ -119,15 +121,15 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     <img class="logo" src="img/insula-logo.webp" alt="Insula AI" width="234" height="240">
     <p class="k">Relatório de projetos · Google · 2026</p>
     <h1>Conta corrente Google 2026</h1>
-    <p class="lede">Dos <b data-f="credito_liquido">—</b> de crédito líquido recebido do Google, <b data-f="consumido">—</b> já foram usados em projetos entregues (<b data-f="pct_consumido" data-fmt="pct">—</b>). O saldo disponível é de <b data-f="saldo">—</b>.</p>
+    <p class="lede">Dos <b data-f="credito_liquido">—</b> de crédito recebido do Google, <b data-f="consumido">—</b> já foram usados em projetos entregues (<b data-f="pct_consumido" data-fmt="pct">—</b>). O saldo disponível é de <b data-f="saldo">—</b>.</p>
   </header>
 
   <div class="tiles" aria-label="Resumo">
-    <div class="tile main"><span class="k">Saldo disponível</span><span class="big" data-f="saldo">—</span><span class="note">Crédito líquido menos o que já foi debitado</span></div>
-    <div class="tile"><span class="k">Crédito líquido</span><span class="big" data-f="credito_liquido">—</span><span class="note"><b data-f="credito_bruto">—</b> em POs pagos, menos <b data-f="impostos">—</b> de impostos</span></div>
+    <div class="tile main"><span class="k">Saldo disponível</span><span class="big" data-f="saldo">—</span><span class="note">Crédito recebido menos o que já foi debitado</span></div>
+    <div class="tile"><span class="k">Crédito recebido</span><span class="big" data-f="credito_liquido">—</span><span class="note"><b data-f="pos_pagos" data-fmt="int">—</b> POs pagos pelo Google</span></div>
     <div class="tile"><span class="k">Consumido</span><span class="big" data-f="consumido">—</span><span class="note"><b data-f="projetos_debitados" data-fmt="int">—</b> projetos debitados</span></div>
     <div class="tile"><span class="k">POs a faturar</span><span class="big" data-f="a_faturar">—</span><span class="note"><b data-f="pos_a_faturar" data-fmt="int">—</b> POs aprovados, ainda não faturados</span></div>
-    <div class="tile"><span class="k">Em contingência</span><span class="big" data-f="contingencia">—</span><span class="note">Projetos congelados ou cancelados</span></div>
+    <div class="tile"><span class="k">Em contingência</span><span class="big" data-f="contingencia">—</span><span class="note">Projetos congelados</span></div>
   </div>
 
   <section id="movimento">
@@ -141,7 +143,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
       </div>
       <div class="card">
         <h3>Para onde foi o crédito</h3>
-        <p class="note">Crédito líquido dividido entre os projetos debitados e o saldo.</p>
+        <p class="note">Crédito recebido dividido entre os projetos debitados e o saldo.</p>
         <div class="donut" id="destino"></div>
       </div>
     </div>
@@ -149,7 +151,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
       <h3>Extrato</h3>
       <p class="note">Todos os lançamentos da conta em 2026.</p>
       <div class="tw"><table>
-        <thead><tr><th>Data</th><th>Tipo</th><th>Lançamento</th><th>PO</th><th>Job</th><th class="num">Valor bruto</th><th class="num">Impostos</th><th class="num">Valor na conta</th><th>Observação</th></tr></thead>
+        <thead><tr><th>Data</th><th>Tipo</th><th>Lançamento</th><th>PO</th><th>Job</th><th class="num">Valor</th><th>Observação</th></tr></thead>
         <tbody id="extrato"></tbody>
       </table></div>
     </div>
@@ -160,12 +162,12 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     <div class="grid">
       <div class="card">
         <h3>POs aprovados em 2026</h3>
-        <p class="note">POs já pagos, pelo valor bruto, e POs aprovados que ainda não foram faturados.</p>
+        <p class="note">POs já pagos e POs aprovados que ainda não foram faturados, pelo valor de cada PO.</p>
         <div class="donut" id="pos"></div>
       </div>
       <div class="card">
         <h3>Projetos em produção</h3>
-        <p class="note">Contingência são os projetos congelados ou cancelados: <b data-f="contingencia">—</b>. Em andamento: <b data-f="em_andamento">—</b>.</p>
+        <p class="note">Em andamento: <b data-f="em_andamento">—</b>. Contingência, os projetos congelados: <b data-f="contingencia">—</b>. Cancelados aparecem abaixo, fora da conta.</p>
         <div class="bars" id="producao"></div>
       </div>
     </div>
@@ -198,13 +200,13 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
         <h3>Valor por pacote</h3>
         <p class="note">Total do pacote, com a quantidade de peças e o desconto aplicado.</p>
         <div class="tw"><table>
-          <thead><tr><th>Duração</th><th class="num">Unitário</th><th class="num">P</th><th class="num">M</th><th class="num">G</th><th class="num">OOH 1</th><th class="num">OOH 2</th></tr></thead>
+          <thead><tr><th>Duração</th><th class="num">Unitário</th><th class="num">P</th><th class="num">M</th><th class="num">G</th></tr></thead>
           <tbody id="precos-tabela"></tbody>
         </table></div>
       </div>
     </div>
     <div class="card team">
-      <div><strong>Equipe incluída</strong><ul><li>Atendimento</li><li>IA Artist</li><li>Editor/Motion</li><li>Color</li><li>Diretor de cena (Brasil)</li><li>Técnico de áudio (trilha, efeitos, locução e mix/master)</li></ul></div>
+      <div><strong>Equipe incluída</strong><ul><li>Atendimento</li><li>IA Artist</li><li>Editor/Motion</li><li>Designer</li><li>Diretor de cena (Brasil)</li><li>Técnico de áudio (trilha, efeitos, locução e mix/master)</li></ul></div>
       <div><strong>Custos extras, quando necessários</strong><ul><li>Diretor de criação</li><li>Produtor de figurino</li><li>Diretor de arte</li><li>Processos tradicionais de composição</li><li>DA</li></ul></div>
     </div>
   </section>
@@ -234,10 +236,10 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     const cred = D.movimentos.filter((r) => r.tipo === 'Crédito'), deb = D.movimentos.filter((r) => r.tipo === 'Débito');
     const credito_liquido = soma(cred, 'valor'), consumido = soma(deb, 'valor');
     return {
-      credito_bruto: soma(cred, 'valor_bruto'), impostos: soma(cred, 'impostos'), credito_liquido, consumido,
+      pos_pagos: cred.length, credito_liquido, consumido,
       pct_consumido: credito_liquido ? consumido / credito_liquido : 0, projetos_debitados: deb.length,
       saldo: r2(credito_liquido - consumido), a_faturar: soma(D.a_faturar, 'valor'), pos_a_faturar: D.a_faturar.length,
-      contingencia: soma(D.producao.filter((r) => r.status === 'Congelado' || r.status === 'Cancelado'), 'valor'),
+      contingencia: soma(D.producao.filter((r) => r.status === 'Congelado'), 'valor'),
       em_andamento: soma(D.producao.filter((r) => r.status === 'Em andamento'), 'valor')
     };
   }
@@ -349,11 +351,11 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
   function drawDestino() {
     const R = resumo();
     const rows = [{ nome: 'Saldo disponível', valor: R.saldo }, ...D.movimentos.filter((r) => r.tipo === 'Débito').map((r) => ({ nome: r.lancamento, valor: Number(r.valor) }))];
-    donut(document.getElementById('destino'), rows, { label: 'Divisão do crédito líquido', center: 'crédito líquido' });
+    donut(document.getElementById('destino'), rows, { label: 'Divisão do crédito recebido', center: 'crédito recebido' });
   }
   function drawPos() {
     const rows = [
-      ...D.movimentos.filter((r) => r.tipo === 'Crédito').map((r) => ({ po: String(r.po), nome: r.lancamento, valor: Number(r.valor_bruto), situacao: 'Pago' })),
+      ...D.movimentos.filter((r) => r.tipo === 'Crédito').map((r) => ({ po: String(r.po), nome: r.lancamento, valor: Number(r.valor_po ?? r.valor), situacao: 'Pago' })),
       ...D.a_faturar.map((r) => ({ po: String(r.po), nome: r.cliente, valor: Number(r.valor), situacao: 'A faturar' }))
     ];
     donut(document.getElementById('pos'), rows, { label: 'POs aprovados em 2026', center: 'em POs', sub: (r) => `${r.situacao} · PO ${r.po}` });
@@ -363,8 +365,11 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     const box = document.getElementById('producao'); box.replaceChildren();
     const max = d3.max(D.producao, (r) => Number(r.valor)) || 1, cls = { 'Em andamento': 'ok', 'Congelado': 'warn', 'Cancelado': 'bad' };
     if (!D.producao.length) { box.appendChild(el('p', 'empty', 'Nenhum projeto em produção.')); return; }
-    for (const r of D.producao) {
-      const item = el('div', 'bar'), top = el('div', 'bar-top');
+    const ativos = D.producao.filter((r) => r.status !== 'Cancelado'), cancelados = D.producao.filter((r) => r.status === 'Cancelado');
+    const linhas = [...ativos, ...(cancelados.length ? [null, ...cancelados] : [])];
+    for (const r of linhas) {
+      if (r === null) { box.appendChild(el('p', 'k sep', 'Cancelados · fora da contingência')); continue; }
+      const item = el('div', r.status === 'Cancelado' ? 'bar off' : 'bar'), top = el('div', 'bar-top');
       top.append(el('span', 'nm', r.projeto), el('span', 'sv', r.servico + (r.job ? ` · job ${r.job}` : '')), el('span', 'chip ' + (cls[r.status] || 'neutral'), r.status), el('span', 'vl', money(r.valor)));
       const track = el('div', 'track'), fill = el('div', 'fill');
       fill.style.width = (Number(r.valor) / max * 100) + '%';
@@ -378,7 +383,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     for (const r of D.movimentos.slice().sort((a, b) => String(a.data).localeCompare(String(b.data)) || Number(a.id) - Number(b.id))) {
       const tr = el('tr'), tipo = el('td'); tipo.appendChild(el('span', 'chip ' + (r.tipo === 'Crédito' ? 'ok' : 'neutral'), r.tipo));
       tr.append(el('td', '', date(r.data)), tipo, el('td', '', r.lancamento), el('td', 'muted', r.po || '–'), el('td', 'muted', r.job || '–'),
-        el('td', 'num', money(r.valor_bruto)), el('td', 'num', money(r.impostos)), el('td', 'num', money(r.valor)), el('td', 'muted', r.observacao || ''));
+        el('td', 'num', money(r.valor)), el('td', 'muted', r.observacao || ''));
       ex.appendChild(tr);
     }
     const af = document.getElementById('afaturar'); af.replaceChildren();
@@ -418,7 +423,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     const tb = document.getElementById('precos-tabela'); tb.replaceChildren();
     for (const r of [...m.values()].sort((a, b) => a.duracao_s - b.duracao_s)) {
       const tr = el('tr'); tr.appendChild(el('td', '', `${r.duracao_s}"`));
-      for (const f of ['unitario', 'p', 'm', 'g', 'ooh1', 'ooh2']) {
+      for (const f of ['unitario', 'p', 'm', 'g']) {
         const td = el('td', 'num');
         if (r[f] === undefined) { td.textContent = '–'; td.classList.add('muted'); }
         else { td.textContent = money(r[f]); if (f !== 'unitario') td.appendChild(el('small', '', `${r[f + '_qtd']} peças${r[f + '_desc'] > 0 ? ` · −${pct.format(r[f + '_desc'])}` : ''}`)); }

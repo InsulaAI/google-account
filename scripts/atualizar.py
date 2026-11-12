@@ -84,6 +84,8 @@ def table(ws, first_header):
 
 
 # ---------- movimentos (Cuentas, aba 2026) ----------
+# Crédito = valor que entrou na conta (coluna Google). Impostos não são publicados (pedido da
+# Insula em 12/11); valor_po guarda só o valor do próprio PO, para o gráfico de POs aprovados.
 wb = openpyxl.load_workbook(cuentas, data_only=True)
 prev = load_prev("movimentos.json")
 mov = []
@@ -95,12 +97,11 @@ for r in table(wb["2026"], "Fecha pago"):
     bruto = num(r.get("Precio BRL"))
     if google:
         lanc = "PO " + ("Cases" if proj == "Case" else proj)
-        row = {"tipo": "Crédito", "lancamento": lanc, "valor_bruto": clean(bruto if bruto is not None else google),
-               "impostos": clean((bruto - google) if bruto is not None else 0), "valor": clean(google)}
+        row = {"tipo": "Crédito", "lancamento": lanc, "valor_po": clean(bruto if bruto is not None else google), "valor": clean(google)}
         usd = num(r.get("Precio USD"))
         obs = f"USD {usd:,.0f}".replace(",", ".") if usd else ""
     else:
-        row = {"tipo": "Débito", "lancamento": proj, "valor_bruto": None, "impostos": None, "valor": clean(insula)}
+        row = {"tipo": "Débito", "lancamento": proj, "valor_po": None, "valor": clean(insula)}
         obs = f"Projeto de {brl(bruto)}" if bruto and abs(bruto - insula) > 0.005 else ""
     row.update({"data": iso(r.get("Fecha pago")), "servico": str(r.get("Servicio") or "").strip(),
                 "po": ident(r.get("PO")), "job": ident(r.get("Nº Job Insula")), "observacao": obs})
@@ -111,48 +112,7 @@ for r in table(wb["2026"], "Fecha pago"):
         for k in ("lancamento", "servico", "observacao"):
             row[k] = old[k]
     mov.append(row)
-mov = [{"id": str(i + 1), **{k: r[k] for k in ("data", "tipo", "lancamento", "servico", "po", "job", "valor_bruto", "impostos", "valor", "observacao")}} for i, r in enumerate(mov)]
-
-# ---------- precos (Cuentas, aba Ticket Google) ----------
-ws = wb["Ticket Google"]
-pacotes = [("Unitário", 1), ("P", 4), ("M", 7), ("G", 10), ("OOH 1", 13), ("OOH 2", 16)]  # coluna da Qtd (0-based)
-
-
-def categoria(a):
-    a = a.lower()
-    if "decupagem" in a:
-        return "Filme novo"
-    if "formato" in a:
-        return "Formato 9:16 e 1:1"
-    if "redução" in a or "corte" in a:
-        return "Redução ou corte do filme hero"
-    if "adpata" in a or "adapta" in a:
-        return "Adaptação do filme hero"
-    return None
-
-
-precos, cat = [], None
-for r in ws.iter_rows(values_only=True):
-    a = str(r[0] or "").strip()
-    if any(str(c or "").strip() == "Qtd" for c in r[1:]) and categoria(a):
-        cat = categoria(a)
-        continue
-    m = re.search(r"(\d+)\s*s\.?$", a)
-    if not cat or not m:
-        continue
-    dur = int(m[1])
-    unit = num(r[3])
-    if not unit:
-        continue
-    for pac, qc in pacotes:
-        if qc + 2 >= len(r):
-            continue
-        q, v = num(r[qc]), num(r[qc + 2])
-        if v is None or isinstance(r[qc + 2], str) and not num(r[qc + 2]):
-            continue
-        q = 1 if pac == "Unitário" else int(q)
-        precos.append({"id": f"{cat} · {dur}s · {pac}", "categoria": cat, "duracao_s": dur, "pacote": pac, "qtd": q,
-                       "desconto": round(1 - v / (q * unit), 4), "valor_total": round(v, 2), "valor_por_peca": round(v / q, 2)})
+mov = [{"id": str(i + 1), **{k: r[k] for k in ("data", "tipo", "lancamento", "servico", "po", "job", "valor_po", "valor", "observacao")}} for i, r in enumerate(mov)]
 
 # ---------- a_faturar (A Faturar, aba 2026) ----------
 wb2 = openpyxl.load_workbook(afaturar, data_only=True)
@@ -187,6 +147,50 @@ for r in rows[hi + 1:]:
         prod.append(row)
 ordem = {"Em andamento": 0, "Congelado": 1, "Cancelado": 2}
 prod.sort(key=lambda r: ordem[r["status"]])
+
+# ---------- precos (LATAM, aba Ticket Google) ----------
+# A tabela vigente fica na LATAM (atualizada em 03/11/2026, com o 30" a R$ 117.420). A cópia da
+# aba Ticket Google na Cuentas ficou com os preços antigos e não é usada.
+ws = wb3["Ticket Google"]
+pacotes = [("Unitário", 1), ("P", 4), ("M", 7), ("G", 10), ("OOH 1", 13), ("OOH 2", 16)]  # coluna da quantidade (0-based)
+
+
+def categoria(a):
+    a = a.lower()
+    if "decupagem" in a or "decoupage" in a:
+        return "Filme novo"
+    if "formato" in a or "format" in a:
+        return "Formato 9:16 e 1:1"
+    if "redução" in a or "reduction" in a or "corte" in a or "cut" in a:
+        return "Redução ou corte do filme hero"
+    if "adpata" in a or "adapta" in a:
+        return "Adaptação do filme hero"
+    return None
+
+
+precos, cat = [], None
+for r in ws.iter_rows(values_only=True):
+    a = str(r[0] or "").strip()
+    if any(str(c or "").strip() in ("Qtd", "Quantity") for c in r[1:]) and categoria(a):
+        cat = categoria(a)
+        continue
+    m = re.search(r"(\d+)\s*(?:s\b|-second)", a)
+    if not cat or not m:
+        continue
+    dur = int(m[1])
+    unit = num(r[3])
+    if not unit:
+        continue
+    for pac, qc in pacotes:
+        if qc + 2 >= len(r):
+            continue
+        q, v = num(r[qc]), num(r[qc + 2])
+        if v is None or q is None:
+            continue
+        q = 1 if pac == "Unitário" else int(q)
+        precos.append({"id": f"{cat} · {dur}s · {pac}", "categoria": cat, "duracao_s": dur, "pacote": pac, "qtd": q,
+                       "desconto": round(1 - v / (q * unit), 4), "valor_total": round(v, 2), "valor_por_peca": round(v / q, 2)})
+
 
 
 saida = {"movimentos": mov, "a_faturar": af, "producao": prod, "precos": precos}

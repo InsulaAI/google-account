@@ -30,13 +30,16 @@ Três planilhas no drive compartilhado da Insula (pasta da conta Google):
 
 | Planilha | fileId | Abas usadas | Vira |
 |---|---|---|---|
-| Cuentas Proyectos Google 2026.xlsx | 1lszMOS89dOwsN9eV1W1QGMPilqe0zRVW | 2026, Ticket Google | `movimentos`, `precos` |
-| LATAM_ Projectos Google 2026.xlsx | 1UmUZaGe89dCViedMOen6f_hlwHRekyyH | Production | `producao` |
+| Cuentas Proyectos Google 2026.xlsx | 1lszMOS89dOwsN9eV1W1QGMPilqe0zRVW | 2026 | `movimentos` |
+| LATAM_ Projectos Google 2026.xlsx | 1UmUZaGe89dCViedMOen6f_hlwHRekyyH | Production, Ticket Google | `producao`, `precos` |
 | Á Faturar Proyectos Google 2026.xlsx | 1Q0YKCn-Jf_9AMR9d8NEQqx0whOOhq1oZ | 2026 | `a_faturar` |
 
-- Crédito é linha da aba 2026 com valor na coluna Google; débito, com valor na coluna Insula.
-  Impostos = Precio BRL menos Google.
-- Contingência = projetos da aba Production com status Congelado ou Cancelado.
+- Crédito é linha da aba 2026 com valor na coluna Google (o que entrou na conta); débito, com
+  valor na coluna Insula. `valor_po` é o valor do próprio PO, usado só no gráfico de POs.
+- **Preços vêm da aba Ticket Google da LATAM**, atualizada em 03/11 (30" a R$ 117.420, sem
+  pacotes OOH). A cópia da aba na Cuentas ficou com a tabela antiga (30" a R$ 97.850) e não é usada.
+- Contingência = projetos da aba Production com status Congelado. Cancelados aparecem à parte,
+  fora da conta (decisão de 12/11).
 - A aba oculta "100% IA" (tabela de preços antiga) fica de fora.
 - `dados.json.origem` guarda o modifiedTime do Drive de cada planilha na última atualização.
 
@@ -61,6 +64,8 @@ python3 -I scripts/atualizar.py cuentas.xlsx latam.xlsx afaturar.xlsx \
   fórmula da aba Invoiced da LATAM). A seção que mostrava isso foi retirada a pedido da Insula
   em 03/11, porque a página vai para o Google. Não reintroduzir.
 - **Sem a coluna CNPJ TRIO.**
+- **Sem impostos.** Retirados a pedido da equipe em 12/11: o crédito aparece pelo valor que
+  entrou; nem valor bruto nem imposto vão para a página ou para `dados.json`.
 - **Cores do Insula Synthetic Director:** fundo #0A1020, painéis #111931, texto #E9E5DC,
   âmbar #D9A566 só no que é saldo ou destaque. Títulos em Mulish 600, corpo em Archivo,
   rótulos em JetBrains Mono, como no InfoMemo.
