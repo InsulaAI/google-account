@@ -40,7 +40,7 @@ Três planilhas no drive compartilhado da Insula (pasta da conta Google):
 - **Preços vêm da aba Ticket Google da LATAM**, atualizada em 03/11 (30" a R$ 117.420, sem
   pacotes OOH). A cópia da aba na Cuentas ficou com a tabela antiga (30" a R$ 97.850) e não é usada.
 - **Contingência = verba que sai do saldo do Google para um projeto** (definição da equipe em
-  12/11). Ex.: os R\$ 160.445 da SuperBet. Não confundir com projeto congelado: a aba Production
+  12/11). Ex.: os R$ 160.445 da SuperBet. Não confundir com projeto congelado: a aba Production
   da LATAM mostra em andamento, congelado e cancelado; congelado não entra em conta nenhuma e
   cancelado aparece à parte.
 
