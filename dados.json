@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-11-12T13:28:42Z",
+ "atualizado_em": "2026-11-12T13:51:45Z",
  "origem": {
   "cuentas": "2026-09-25T20:29:02.947Z",
   "latam": "2026-11-03T21:28:24.866Z",
@@ -8,6 +8,7 @@
  "movimentos": [
   {
    "id": "1",
+   "manual": false,
    "data": "2026-01-23",
    "tipo": "Crédito",
    "lancamento": "PO Cases",
@@ -20,6 +21,7 @@
   },
   {
    "id": "2",
+   "manual": false,
    "data": "2026-01-26",
    "tipo": "Crédito",
    "lancamento": "PO Trimestral",
@@ -32,6 +34,7 @@
   },
   {
    "id": "3",
+   "manual": false,
    "data": "2026-01-26",
    "tipo": "Débito",
    "lancamento": "Brilhante",
@@ -44,6 +47,7 @@
   },
   {
    "id": "4",
+   "manual": false,
    "data": "2026-01-26",
    "tipo": "Débito",
    "lancamento": "Clear",
@@ -56,6 +60,7 @@
   },
   {
    "id": "5",
+   "manual": false,
    "data": "2026-09-30",
    "tipo": "Débito",
    "lancamento": "SuperBet",
@@ -64,7 +69,33 @@
    "job": "405",
    "valor_po": null,
    "valor": 160445.0,
-   "observacao": "Projeto de R$ 330.000"
+   "observacao": "Contingência do orçamento 1128/A"
+  },
+  {
+   "id": "6",
+   "manual": true,
+   "data": "2026-11-12",
+   "tipo": "Débito",
+   "lancamento": "Mercado Pago",
+   "servico": "Contingência",
+   "po": "",
+   "job": "",
+   "valor_po": null,
+   "valor": 48218.82,
+   "observacao": "Contingência: extra de cor, mix, créditos de IA, roteiro e semana extra"
+  },
+  {
+   "id": "7",
+   "manual": true,
+   "data": "2026-11-12",
+   "tipo": "Débito",
+   "lancamento": "Nespresso",
+   "servico": "Contingência",
+   "po": "",
+   "job": "",
+   "valor_po": null,
+   "valor": 157705.41,
+   "observacao": "Projeto 100% pago pela contingência"
   }
  ],
  "a_faturar": [
@@ -920,6 +951,68 @@
    "desconto": 0.15,
    "valor_total": 86203.26,
    "valor_por_peca": 2873.44
+  }
+ ],
+ "projetos": [
+  {
+   "id": "superbet",
+   "projeto": "SuperBet",
+   "detalhe": "Job 405 · orçamento 1128/A",
+   "situacao": "Em andamento",
+   "faturamento": 330000,
+   "faturamento_status": "previsto",
+   "faturamento_data": "2026-12-30",
+   "contingencia": 160445,
+   "aporte": null,
+   "executado": 239816.7,
+   "nota": "",
+   "aprovado": 490445,
+   "saldo": 250628.3
+  },
+  {
+   "id": "mercado-pago",
+   "projeto": "Mercado Pago",
+   "detalhe": "",
+   "situacao": "Em andamento",
+   "faturamento": 110000,
+   "faturamento_status": "previsto",
+   "faturamento_data": "2026-12-28",
+   "contingencia": 48218.82,
+   "aporte": null,
+   "executado": null,
+   "nota": "Contingência para extra de cor, mix, créditos de IA, roteiro e semana extra",
+   "aprovado": 158218.82,
+   "saldo": null
+  },
+  {
+   "id": "clearblue",
+   "projeto": "ClearBlue",
+   "detalhe": "Filme de 30\"",
+   "situacao": "Aguardando aporte",
+   "faturamento": null,
+   "faturamento_status": "",
+   "faturamento_data": "",
+   "contingencia": 0,
+   "aporte": 117420,
+   "executado": null,
+   "nota": "Contrato de R$ 117.420, NF ainda não liberada. O cliente pediu também uma redução de 15\". O Google vai mandar um novo aporte para este projeto, sem usar o saldo.",
+   "aprovado": 117420,
+   "saldo": null
+  },
+  {
+   "id": "nespresso",
+   "projeto": "Nespresso",
+   "detalhe": "",
+   "situacao": "Aprovado",
+   "faturamento": null,
+   "faturamento_status": "",
+   "faturamento_data": "",
+   "contingencia": 157705.41,
+   "aporte": null,
+   "executado": null,
+   "nota": "100% pago pela contingência",
+   "aprovado": 157705.41,
+   "saldo": null
   }
  ]
 }

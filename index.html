@@ -79,6 +79,20 @@ h3{font-family:var(--sans);font-weight:600;font-size:15px}
 .chip.ok{color:var(--ok)} .chip.warn{color:var(--warn)} .chip.bad{color:var(--bad)} .chip.neutral{color:var(--text-3)}
 
 .bars{display:grid;gap:16px;min-height:11rem;align-content:start}
+.pbars{display:grid;gap:18px;position:relative}
+.pbar{display:grid;gap:6px}
+.pbar-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;font-size:12.5px}
+.pbar-top .nm{font-weight:600}
+.pbar-top .sv{color:var(--text-3);flex:1 1 10rem;min-width:0}
+.pbar-top .vl{font-variant-numeric:tabular-nums;margin-left:auto}
+.ptrack{position:relative;height:18px;display:flex;gap:2px}
+.pseg{height:100%;border-radius:1px;min-width:2px}
+.pmark{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--amber)}
+.pmark span{position:absolute;top:100%;transform:translateX(-50%);margin-top:3px;font-family:var(--mono);font-size:10px;color:var(--amber);white-space:nowrap}
+.pbar.has-mark{padding-bottom:14px}
+.tick-sw{background:var(--amber);width:2px;height:12px;border-radius:0}
+td .nt{display:block;color:var(--text-3);font-size:11.5px;white-space:normal;max-width:34ch;margin-top:2px}
+.flag{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-left:6px;white-space:nowrap}
 .bar{display:grid;gap:6px}
 .bar.off{opacity:.6}
 .sep{padding-top:12px;border-top:1px solid var(--line)}
@@ -121,15 +135,15 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     <img class="logo" src="img/insula-logo.webp" alt="Insula AI" width="234" height="240">
     <p class="k">Relatório de projetos · Google · 2026</p>
     <h1>Conta corrente Google 2026</h1>
-    <p class="lede">Dos <b data-f="credito_liquido">—</b> de crédito recebido do Google, <b data-f="consumido">—</b> já foram usados em projetos entregues (<b data-f="pct_consumido" data-fmt="pct">—</b>). O saldo disponível é de <b data-f="saldo">—</b>.</p>
+    <p class="lede">Dos <b data-f="credito_liquido">—</b> de crédito recebido do Google, <b data-f="consumido">—</b> já foram usados em cases e contingências de projetos (<b data-f="pct_consumido" data-fmt="pct">—</b>). O saldo disponível é de <b data-f="saldo">—</b>.</p>
   </header>
 
   <div class="tiles" aria-label="Resumo">
     <div class="tile main"><span class="k">Saldo disponível</span><span class="big" data-f="saldo">—</span><span class="note">Crédito recebido menos o que já foi debitado</span></div>
     <div class="tile"><span class="k">Crédito recebido</span><span class="big" data-f="credito_liquido">—</span><span class="note"><b data-f="pos_pagos" data-fmt="int">—</b> POs pagos pelo Google</span></div>
-    <div class="tile"><span class="k">Consumido</span><span class="big" data-f="consumido">—</span><span class="note"><b data-f="projetos_debitados" data-fmt="int">—</b> projetos debitados</span></div>
+    <div class="tile"><span class="k">Usado do saldo</span><span class="big" data-f="consumido">—</span><span class="note">Cases e contingências, <b data-f="projetos_debitados" data-fmt="int">—</b> lançamentos</span></div>
     <div class="tile"><span class="k">POs a faturar</span><span class="big" data-f="a_faturar">—</span><span class="note"><b data-f="pos_a_faturar" data-fmt="int">—</b> POs aprovados, ainda não faturados</span></div>
-    <div class="tile"><span class="k">Em contingência</span><span class="big" data-f="contingencia">—</span><span class="note">Projetos congelados</span></div>
+    <div class="tile"><span class="k">Contingência</span><span class="big" data-f="contingencia">—</span><span class="note">Do saldo Google, em <b data-f="projetos_contingencia" data-fmt="int">—</b> projetos</span></div>
   </div>
 
   <section id="movimento">
@@ -149,10 +163,27 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     </div>
     <div class="card">
       <h3>Extrato</h3>
-      <p class="note">Todos os lançamentos da conta em 2026.</p>
+      <p class="note">Todos os lançamentos da conta em 2026. Os marcados como "informado, sem NF" vêm da equipe da Insula e ainda não estão na planilha.</p>
       <div class="tw"><table>
         <thead><tr><th>Data</th><th>Tipo</th><th>Lançamento</th><th>PO</th><th>Job</th><th class="num">Valor</th><th>Observação</th></tr></thead>
         <tbody id="extrato"></tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <section id="projetos">
+    <h2>Projetos: faturamento e contingência</h2>
+    <p class="sub">Quanto de cada projeto vem de nota fiscal e quanto sai do saldo do Google como contingência. Inclui valores informados pela equipe que ainda não têm PO ou NF na planilha.</p>
+    <div class="card">
+      <h3>Composição de cada projeto</h3>
+      <ul class="legend"><li><i class="sw" style="background:var(--cream)"></i>Faturamento (NF)</li><li><i class="sw" style="background:var(--slate)"></i>Contingência, do saldo Google</li><li><i class="sw" style="background:var(--steel)"></i>Novo aporte do Google</li><li><i class="sw tick-sw"></i>Executado</li></ul>
+      <div class="pbars" id="projetos-chart"></div>
+    </div>
+    <div class="card">
+      <h3>Detalhe por projeto</h3>
+      <div class="tw"><table>
+        <thead><tr><th>Projeto</th><th class="num">Aprovado</th><th class="num">Faturamento</th><th class="num">Contingência</th><th class="num">Executado</th><th class="num">Saldo</th><th>Situação</th></tr></thead>
+        <tbody id="projetos-tabela"></tbody>
       </table></div>
     </div>
   </section>
@@ -167,7 +198,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
       </div>
       <div class="card">
         <h3>Projetos em produção</h3>
-        <p class="note">Em andamento: <b data-f="em_andamento">—</b>. Contingência, os projetos congelados: <b data-f="contingencia">—</b>. Cancelados aparecem abaixo, fora da conta.</p>
+        <p class="note">Da aba de produção. Em andamento: <b data-f="em_andamento">—</b>. Congelado: <b data-f="congelado">—</b>. Cancelados aparecem abaixo, fora da conta.</p>
         <div class="bars" id="producao"></div>
       </div>
     </div>
@@ -239,7 +270,9 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
       pos_pagos: cred.length, credito_liquido, consumido,
       pct_consumido: credito_liquido ? consumido / credito_liquido : 0, projetos_debitados: deb.length,
       saldo: r2(credito_liquido - consumido), a_faturar: soma(D.a_faturar, 'valor'), pos_a_faturar: D.a_faturar.length,
-      contingencia: soma(D.producao.filter((r) => r.status === 'Congelado'), 'valor'),
+      congelado: soma(D.producao.filter((r) => r.status === 'Congelado'), 'valor'),
+      contingencia: soma(D.projetos || [], 'contingencia'),
+      projetos_contingencia: (D.projetos || []).filter((p) => Number(p.contingencia) > 0).length,
       em_andamento: soma(D.producao.filter((r) => r.status === 'Em andamento'), 'valor')
     };
   }
@@ -382,7 +415,8 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     const ex = document.getElementById('extrato'); ex.replaceChildren();
     for (const r of D.movimentos.slice().sort((a, b) => String(a.data).localeCompare(String(b.data)) || Number(a.id) - Number(b.id))) {
       const tr = el('tr'), tipo = el('td'); tipo.appendChild(el('span', 'chip ' + (r.tipo === 'Crédito' ? 'ok' : 'neutral'), r.tipo));
-      tr.append(el('td', '', date(r.data)), tipo, el('td', '', r.lancamento), el('td', 'muted', r.po || '–'), el('td', 'muted', r.job || '–'),
+      const lc = el('td', '', r.lancamento); if (r.manual) lc.appendChild(el('span', 'flag', 'informado, sem NF'));
+      tr.append(el('td', '', date(r.data)), tipo, lc, el('td', 'muted', r.po || '–'), el('td', 'muted', r.job || '–'),
         el('td', 'num', money(r.valor)), el('td', 'muted', r.observacao || ''));
       ex.appendChild(tr);
     }
@@ -433,8 +467,56 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     }
   }
 
+  function drawProjetos() {
+    const P = D.projetos || [];
+    const box = document.getElementById('projetos-chart'); box.replaceChildren();
+    const tb = document.getElementById('projetos-tabela'); tb.replaceChildren();
+    if (!P.length) { box.appendChild(el('p', 'empty', 'Nenhum projeto informado.')); return; }
+    const max = d3.max(P, (p) => Number(p.aprovado)) || 1;
+    const fat = (p) => {
+      if (p.faturamento) return `${money(p.faturamento)}${p.faturamento_status === 'previsto' ? ` · previsto ${date(p.faturamento_data)}` : ''}`;
+      if (p.aporte) return 'Contrato, NF não liberada';
+      return 'Sem NF';
+    };
+    const cls = { 'Em andamento': 'ok', 'Aguardando aporte': 'warn', 'Congelado': 'warn', 'Cancelado': 'bad', 'Concluído': 'neutral' };
+    const t = tip(box);
+    for (const p of P) {
+      const segs = [
+        { v: Number(p.faturamento) || 0, c: C.cream, n: p.faturamento_status === 'previsto' ? 'Faturamento previsto' : 'Faturamento' },
+        { v: Number(p.contingencia) || 0, c: C.slate, n: 'Contingência' },
+        { v: Number(p.aporte) || 0, c: C.steel, n: 'Novo aporte' },
+      ].filter((s) => s.v > 0);
+      const item = el('div', 'pbar'), top = el('div', 'pbar-top');
+      top.append(el('span', 'nm', p.projeto), el('span', 'sv', p.detalhe || ''), el('span', 'chip ' + (cls[p.situacao] || 'neutral'), p.situacao), el('span', 'vl', money(p.aprovado)));
+      const track = el('div', 'ptrack');
+      track.style.width = (Number(p.aprovado) / max * 100) + '%';
+      for (const sg of segs) {
+        const d = el('div', 'pseg'); d.style.flex = String(sg.v); d.style.background = sg.c;
+        d.addEventListener('pointermove', (ev) => t.show(ev, p.projeto, [{ color: sg.c, label: sg.n, value: money(sg.v) }, { label: 'Aprovado', value: money(p.aprovado) }]));
+        d.addEventListener('pointerleave', () => t.hide());
+        track.appendChild(d);
+      }
+      if (p.executado != null) {
+        item.classList.add('has-mark');
+        const m = el('div', 'pmark'); m.style.left = `calc(${(Number(p.executado) / Number(p.aprovado)) * 100}% - 1px)`;
+        m.appendChild(el('span', '', `executado ${comp(p.executado)}`)); track.appendChild(m);
+      }
+      item.append(top, track); box.appendChild(item);
+
+      const tr = el('tr'), nome = el('td');
+      nome.append(el('span', '', p.projeto));
+      if (p.detalhe) nome.appendChild(el('span', 'nt', p.detalhe));
+      if (p.nota) nome.appendChild(el('span', 'nt', p.nota));
+      const sit = el('td'); sit.appendChild(el('span', 'chip ' + (cls[p.situacao] || 'neutral'), p.situacao));
+      tr.append(nome, el('td', 'num', money(p.aprovado)), el('td', 'num', fat(p)),
+        el('td', 'num', p.contingencia ? money(p.contingencia) : (p.aporte ? 'Novo aporte' : '–')),
+        el('td', 'num', p.executado != null ? money(p.executado) : '–'), el('td', 'num', p.saldo != null ? money(p.saldo) : '–'), sit);
+      tb.appendChild(tr);
+    }
+  }
+
   function drawAll() {
-    drawResumo(); drawCascata(); drawDestino(); drawPos(); drawProducao(); drawTabelas(); drawPrecosChart(); drawPrecosTabela();
+    drawResumo(); drawCascata(); drawDestino(); drawPos(); drawProjetos(); drawProducao(); drawTabelas(); drawPrecosChart(); drawPrecosTabela();
     if (D.atualizado_em) {
       const d = new Date(D.atualizado_em);
       document.getElementById('rodape').textContent = `Dados das planilhas de controle da Insula AI, atualizados em ${d.toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short', timeZone: 'America/Sao_Paulo' })}.`;

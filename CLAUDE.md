@@ -17,6 +17,7 @@ Existe também uma cópia como dashboard no claude.ai
 ```
 index.html                página inteira: HTML, CSS e JS inline, sem build
 dados.json                os números que a página mostra (gerado, não editar à mão)
+manual.json               valores informados pela equipe que ainda não estão nas planilhas (editar à mão)
 vendor/d3.min.js          d3 v7.9.0, servido daqui para não depender de CDN
 img/insula-logo.webp      logo da Insula (versão "SEM BG" da pasta INSULA AI no Drive), 234×240
 functions/_middleware.js  login: tela, sessão e lista do que pode ser servido
@@ -38,8 +39,23 @@ Três planilhas no drive compartilhado da Insula (pasta da conta Google):
   valor na coluna Insula. `valor_po` é o valor do próprio PO, usado só no gráfico de POs.
 - **Preços vêm da aba Ticket Google da LATAM**, atualizada em 03/11 (30" a R$ 117.420, sem
   pacotes OOH). A cópia da aba na Cuentas ficou com a tabela antiga (30" a R$ 97.850) e não é usada.
-- Contingência = projetos da aba Production com status Congelado. Cancelados aparecem à parte,
-  fora da conta (decisão de 12/11).
+- **Contingência = verba que sai do saldo do Google para um projeto** (definição da equipe em
+  12/11). Ex.: os R\$ 160.445 da SuperBet. Não confundir com projeto congelado: a aba Production
+  da LATAM mostra em andamento, congelado e cancelado; congelado não entra em conta nenhuma e
+  cancelado aparece à parte.
+
+## manual.json
+
+Valores que a equipe informa antes de existirem PO ou NF na planilha (12/11: contingências de
+Mercado Pago e Nespresso, faturamento previsto de SuperBet e Mercado Pago, contrato da ClearBlue).
+
+- `debitos`: entram no extrato como débito do saldo Google, marcados "informado, sem NF". Um débito
+  daqui é ignorado assim que a aba 2026 da Cuentas tiver um débito com o mesmo valor, para não contar
+  duas vezes.
+- `observacoes`: troca a observação de um débito da planilha, pelo nome do lançamento.
+- `projetos`: a seção "Projetos: faturamento e contingência". Aprovado = faturamento + contingência
+  + aporte; saldo = aprovado − executado. O script calcula os dois.
+- A rotina nunca edita este arquivo; ele muda quando a equipe manda valores novos.
 - A aba oculta "100% IA" (tabela de preços antiga) fica de fora.
 - `dados.json.origem` guarda o modifiedTime do Drive de cada planilha na última atualização.
 

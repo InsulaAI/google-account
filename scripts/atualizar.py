@@ -112,7 +112,20 @@ for r in table(wb["2026"], "Fecha pago"):
         for k in ("lancamento", "servico", "observacao"):
             row[k] = old[k]
     mov.append(row)
-mov = [{"id": str(i + 1), **{k: r[k] for k in ("data", "tipo", "lancamento", "servico", "po", "job", "valor_po", "valor", "observacao")}} for i, r in enumerate(mov)]
+# Débitos informados pela equipe que ainda não estão na planilha (manual.json). Um débito manual
+# sai daqui assim que a aba 2026 da Cuentas tiver um débito com o mesmo valor.
+MANUAL = os.path.join(RAIZ, "manual.json")
+manual = json.load(open(MANUAL)) if os.path.exists(MANUAL) else {}
+for d in manual.get("debitos", []):
+    if any(r["tipo"] == "Débito" and abs((r["valor"] or 0) - d["valor"]) < 0.005 for r in mov):
+        print("manual.json:", d["lancamento"], "já está na planilha; o lançamento manual foi ignorado")
+        continue
+    mov.append({"tipo": "Débito", "valor_po": None, "manual": True, **{k: d.get(k, "") for k in ("data", "lancamento", "servico", "po", "job", "observacao")}, "valor": round(d["valor"], 2)})
+for r in mov:
+    if not r.get("manual") and r["tipo"] == "Débito" and r["lancamento"] in manual.get("observacoes", {}):
+        r["observacao"] = manual["observacoes"][r["lancamento"]]
+mov.sort(key=lambda r: r["data"])
+mov = [{"id": str(i + 1), "manual": bool(r.get("manual")), **{k: r[k] for k in ("data", "tipo", "lancamento", "servico", "po", "job", "valor_po", "valor", "observacao")}} for i, r in enumerate(mov)]
 
 # ---------- a_faturar (A Faturar, aba 2026) ----------
 wb2 = openpyxl.load_workbook(afaturar, data_only=True)
@@ -193,9 +206,18 @@ for r in ws.iter_rows(values_only=True):
 
 
 
-saida = {"movimentos": mov, "a_faturar": af, "producao": prod, "precos": precos}
+projetos = []
+for p in manual.get("projetos", []):
+    fat, cont, apo = p.get("faturamento") or 0, p.get("contingencia") or 0, p.get("aporte") or 0
+    aprovado = round(fat + cont + apo, 2)
+    projetos.append({**{k: p.get(k) for k in ("id", "projeto", "detalhe", "situacao", "faturamento", "faturamento_status",
+                                              "faturamento_data", "contingencia", "aporte", "executado", "nota")},
+                     "aprovado": aprovado,
+                     "saldo": round(aprovado - p["executado"], 2) if p.get("executado") is not None else None})
+
+saida = {"movimentos": mov, "a_faturar": af, "producao": prod, "precos": precos, "projetos": projetos}
 for nome, linhas in saida.items():
-    if not linhas:
+    if not linhas and nome != "projetos":
         sys.exit(f"{nome} saiu vazio: confira a planilha antes de publicar")
 novo = {
     "atualizado_em": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),

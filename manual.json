@@ -1,0 +1,81 @@
+{
+ "_leia": "Valores informados pela equipe da Insula que ainda não estão nas planilhas (sem PO ou NF). scripts/atualizar.py junta isto a dados.json. Um débito daqui deixa de ser usado quando aparecer na aba 2026 da Cuentas com o mesmo valor. Editar à mão, nunca pela rotina.",
+ "atualizado_em": "2026-11-12",
+ "debitos": [
+  {
+   "data": "2026-11-12",
+   "lancamento": "Mercado Pago",
+   "servico": "Contingência",
+   "po": "",
+   "job": "",
+   "valor": 48218.82,
+   "observacao": "Contingência: extra de cor, mix, créditos de IA, roteiro e semana extra"
+  },
+  {
+   "data": "2026-11-12",
+   "lancamento": "Nespresso",
+   "servico": "Contingência",
+   "po": "",
+   "job": "",
+   "valor": 157705.41,
+   "observacao": "Projeto 100% pago pela contingência"
+  }
+ ],
+ "observacoes": {
+  "SuperBet": "Contingência do orçamento 1128/A"
+ },
+ "projetos": [
+  {
+   "id": "superbet",
+   "projeto": "SuperBet",
+   "detalhe": "Job 405 · orçamento 1128/A",
+   "situacao": "Em andamento",
+   "faturamento": 330000,
+   "faturamento_status": "previsto",
+   "faturamento_data": "2026-12-30",
+   "contingencia": 160445,
+   "aporte": null,
+   "executado": 239816.7,
+   "nota": ""
+  },
+  {
+   "id": "mercado-pago",
+   "projeto": "Mercado Pago",
+   "detalhe": "",
+   "situacao": "Em andamento",
+   "faturamento": 110000,
+   "faturamento_status": "previsto",
+   "faturamento_data": "2026-12-28",
+   "contingencia": 48218.82,
+   "aporte": null,
+   "executado": null,
+   "nota": "Contingência para extra de cor, mix, créditos de IA, roteiro e semana extra"
+  },
+  {
+   "id": "clearblue",
+   "projeto": "ClearBlue",
+   "detalhe": "Filme de 30\"",
+   "situacao": "Aguardando aporte",
+   "faturamento": null,
+   "faturamento_status": "",
+   "faturamento_data": "",
+   "contingencia": 0,
+   "aporte": 117420,
+   "executado": null,
+   "nota": "Contrato de R$ 117.420, NF ainda não liberada. O cliente pediu também uma redução de 15\". O Google vai mandar um novo aporte para este projeto, sem usar o saldo."
+  },
+  {
+   "id": "nespresso",
+   "projeto": "Nespresso",
+   "detalhe": "",
+   "situacao": "Aprovado",
+   "faturamento": null,
+   "faturamento_status": "",
+   "faturamento_data": "",
+   "contingencia": 157705.41,
+   "aporte": null,
+   "executado": null,
+   "nota": "100% pago pela contingência"
+  }
+ ]
+}
