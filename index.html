@@ -131,6 +131,18 @@ tr.off td.num{text-decoration:line-through}
 
 .empty{color:var(--text-3);font-size:13px}
 .stack{display:grid;gap:44px}
+.stack-sm{display:grid;gap:18px}
+.chip.g{color:var(--amber)}
+td .chip+.chip{margin-left:6px}
+.mbars{display:grid;gap:10px}
+.mrow{display:grid;grid-template-columns:minmax(9rem,1.1fr) 2fr 1.4fr;gap:14px;align-items:center;font-size:13px}
+.mhead{padding-bottom:4px;border-bottom:1px solid var(--line)}
+.mname{display:flex;align-items:center;gap:8px;font-weight:600;flex-wrap:wrap}
+.mtrack{position:relative;height:22px;background:var(--line);border-radius:1px;display:flex;align-items:center;overflow:hidden}
+.mfill{position:absolute;inset:0 auto 0 0;border-radius:1px}
+.mfill.gfill{background:var(--amber)} .mfill.ofill{background:var(--slate)} .mfill.dfill{background:var(--dusk)}
+.mtrack b{position:relative;padding-left:8px;font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text);text-shadow:0 0 6px rgba(0,0,0,.6)}
+@media (max-width:640px){.mrow{grid-template-columns:1fr;gap:6px}.mhead{display:none}}
 .stack[hidden]{display:none}
 .back{color:var(--text-2);text-decoration:none;font-size:13px}
 .back:hover{color:var(--text)}
@@ -231,6 +243,11 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
         <tbody id="projetos-tabela"></tbody>
       </table></div>
     </div>
+    <div class="card" id="comparativo">
+      <h3>Modelo do Google × outros modelos</h3>
+      <p class="note">Cenas entregues e tentativas descartadas por modelo, lidas das pastas de backlog de cada projeto no Drive. Projetos feitos só com Google entram como 100% Google.</p>
+      <div id="comparativo-corpo" class="stack-sm"></div>
+    </div>
     <div class="card" id="backlog">
       <h3>Backlog Modelos</h3>
       <p class="note">Modelos de IA usados em cada cena, por projeto (exigência do Google). O botão abre o backlog do projeto.</p>
@@ -321,9 +338,56 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
   // ---------- backlog de modelos (uma "página" por projeto, aberta por #backlog-<id>) ----------
   const isPh = (t) => /^\[.*\]$/.test(String(t ?? '').trim());
   const tx = (tag, cls, t) => { const e = el(tag, cls, t); if (isPh(t)) e.classList.add('ph'); return e; };
+  const num2 = (n) => Number(n) || n;
+
+  // Junta o que veio das pastas do Drive (bloco drive) com os textos escritos à mão.
+  function bkData(b) {
+    const man = new Map((b.cenas || []).map((c) => [String(c.cena), c]));
+    if (!b.drive) {
+      const planos = (b.falha && b.falha.planos) || [];
+      return { cenas: b.cenas || [], planos, modelos: [], fonte: 'manual' };
+    }
+    const cenas = b.drive.cenas.map((dc) => {
+      const m = man.get(dc.cena) || {};
+      const ent = dc.entregue[0] || { modelo: '[a preencher]', takes: [] };
+      const ten = dc.tentativas.map((t) => ({ modelo: t.modelo, n: t.planos.reduce((a, p) => a + p.tentativas, 0) }));
+      const trocou = ten.some((t) => t.modelo !== ent.modelo);
+      const takeDrive = ent.takes.join(', ').replace(/CENA_(\d+)([A-Z]?), CENA_\1([A-Z])/g, 'CENA_$1$2, $1$3');
+      return {
+        cena: dc.cena,
+        take: m.take && !isPh(m.take) ? m.take : takeDrive || '[a preencher]',
+        modelo_imagem: m.modelo_imagem || '[a preencher]',
+        modelo_video: dc.entregue.map((e) => e.modelo).join(' + ') || '[a preencher]',
+        descartes: ten.length ? ten.map((t) => `${t.n} no ${t.modelo}`).join(', ') : (m.descartes && m.descartes !== '—' ? m.descartes : '—'),
+        status: trocou ? 'Trocou de modelo' : ten.length ? `Aprovado após ${ten[0].n} tentativas` : (m.status && !isPh(m.status) ? m.status : 'Aprovado'),
+        trocou,
+      };
+    });
+    const planos = b.drive.cenas.flatMap((dc) => dc.tentativas.flatMap((t) => t.planos.map((p) => ({ ...p, cena: dc.cena, modelo: t.modelo }))));
+    return { cenas, planos, modelos: b.drive.modelos, fonte: 'drive' };
+  }
+
   function bkSection(num, kicker, titulo) {
     const sec = el('section', 'bk-sec'); sec.append(el('p', 'k bk-k', `${num} — ${kicker}`), tx('h2', '', titulo)); return sec;
   }
+
+  // Barras de modelo: cenas entregues e tentativas descartadas, Google destacado.
+  function modelBars(modelos) {
+    const box = el('div', 'mbars');
+    const maxC = d3.max(modelos, (m) => m.cenas_entregues) || 1, maxT = d3.max(modelos, (m) => m.tentativas_descartadas) || 1;
+    const head = el('div', 'mrow mhead'); head.append(el('span', 'k', 'Modelo'), el('span', 'k', 'Cenas entregues'), el('span', 'k', 'Tentativas descartadas'));
+    box.appendChild(head);
+    for (const m of modelos) {
+      const r = el('div', 'mrow'), nm = el('span', 'mname', m.modelo);
+      nm.appendChild(el('span', 'chip ' + (m.google ? 'g' : 'neutral'), m.google ? 'Google' : 'Outro'));
+      const bar = (v, max, cls, label) => { const w = el('span', 'mtrack'); const f = el('span', 'mfill ' + cls); f.style.width = (v / max * 100) + '%'; w.append(f, el('b', '', label)); return w; };
+      r.append(nm, bar(m.cenas_entregues, maxC, m.google ? 'gfill' : 'ofill', `${m.cenas_entregues} cena${m.cenas_entregues === 1 ? '' : 's'} · ${m.takes_entregues} take${m.takes_entregues === 1 ? '' : 's'}`),
+        bar(m.tentativas_descartadas, maxT, 'dfill', String(m.tentativas_descartadas)));
+      box.appendChild(r);
+    }
+    return box;
+  }
+
   function renderBacklog(b) {
     const v = document.getElementById('backlog-view'); v.replaceChildren();
     const nav = el('a', 'back', '← Conta corrente Google 2026'); nav.href = '#backlog'; v.appendChild(nav);
@@ -333,6 +397,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     head.append(k, el('h1', '', b.titulo), tx('p', 'lede', b.subtitulo));
     const meta = el('p', 'k'); meta.append(document.createTextNode(`Insula AI · ${b.projeto} · `), tx('span', '', b.data));
     const row = el('div', 'bk-meta'); row.append(meta, st);
+    if (b.drive) row.appendChild(el('span', 'note', `Lido da pasta do projeto no Drive em ${date(b.drive.lido_em)}`));
     const more = () => {
       if (b.pasta_url && String(b.pasta_url).startsWith('https://')) {
         const a = el('a', 'btn', 'Saiba mais'); a.href = b.pasta_url; a.target = '_blank'; a.rel = 'noopener';
@@ -343,35 +408,50 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     const cta = el('div', 'bk-cta'); cta.append(more(), el('span', 'note', b.pasta_url ? 'Pasta do backlog no Google Drive, com cada cena e o PDF completo' : 'Pasta do backlog a definir'));
     head.append(row, cta); v.appendChild(head);
 
-    const cenas = b.cenas || [], f = b.falha || {}, planos = f.planos || [];
+    const X = bkData(b), cenas = X.cenas, planos = X.planos, f = b.falha || {};
+    const trocas = cenas.filter((c) => c.trocou), princ = b.modelo_principal, real = b.oficial && cenas.length && !isPh(princ);
+    const nTrocas = trocas.map((c) => num2(c.cena)).join(', ');
     // 01 timeline
     const s1 = bkSection('01', 'Timeline', b.timeline_titulo);
     if (b.timeline_img) { const fig = el('div', 'bk-img'); const im = el('img'); im.src = b.timeline_img; im.alt = 'Timeline de edição do filme'; fig.appendChild(im); s1.appendChild(fig); }
     else s1.appendChild(tx('p', 'bk-empty', '[timeline de edição a preencher]'));
     const strip = el('div', 'bk-strip');
-    for (const c of cenas) { const it = el('div', 'bk-scene' + (c.trocou ? ' alt' : '')); it.append(el('span', 'k', `Cena ${Number(c.cena) || c.cena}`), tx('b', '', c.modelo_video)); strip.appendChild(it); }
+    for (const c of cenas) { const it = el('div', 'bk-scene' + (c.trocou ? ' alt' : '')); it.append(el('span', 'k', `Cena ${num2(c.cena)}`), tx('b', '', c.modelo_video)); strip.appendChild(it); }
     s1.append(strip, el('p', 'k bk-src', 'Fonte: ' + b.timeline_fonte)); v.appendChild(s1);
 
     // 02 resumo
     const s2 = bkSection('02', 'Resumo', b.resumo_titulo || '[resumo a preencher]');
-    const n = cenas.length, princ = b.modelo_principal, real = b.oficial;
-    const comP = cenas.filter((c) => c.modelo_video === princ).length, trocas = cenas.filter((c) => c.trocou);
+    const n = cenas.length, comP = cenas.filter((c) => c.modelo_video === princ).length;
     const desc = planos.reduce((a, p) => a + (Number(p.tentativas) || 0), 0);
     const tiles = el('div', 'bk-tiles');
     const tile = (big, label, accent) => { const t = el('div', 'bk-tile'); t.append(el('span', 'bk-big' + (accent ? ' acc' : ''), big), el('span', 'note', label)); tiles.appendChild(t); };
     if (real) {
       tile(`${comP}/${n}`, `cenas entregues com ${princ}`, true);
-      tile(String(trocas.length), `cena${trocas.length === 1 ? '' : 's'} trocada${trocas.length === 1 ? '' : 's'} para ${[...new Set(trocas.map((c) => c.modelo_video))].join(', ')} (cena ${trocas.map((c) => Number(c.cena)).join(', ')})`);
-      tile(String(desc), `tentativas descartadas no ${princ}, em ${planos.length} planos da cena ${trocas.map((c) => Number(c.cena)).join(', ')}`);
+      tile(String(trocas.length), trocas.length ? `cena${trocas.length === 1 ? '' : 's'} trocada${trocas.length === 1 ? '' : 's'} para ${[...new Set(trocas.map((c) => c.modelo_video))].join(', ')} (cena ${nTrocas})` : 'cenas trocadas de modelo');
+      tile(String(desc), desc ? `tentativas descartadas no ${princ}, em ${planos.length} planos da cena ${[...new Set(planos.map((p) => num2(p.cena)))].join(', ')}` : 'tentativas descartadas');
     } else {
       tile('—', 'cenas entregues com o modelo principal'); tile('—', 'cenas trocadas de modelo'); tile('—', 'tentativas descartadas');
     }
     s2.appendChild(tiles);
     if (b.resumo_nota) s2.appendChild(el('p', 'bk-note', '◆  ' + b.resumo_nota));
-    s2.appendChild(el('p', 'k bk-src', 'Fonte: ' + b.resumo_fonte)); v.appendChild(s2);
+    s2.appendChild(el('p', 'k bk-src', 'Fonte: ' + (X.fonte === 'drive' ? 'pasta do projeto no Drive · contagem de arquivos por modelo' : b.resumo_fonte))); v.appendChild(s2);
 
-    // 03 cena a cena
-    const s3 = bkSection('03', 'Cena a cena', 'O que foi usado em cada cena.');
+    // 03 Google x outros
+    const s3 = bkSection('03', 'Google × outros modelos', X.modelos.length ? 'Quanto do filme saiu do modelo do Google.' : '[comparativo a preencher]');
+    if (X.modelos.length) {
+      const g = X.modelos.filter((m) => m.google), o = X.modelos.filter((m) => !m.google);
+      const sum = (arr, k2) => arr.reduce((a, m) => a + m[k2], 0);
+      const gt = el('div', 'bk-tiles');
+      const t2 = (big, label, accent) => { const t = el('div', 'bk-tile'); t.append(el('span', 'bk-big' + (accent ? ' acc' : ''), big), el('span', 'note', label)); gt.appendChild(t); };
+      t2(`${Math.round(sum(g, 'cenas_entregues') / Math.max(1, sum(X.modelos, 'cenas_entregues')) * 100)}%`, `das cenas entregues com modelo do Google (${g.map((m) => m.modelo).join(', ')})`, true);
+      t2(String(sum(o, 'cenas_entregues')), `cena${sum(o, 'cenas_entregues') === 1 ? '' : 's'} com outros modelos${o.length ? ' (' + o.map((m) => m.modelo).join(', ') + ')' : ''}`);
+      t2(String(sum(g, 'tentativas_descartadas')), 'tentativas descartadas no modelo do Google antes da troca');
+      s3.append(gt, modelBars(X.modelos));
+    } else s3.appendChild(tx('p', 'bk-empty', '[comparativo gerado quando a pasta do projeto estiver ligada]'));
+    s3.appendChild(el('p', 'k bk-src', 'Fonte: pastas CENA / modelo no Drive · Google = Omni, Veo, Imagen, Nano Banana, Gemini')); v.appendChild(s3);
+
+    // 04 cena a cena
+    const s4 = bkSection('04', 'Cena a cena', 'O que foi usado em cada cena.');
     const tw = el('div', 'tw'), tb = el('table'), th = el('thead'), hr = el('tr');
     for (const h of ['Cena', 'Take entregue', 'Modelo de imagem', 'Modelo de vídeo', 'Descartes', 'Status']) hr.appendChild(el('th', '', h));
     th.appendChild(hr); tb.appendChild(th); const body = el('tbody');
@@ -380,11 +460,11 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
       for (const key of ['cena', 'take', 'modelo_imagem', 'modelo_video', 'descartes', 'status']) tr.appendChild(tx('td', '', c[key]));
       body.appendChild(tr);
     }
-    tb.appendChild(body); tw.appendChild(tb); s3.append(tw, el('p', 'k bk-src', 'Fonte: ' + b.cenas_fonte)); v.appendChild(s3);
+    tb.appendChild(body); tw.appendChild(tb); s4.append(tw, el('p', 'k bk-src', 'Fonte: ' + b.cenas_fonte)); v.appendChild(s4);
 
-    // 04 falha
-    const s4 = bkSection('04', trocas.length ? `Cena ${trocas.map((c) => Number(c.cena)).join(', ')}` : 'Falhas', f.titulo || '[falhas a preencher]');
-    const g4 = el('div', 'grid bk-fail'), l = el('div', 'card'); l.appendChild(el('p', 'k', f.rotulo || 'Planos tentados'));
+    // 05 falha
+    const s5 = bkSection('05', trocas.length ? `Cena ${nTrocas}` : 'Falhas', f.titulo || '[falhas a preencher]');
+    const g5 = el('div', 'grid bk-fail'), l = el('div', 'card'); l.appendChild(el('p', 'k', f.rotulo || 'Planos tentados'));
     const ul = el('ul', 'bk-plans');
     if (!planos.length) ul.appendChild(tx('li', '', '[planos a preencher]'));
     for (const p of planos) { const li = el('li'); li.append(el('span', '', p.plano), el('b', '', `${p.tentativas}×`)); ul.appendChild(li); }
@@ -394,23 +474,62 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     for (const [lab, val, acc] of [['Categoria de falha', f.categoria], ['O que deu errado', f.o_que_deu_errado], ['Prompt usado', f.prompt], ['Solução', f.solucao, true]]) {
       r.append(el('p', 'k' + (acc ? ' acc' : ''), lab), tx('p', '', val ?? '[a preencher]'));
     }
-    g4.append(l, r); s4.append(g4, el('p', 'k bk-src', 'Fonte: ' + (f.fonte || ''))); v.appendChild(s4);
+    g5.append(l, r); s5.append(g5, el('p', 'k bk-src', 'Fonte: ' + (f.fonte || ''))); v.appendChild(s5);
 
-    // 05 régua
-    const s5 = bkSection('05', 'Régua de falhas', 'Uma régua comum para descrever cada falha.');
+    // 06 régua
+    const s6 = bkSection('06', 'Régua de falhas', 'Uma régua comum para descrever cada falha.');
     const gr = el('div', 'bk-regua');
     for (const x of B.regua || []) { const c = el('div', 'bk-rule'); c.append(el('span', 'k acc', x.codigo), el('b', '', x.nome), el('span', 'note', x.descricao)); gr.appendChild(c); }
-    s5.append(gr, el('p', 'k bk-src', 'Cada descarte recebe um código F1–F9 + descrição livre')); v.appendChild(s5);
+    s6.append(gr, el('p', 'k bk-src', 'Cada descarte recebe um código F1–F9 + descrição livre')); v.appendChild(s6);
     const end = el('div', 'bk-cta'); end.append(more(), el('span', 'note', b.pasta_url ? 'Ver todos os detalhes na pasta do backlog' : 'Pasta do backlog a definir')); v.appendChild(end);
   }
+
+  // Comparativo geral no dashboard: soma as pastas lidas + projetos 100% Google.
+  function drawComparativo() {
+    const box = document.getElementById('comparativo-corpo'); if (!box) return; box.replaceChildren();
+    if (!B) { box.appendChild(el('p', 'empty', 'Carregando backlogs…')); return; }
+    const agg = new Map();
+    for (const b of B.backlogs) for (const m of (b.drive && b.drive.modelos) || []) {
+      const a = agg.get(m.modelo) || { ...m, cenas_entregues: 0, takes_entregues: 0, tentativas_descartadas: 0, cenas_com_falha: 0 };
+      for (const k2 of ['cenas_entregues', 'takes_entregues', 'tentativas_descartadas', 'cenas_com_falha']) a[k2] += m[k2];
+      agg.set(m.modelo, a);
+    }
+    const mods = [...agg.values()].sort((a, b2) => (b2.google - a.google) || (b2.cenas_entregues - a.cenas_entregues));
+    if (mods.length) box.appendChild(modelBars(mods));
+    const tw = el('div', 'tw'), tb = el('table'), th = el('thead'), hr = el('tr');
+    for (const h of ['Projeto', 'Modelos usados', 'Cenas Google', 'Cenas outros', 'Descartes no Google', 'Fonte']) hr.appendChild(el('th', h.startsWith('Cenas') || h.startsWith('Desc') ? 'num' : '', h));
+    th.appendChild(hr); tb.appendChild(th); const body = el('tbody');
+    const P = (D && D.projetos) || [];
+    const ordem = (b) => { const i = P.findIndex((p) => p.id === b.id); return i < 0 ? 99 : i; };
+    for (const b of [...B.backlogs].sort((a, c) => ordem(a) - ordem(c))) {
+      const tr = el('tr'), nome = el('td', '', b.projeto);
+      if (b.drive) {
+        const ms = b.drive.modelos, g = ms.filter((m) => m.google), o = ms.filter((m) => !m.google);
+        const sum = (arr, k2) => arr.reduce((a, m) => a + m[k2], 0);
+        const mu = el('td'); for (const m of ms) mu.appendChild(el('span', 'chip ' + (m.google ? 'g' : 'neutral'), m.modelo));
+        tr.append(nome, mu, el('td', 'num', String(sum(g, 'cenas_entregues'))), el('td', 'num', String(sum(o, 'cenas_entregues'))), el('td', 'num', String(sum(g, 'tentativas_descartadas'))), el('td', 'muted', 'Pasta do projeto no Drive'));
+      } else if (b.link_direto) {
+        tr.append(nome, tx('td', '', '[sem backlog completo]'), el('td', 'num muted', '–'), el('td', 'num muted', '–'), el('td', 'num muted', '–'), el('td', 'muted', b.interrompido ? 'Interrompido · pasta de backup' : 'Pasta no Drive'));
+      } else if (b.so_google) {
+        const mu = el('td'); mu.appendChild(el('span', 'chip g', '100% Google'));
+        tr.append(nome, mu, el('td', 'num', 'Todas'), el('td', 'num', '0'), el('td', 'num', '0'), el('td', 'muted', 'Sem backlog'));
+      } else {
+        tr.append(nome, tx('td', '', '[a preencher]'), el('td', 'num muted', '–'), el('td', 'num muted', '–'), el('td', 'num muted', '–'), el('td', 'muted', 'Pasta a ligar'));
+      }
+      body.appendChild(tr);
+    }
+    tb.appendChild(body); tw.appendChild(tb); box.appendChild(tw);
+  }
+
   function route() {
     const h = decodeURIComponent(location.hash.slice(1));
-    const b = h.startsWith('backlog-') && B ? B.backlogs.find((x) => 'backlog-' + x.id === h) : null;
+    const b = h.startsWith('backlog-') && B ? B.backlogs.find((x) => 'backlog-' + x.id === h && !x.sem_backlog && !x.link_direto) : null;
     document.getElementById('dash-view').hidden = !!b;
     document.getElementById('backlog-view').hidden = !b;
     document.title = b ? `Backlog de modelos · ${b.projeto}` : 'Conta Corrente Google 2026';
     if (b) { renderBacklog(b); window.scrollTo(0, 0); }
   }
+
 
   function resumo() {
     const cred = D.movimentos.filter((r) => r.tipo === 'Crédito'), deb = D.movimentos.filter((r) => r.tipo === 'Débito');
@@ -673,7 +792,13 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
       const sit = el('td'); sit.appendChild(el('span', 'chip ' + (cls[p.situacao] || 'neutral'), p.situacao));
       const acao = el('td', 'num');
       const bk = B && B.backlogs.find((x) => x.id === p.id);
-      if (bk) {
+      if (bk && bk.link_direto && bk.pasta_url) {
+        const a = el('a', 'btn', 'Backlog'); a.href = bk.pasta_url; a.target = '_blank'; a.rel = 'noopener';
+        a.title = 'Abre a pasta de backup no Google Drive';
+        acao.append(a, el('span', 'nt', bk.interrompido ? 'projeto interrompido · pasta de backup' : 'pasta no Drive'));
+      } else if (bk && bk.sem_backlog) {
+        acao.append(el('span', 'chip g', bk.so_google ? '100% Google' : 'Sem backlog'), el('span', 'nt', 'sem backlog'));
+      } else if (bk) {
         const a = el('a', 'btn', 'Backlog'); a.href = '#backlog-' + bk.id;
         acao.append(a, el('span', 'nt', bk.oficial ? 'dados oficiais' : 'modelo, a preencher'));
       } else if (p.backlog_url) {
@@ -688,7 +813,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
   }
 
   function drawAll() {
-    drawResumo(); drawCascata(); drawDestino(); drawPos(); drawProjetos(); drawProducao(); drawTabelas(); drawPrecosChart(); drawPrecosTabela();
+    drawResumo(); drawCascata(); drawDestino(); drawPos(); drawProjetos(); drawComparativo(); drawProducao(); drawTabelas(); drawPrecosChart(); drawPrecosTabela();
     if (D.atualizado_em) {
       const d = new Date(D.atualizado_em);
       document.getElementById('rodape').textContent = `Dados das planilhas de controle da Insula AI, atualizados em ${d.toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short', timeZone: 'America/Sao_Paulo' })}.`;
@@ -706,7 +831,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
   window.addEventListener('resize', () => { if (window.innerWidth === lastW) return; lastW = window.innerWidth; clearTimeout(rt); rt = setTimeout(() => D && drawAll(), 150); });
 
   const getJSON = (u) => fetch(u, { cache: 'no-store' }).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); });
-  getJSON('backlogs.json').then((j) => { B = j; if (D) drawProjetos(); route(); }).catch(() => {});
+  getJSON('backlogs.json').then((j) => { B = j; if (D) drawProjetos(); drawComparativo(); route(); }).catch(() => {});
   window.addEventListener('hashchange', route);
   getJSON('dados.json')
     .then((j) => { D = j; drawAll(); route(); })

@@ -1,5 +1,5 @@
 {
- "_leia": "Backlog de modelos de IA por projeto (exigência do Google). Editar à mão. Só o do Mercado Pago tem dados oficiais (PDF de nov/2026); os outros são o modelo vazio. [a preencher] aparece na página como campo pendente.",
+ "_leia": "Backlog de modelos de IA por projeto (exigência do Google). Campos de texto editados à mão; o bloco 'drive' é gerado por scripts/backlog.py a partir da pasta do projeto no Drive (pasta_id). Só o Mercado Pago tem pasta e dados oficiais; Brilhante e Clear Men foram 100% Google, sem backlog (sem_backlog); os outros são o modelo vazio ([a preencher]).",
  "regua": [
   {
    "codigo": "F1",
@@ -164,45 +164,162 @@
     "solucao": "Seedance 2.0 → CENA_08A e CENA_08B entregues",
     "fonte": "Pasta Cena 8 / Omni 1.1 tentativas e Seedance 2.0"
    },
-   "pasta_url": "https://drive.google.com/drive/folders/1J6J4_Y2K3sQSXodtvSSkPsio7dKPYBCp"
+   "pasta_url": "https://drive.google.com/drive/folders/1J6J4_Y2K3sQSXodtvSSkPsio7dKPYBCp",
+   "drive": {
+    "pasta_id": "1J6J4_Y2K3sQSXodtvSSkPsio7dKPYBCp",
+    "lido_em": "2026-11-18",
+    "cenas": [
+     {
+      "cena": "01",
+      "entregue": [
+       {
+        "modelo": "Omni 1.1",
+        "takes": [
+         "CENA_01"
+        ]
+       }
+      ],
+      "tentativas": []
+     },
+     {
+      "cena": "02",
+      "entregue": [
+       {
+        "modelo": "Omni 1.1",
+        "takes": [
+         "CENA_02A",
+         "CENA_02B"
+        ]
+       }
+      ],
+      "tentativas": []
+     },
+     {
+      "cena": "03",
+      "entregue": [
+       {
+        "modelo": "Omni 1.1",
+        "takes": [
+         "CENA_03"
+        ]
+       }
+      ],
+      "tentativas": []
+     },
+     {
+      "cena": "04",
+      "entregue": [
+       {
+        "modelo": "Omni 1.1",
+        "takes": [
+         "MP_cena04_thiago_orbital_omni_v29_slp_iris2"
+        ]
+       }
+      ],
+      "tentativas": []
+     },
+     {
+      "cena": "05",
+      "entregue": [
+       {
+        "modelo": "Omni 1.1",
+        "takes": [
+         "CENA_05"
+        ]
+       }
+      ],
+      "tentativas": []
+     },
+     {
+      "cena": "06",
+      "entregue": [
+       {
+        "modelo": "Omni 1.1",
+        "takes": [
+         "CENA_06_B"
+        ]
+       }
+      ],
+      "tentativas": []
+     },
+     {
+      "cena": "07",
+      "entregue": [
+       {
+        "modelo": "Omni 1.1",
+        "takes": [
+         "CENA_07"
+        ]
+       }
+      ],
+      "tentativas": []
+     },
+     {
+      "cena": "08",
+      "entregue": [
+       {
+        "modelo": "Seedance 2.0",
+        "takes": [
+         "CENA_08A",
+         "CENA_08B"
+        ]
+       }
+      ],
+      "tentativas": [
+       {
+        "modelo": "Omni 1.1",
+        "planos": [
+         {
+          "plano": "the-car-is-completely-debadged",
+          "tentativas": 4
+         },
+         {
+          "plano": "still-looking-to-the-right",
+          "tentativas": 3
+         },
+         {
+          "plano": "jorge-works-on-the-bolt",
+          "tentativas": 2
+         },
+         {
+          "plano": "turning-the-wrench",
+          "tentativas": 1
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "modelos": [
+     {
+      "modelo": "Omni 1.1",
+      "google": true,
+      "cenas_entregues": 7,
+      "takes_entregues": 8,
+      "tentativas_descartadas": 10,
+      "cenas_com_falha": 1
+     },
+     {
+      "modelo": "Seedance 2.0",
+      "google": false,
+      "cenas_entregues": 1,
+      "takes_entregues": 2,
+      "tentativas_descartadas": 0,
+      "cenas_com_falha": 0
+     }
+    ]
+   },
+   "pasta_id": "1J6J4_Y2K3sQSXodtvSSkPsio7dKPYBCp"
   },
   {
    "id": "superbet",
-   "oficial": false,
    "projeto": "SuperBet",
-   "titulo": "SuperBet",
-   "subtitulo": "Quais modelos de imagem e vídeo usamos em cada cena, quantas tentativas cada uma levou e onde o modelo principal não entregou.",
-   "data": "[a preencher]",
-   "modelo_principal": "[a preencher]",
-   "timeline_img": "",
-   "timeline_titulo": "O filme cena a cena, com o modelo de cada uma.",
-   "timeline_fonte": "Timeline de edição + pastas de entrega",
-   "resumo_titulo": "",
-   "resumo_nota": "",
-   "resumo_fonte": "Pastas de entrega no Drive · contagem de arquivos por modelo",
-   "cenas": [
-    {
-     "cena": "01",
-     "take": "[a preencher]",
-     "modelo_imagem": "[a preencher]",
-     "modelo_video": "[a preencher]",
-     "descartes": "[a preencher]",
-     "status": "[a preencher]",
-     "trocou": false
-    }
-   ],
-   "cenas_fonte": "Pastas de cena no Drive · [a preencher] = dado que não está na pasta",
-   "falha": {
-    "titulo": "Onde o modelo principal não entregou.",
-    "rotulo": "Planos tentados",
-    "planos": [],
-    "categoria": "[F_ — a preencher]",
-    "o_que_deu_errado": "[descrição curta — a preencher]",
-    "prompt": "[a preencher]",
-    "solucao": "[a preencher]",
-    "fonte": "Pasta da cena / tentativas"
-   },
-   "pasta_url": ""
+   "oficial": true,
+   "link_direto": true,
+   "interrompido": true,
+   "pasta_url": "https://drive.google.com/drive/folders/1-16NwhtfLepCRZ-yFlR6TjlobFOEP12_",
+   "pasta_id": "1-16NwhtfLepCRZ-yFlR6TjlobFOEP12_",
+   "nota": "Projeto interrompido no meio, com R$ 239.816,70 executados. Não há backlog completo: o botão abre a pasta de backup com tudo o que foi produzido."
   },
   {
    "id": "clearblue",
@@ -240,7 +357,8 @@
     "solucao": "[a preencher]",
     "fonte": "Pasta da cena / tentativas"
    },
-   "pasta_url": ""
+   "pasta_url": "",
+   "pasta_id": ""
   },
   {
    "id": "nespresso",
@@ -278,83 +396,26 @@
     "solucao": "[a preencher]",
     "fonte": "Pasta da cena / tentativas"
    },
-   "pasta_url": ""
+   "pasta_url": "",
+   "pasta_id": ""
   },
   {
    "id": "brilhante",
-   "oficial": false,
    "projeto": "Brilhante",
-   "titulo": "Brilhante",
-   "subtitulo": "Quais modelos de imagem e vídeo usamos em cada cena, quantas tentativas cada uma levou e onde o modelo principal não entregou.",
-   "data": "[a preencher]",
-   "modelo_principal": "[a preencher]",
-   "timeline_img": "",
-   "timeline_titulo": "O filme cena a cena, com o modelo de cada uma.",
-   "timeline_fonte": "Timeline de edição + pastas de entrega",
-   "resumo_titulo": "",
-   "resumo_nota": "",
-   "resumo_fonte": "Pastas de entrega no Drive · contagem de arquivos por modelo",
-   "cenas": [
-    {
-     "cena": "01",
-     "take": "[a preencher]",
-     "modelo_imagem": "[a preencher]",
-     "modelo_video": "[a preencher]",
-     "descartes": "[a preencher]",
-     "status": "[a preencher]",
-     "trocou": false
-    }
-   ],
-   "cenas_fonte": "Pastas de cena no Drive · [a preencher] = dado que não está na pasta",
-   "falha": {
-    "titulo": "Onde o modelo principal não entregou.",
-    "rotulo": "Planos tentados",
-    "planos": [],
-    "categoria": "[F_ — a preencher]",
-    "o_que_deu_errado": "[descrição curta — a preencher]",
-    "prompt": "[a preencher]",
-    "solucao": "[a preencher]",
-    "fonte": "Pasta da cena / tentativas"
-   },
-   "pasta_url": ""
+   "sem_backlog": true,
+   "so_google": true,
+   "oficial": true,
+   "nota": "Projeto feito 100% com modelos do Google. Não houve falha nem troca de modelo, então não há backlog.",
+   "pasta_id": ""
   },
   {
    "id": "clear-men",
-   "oficial": false,
    "projeto": "Clear Men",
-   "titulo": "Clear Men",
-   "subtitulo": "Quais modelos de imagem e vídeo usamos em cada cena, quantas tentativas cada uma levou e onde o modelo principal não entregou.",
-   "data": "[a preencher]",
-   "modelo_principal": "[a preencher]",
-   "timeline_img": "",
-   "timeline_titulo": "O filme cena a cena, com o modelo de cada uma.",
-   "timeline_fonte": "Timeline de edição + pastas de entrega",
-   "resumo_titulo": "",
-   "resumo_nota": "",
-   "resumo_fonte": "Pastas de entrega no Drive · contagem de arquivos por modelo",
-   "cenas": [
-    {
-     "cena": "01",
-     "take": "[a preencher]",
-     "modelo_imagem": "[a preencher]",
-     "modelo_video": "[a preencher]",
-     "descartes": "[a preencher]",
-     "status": "[a preencher]",
-     "trocou": false
-    }
-   ],
-   "cenas_fonte": "Pastas de cena no Drive · [a preencher] = dado que não está na pasta",
-   "falha": {
-    "titulo": "Onde o modelo principal não entregou.",
-    "rotulo": "Planos tentados",
-    "planos": [],
-    "categoria": "[F_ — a preencher]",
-    "o_que_deu_errado": "[descrição curta — a preencher]",
-    "prompt": "[a preencher]",
-    "solucao": "[a preencher]",
-    "fonte": "Pasta da cena / tentativas"
-   },
-   "pasta_url": ""
+   "sem_backlog": true,
+   "so_google": true,
+   "oficial": true,
+   "nota": "Projeto feito 100% com modelos do Google. Não houve falha nem troca de modelo, então não há backlog.",
+   "pasta_id": ""
   }
  ]
 }

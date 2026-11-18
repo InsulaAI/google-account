@@ -78,9 +78,22 @@ onde o modelo principal falhou. A tabela "Backlog Modelos" (abaixo de "Detalhe p
 um botão por projeto que abre `#backlog-<id>`, uma página dentro do próprio `index.html` com as
 mesmas seções do PDF oficial: timeline, resumo, cena a cena, cena com falha e régua F1–F9.
 
-- Os dados ficam em `backlogs.json`. Só o do **Mercado Pago** é oficial (PDF de nov/2026, pasta
-  no Drive 1J6J4_Y2K3sQSXodtvSSkPsio7dKPYBCp). Os outros são o modelo vazio, com "[a preencher]",
-  que a página mostra em cinza e itálico.
+- Os dados ficam em `backlogs.json`. Situação em 18/11:
+  - **Mercado Pago**: oficial (PDF de nov/2026), pasta 1J6J4_Y2K3sQSXodtvSSkPsio7dKPYBCp.
+  - **SuperBet**: interrompido (R$ 239.816,70 executados), sem backlog completo. O botão abre
+    direto a pasta de backup 1-16NwhtfLepCRZ-yFlR6TjlobFOEP12_ (`link_direto`).
+  - **Brilhante e Clear Men**: 100% Google, sem backlog (`sem_backlog`, `so_google`).
+  - **ClearBlue e Nespresso**: página com o modelo vazio, "[a preencher]" em cinza e itálico.
+- **Leitura das pastas:** `scripts/backlog.py <id> <listagem.json>` grava o bloco `drive` do
+  projeto a partir da listagem da pasta (exemplo em `backlog/listagem-mercado-pago.json`).
+  Convenção: `CENA <n>/<modelo>/` = takes entregues; `CENA <n>/<modelo> Tentativas/` = descartes,
+  com o plano no nome do arquivo antes de `_<código>`. Nomes de modelo com erro de digitação
+  ("Omini", "Omnin") são juntados pela família mais parecida. Google = Omni, Veo, Imagen, Nano
+  Banana, Gemini, Flow.
+- Com o bloco `drive`, a página monta timeline, cena a cena, descartes, status e o comparativo
+  "Google × outros" sozinha; os textos à mão (título, modelo de imagem, categoria de falha,
+  prompt) continuam valendo. O card "Modelo do Google × outros modelos" no dashboard soma todos
+  os projetos.
 - `pasta_url`: o botão "Saiba mais" abre a pasta do backlog no Drive. Quem abre precisa ter
   acesso à pasta no Drive; a senha do site não dá esse acesso.
 - Os números do resumo (7/8, 1, 10) são calculados das cenas e dos planos, não digitados.
