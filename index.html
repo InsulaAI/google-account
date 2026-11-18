@@ -231,7 +231,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
         <div class="chart short" id="precos-chart"></div>
       </div>
       <div class="card">
-        <h3>Valor por pacote</h3>
+        <h3>Valor por pacote (em atualização)</h3>
         <p class="note">Total do pacote, com a quantidade de peças e o desconto aplicado.</p>
         <div class="tw"><table>
           <thead><tr><th>Duração</th><th class="num">Unitário</th><th class="num">P</th><th class="num">M</th><th class="num">G</th></tr></thead>
@@ -326,7 +326,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     let acc = 0;
     const rows = ord.map((r) => { const v = Number(r.valor) || 0, inicio = acc; acc = r2(acc + (r.tipo === 'Crédito' ? v : -v)); return { etapa: r.lancamento, data: r.data, tipo: r.tipo, valor: v, inicio, fim: acc }; });
     rows.push({ etapa: 'Saldo', data: null, tipo: 'Saldo', valor: acc, inicio: 0, fim: acc });
-    const W = Math.max(280, box.clientWidth), narrow = W < 520, H = narrow ? 300 : 288, mt = 22, mb = narrow ? 64 : 40;
+    const W = Math.max(280, box.clientWidth), narrow = (W - 60) / rows.length < 92, H = narrow ? 304 : 288, mt = 22, mb = narrow ? 70 : 40;
     const svg = d3.select(box).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Cascata do crédito ao saldo');
     const y = d3.scaleLinear([0, d3.max(rows, (r) => Math.max(r.inicio, r.fim)) || 1], [H - mb, mt]).nice(4);
     const ml = leftMargin(svg, y); yAxis(svg, y, W, ml);
@@ -338,7 +338,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     const bars = g.selectAll('rect.b').data(rows).join('rect').attr('class', 'b anim').attr('x', (r, i) => x(i)).attr('width', x.bandwidth())
       .attr('y', (r) => y(Math.max(r.inicio, r.fim))).attr('height', (r) => Math.max(1, Math.abs(y(r.inicio) - y(r.fim)))).attr('rx', 1).attr('fill', color);
     g.selectAll('text.v').data(narrow ? rows.filter((r) => r.tipo === 'Saldo') : rows).join('text').attr('class', 'vlabel').attr('text-anchor', narrow ? 'end' : 'middle').attr('x', (r) => x(rows.indexOf(r)) + x.bandwidth() / (narrow ? 1 : 2))
-      .attr('y', (r) => (r.tipo === 'Débito' ? y(r.fim) + 14 : y(Math.max(r.inicio, r.fim)) - 6)).text((r) => (r.tipo === 'Débito' ? '−' : r.tipo === 'Crédito' ? '+' : '') + comp(r.valor));
+      .attr('y', (r) => (r.tipo === 'Débito' ? y(r.fim) + 14 : r.tipo === 'Saldo' ? y(Math.max(r.fim, rows.length > 1 ? rows[rows.length - 2].inicio : 0)) - 6 : y(Math.max(r.inicio, r.fim)) - 6)).text((r) => (r.tipo === 'Débito' ? '−' : r.tipo === 'Crédito' ? '+' : '') + comp(r.valor));
     if (narrow) {
       g.selectAll('text.x').data(rows).join('text').attr('class', 'xl').attr('text-anchor', 'end')
         .attr('transform', (r, i) => `translate(${x(i) + x.bandwidth() / 2 + 4},${H - mb + 14}) rotate(-35)`).text((r) => r.etapa);

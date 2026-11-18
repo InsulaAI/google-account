@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-11-18T19:25:02Z",
+ "atualizado_em": "2026-11-18T19:27:59Z",
  "origem": {
   "cuentas": "2026-09-25T20:29:02.947Z",
   "latam": "2026-11-03T21:28:24.866Z",
@@ -102,7 +102,7 @@
    "manual": true,
    "data": "2026-11-18",
    "tipo": "Débito",
-   "lancamento": "Nespresso",
+   "lancamento": "Nespresso (Klike)",
    "servico": "Contingência",
    "po": "",
    "job": "",
@@ -977,8 +977,8 @@
    "detalhe": "Job 405 · orçamento 1128/A",
    "situacao": "Em andamento",
    "faturamento": 330000,
-   "faturamento_status": "previsto",
-   "faturamento_data": "2026-12-30",
+   "faturamento_status": "a_receber",
+   "faturamento_data": "2026-12-28",
    "contingencia": 160445,
    "aporte": null,
    "executado": 239816.7,
