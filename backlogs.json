@@ -432,7 +432,12 @@
     "fonte": "Pasta da cena / tentativas"
    },
    "pasta_url": "",
-   "pasta_id": ""
+   "pasta_id": "",
+   "klike": {
+    "pasta_url": "",
+    "fonte": "Relatórios de análise de vídeo Klike",
+    "relatorios": []
+   }
   },
   {
    "id": "nespresso",
@@ -471,7 +476,113 @@
     "fonte": "Pasta da cena / tentativas"
    },
    "pasta_url": "",
-   "pasta_id": ""
+   "pasta_id": "",
+   "klike": {
+    "pasta_url": "https://drive.google.com/drive/folders/1s224y5ylxKCXqBTskxwJckTy7Sm17Q2D",
+    "fonte": "Relatórios de análise de vídeo Klike, pasta Klike da Nespresso no Drive",
+    "relatorios": [
+     {
+      "filme": "Filme 1",
+      "titulo": "Ouça o seu café favorito",
+      "versao": "v1 · 16:9",
+      "data": "2026-11-14",
+      "nota": "B",
+      "dimensoes": [
+       "C",
+       "C",
+       "B",
+       "A",
+       "A",
+       "C",
+       "C",
+       "B",
+       "A",
+       "A"
+      ],
+      "arquivo_id": "15x-SqW8paEtS9Cqg-tM1fxeVe0txIKcb"
+     },
+     {
+      "filme": "Filme 1",
+      "titulo": "Ouça o seu café (ajustado)",
+      "versao": "v2",
+      "data": "2026-11-16",
+      "nota": "B",
+      "dimensoes": [
+       "B",
+       "C",
+       "B",
+       "B",
+       "A",
+       "B",
+       "B",
+       "B",
+       "A",
+       "A"
+      ],
+      "arquivo_id": "1-IhNlsL3HlIEzzRKFw1E_w4LLnI1He3S"
+     },
+     {
+      "filme": "Filme 2",
+      "titulo": "Gaveta de cápsulas",
+      "versao": "Vídeo 2 · máquina à esquerda",
+      "data": "2026-11-15",
+      "nota": "B",
+      "dimensoes": [
+       "C",
+       "C",
+       "B",
+       "A",
+       "A",
+       "B",
+       "C",
+       "B",
+       "A",
+       "A"
+      ],
+      "arquivo_id": "10pQkB5ijbtToX2DeOev_txjwnTdE5443"
+     },
+     {
+      "filme": "Filme 2",
+      "titulo": "Máquina ao centro",
+      "versao": "Vídeo 3",
+      "data": "2026-11-15",
+      "nota": "B",
+      "dimensoes": [
+       "C",
+       "C",
+       "B",
+       "B",
+       "A",
+       "C",
+       "C",
+       "B",
+       "A",
+       "A"
+      ],
+      "arquivo_id": "1bOj9hYzaLAZ1-Ehw0uTz1d9U70v1-8Nz"
+     },
+     {
+      "filme": "Filme 2",
+      "titulo": "Gaveta e oferta",
+      "versao": "V002",
+      "data": "2026-11-17",
+      "nota": "A",
+      "dimensoes": [
+       "A",
+       "B",
+       "B",
+       "B",
+       "A",
+       "A",
+       "B",
+       "B",
+       "A",
+       "A"
+      ],
+      "arquivo_id": "13AkzsUlwSwX1Xtyjqe9rPKGDW9V7d7rx"
+     }
+    ]
+   }
   },
   {
    "id": "samsung",
@@ -510,7 +621,12 @@
     "fonte": "Pasta da cena / tentativas"
    },
    "pasta_url": "",
-   "pasta_id": ""
+   "pasta_id": "",
+   "klike": {
+    "pasta_url": "",
+    "fonte": "Relatórios de análise de vídeo Klike",
+    "relatorios": []
+   }
   },
   {
    "id": "brilhante",
@@ -530,5 +646,17 @@
    "nota": "Projeto feito 100% com modelos do Google. Não houve falha nem troca de modelo, então não há backlog.",
    "pasta_id": ""
   }
+ ],
+ "klike_dimensoes": [
+  "Gancho de 3 segundos",
+  "Narrativa com contraste",
+  "Conexão emocional",
+  "Música, locução e legendas",
+  "Foco no produto",
+  "Proposta de valor",
+  "Chamada para ação (CTA)",
+  "Engajamento com a comunidade",
+  "Resolução e qualidade",
+  "Retenção"
  ]
 }

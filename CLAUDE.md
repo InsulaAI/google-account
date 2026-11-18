@@ -102,6 +102,12 @@ mesmas seções do PDF oficial: timeline, resumo, cena a cena, cena com falha e 
   entregue (tabela cena a cena) e por tentativa descartada (numerada, na seção da cena com falha),
   ao lado dos takes que resolveram a cena. Abrem no Drive; quem assiste precisa de acesso à pasta.
   Vídeo do Drive não toca embutido em outro site (cookie de terceiros), por isso é link e não player.
+- **Pontuação Klike:** `backlogs[].klike` = {pasta_url, fonte, relatorios: [{filme, titulo, versao,
+  data, nota, dimensoes (10 letras, na ordem de `klike_dimensoes`), arquivo_id}]}. O botão
+  "Pontuação Klike" no topo do backlog leva à seção 07, com um card por relatório (nota final e
+  "Acessar relatório", que abre o PDF no Drive) e a tabela das 10 dimensões por versão. Só a
+  Nespresso tem relatórios (5, pasta 1s224y5ylxKCXqBTskxwJckTy7Sm17Q2D); Samsung e ClearBlue têm
+  a seção vazia, a preencher; os outros projetos não têm Klike.
 - **Gerar PDF:** botão em cada página de backlog que chama a impressão do navegador com um estilo
   só para papel (fundo branco, A4, 3 páginas: capa+timeline+resumo / comparativo+cena a cena /
   cena com falha+régua). Sai só o backlog, sem nenhum valor em reais, para o Google mandar à
