@@ -2,25 +2,165 @@
  "pasta_id": "1J6J4_Y2K3sQSXodtvSSkPsio7dKPYBCp",
  "lido_em": "2026-11-18",
  "arquivos": [
-  {"caminho": ["CENA 1", "Omni 1.1"], "nome": "Mercado_Pago_CENA_01.mov"},
-  {"caminho": ["CENA 2", "Omini 1.1"], "nome": "Mercado_Pago_CENA_02A.mov"},
-  {"caminho": ["CENA 2", "Omini 1.1"], "nome": "Mercado_Pago_CENA_02B.mov"},
-  {"caminho": ["CENA 3", "Omni 1.1"], "nome": "Mercado_Pago_CENA_03.mov"},
-  {"caminho": ["CENA 4", "Omni 1.1"], "nome": "MP_cena04_thiago_orbital_omni_v29_slp_iris2.mov"},
-  {"caminho": ["CENA 5", "Omini 1.1"], "nome": "Mercado_Pago_CENA_05.mov"},
-  {"caminho": ["CENA 6", "Omni 1.1"], "nome": "Mercado_Pago_CENA_06_B.mov"},
-  {"caminho": ["CENA 7", "Omni 1.1"], "nome": "Mercado_Pago_CENA_07.mov"},
-  {"caminho": ["CENA 8", "Seedance 2.0"], "nome": "Mercado_Pago_CENA_08A.mov"},
-  {"caminho": ["CENA 8", "Seedance 2.0"], "nome": "Mercado_Pago_CENA_08B.mov"},
-  {"caminho": ["CENA 8", "Omnin 1.1 Tentativas"], "nome": "the-car-is-completely-debadged_ksc53Ft16B.mp4"},
-  {"caminho": ["CENA 8", "Omnin 1.1 Tentativas"], "nome": "the-car-is-completely-debadged_KLWbiEqkqp.mp4"},
-  {"caminho": ["CENA 8", "Omnin 1.1 Tentativas"], "nome": "the-car-is-completely-debadged_p8gMKELehw.mp4"},
-  {"caminho": ["CENA 8", "Omnin 1.1 Tentativas"], "nome": "the-car-is-completely-debadged_O6t7DGJynm.mp4"},
-  {"caminho": ["CENA 8", "Omnin 1.1 Tentativas"], "nome": "still-looking-to-the-right_fHiaQlbCDY.mp4"},
-  {"caminho": ["CENA 8", "Omnin 1.1 Tentativas"], "nome": "still-looking-to-the-right_aF6vFgBfSh.mp4"},
-  {"caminho": ["CENA 8", "Omnin 1.1 Tentativas"], "nome": "still-looking-to-the-right_tCPIartmZJ.mp4"},
-  {"caminho": ["CENA 8", "Omnin 1.1 Tentativas"], "nome": "jorge-works-on-the-bolt_s7pjqHel8e.mp4"},
-  {"caminho": ["CENA 8", "Omnin 1.1 Tentativas"], "nome": "jorge-works-on-the-bolt_gOds55HSXO.mp4"},
-  {"caminho": ["CENA 8", "Omnin 1.1 Tentativas"], "nome": "turning-the-wrench_8aOBDibIrU.mp4"}
+  {
+   "caminho": [
+    "CENA 1",
+    "Omni 1.1"
+   ],
+   "nome": "Mercado_Pago_CENA_01.mov",
+   "id": "10PjeObDY8bVPrbllkM8V3nQfvYc9raaY"
+  },
+  {
+   "caminho": [
+    "CENA 2",
+    "Omini 1.1"
+   ],
+   "nome": "Mercado_Pago_CENA_02A.mov",
+   "id": "1ADfstfjk7Jnw5St0jc2yP4nlF1wS_T-g"
+  },
+  {
+   "caminho": [
+    "CENA 2",
+    "Omini 1.1"
+   ],
+   "nome": "Mercado_Pago_CENA_02B.mov",
+   "id": "18o00-DcgwnzvzkHyhmYyynf3tkFc_vpq"
+  },
+  {
+   "caminho": [
+    "CENA 3",
+    "Omni 1.1"
+   ],
+   "nome": "Mercado_Pago_CENA_03.mov",
+   "id": "1yCFGO4XxE4dQ31GONxkVKs9pY8yOj8tr"
+  },
+  {
+   "caminho": [
+    "CENA 4",
+    "Omni 1.1"
+   ],
+   "nome": "MP_cena04_thiago_orbital_omni_v29_slp_iris2.mov",
+   "id": "16_p_ES4SOxTfwaQ1d-_vTKs4wwREFx_F"
+  },
+  {
+   "caminho": [
+    "CENA 5",
+    "Omini 1.1"
+   ],
+   "nome": "Mercado_Pago_CENA_05.mov",
+   "id": "1ddrvCNUicEw3UrizcT6o_1HHzpCiZw9F"
+  },
+  {
+   "caminho": [
+    "CENA 6",
+    "Omni 1.1"
+   ],
+   "nome": "Mercado_Pago_CENA_06_B.mov",
+   "id": "1u7KXoE7-5_DxtESBvXJ7ebxyai3U2-L0"
+  },
+  {
+   "caminho": [
+    "CENA 7",
+    "Omni 1.1"
+   ],
+   "nome": "Mercado_Pago_CENA_07.mov",
+   "id": "1uxA8SG0E3cZDYKsVZLud6l_SPU-nazu1"
+  },
+  {
+   "caminho": [
+    "CENA 8",
+    "Seedance 2.0"
+   ],
+   "nome": "Mercado_Pago_CENA_08A.mov",
+   "id": "1LSYL41ma5Vda6G9oFgXR9G1k8mN5NTzD"
+  },
+  {
+   "caminho": [
+    "CENA 8",
+    "Seedance 2.0"
+   ],
+   "nome": "Mercado_Pago_CENA_08B.mov",
+   "id": "1n_p1re69IOi4gr4rMIXgc3fRhtnbeCZu"
+  },
+  {
+   "caminho": [
+    "CENA 8",
+    "Omnin 1.1 Tentativas"
+   ],
+   "nome": "the-car-is-completely-debadged_ksc53Ft16B.mp4",
+   "id": "1wtimWaqfFRxTi9kgOBaRxvtaoYBHGgW7"
+  },
+  {
+   "caminho": [
+    "CENA 8",
+    "Omnin 1.1 Tentativas"
+   ],
+   "nome": "the-car-is-completely-debadged_KLWbiEqkqp.mp4",
+   "id": "1fiLVlnvu6ggu3MlNsOnwUkWrBUjqMvpK"
+  },
+  {
+   "caminho": [
+    "CENA 8",
+    "Omnin 1.1 Tentativas"
+   ],
+   "nome": "the-car-is-completely-debadged_p8gMKELehw.mp4",
+   "id": "17ETs1LwN8BHTUE-aKAtt3xkPUloNgi1Y"
+  },
+  {
+   "caminho": [
+    "CENA 8",
+    "Omnin 1.1 Tentativas"
+   ],
+   "nome": "the-car-is-completely-debadged_O6t7DGJynm.mp4",
+   "id": "1dADHNhGKPh7UNPLkwKRP7dmzMvnbECON"
+  },
+  {
+   "caminho": [
+    "CENA 8",
+    "Omnin 1.1 Tentativas"
+   ],
+   "nome": "still-looking-to-the-right_fHiaQlbCDY.mp4",
+   "id": "1RqyF7Z82QxhTz9M5CwtBBExHdpo3WBdQ"
+  },
+  {
+   "caminho": [
+    "CENA 8",
+    "Omnin 1.1 Tentativas"
+   ],
+   "nome": "still-looking-to-the-right_aF6vFgBfSh.mp4",
+   "id": "1S0ek-m6fVE8iQx8dn2xU-rminVMxPG8I"
+  },
+  {
+   "caminho": [
+    "CENA 8",
+    "Omnin 1.1 Tentativas"
+   ],
+   "nome": "still-looking-to-the-right_tCPIartmZJ.mp4",
+   "id": "1hpzfZmIa0Q4WRKXWnJfw8fYqtmGbXkvg"
+  },
+  {
+   "caminho": [
+    "CENA 8",
+    "Omnin 1.1 Tentativas"
+   ],
+   "nome": "jorge-works-on-the-bolt_s7pjqHel8e.mp4",
+   "id": "1iX__DrWEYcS38RDZToXv8UWdNQNTAzL9"
+  },
+  {
+   "caminho": [
+    "CENA 8",
+    "Omnin 1.1 Tentativas"
+   ],
+   "nome": "jorge-works-on-the-bolt_gOds55HSXO.mp4",
+   "id": "1pOdoVihzq3etjFDDMtEF1rjxdYaUMs4m"
+  },
+  {
+   "caminho": [
+    "CENA 8",
+    "Omnin 1.1 Tentativas"
+   ],
+   "nome": "turning-the-wrench_8aOBDibIrU.mp4",
+   "id": "1GN3BFblSi_OjKNy3lOySoaiWf7iVH86b"
+  }
  ]
 }

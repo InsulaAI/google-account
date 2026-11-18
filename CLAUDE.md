@@ -98,6 +98,14 @@ mesmas seções do PDF oficial: timeline, resumo, cena a cena, cena com falha e 
 - `pasta_url`: o botão "Saiba mais" abre a pasta do backlog no Drive. Quem abre precisa ter
   acesso à pasta no Drive; a senha do site não dá esse acesso.
 - Os números do resumo (7/8, 1, 10) são calculados das cenas e dos planos, não digitados.
+- **Assistir no Drive:** a listagem guarda o `id` de cada arquivo; a página mostra um botão por take
+  entregue (tabela cena a cena) e por tentativa descartada (numerada, na seção da cena com falha),
+  ao lado dos takes que resolveram a cena. Abrem no Drive; quem assiste precisa de acesso à pasta.
+  Vídeo do Drive não toca embutido em outro site (cookie de terceiros), por isso é link e não player.
+- **Gerar PDF:** botão em cada página de backlog que chama a impressão do navegador com um estilo
+  só para papel (fundo branco, A4, 3 páginas: capa+timeline+resumo / comparativo+cena a cena /
+  cena com falha+régua). Sai só o backlog, sem nenhum valor em reais, para o Google mandar à
+  engenharia. Não existe no dashboard do claude.ai, que bloqueia impressão e download.
 
 ## Atualização automática
 

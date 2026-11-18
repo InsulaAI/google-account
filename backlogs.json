@@ -176,6 +176,12 @@
         "modelo": "Omni 1.1",
         "takes": [
          "CENA_01"
+        ],
+        "videos": [
+         {
+          "take": "CENA_01",
+          "id": "10PjeObDY8bVPrbllkM8V3nQfvYc9raaY"
+         }
         ]
        }
       ],
@@ -189,6 +195,16 @@
         "takes": [
          "CENA_02A",
          "CENA_02B"
+        ],
+        "videos": [
+         {
+          "take": "CENA_02A",
+          "id": "1ADfstfjk7Jnw5St0jc2yP4nlF1wS_T-g"
+         },
+         {
+          "take": "CENA_02B",
+          "id": "18o00-DcgwnzvzkHyhmYyynf3tkFc_vpq"
+         }
         ]
        }
       ],
@@ -201,6 +217,12 @@
         "modelo": "Omni 1.1",
         "takes": [
          "CENA_03"
+        ],
+        "videos": [
+         {
+          "take": "CENA_03",
+          "id": "1yCFGO4XxE4dQ31GONxkVKs9pY8yOj8tr"
+         }
         ]
        }
       ],
@@ -213,6 +235,12 @@
         "modelo": "Omni 1.1",
         "takes": [
          "MP_cena04_thiago_orbital_omni_v29_slp_iris2"
+        ],
+        "videos": [
+         {
+          "take": "MP_cena04_thiago_orbital_omni_v29_slp_iris2",
+          "id": "16_p_ES4SOxTfwaQ1d-_vTKs4wwREFx_F"
+         }
         ]
        }
       ],
@@ -225,6 +253,12 @@
         "modelo": "Omni 1.1",
         "takes": [
          "CENA_05"
+        ],
+        "videos": [
+         {
+          "take": "CENA_05",
+          "id": "1ddrvCNUicEw3UrizcT6o_1HHzpCiZw9F"
+         }
         ]
        }
       ],
@@ -237,6 +271,12 @@
         "modelo": "Omni 1.1",
         "takes": [
          "CENA_06_B"
+        ],
+        "videos": [
+         {
+          "take": "CENA_06_B",
+          "id": "1u7KXoE7-5_DxtESBvXJ7ebxyai3U2-L0"
+         }
         ]
        }
       ],
@@ -249,6 +289,12 @@
         "modelo": "Omni 1.1",
         "takes": [
          "CENA_07"
+        ],
+        "videos": [
+         {
+          "take": "CENA_07",
+          "id": "1uxA8SG0E3cZDYKsVZLud6l_SPU-nazu1"
+         }
         ]
        }
       ],
@@ -262,6 +308,16 @@
         "takes": [
          "CENA_08A",
          "CENA_08B"
+        ],
+        "videos": [
+         {
+          "take": "CENA_08A",
+          "id": "1LSYL41ma5Vda6G9oFgXR9G1k8mN5NTzD"
+         },
+         {
+          "take": "CENA_08B",
+          "id": "1n_p1re69IOi4gr4rMIXgc3fRhtnbeCZu"
+         }
         ]
        }
       ],
@@ -271,19 +327,37 @@
         "planos": [
          {
           "plano": "the-car-is-completely-debadged",
-          "tentativas": 4
+          "tentativas": 4,
+          "ids": [
+           "1wtimWaqfFRxTi9kgOBaRxvtaoYBHGgW7",
+           "1fiLVlnvu6ggu3MlNsOnwUkWrBUjqMvpK",
+           "17ETs1LwN8BHTUE-aKAtt3xkPUloNgi1Y",
+           "1dADHNhGKPh7UNPLkwKRP7dmzMvnbECON"
+          ]
          },
          {
           "plano": "still-looking-to-the-right",
-          "tentativas": 3
+          "tentativas": 3,
+          "ids": [
+           "1RqyF7Z82QxhTz9M5CwtBBExHdpo3WBdQ",
+           "1S0ek-m6fVE8iQx8dn2xU-rminVMxPG8I",
+           "1hpzfZmIa0Q4WRKXWnJfw8fYqtmGbXkvg"
+          ]
          },
          {
           "plano": "jorge-works-on-the-bolt",
-          "tentativas": 2
+          "tentativas": 2,
+          "ids": [
+           "1iX__DrWEYcS38RDZToXv8UWdNQNTAzL9",
+           "1pOdoVihzq3etjFDDMtEF1rjxdYaUMs4m"
+          ]
          },
          {
           "plano": "turning-the-wrench",
-          "tentativas": 1
+          "tentativas": 1,
+          "ids": [
+           "1GN3BFblSi_OjKNy3lOySoaiWf7iVH86b"
+          ]
          }
         ]
        }

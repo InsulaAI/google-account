@@ -172,12 +172,54 @@ tr.alt td{color:var(--amber)}
 .bk-plans li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:13.5px}
 .bk-plans li b{font-variant-numeric:tabular-nums}
 .bk-plans li.tot{color:var(--amber);border-bottom:0}
+.bk-plans .pl{display:grid;gap:6px;min-width:0}
+.vrow{display:flex;flex-wrap:wrap;gap:6px}
+.vbtn{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:500;padding:3px 9px;border-radius:999px;border:1px solid var(--amber);color:var(--amber);text-decoration:none;white-space:nowrap}
+.vbtn:hover{background:var(--amber);color:var(--ground)}
+.vbtn:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+td.vcell{white-space:nowrap}
+td.vcell .vbtn+.vbtn{margin-left:4px}
 .bk-box{border-color:var(--line-2)}
 .bk-box p:not(.k){margin-bottom:6px}
 .k.acc{color:var(--amber)}
 .bk-regua{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:10px}
 .bk-rule{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:grid;gap:4px}
 .bk-rule b{font-family:var(--display);font-weight:600;font-size:16px}
+.btn.ghost{background:transparent;color:var(--amber)}
+.btn.ghost:hover{background:var(--amber);color:var(--ground)}
+.print-only{display:none}
+@media print{
+  :root{--ground:#fff;--surface:#f5f4f1;--surface-2:#f5f4f1;--line:#dcd9d2;--line-2:#c9c5bc;--text:#14161c;--text-2:#3a3d45;--text-3:#6b6e76;--amber:#93611c;--steel:#7d8496;--slate:#5c6478;--dusk:#9aa0ae;--cream:#c9c3b5;color-scheme:light}
+  @page{size:A4;margin:14mm}
+  html,body{background:#fff!important}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .wrap{padding:0;gap:22px;max-width:none}
+  #dash-view,footer,.back,.btn,.bk-cta{display:none!important}
+  #backlog-view{gap:20px}
+  .print-only{display:block}
+  .bk-head{padding-bottom:12px}
+  .bk-head h1{font-size:30px}
+  .bk-sec{gap:10px;break-inside:auto}
+  .bk-sec.pb{break-before:page;page-break-before:always}
+  .bk-sec h2{font-size:18px;break-after:avoid}
+  .bk-img{padding:8px}
+  .bk-img img{max-height:220px}
+  .card,.bk-tile,.bk-rule,.bk-scene,tr,.mrow,.bk-img{break-inside:avoid}
+  .bk-big{font-size:34px}
+  .vbtn{border-color:var(--line-2);color:var(--text-2);font-size:9px;padding:1px 6px}
+  .tip{display:none!important}
+  .bk-sec > .k, .bk-sec > h2{break-after:avoid;page-break-after:avoid}
+  .tw{overflow:visible}
+  table{font-size:10.5px}
+  th,td{padding:6px 6px}
+  td.vcell{white-space:normal}
+  td.vcell .vbtn{margin:0 4px 4px 0}
+  .bk-tiles{grid-template-columns:repeat(3,1fr)}
+  .bk-regua{grid-template-columns:repeat(3,1fr)}
+  .bk-strip{grid-template-columns:repeat(8,1fr)}
+  .bk-scene{padding:6px 7px;font-size:11px}
+  .grid.bk-fail{grid-template-columns:1fr 1fr}
+}
 footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);padding-top:16px}
 @media (prefers-reduced-motion:no-preference){
   @keyframes rise{from{transform:scaleY(0)}to{transform:scaleY(1)}}
@@ -361,11 +403,19 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
         descartes: ten.length ? ten.map((t) => `${t.n} no ${t.modelo}`).join(', ') : (m.descartes && m.descartes !== '—' ? m.descartes : '—'),
         status: trocou ? 'Trocou de modelo' : ten.length ? `Aprovado após ${ten[0].n} tentativas` : (m.status && !isPh(m.status) ? m.status : 'Aprovado'),
         trocou,
+        videos: dc.entregue.flatMap((e) => (e.videos || []).map((v) => ({ ...v, modelo: e.modelo }))),
       };
     });
     const planos = b.drive.cenas.flatMap((dc) => dc.tentativas.flatMap((t) => t.planos.map((p) => ({ ...p, cena: dc.cena, modelo: t.modelo }))));
     return { cenas, planos, modelos: b.drive.modelos, fonte: 'drive' };
   }
+
+  const driveUrl = (id) => `https://drive.google.com/file/d/${encodeURIComponent(id)}/view`;
+  function vlink(id, label, title) {
+    const a = el('a', 'vbtn', label); a.href = driveUrl(id); a.target = '_blank'; a.rel = 'noopener';
+    a.title = title || 'Assistir no Google Drive'; return a;
+  }
+  const shortTake = (t) => String(t).replace(/^CENA_/, '');
 
   function bkSection(num, kicker, titulo) {
     const sec = el('section', 'bk-sec'); sec.append(el('p', 'k bk-k', `${num} — ${kicker}`), tx('h2', '', titulo)); return sec;
@@ -405,7 +455,19 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
       }
       const x = el('button', 'btn', 'Saiba mais'); x.type = 'button'; x.disabled = true; x.title = 'Pasta do backlog a definir'; return x;
     };
-    const cta = el('div', 'bk-cta'); cta.append(more(), el('span', 'note', b.pasta_url ? 'Pasta do backlog no Google Drive, com cada cena e o PDF completo' : 'Pasta do backlog a definir'));
+    const pdf = () => {
+      const x = el('button', 'btn ghost', 'Gerar PDF'); x.type = 'button';
+      x.title = 'Gera um PDF só com o backlog, sem valores, para enviar à engenharia';
+      x.addEventListener('click', () => {
+        const t = document.title; document.title = `Backlog de modelos — ${b.titulo}`;
+        window.print(); setTimeout(() => { document.title = t; }, 500);
+      });
+      return x;
+    };
+    const cta = el('div', 'bk-cta'); cta.append(more(), pdf(), el('span', 'note', b.pasta_url ? 'Pasta do backlog no Google Drive, com cada cena e o PDF completo' : 'Pasta do backlog a definir'));
+    const pr = el('p', 'k print-only', `Insula AI · Backlog de modelos · ${b.projeto} · gerado em ${new Date().toLocaleDateString('pt-BR')}`);
+    head.prepend(pr);
+    if (b.pasta_url) head.appendChild(el('p', 'note print-only', 'Pasta do backlog no Google Drive: ' + b.pasta_url));
     head.append(row, cta); v.appendChild(head);
 
     const X = bkData(b), cenas = X.cenas, planos = X.planos, f = b.falha || {};
@@ -438,6 +500,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
 
     // 03 Google x outros
     const s3 = bkSection('03', 'Google × outros modelos', X.modelos.length ? 'Quanto do filme saiu do modelo do Google.' : '[comparativo a preencher]');
+    s3.classList.add('pb');
     if (X.modelos.length) {
       const g = X.modelos.filter((m) => m.google), o = X.modelos.filter((m) => !m.google);
       const sum = (arr, k2) => arr.reduce((a, m) => a + m[k2], 0);
@@ -453,35 +516,56 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     // 04 cena a cena
     const s4 = bkSection('04', 'Cena a cena', 'O que foi usado em cada cena.');
     const tw = el('div', 'tw'), tb = el('table'), th = el('thead'), hr = el('tr');
-    for (const h of ['Cena', 'Take entregue', 'Modelo de imagem', 'Modelo de vídeo', 'Descartes', 'Status']) hr.appendChild(el('th', '', h));
+    const temVideo = cenas.some((c) => c.videos && c.videos.length);
+    for (const h of ['Cena', 'Take entregue', 'Modelo de imagem', 'Modelo de vídeo', 'Descartes', 'Status'].concat(temVideo ? ['Vídeo'] : [])) hr.appendChild(el('th', '', h));
     th.appendChild(hr); tb.appendChild(th); const body = el('tbody');
     for (const c of cenas) {
       const tr = el('tr', c.trocou ? 'alt' : '');
       for (const key of ['cena', 'take', 'modelo_imagem', 'modelo_video', 'descartes', 'status']) tr.appendChild(tx('td', '', c[key]));
+      if (temVideo) {
+        const td = el('td', 'vcell');
+        const vs = c.videos || [];
+        for (const v of vs) td.appendChild(vlink(v.id, vs.length > 1 ? `▶ ${shortTake(v.take)}` : '▶ Assistir', `Assistir ${v.take} (${v.modelo}) no Google Drive`));
+        if (!vs.length) td.appendChild(el('span', 'note', '–'));
+        tr.appendChild(td);
+      }
       body.appendChild(tr);
     }
     tb.appendChild(body); tw.appendChild(tb); s4.append(tw, el('p', 'k bk-src', 'Fonte: ' + b.cenas_fonte)); v.appendChild(s4);
 
     // 05 falha
     const s5 = bkSection('05', trocas.length ? `Cena ${nTrocas}` : 'Falhas', f.titulo || '[falhas a preencher]');
+    s5.classList.add('pb');
     const g5 = el('div', 'grid bk-fail'), l = el('div', 'card'); l.appendChild(el('p', 'k', f.rotulo || 'Planos tentados'));
     const ul = el('ul', 'bk-plans');
     if (!planos.length) ul.appendChild(tx('li', '', '[planos a preencher]'));
-    for (const p of planos) { const li = el('li'); li.append(el('span', '', p.plano), el('b', '', `${p.tentativas}×`)); ul.appendChild(li); }
+    for (const p of planos) {
+      const li = el('li'), nm = el('span', 'pl'); nm.appendChild(el('span', '', p.plano));
+      if (p.ids && p.ids.length) { const vs = el('span', 'vrow'); p.ids.forEach((id, i) => vs.appendChild(vlink(id, `▶ ${i + 1}`, `Assistir a tentativa ${i + 1} de ${p.plano} (${p.modelo || princ}) no Google Drive`))); nm.appendChild(vs); }
+      li.append(nm, el('b', '', `${p.tentativas}×`)); ul.appendChild(li);
+    }
     if (planos.length) { const li = el('li', 'tot'); li.append(el('span', '', 'Total descartado'), el('b', '', String(desc))); ul.appendChild(li); }
     l.appendChild(ul);
     const r = el('div', 'card bk-box');
     for (const [lab, val, acc] of [['Categoria de falha', f.categoria], ['O que deu errado', f.o_que_deu_errado], ['Prompt usado', f.prompt], ['Solução', f.solucao, true]]) {
       r.append(el('p', 'k' + (acc ? ' acc' : ''), lab), tx('p', '', val ?? '[a preencher]'));
     }
-    g5.append(l, r); s5.append(g5, el('p', 'k bk-src', 'Fonte: ' + (f.fonte || ''))); v.appendChild(s5);
+    const entregues = trocas.flatMap((c) => c.videos || []);
+    if (entregues.length) {
+      const vs = el('div', 'vrow');
+      for (const v of entregues) vs.appendChild(vlink(v.id, `▶ ${shortTake(v.take)} · ${v.modelo}`, `Assistir ${v.take} (${v.modelo}) no Google Drive`));
+      r.append(el('p', 'k acc', 'Assistir o que foi entregue'), vs);
+    }
+    g5.append(l, r); s5.append(g5);
+    if (planos.some((p) => p.ids && p.ids.length)) s5.appendChild(el('p', 'note', 'Os números abrem cada tentativa descartada no Google Drive, ao lado dos takes que resolveram a cena. É preciso ter acesso à pasta do projeto no Drive.'));
+    s5.appendChild(el('p', 'k bk-src', 'Fonte: ' + (f.fonte || ''))); v.appendChild(s5);
 
     // 06 régua
     const s6 = bkSection('06', 'Régua de falhas', 'Uma régua comum para descrever cada falha.');
     const gr = el('div', 'bk-regua');
     for (const x of B.regua || []) { const c = el('div', 'bk-rule'); c.append(el('span', 'k acc', x.codigo), el('b', '', x.nome), el('span', 'note', x.descricao)); gr.appendChild(c); }
     s6.append(gr, el('p', 'k bk-src', 'Cada descarte recebe um código F1–F9 + descrição livre')); v.appendChild(s6);
-    const end = el('div', 'bk-cta'); end.append(more(), el('span', 'note', b.pasta_url ? 'Ver todos os detalhes na pasta do backlog' : 'Pasta do backlog a definir')); v.appendChild(end);
+    const end = el('div', 'bk-cta'); end.append(more(), pdf(), el('span', 'note', b.pasta_url ? 'Ver todos os detalhes na pasta do backlog' : 'Pasta do backlog a definir')); v.appendChild(end);
   }
 
   // Comparativo geral no dashboard: soma as pastas lidas + projetos 100% Google.

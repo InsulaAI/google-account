@@ -3,7 +3,8 @@
 Uso: python3 -I scripts/backlog.py <id do backlog> <listagem.json>
 
 A listagem é o que a rotina (ou alguém) lê no Drive: {"pasta_id", "lido_em", "arquivos": [
-{"caminho": ["CENA 8", "Seedance 2.0"], "nome": "arquivo.mov"}, ...]}, com o caminho relativo à
+{"caminho": ["CENA 8", "Seedance 2.0"], "nome": "arquivo.mov", "id": "<id do arquivo no Drive>"}, ...]}.
+Com o id, a página mostra o botão "Assistir no Drive" de cada vídeo, com o caminho relativo à
 pasta do backlog. Convenção das pastas (a mesma do backlog do Mercado Pago):
   CENA <n> / <modelo> / takes entregues
   CENA <n> / <modelo> Tentativas / tentativas descartadas, o nome do arquivo é o plano + _<código>
@@ -47,19 +48,20 @@ def main(bid, listagem):
         mod, fam, tent = modelo(cam[1])
         c = cenas.setdefault(n, {"cena": n, "entregue": {}, "tentativas": {}})
         stem = os.path.splitext(nome)[0]
+        fid = str(a.get("id") or "")
         if tent:
             plano = re.sub(r"_[A-Za-z0-9]{6,}$", "", stem)
-            c["tentativas"].setdefault(mod, {}).setdefault(plano, 0)
-            c["tentativas"][mod][plano] += 1
+            c["tentativas"].setdefault(mod, {}).setdefault(plano, []).append(fid)
         else:
             take = re.search(r"cena_?\d+[A-Z]?(?:_[A-Z])?", stem, re.I)
-            c["entregue"].setdefault(mod, []).append(take.group(0).upper() if take and take.group(0).upper().startswith("CENA_") else stem)
+            nomet = take.group(0).upper() if take and take.group(0).upper().startswith("CENA_") else stem
+            c["entregue"].setdefault(mod, []).append((nomet, fid))
         M = modelos.setdefault(mod, {"modelo": mod, "google": FAMILIAS.get(fam, False), "cenas_entregues": 0, "takes_entregues": 0, "tentativas_descartadas": 0, "cenas_com_falha": 0})
     out = []
     for n in sorted(cenas):
         c = cenas[n]
-        ent = [{"modelo": k, "takes": sorted(v)} for k, v in c["entregue"].items()]
-        ten = [{"modelo": k, "planos": [{"plano": p, "tentativas": q} for p, q in sorted(v.items(), key=lambda x: -x[1])]} for k, v in c["tentativas"].items()]
+        ent = [{"modelo": k, "takes": [t for t, _ in sorted(v)], "videos": [{"take": t, "id": i} for t, i in sorted(v) if i]} for k, v in c["entregue"].items()]
+        ten = [{"modelo": k, "planos": [{"plano": p, "tentativas": len(q), "ids": [i for i in q if i]} for p, q in sorted(v.items(), key=lambda x: -len(x[1]))]} for k, v in c["tentativas"].items()]
         for e in ent:
             modelos[e["modelo"]]["cenas_entregues"] += 1
             modelos[e["modelo"]]["takes_entregues"] += len(e["takes"])
