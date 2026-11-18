@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-11-12T13:51:45Z",
+ "atualizado_em": "2026-11-18T19:20:36Z",
  "origem": {
   "cuentas": "2026-09-25T20:29:02.947Z",
   "latam": "2026-11-03T21:28:24.866Z",
@@ -50,7 +50,7 @@
    "manual": false,
    "data": "2026-01-26",
    "tipo": "Débito",
-   "lancamento": "Clear",
+   "lancamento": "Clear Men",
    "servico": "Case",
    "po": "",
    "job": "389",
@@ -970,21 +970,6 @@
    "saldo": 250628.3
   },
   {
-   "id": "mercado-pago",
-   "projeto": "Mercado Pago",
-   "detalhe": "",
-   "situacao": "Em andamento",
-   "faturamento": 110000,
-   "faturamento_status": "previsto",
-   "faturamento_data": "2026-12-28",
-   "contingencia": 48218.82,
-   "aporte": null,
-   "executado": null,
-   "nota": "Contingência para extra de cor, mix, créditos de IA, roteiro e semana extra",
-   "aprovado": 158218.82,
-   "saldo": null
-  },
-  {
    "id": "clearblue",
    "projeto": "ClearBlue",
    "detalhe": "Filme de 30\"",
@@ -1013,6 +998,51 @@
    "nota": "100% pago pela contingência",
    "aprovado": 157705.41,
    "saldo": null
+  },
+  {
+   "id": "mercado-pago",
+   "projeto": "Mercado Pago",
+   "detalhe": "",
+   "situacao": "Encerrado",
+   "faturamento": 110000,
+   "faturamento_status": "a_receber",
+   "faturamento_data": "2026-12-28",
+   "contingencia": 48218.82,
+   "aporte": null,
+   "executado": null,
+   "nota": "Contingência para extra de cor, mix, créditos de IA, roteiro e semana extra",
+   "aprovado": 158218.82,
+   "saldo": null
+  },
+  {
+   "id": "brilhante",
+   "projeto": "Brilhante",
+   "detalhe": "Case · Unilever · job 387",
+   "situacao": "Encerrado",
+   "faturamento": 60000,
+   "faturamento_status": "pago",
+   "faturamento_data": "2026-01-23",
+   "contingencia": 0,
+   "aporte": null,
+   "executado": 60000,
+   "nota": "Pago pelo PO Cases (4100723952), com 50% de desconto sobre o preço de tabela",
+   "aprovado": 60000,
+   "saldo": 0
+  },
+  {
+   "id": "clear-men",
+   "projeto": "Clear Men",
+   "detalhe": "Case · Unilever · job 389",
+   "situacao": "Encerrado",
+   "faturamento": 60000,
+   "faturamento_status": "pago",
+   "faturamento_data": "2026-01-23",
+   "contingencia": 0,
+   "aporte": null,
+   "executado": 60000,
+   "nota": "Pago pelo PO Cases (4100723952), com 50% de desconto sobre o preço de tabela",
+   "aprovado": 60000,
+   "saldo": 0
   }
  ]
 }

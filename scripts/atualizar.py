@@ -122,6 +122,8 @@ for d in manual.get("debitos", []):
         continue
     mov.append({"tipo": "Débito", "valor_po": None, "manual": True, **{k: d.get(k, "") for k in ("data", "lancamento", "servico", "po", "job", "observacao")}, "valor": round(d["valor"], 2)})
 for r in mov:
+    if not r.get("manual") and r["lancamento"] in manual.get("nomes", {}):
+        r["lancamento"] = manual["nomes"][r["lancamento"]]
     if not r.get("manual") and r["tipo"] == "Débito" and r["lancamento"] in manual.get("observacoes", {}):
         r["observacao"] = manual["observacoes"][r["lancamento"]]
 mov.sort(key=lambda r: r["data"])

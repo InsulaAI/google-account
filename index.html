@@ -81,6 +81,7 @@ h3{font-family:var(--sans);font-weight:600;font-size:15px}
 .bars{display:grid;gap:16px;min-height:11rem;align-content:start}
 .pbars{display:grid;gap:18px;position:relative}
 .pbar{display:grid;gap:6px}
+.pbar.off{opacity:.65}
 .pbar-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;font-size:12.5px}
 .pbar-top .nm{font-weight:600}
 .pbar-top .sv{color:var(--text-3);flex:1 1 10rem;min-width:0}
@@ -474,19 +475,20 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     if (!P.length) { box.appendChild(el('p', 'empty', 'Nenhum projeto informado.')); return; }
     const max = d3.max(P, (p) => Number(p.aprovado)) || 1;
     const fat = (p) => {
-      if (p.faturamento) return `${money(p.faturamento)}${p.faturamento_status === 'previsto' ? ` · previsto ${date(p.faturamento_data)}` : ''}`;
+      const st = { previsto: `faturamento previsto ${date(p.faturamento_data)}`, a_receber: `a receber, previsão ${date(p.faturamento_data)}`, pago: 'pago' }[p.faturamento_status];
+      if (p.faturamento) return `${money(p.faturamento)}${st ? ` · ${st}` : ''}`;
       if (p.aporte) return 'Contrato, NF não liberada';
       return 'Sem NF';
     };
-    const cls = { 'Em andamento': 'ok', 'Aguardando aporte': 'warn', 'Congelado': 'warn', 'Cancelado': 'bad', 'Concluído': 'neutral' };
+    const cls = { 'Em andamento': 'ok', 'Aguardando aporte': 'warn', 'Congelado': 'warn', 'Cancelado': 'bad', 'Encerrado': 'neutral' };
     const t = tip(box);
     for (const p of P) {
       const segs = [
-        { v: Number(p.faturamento) || 0, c: C.cream, n: p.faturamento_status === 'previsto' ? 'Faturamento previsto' : 'Faturamento' },
+        { v: Number(p.faturamento) || 0, c: C.cream, n: { previsto: 'Faturamento previsto', a_receber: 'Faturado, a receber', pago: 'Faturado e pago' }[p.faturamento_status] || 'Faturamento' },
         { v: Number(p.contingencia) || 0, c: C.slate, n: 'Contingência' },
         { v: Number(p.aporte) || 0, c: C.steel, n: 'Novo aporte' },
       ].filter((s) => s.v > 0);
-      const item = el('div', 'pbar'), top = el('div', 'pbar-top');
+      const item = el('div', p.situacao === 'Encerrado' ? 'pbar off' : 'pbar'), top = el('div', 'pbar-top');
       top.append(el('span', 'nm', p.projeto), el('span', 'sv', p.detalhe || ''), el('span', 'chip ' + (cls[p.situacao] || 'neutral'), p.situacao), el('span', 'vl', money(p.aprovado)));
       const track = el('div', 'ptrack');
       track.style.width = (Number(p.aprovado) / max * 100) + '%';

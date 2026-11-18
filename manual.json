@@ -1,6 +1,6 @@
 {
  "_leia": "Valores informados pela equipe da Insula que ainda não estão nas planilhas (sem PO ou NF). scripts/atualizar.py junta isto a dados.json. Um débito daqui deixa de ser usado quando aparecer na aba 2026 da Cuentas com o mesmo valor. Editar à mão, nunca pela rotina.",
- "atualizado_em": "2026-11-12",
+ "atualizado_em": "2026-11-18",
  "debitos": [
   {
    "data": "2026-11-12",
@@ -39,19 +39,6 @@
    "nota": ""
   },
   {
-   "id": "mercado-pago",
-   "projeto": "Mercado Pago",
-   "detalhe": "",
-   "situacao": "Em andamento",
-   "faturamento": 110000,
-   "faturamento_status": "previsto",
-   "faturamento_data": "2026-12-28",
-   "contingencia": 48218.82,
-   "aporte": null,
-   "executado": null,
-   "nota": "Contingência para extra de cor, mix, créditos de IA, roteiro e semana extra"
-  },
-  {
    "id": "clearblue",
    "projeto": "ClearBlue",
    "detalhe": "Filme de 30\"",
@@ -76,6 +63,48 @@
    "aporte": null,
    "executado": null,
    "nota": "100% pago pela contingência"
+  },
+  {
+   "id": "mercado-pago",
+   "projeto": "Mercado Pago",
+   "detalhe": "",
+   "situacao": "Encerrado",
+   "faturamento": 110000,
+   "faturamento_status": "a_receber",
+   "faturamento_data": "2026-12-28",
+   "contingencia": 48218.82,
+   "aporte": null,
+   "executado": null,
+   "nota": "Contingência para extra de cor, mix, créditos de IA, roteiro e semana extra"
+  },
+  {
+   "id": "brilhante",
+   "projeto": "Brilhante",
+   "detalhe": "Case · Unilever · job 387",
+   "situacao": "Encerrado",
+   "faturamento": 60000,
+   "faturamento_status": "pago",
+   "faturamento_data": "2026-01-23",
+   "contingencia": 0,
+   "aporte": null,
+   "executado": 60000,
+   "nota": "Pago pelo PO Cases (4100723952), com 50% de desconto sobre o preço de tabela"
+  },
+  {
+   "id": "clear-men",
+   "projeto": "Clear Men",
+   "detalhe": "Case · Unilever · job 389",
+   "situacao": "Encerrado",
+   "faturamento": 60000,
+   "faturamento_status": "pago",
+   "faturamento_data": "2026-01-23",
+   "contingencia": 0,
+   "aporte": null,
+   "executado": 60000,
+   "nota": "Pago pelo PO Cases (4100723952), com 50% de desconto sobre o preço de tabela"
   }
- ]
+ ],
+ "nomes": {
+  "Clear": "Clear Men"
+ }
 }

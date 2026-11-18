@@ -53,7 +53,10 @@ Mercado Pago e Nespresso, faturamento previsto de SuperBet e Mercado Pago, contr
   daqui é ignorado assim que a aba 2026 da Cuentas tiver um débito com o mesmo valor, para não contar
   duas vezes.
 - `observacoes`: troca a observação de um débito da planilha, pelo nome do lançamento.
-- `projetos`: a seção "Projetos: faturamento e contingência". Aprovado = faturamento + contingência
+- `nomes`: troca o nome de um lançamento da planilha (ex.: "Clear" → "Clear Men").
+- `projetos`: a seção "Projetos: faturamento e contingência". `faturamento_status`: `previsto`
+  (NF ainda vai sair), `a_receber` (faturado, aguardando pagamento) ou `pago`. Situação
+  "Encerrado" vai para o fim da lista, esmaecida. Aprovado = faturamento + contingência
   + aporte; saldo = aprovado − executado. O script calcula os dois.
 - A rotina nunca edita este arquivo; ele muda quando a equipe manda valores novos.
 - A aba oculta "100% IA" (tabela de preços antiga) fica de fora.
