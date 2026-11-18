@@ -48,7 +48,8 @@ Três planilhas no drive compartilhado da Insula (pasta da conta Google):
 ## manual.json
 
 Valores que a equipe informa antes de existirem PO ou NF na planilha (12/11: contingências de
-Mercado Pago e Nespresso, faturamento previsto de SuperBet e Mercado Pago, contrato da ClearBlue).
+Mercado Pago e Nespresso, faturamento previsto de SuperBet e Mercado Pago, contrato da ClearBlue;
+18/11: Samsung, novo funding de R$ 374.073 do Programa de Preparação para Mídia, contrato n489359).
 
 - `debitos`: entram no extrato como débito do saldo Google, marcados "informado, sem NF". Um débito
   daqui é ignorado assim que a aba 2026 da Cuentas tiver um débito com o mesmo valor, para não contar
@@ -83,7 +84,7 @@ mesmas seções do PDF oficial: timeline, resumo, cena a cena, cena com falha e 
   - **SuperBet**: interrompido (R$ 239.816,70 executados), sem backlog completo. O botão abre
     direto a pasta de backup 1-16NwhtfLepCRZ-yFlR6TjlobFOEP12_ (`link_direto`).
   - **Brilhante e Clear Men**: 100% Google, sem backlog (`sem_backlog`, `so_google`).
-  - **ClearBlue e Nespresso**: página com o modelo vazio, "[a preencher]" em cinza e itálico.
+  - **ClearBlue, Nespresso e Samsung**: página com o modelo vazio, "[a preencher]" em cinza e itálico.
 - **Leitura das pastas:** `scripts/backlog.py <id> <listagem.json>` grava o bloco `drive` do
   projeto a partir da listagem da pasta (exemplo em `backlog/listagem-mercado-pago.json`).
   Convenção: `CENA <n>/<modelo>/` = takes entregues; `CENA <n>/<modelo> Tentativas/` = descartes,

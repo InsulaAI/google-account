@@ -77,6 +77,20 @@
    "backlog_url": ""
   },
   {
+   "id": "samsung",
+   "projeto": "Samsung",
+   "detalhe": "Samsung Mobile · contrato PPM n489359",
+   "situacao": "Novo funding",
+   "faturamento": null,
+   "faturamento_status": "",
+   "faturamento_data": "",
+   "contingencia": 0,
+   "aporte": 374073,
+   "executado": null,
+   "nota": "Financiamento do Programa de Preparação para Mídia do Google, assinado em 17/11/2026, com conclusão até 31/01/2027. NF não emitida e trabalho não iniciado; o serviço só começa depois que o Google emitir o PO.",
+   "backlog_url": ""
+  },
+  {
    "id": "mercado-pago",
    "projeto": "Mercado Pago",
    "detalhe": "",

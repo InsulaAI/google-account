@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-11-18T19:38:59Z",
+ "atualizado_em": "2026-11-18T19:53:35Z",
  "origem": {
   "cuentas": "2026-09-25T20:29:02.947Z",
   "latam": "2026-11-03T21:28:24.866Z",
@@ -1021,6 +1021,22 @@
    "nota": "100% pago pela contingência: R$ 157.705,41 do projeto e R$ 48.338,83 do adicional Klike",
    "backlog_url": "",
    "aprovado": 206044.24,
+   "saldo": null
+  },
+  {
+   "id": "samsung",
+   "projeto": "Samsung",
+   "detalhe": "Samsung Mobile · contrato PPM n489359",
+   "situacao": "Novo funding",
+   "faturamento": null,
+   "faturamento_status": "",
+   "faturamento_data": "",
+   "contingencia": 0,
+   "aporte": 374073,
+   "executado": null,
+   "nota": "Financiamento do Programa de Preparação para Mídia do Google, assinado em 17/11/2026, com conclusão até 31/01/2027. NF não emitida e trabalho não iniciado; o serviço só começa depois que o Google emitir o PO.",
+   "backlog_url": "",
+   "aprovado": 374073,
    "saldo": null
   },
   {

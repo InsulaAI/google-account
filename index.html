@@ -750,7 +750,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
       if (p.aporte) return 'Contrato, NF não liberada';
       return 'Sem NF';
     };
-    const cls = { 'Em andamento': 'ok', 'Aguardando aporte': 'warn', 'Congelado': 'warn', 'Cancelado': 'bad', 'Encerrado': 'neutral' };
+    const cls = { 'Em andamento': 'ok', 'Aguardando aporte': 'warn', 'Congelado': 'warn', 'Cancelado': 'bad', 'Encerrado': 'neutral', 'Novo funding': 'warn' };
     const t = tip(box);
     for (const p of P) {
       const segs = [

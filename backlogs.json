@@ -400,6 +400,45 @@
    "pasta_id": ""
   },
   {
+   "id": "samsung",
+   "oficial": false,
+   "projeto": "Samsung",
+   "titulo": "Samsung Mobile",
+   "subtitulo": "Quais modelos de imagem e vídeo usamos em cada cena, quantas tentativas cada uma levou e onde o modelo principal não entregou.",
+   "data": "[a preencher]",
+   "modelo_principal": "[a preencher]",
+   "timeline_img": "",
+   "timeline_titulo": "O filme cena a cena, com o modelo de cada uma.",
+   "timeline_fonte": "Timeline de edição + pastas de entrega",
+   "resumo_titulo": "",
+   "resumo_nota": "",
+   "resumo_fonte": "Pastas de entrega no Drive · contagem de arquivos por modelo",
+   "cenas": [
+    {
+     "cena": "01",
+     "take": "[a preencher]",
+     "modelo_imagem": "[a preencher]",
+     "modelo_video": "[a preencher]",
+     "descartes": "[a preencher]",
+     "status": "[a preencher]",
+     "trocou": false
+    }
+   ],
+   "cenas_fonte": "Pastas de cena no Drive · [a preencher] = dado que não está na pasta",
+   "falha": {
+    "titulo": "Onde o modelo principal não entregou.",
+    "rotulo": "Planos tentados",
+    "planos": [],
+    "categoria": "[F_ — a preencher]",
+    "o_que_deu_errado": "[descrição curta — a preencher]",
+    "prompt": "[a preencher]",
+    "solucao": "[a preencher]",
+    "fonte": "Pasta da cena / tentativas"
+   },
+   "pasta_url": "",
+   "pasta_id": ""
+  },
+  {
    "id": "brilhante",
    "projeto": "Brilhante",
    "sem_backlog": true,
