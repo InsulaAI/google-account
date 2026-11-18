@@ -140,9 +140,13 @@ for r in table(wb2["2026"], "ID Proyecto"):
                "servico": str(r.get("Servicio") or "").strip(), "po": ident(r.get("PO")), "valor": clean(v), "status": "Pendente"})
 # POs cancelados (manual.json): continuam na lista, marcados, e saem das somas da página.
 for r in af:
+    r["nota"] = ""
     if r["po"] in manual.get("pos_cancelados", {}):
-        r["status"] = "Cancelado"
-af.sort(key=lambda r: r["status"] == "Cancelado")
+        r["status"], r["nota"] = "Cancelado", manual["pos_cancelados"][r["po"]]
+    elif r["po"] in manual.get("pos_status", {}):
+        st = manual["pos_status"][r["po"]]
+        r["status"], r["nota"] = st.get("status", "Pendente"), st.get("nota", "")
+af.sort(key=lambda r: {"Pendente": 0, "Cancelado": 2}.get(r["status"], 1))
 
 # ---------- producao (LATAM, aba Production) ----------
 wb3 = openpyxl.load_workbook(latam, data_only=True)

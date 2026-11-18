@@ -56,6 +56,8 @@ Mercado Pago e Nespresso, faturamento previsto de SuperBet e Mercado Pago, contr
 - `nomes`: troca o nome de um lançamento da planilha (ex.: "Clear" → "Clear Men").
 - `producao_status`: troca a situação de um projeto da aba Production (ex.: Madeira Madeira →
   Cancelado, 18/11).
+- `pos_status`: situação de um PO da Á Faturar (PO → {status, nota}), ex.: Unilever "Aguardando
+  Google" (18/11). Continua somado no total a faturar.
 - `pos_cancelados`: POs da Á Faturar que foram cancelados (PO → motivo). Continuam na tabela,
   riscados, e saem do total a faturar e do gráfico de POs.
 - `projetos`: a seção "Projetos: faturamento e contingência". `faturamento_status`: `previsto`

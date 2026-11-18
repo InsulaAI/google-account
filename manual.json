@@ -120,6 +120,12 @@
   "Madeira Madeira": "Cancelado"
  },
  "pos_cancelados": {
-  "4100825695": "Madeira Madeira: projeto cancelado, aporte cancelado"
+  "4100825695": "Projeto e aporte cancelados"
+ },
+ "pos_status": {
+  "4100827663": {
+   "status": "Aguardando Google",
+   "nota": "PO enviado pelo Google; NF não emitida e projeto não produzido"
+  }
  }
 }

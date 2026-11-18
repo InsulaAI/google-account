@@ -392,7 +392,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
   function drawPos() {
     const rows = [
       ...D.movimentos.filter((r) => r.tipo === 'Crédito').map((r) => ({ po: String(r.po), nome: r.lancamento, valor: Number(r.valor_po ?? r.valor), situacao: 'Pago' })),
-      ...D.a_faturar.filter((r) => r.status !== 'Cancelado').map((r) => ({ po: String(r.po), nome: r.cliente, valor: Number(r.valor), situacao: 'A faturar' }))
+      ...D.a_faturar.filter((r) => r.status !== 'Cancelado').map((r) => ({ po: String(r.po), nome: r.cliente, valor: Number(r.valor), situacao: !r.status || r.status === 'Pendente' ? 'A faturar' : r.status }))
     ];
     donut(document.getElementById('pos'), rows, { label: 'POs aprovados em 2026', center: 'em POs', sub: (r) => `${r.situacao} · PO ${r.po}` });
   }
@@ -425,10 +425,11 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     }
     const af = document.getElementById('afaturar'); af.replaceChildren();
     for (const r of D.a_faturar) {
-      const tr = el('tr'), cancel = r.status === 'Cancelado';
+      const tr = el('tr'), cancel = r.status === 'Cancelado', pend = !r.status || r.status === 'Pendente';
       if (cancel) tr.className = 'off';
-      const sit = el('td'); sit.appendChild(el('span', 'chip ' + (cancel ? 'bad' : 'neutral'), cancel ? 'Cancelado' : 'A faturar'));
-      tr.append(el('td', '', r.cliente), el('td', 'muted', r.servico), el('td', 'muted', r.id_projeto), el('td', '', String(r.po)), el('td', 'num', money(r.valor)), sit);
+      const sit = el('td'); sit.appendChild(el('span', 'chip ' + (cancel ? 'bad' : pend ? 'neutral' : 'warn'), pend ? 'A faturar' : r.status));
+      const cli = el('td', '', r.cliente); if (r.nota) cli.appendChild(el('span', 'nt', r.nota));
+      tr.append(cli, el('td', 'muted', r.servico), el('td', 'muted', r.id_projeto), el('td', '', String(r.po)), el('td', 'num', money(r.valor)), sit);
       af.appendChild(tr);
     }
   }

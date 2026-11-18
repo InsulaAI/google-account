@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-11-18T19:27:59Z",
+ "atualizado_em": "2026-11-18T19:34:30Z",
  "origem": {
   "cuentas": "2026-09-25T20:29:02.947Z",
   "latam": "2026-11-03T21:28:24.866Z",
@@ -118,15 +118,8 @@
    "servico": "General Creative Production & Optimization",
    "po": "4100827982",
    "valor": 110000.0,
-   "status": "Pendente"
-  },
-  {
-   "id_projeto": "5-5366000040483",
-   "cliente": "Unilever",
-   "servico": "General Creative Production & Optimization",
-   "po": "4100827663",
-   "valor": 110000.0,
-   "status": "Pendente"
+   "status": "Pendente",
+   "nota": ""
   },
   {
    "id_projeto": "6-4445000041296",
@@ -134,7 +127,17 @@
    "servico": "General Creative Production & Optimization",
    "po": "4100868559",
    "valor": 330000.0,
-   "status": "Pendente"
+   "status": "Pendente",
+   "nota": ""
+  },
+  {
+   "id_projeto": "5-5366000040483",
+   "cliente": "Unilever",
+   "servico": "General Creative Production & Optimization",
+   "po": "4100827663",
+   "valor": 110000.0,
+   "status": "Aguardando Google",
+   "nota": "PO enviado pelo Google; NF não emitida e projeto não produzido"
   },
   {
    "id_projeto": "1-0774000041163",
@@ -142,7 +145,8 @@
    "servico": "General Creative Production & Optimization",
    "po": "4100825695",
    "valor": 110000.0,
-   "status": "Cancelado"
+   "status": "Cancelado",
+   "nota": "Projeto e aporte cancelados"
   }
  ],
  "producao": [
