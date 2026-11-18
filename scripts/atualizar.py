@@ -227,6 +227,7 @@ for p in manual.get("projetos", []):
     aprovado = round(fat + cont + apo, 2)
     projetos.append({**{k: p.get(k) for k in ("id", "projeto", "detalhe", "situacao", "faturamento", "faturamento_status",
                                               "faturamento_data", "contingencia", "aporte", "executado", "nota")},
+                     "backlog_url": p.get("backlog_url") if str(p.get("backlog_url") or "").startswith("https://") else "",
                      "aprovado": aprovado,
                      "saldo": round(aprovado - p["executado"], 2) if p.get("executado") is not None else None})
 

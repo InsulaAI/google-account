@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-11-18T19:34:30Z",
+ "atualizado_em": "2026-11-18T19:38:59Z",
  "origem": {
   "cuentas": "2026-09-25T20:29:02.947Z",
   "latam": "2026-11-03T21:28:24.866Z",
@@ -987,6 +987,7 @@
    "aporte": null,
    "executado": 239816.7,
    "nota": "",
+   "backlog_url": "",
    "aprovado": 490445,
    "saldo": 250628.3
   },
@@ -1002,6 +1003,7 @@
    "aporte": 117420,
    "executado": null,
    "nota": "Contrato de R$ 117.420, NF ainda não liberada. O cliente pediu também uma redução de 15\". O Google vai mandar um novo aporte para este projeto, sem usar o saldo.",
+   "backlog_url": "",
    "aprovado": 117420,
    "saldo": null
   },
@@ -1017,6 +1019,7 @@
    "aporte": null,
    "executado": null,
    "nota": "100% pago pela contingência: R$ 157.705,41 do projeto e R$ 48.338,83 do adicional Klike",
+   "backlog_url": "",
    "aprovado": 206044.24,
    "saldo": null
   },
@@ -1032,6 +1035,7 @@
    "aporte": null,
    "executado": null,
    "nota": "Contingência para extra de cor, mix, créditos de IA, roteiro e semana extra",
+   "backlog_url": "",
    "aprovado": 158218.82,
    "saldo": null
   },
@@ -1047,6 +1051,7 @@
    "aporte": null,
    "executado": 60000,
    "nota": "Pago pelo PO Cases (4100723952), com 50% de desconto sobre o preço de tabela",
+   "backlog_url": "",
    "aprovado": 60000,
    "saldo": 0
   },
@@ -1062,6 +1067,7 @@
    "aporte": null,
    "executado": 60000,
    "nota": "Pago pelo PO Cases (4100723952), com 50% de desconto sobre o preço de tabela",
+   "backlog_url": "",
    "aprovado": 60000,
    "saldo": 0
   }

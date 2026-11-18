@@ -45,7 +45,8 @@
    "contingencia": 160445,
    "aporte": null,
    "executado": 239816.7,
-   "nota": ""
+   "nota": "",
+   "backlog_url": ""
   },
   {
    "id": "clearblue",
@@ -58,7 +59,8 @@
    "contingencia": 0,
    "aporte": 117420,
    "executado": null,
-   "nota": "Contrato de R$ 117.420, NF ainda não liberada. O cliente pediu também uma redução de 15\". O Google vai mandar um novo aporte para este projeto, sem usar o saldo."
+   "nota": "Contrato de R$ 117.420, NF ainda não liberada. O cliente pediu também uma redução de 15\". O Google vai mandar um novo aporte para este projeto, sem usar o saldo.",
+   "backlog_url": ""
   },
   {
    "id": "nespresso",
@@ -71,7 +73,8 @@
    "contingencia": 206044.24,
    "aporte": null,
    "executado": null,
-   "nota": "100% pago pela contingência: R$ 157.705,41 do projeto e R$ 48.338,83 do adicional Klike"
+   "nota": "100% pago pela contingência: R$ 157.705,41 do projeto e R$ 48.338,83 do adicional Klike",
+   "backlog_url": ""
   },
   {
    "id": "mercado-pago",
@@ -84,7 +87,8 @@
    "contingencia": 48218.82,
    "aporte": null,
    "executado": null,
-   "nota": "Contingência para extra de cor, mix, créditos de IA, roteiro e semana extra"
+   "nota": "Contingência para extra de cor, mix, créditos de IA, roteiro e semana extra",
+   "backlog_url": ""
   },
   {
    "id": "brilhante",
@@ -97,7 +101,8 @@
    "contingencia": 0,
    "aporte": null,
    "executado": 60000,
-   "nota": "Pago pelo PO Cases (4100723952), com 50% de desconto sobre o preço de tabela"
+   "nota": "Pago pelo PO Cases (4100723952), com 50% de desconto sobre o preço de tabela",
+   "backlog_url": ""
   },
   {
    "id": "clear-men",
@@ -110,7 +115,8 @@
    "contingencia": 0,
    "aporte": null,
    "executado": 60000,
-   "nota": "Pago pelo PO Cases (4100723952), com 50% de desconto sobre o preço de tabela"
+   "nota": "Pago pelo PO Cases (4100723952), com 50% de desconto sobre o preço de tabela",
+   "backlog_url": ""
   }
  ],
  "nomes": {

@@ -93,6 +93,11 @@ h3{font-family:var(--sans);font-weight:600;font-size:15px}
 .pbar.has-mark{padding-bottom:14px}
 .tick-sw{background:var(--amber);width:2px;height:12px;border-radius:0}
 td .nt{display:block;color:var(--text-3);font-size:11.5px;white-space:normal;max-width:34ch;margin-top:2px}
+.btn{display:inline-block;font:inherit;font-size:12.5px;font-weight:600;padding:6px 14px;border-radius:999px;border:1px solid var(--amber);background:var(--amber);color:var(--ground);text-decoration:none;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+.btn:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+.btn:disabled{background:transparent;color:var(--text-3);border-color:var(--line-2);cursor:not-allowed}
+td.num .nt{margin-left:auto}
 .flag{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-left:6px;white-space:nowrap}
 .bar{display:grid;gap:6px}
 .bar.off{opacity:.6}
@@ -187,6 +192,14 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
       <div class="tw"><table>
         <thead><tr><th>Projeto</th><th class="num">Aprovado</th><th class="num">Faturamento</th><th class="num">Contingência</th><th class="num">Executado</th><th class="num">Saldo</th><th>Situação</th></tr></thead>
         <tbody id="projetos-tabela"></tbody>
+      </table></div>
+    </div>
+    <div class="card" id="backlog">
+      <h3>Backlog Modelos</h3>
+      <p class="note">Modelos de IA usados em cada cena, por projeto. O botão abre o backlog do projeto numa nova aba.</p>
+      <div class="tw"><table>
+        <thead><tr><th>Projeto</th><th>Situação</th><th class="num">Backlog</th></tr></thead>
+        <tbody id="backlog-tabela"></tbody>
       </table></div>
     </div>
   </section>
@@ -519,6 +532,21 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
         el('td', 'num', p.contingencia ? money(p.contingencia) : (p.aporte ? 'Novo aporte' : '–')),
         el('td', 'num', p.executado != null ? money(p.executado) : '–'), el('td', 'num', p.saldo != null ? money(p.saldo) : '–'), sit);
       tb.appendChild(tr);
+    }
+    const bt = document.getElementById('backlog-tabela'); bt.replaceChildren();
+    for (const p of P) {
+      const tr = el('tr'), nome = el('td', '', p.projeto);
+      if (p.detalhe) nome.appendChild(el('span', 'nt', p.detalhe));
+      const sit = el('td'); sit.appendChild(el('span', 'chip ' + (cls[p.situacao] || 'neutral'), p.situacao));
+      const acao = el('td', 'num');
+      if (p.backlog_url) {
+        const a = el('a', 'btn', 'Backlog'); a.href = p.backlog_url; a.target = '_blank'; a.rel = 'noopener';
+        acao.appendChild(a);
+      } else {
+        const b = el('button', 'btn', 'Backlog'); b.type = 'button'; b.disabled = true; b.title = 'Link em breve';
+        acao.append(b, el('span', 'nt', 'link em breve'));
+      }
+      tr.append(nome, sit, acao); bt.appendChild(tr);
     }
   }
 

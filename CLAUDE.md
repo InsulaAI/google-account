@@ -64,6 +64,8 @@ Mercado Pago e Nespresso, faturamento previsto de SuperBet e Mercado Pago, contr
   (NF ainda vai sair), `a_receber` (faturado, aguardando pagamento) ou `pago`. Situação
   "Encerrado" vai para o fim da lista, esmaecida. Aprovado = faturamento + contingência
   + aporte; saldo = aprovado − executado. O script calcula os dois.
+- `projetos[].backlog_url`: endereço (https) da página de backlog de modelos de IA do projeto,
+  aberto pelo botão da tabela "Backlog Modelos". Vazio = botão desativado com "link em breve".
 - A rotina nunca edita este arquivo; ele muda quando a equipe manda valores novos.
 - A aba oculta "100% IA" (tabela de preços antiga) fica de fora.
 - `dados.json.origem` guarda o modifiedTime do Drive de cada planilha na última atualização.
