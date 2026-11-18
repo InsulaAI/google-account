@@ -44,7 +44,8 @@ async function validSession(request) {
 }
 
 function servable(path) {
-  return ["/", "/index.html", "/dados.json", "/vendor/d3.min.js", "/img/insula-logo.webp"].includes(path);
+  if (["/", "/index.html", "/dados.json", "/backlogs.json", "/vendor/d3.min.js"].includes(path)) return true;
+  return /^\/img\/[a-z0-9-]+\.webp$/.test(path);
 }
 
 function safeNext(n) {

@@ -22,6 +22,7 @@ vendor/d3.min.js          d3 v7.9.0, servido daqui para não depender de CDN
 img/insula-logo.webp      logo da Insula (versão "SEM BG" da pasta INSULA AI no Drive), 234×240
 functions/_middleware.js  login: tela, sessão e lista do que pode ser servido
 scripts/atualizar.py      gera dados.json a partir das planilhas (nunca servido)
+backlogs.json             backlog de modelos de IA por projeto (editar à mão); abre em #backlog-<id>
 robots.txt
 ```
 
@@ -69,6 +70,20 @@ Mercado Pago e Nespresso, faturamento previsto de SuperBet e Mercado Pago, contr
 - A rotina nunca edita este arquivo; ele muda quando a equipe manda valores novos.
 - A aba oculta "100% IA" (tabela de preços antiga) fica de fora.
 - `dados.json.origem` guarda o modifiedTime do Drive de cada planilha na última atualização.
+
+## Backlog de modelos
+
+Exigência do Google: que modelo de imagem e vídeo foi usado em cada cena, quantas tentativas e
+onde o modelo principal falhou. A tabela "Backlog Modelos" (abaixo de "Detalhe por projeto") tem
+um botão por projeto que abre `#backlog-<id>`, uma página dentro do próprio `index.html` com as
+mesmas seções do PDF oficial: timeline, resumo, cena a cena, cena com falha e régua F1–F9.
+
+- Os dados ficam em `backlogs.json`. Só o do **Mercado Pago** é oficial (PDF de nov/2026, pasta
+  no Drive 1J6J4_Y2K3sQSXodtvSSkPsio7dKPYBCp). Os outros são o modelo vazio, com "[a preencher]",
+  que a página mostra em cinza e itálico.
+- `pasta_url`: o botão "Saiba mais" abre a pasta do backlog no Drive. Quem abre precisa ter
+  acesso à pasta no Drive; a senha do site não dá esse acesso.
+- Os números do resumo (7/8, 1, 10) são calculados das cenas e dos planos, não digitados.
 
 ## Atualização automática
 

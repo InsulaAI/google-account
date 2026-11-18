@@ -130,6 +130,42 @@ tr.off td.num{text-decoration:line-through}
 .team strong{color:var(--text);font-weight:600}
 
 .empty{color:var(--text-3);font-size:13px}
+.stack{display:grid;gap:44px}
+.stack[hidden]{display:none}
+.back{color:var(--text-2);text-decoration:none;font-size:13px}
+.back:hover{color:var(--text)}
+.bk-head{display:grid;gap:12px;padding-bottom:24px;border-bottom:1px solid var(--amber)}
+.bk-head h1{font-family:var(--display);font-weight:600;font-size:clamp(32px,5vw,52px);line-height:1.04;letter-spacing:-.015em;text-wrap:balance}
+.bk-k{color:var(--amber)}
+.bk-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+.bk-sec{display:grid;gap:14px}
+.bk-sec h2{font-size:clamp(20px,2.6vw,28px);letter-spacing:-.01em}
+.bk-img{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:flex;justify-content:center}
+.bk-img img{display:block;max-width:100%;max-height:420px;width:auto;height:auto;object-fit:contain;border-radius:1px}
+.bk-cta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+.bk-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,7.5rem),1fr));gap:8px}
+.bk-scene{background:var(--surface);border-top:2px solid var(--line-2);padding:10px 12px;display:grid;gap:4px;font-size:13px}
+.bk-scene.alt{border-top-color:var(--amber)}
+.bk-scene.alt b,.bk-scene.alt .k{color:var(--amber)}
+.bk-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));gap:12px}
+.bk-tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:6px}
+.bk-big{font-family:var(--display);font-weight:700;font-size:46px;line-height:1;font-variant-numeric:tabular-nums}
+.bk-big.acc{color:var(--amber)}
+.bk-note{font-size:13.5px;color:var(--text-2)}
+.bk-src{color:var(--text-3)}
+tr.alt td{color:var(--amber)}
+.ph{color:var(--text-3)!important;font-style:italic}
+.bk-empty{background:var(--surface);border:1px dashed var(--line-2);border-radius:var(--r);padding:28px;text-align:center}
+.bk-plans{list-style:none;margin:0;padding:0;display:grid}
+.bk-plans li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.bk-plans li b{font-variant-numeric:tabular-nums}
+.bk-plans li.tot{color:var(--amber);border-bottom:0}
+.bk-box{border-color:var(--line-2)}
+.bk-box p:not(.k){margin-bottom:6px}
+.k.acc{color:var(--amber)}
+.bk-regua{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:10px}
+.bk-rule{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:grid;gap:4px}
+.bk-rule b{font-family:var(--display);font-weight:600;font-size:16px}
 footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);padding-top:16px}
 @media (prefers-reduced-motion:no-preference){
   @keyframes rise{from{transform:scaleY(0)}to{transform:scaleY(1)}}
@@ -139,6 +175,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
 </head>
 <body>
 <div class="wrap">
+<div id="dash-view" class="stack">
   <header>
     <img class="logo" src="img/insula-logo.webp" alt="Insula AI" width="234" height="240">
     <p class="k">Relatório de projetos · Google · 2026</p>
@@ -196,7 +233,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     </div>
     <div class="card" id="backlog">
       <h3>Backlog Modelos</h3>
-      <p class="note">Modelos de IA usados em cada cena, por projeto. O botão abre o backlog do projeto numa nova aba.</p>
+      <p class="note">Modelos de IA usados em cada cena, por projeto (exigência do Google). O botão abre o backlog do projeto.</p>
       <div class="tw"><table>
         <thead><tr><th>Projeto</th><th>Situação</th><th class="num">Backlog</th></tr></thead>
         <tbody id="backlog-tabela"></tbody>
@@ -258,6 +295,8 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     </div>
   </section>
 
+</div>
+<section id="backlog-view" class="stack" hidden></section>
   <footer id="rodape">Dados das planilhas de controle da Insula AI.</footer>
 </div>
 
@@ -277,7 +316,101 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
   const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
   const soma = (rows, f) => rows.reduce((s, r) => s + (Number(r[f]) || 0), 0);
   const r2 = (v) => Math.round(v * 100) / 100;
-  let D = null, cat = 'Filme novo';
+  let D = null, B = null, cat = 'Filme novo';
+
+  // ---------- backlog de modelos (uma "página" por projeto, aberta por #backlog-<id>) ----------
+  const isPh = (t) => /^\[.*\]$/.test(String(t ?? '').trim());
+  const tx = (tag, cls, t) => { const e = el(tag, cls, t); if (isPh(t)) e.classList.add('ph'); return e; };
+  function bkSection(num, kicker, titulo) {
+    const sec = el('section', 'bk-sec'); sec.append(el('p', 'k bk-k', `${num} — ${kicker}`), tx('h2', '', titulo)); return sec;
+  }
+  function renderBacklog(b) {
+    const v = document.getElementById('backlog-view'); v.replaceChildren();
+    const nav = el('a', 'back', '← Conta corrente Google 2026'); nav.href = '#backlog'; v.appendChild(nav);
+    const head = el('header', 'bk-head');
+    const k = el('p', 'k bk-k', 'Insula AI × Google · Backlog de modelos');
+    const st = el('span', 'chip ' + (b.oficial ? 'ok' : 'warn'), b.oficial ? 'Dados oficiais' : 'Modelo · a preencher');
+    head.append(k, el('h1', '', b.titulo), tx('p', 'lede', b.subtitulo));
+    const meta = el('p', 'k'); meta.append(document.createTextNode(`Insula AI · ${b.projeto} · `), tx('span', '', b.data));
+    const row = el('div', 'bk-meta'); row.append(meta, st);
+    const more = () => {
+      if (b.pasta_url && String(b.pasta_url).startsWith('https://')) {
+        const a = el('a', 'btn', 'Saiba mais'); a.href = b.pasta_url; a.target = '_blank'; a.rel = 'noopener';
+        a.title = 'Abre a pasta do backlog no Google Drive'; return a;
+      }
+      const x = el('button', 'btn', 'Saiba mais'); x.type = 'button'; x.disabled = true; x.title = 'Pasta do backlog a definir'; return x;
+    };
+    const cta = el('div', 'bk-cta'); cta.append(more(), el('span', 'note', b.pasta_url ? 'Pasta do backlog no Google Drive, com cada cena e o PDF completo' : 'Pasta do backlog a definir'));
+    head.append(row, cta); v.appendChild(head);
+
+    const cenas = b.cenas || [], f = b.falha || {}, planos = f.planos || [];
+    // 01 timeline
+    const s1 = bkSection('01', 'Timeline', b.timeline_titulo);
+    if (b.timeline_img) { const fig = el('div', 'bk-img'); const im = el('img'); im.src = b.timeline_img; im.alt = 'Timeline de edição do filme'; fig.appendChild(im); s1.appendChild(fig); }
+    else s1.appendChild(tx('p', 'bk-empty', '[timeline de edição a preencher]'));
+    const strip = el('div', 'bk-strip');
+    for (const c of cenas) { const it = el('div', 'bk-scene' + (c.trocou ? ' alt' : '')); it.append(el('span', 'k', `Cena ${Number(c.cena) || c.cena}`), tx('b', '', c.modelo_video)); strip.appendChild(it); }
+    s1.append(strip, el('p', 'k bk-src', 'Fonte: ' + b.timeline_fonte)); v.appendChild(s1);
+
+    // 02 resumo
+    const s2 = bkSection('02', 'Resumo', b.resumo_titulo || '[resumo a preencher]');
+    const n = cenas.length, princ = b.modelo_principal, real = b.oficial;
+    const comP = cenas.filter((c) => c.modelo_video === princ).length, trocas = cenas.filter((c) => c.trocou);
+    const desc = planos.reduce((a, p) => a + (Number(p.tentativas) || 0), 0);
+    const tiles = el('div', 'bk-tiles');
+    const tile = (big, label, accent) => { const t = el('div', 'bk-tile'); t.append(el('span', 'bk-big' + (accent ? ' acc' : ''), big), el('span', 'note', label)); tiles.appendChild(t); };
+    if (real) {
+      tile(`${comP}/${n}`, `cenas entregues com ${princ}`, true);
+      tile(String(trocas.length), `cena${trocas.length === 1 ? '' : 's'} trocada${trocas.length === 1 ? '' : 's'} para ${[...new Set(trocas.map((c) => c.modelo_video))].join(', ')} (cena ${trocas.map((c) => Number(c.cena)).join(', ')})`);
+      tile(String(desc), `tentativas descartadas no ${princ}, em ${planos.length} planos da cena ${trocas.map((c) => Number(c.cena)).join(', ')}`);
+    } else {
+      tile('—', 'cenas entregues com o modelo principal'); tile('—', 'cenas trocadas de modelo'); tile('—', 'tentativas descartadas');
+    }
+    s2.appendChild(tiles);
+    if (b.resumo_nota) s2.appendChild(el('p', 'bk-note', '◆  ' + b.resumo_nota));
+    s2.appendChild(el('p', 'k bk-src', 'Fonte: ' + b.resumo_fonte)); v.appendChild(s2);
+
+    // 03 cena a cena
+    const s3 = bkSection('03', 'Cena a cena', 'O que foi usado em cada cena.');
+    const tw = el('div', 'tw'), tb = el('table'), th = el('thead'), hr = el('tr');
+    for (const h of ['Cena', 'Take entregue', 'Modelo de imagem', 'Modelo de vídeo', 'Descartes', 'Status']) hr.appendChild(el('th', '', h));
+    th.appendChild(hr); tb.appendChild(th); const body = el('tbody');
+    for (const c of cenas) {
+      const tr = el('tr', c.trocou ? 'alt' : '');
+      for (const key of ['cena', 'take', 'modelo_imagem', 'modelo_video', 'descartes', 'status']) tr.appendChild(tx('td', '', c[key]));
+      body.appendChild(tr);
+    }
+    tb.appendChild(body); tw.appendChild(tb); s3.append(tw, el('p', 'k bk-src', 'Fonte: ' + b.cenas_fonte)); v.appendChild(s3);
+
+    // 04 falha
+    const s4 = bkSection('04', trocas.length ? `Cena ${trocas.map((c) => Number(c.cena)).join(', ')}` : 'Falhas', f.titulo || '[falhas a preencher]');
+    const g4 = el('div', 'grid bk-fail'), l = el('div', 'card'); l.appendChild(el('p', 'k', f.rotulo || 'Planos tentados'));
+    const ul = el('ul', 'bk-plans');
+    if (!planos.length) ul.appendChild(tx('li', '', '[planos a preencher]'));
+    for (const p of planos) { const li = el('li'); li.append(el('span', '', p.plano), el('b', '', `${p.tentativas}×`)); ul.appendChild(li); }
+    if (planos.length) { const li = el('li', 'tot'); li.append(el('span', '', 'Total descartado'), el('b', '', String(desc))); ul.appendChild(li); }
+    l.appendChild(ul);
+    const r = el('div', 'card bk-box');
+    for (const [lab, val, acc] of [['Categoria de falha', f.categoria], ['O que deu errado', f.o_que_deu_errado], ['Prompt usado', f.prompt], ['Solução', f.solucao, true]]) {
+      r.append(el('p', 'k' + (acc ? ' acc' : ''), lab), tx('p', '', val ?? '[a preencher]'));
+    }
+    g4.append(l, r); s4.append(g4, el('p', 'k bk-src', 'Fonte: ' + (f.fonte || ''))); v.appendChild(s4);
+
+    // 05 régua
+    const s5 = bkSection('05', 'Régua de falhas', 'Uma régua comum para descrever cada falha.');
+    const gr = el('div', 'bk-regua');
+    for (const x of B.regua || []) { const c = el('div', 'bk-rule'); c.append(el('span', 'k acc', x.codigo), el('b', '', x.nome), el('span', 'note', x.descricao)); gr.appendChild(c); }
+    s5.append(gr, el('p', 'k bk-src', 'Cada descarte recebe um código F1–F9 + descrição livre')); v.appendChild(s5);
+    const end = el('div', 'bk-cta'); end.append(more(), el('span', 'note', b.pasta_url ? 'Ver todos os detalhes na pasta do backlog' : 'Pasta do backlog a definir')); v.appendChild(end);
+  }
+  function route() {
+    const h = decodeURIComponent(location.hash.slice(1));
+    const b = h.startsWith('backlog-') && B ? B.backlogs.find((x) => 'backlog-' + x.id === h) : null;
+    document.getElementById('dash-view').hidden = !!b;
+    document.getElementById('backlog-view').hidden = !b;
+    document.title = b ? `Backlog de modelos · ${b.projeto}` : 'Conta Corrente Google 2026';
+    if (b) { renderBacklog(b); window.scrollTo(0, 0); }
+  }
 
   function resumo() {
     const cred = D.movimentos.filter((r) => r.tipo === 'Crédito'), deb = D.movimentos.filter((r) => r.tipo === 'Débito');
@@ -539,7 +672,11 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
       if (p.detalhe) nome.appendChild(el('span', 'nt', p.detalhe));
       const sit = el('td'); sit.appendChild(el('span', 'chip ' + (cls[p.situacao] || 'neutral'), p.situacao));
       const acao = el('td', 'num');
-      if (p.backlog_url) {
+      const bk = B && B.backlogs.find((x) => x.id === p.id);
+      if (bk) {
+        const a = el('a', 'btn', 'Backlog'); a.href = '#backlog-' + bk.id;
+        acao.append(a, el('span', 'nt', bk.oficial ? 'dados oficiais' : 'modelo, a preencher'));
+      } else if (p.backlog_url) {
         const a = el('a', 'btn', 'Backlog'); a.href = p.backlog_url; a.target = '_blank'; a.rel = 'noopener';
         acao.appendChild(a);
       } else {
@@ -568,8 +705,11 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
   let rt; let lastW = window.innerWidth;
   window.addEventListener('resize', () => { if (window.innerWidth === lastW) return; lastW = window.innerWidth; clearTimeout(rt); rt = setTimeout(() => D && drawAll(), 150); });
 
-  fetch('dados.json', { cache: 'no-store' }).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then((j) => { D = j; drawAll(); })
+  const getJSON = (u) => fetch(u, { cache: 'no-store' }).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); });
+  getJSON('backlogs.json').then((j) => { B = j; if (D) drawProjetos(); route(); }).catch(() => {});
+  window.addEventListener('hashchange', route);
+  getJSON('dados.json')
+    .then((j) => { D = j; drawAll(); route(); })
     .catch(() => { for (const id of ['cascata', 'destino', 'pos', 'producao']) document.getElementById(id).replaceChildren(el('p', 'empty', 'Não foi possível carregar os dados. Recarregue a página.')); });
 })();
 </script>

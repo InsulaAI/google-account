@@ -1,0 +1,360 @@
+{
+ "_leia": "Backlog de modelos de IA por projeto (exigência do Google). Editar à mão. Só o do Mercado Pago tem dados oficiais (PDF de nov/2026); os outros são o modelo vazio. [a preencher] aparece na página como campo pendente.",
+ "regua": [
+  {
+   "codigo": "F1",
+   "nome": "Consistência",
+   "descricao": "Rosto ou roupa mudam entre takes."
+  },
+  {
+   "codigo": "F2",
+   "nome": "Objetos e mãos",
+   "descricao": "Ferramenta atravessa ou escapa da mão."
+  },
+  {
+   "codigo": "F3",
+   "nome": "Anatomia",
+   "descricao": "Dedos, rostos ou corpos deformados."
+  },
+  {
+   "codigo": "F4",
+   "nome": "Física",
+   "descricao": "Peso, colisão ou velocidade irreais."
+  },
+  {
+   "codigo": "F5",
+   "nome": "Câmera",
+   "descricao": "Movimento pedido não acontece."
+  },
+  {
+   "codigo": "F6",
+   "nome": "Aderência ao prompt",
+   "descricao": "Ação ou olhar pedido ignorado."
+  },
+  {
+   "codigo": "F7",
+   "nome": "Marca, texto e logo",
+   "descricao": "Logo inventado ou texto ilegível."
+  },
+  {
+   "codigo": "F8",
+   "nome": "Artefatos",
+   "descricao": "Flicker, morphing ou ruído."
+  },
+  {
+   "codigo": "F9",
+   "nome": "Tempo e ritmo",
+   "descricao": "A ação não cabe no take."
+  }
+ ],
+ "backlogs": [
+  {
+   "id": "mercado-pago",
+   "oficial": true,
+   "projeto": "Mercado Pago",
+   "titulo": "Mercado Pago · Conta Negócio",
+   "subtitulo": "Quais modelos de imagem e vídeo usamos em cada cena, quantas tentativas cada uma levou e onde o Omni 1.1 não entregou.",
+   "data": "Novembro 2026",
+   "modelo_principal": "Omni 1.1",
+   "timeline_img": "img/backlog-mercado-pago-timeline.webp",
+   "timeline_titulo": "O filme em oito cenas, com o modelo de cada uma.",
+   "timeline_fonte": "Timeline de edição + pastas de entrega · cena 8 trocou de modelo",
+   "resumo_titulo": "Sete de oito cenas saíram do Omni 1.1.",
+   "resumo_nota": "Todas as falhas registradas do Omni 1.1 estão nos quatro planos da cena 8.",
+   "resumo_fonte": "Pastas de entrega no Drive · contagem de arquivos por modelo",
+   "cenas": [
+    {
+     "cena": "01",
+     "take": "CENA_01",
+     "modelo_imagem": "[a preencher]",
+     "modelo_video": "Omni 1.1",
+     "descartes": "—",
+     "status": "Aprovado",
+     "trocou": false
+    },
+    {
+     "cena": "02",
+     "take": "CENA_02A, 02B",
+     "modelo_imagem": "[a preencher]",
+     "modelo_video": "Omni 1.1",
+     "descartes": "—",
+     "status": "Aprovado",
+     "trocou": false
+    },
+    {
+     "cena": "03",
+     "take": "CENA_03",
+     "modelo_imagem": "[a preencher]",
+     "modelo_video": "Omni 1.1",
+     "descartes": "—",
+     "status": "Aprovado",
+     "trocou": false
+    },
+    {
+     "cena": "04",
+     "take": "cena04 orbital v29",
+     "modelo_imagem": "[a preencher]",
+     "modelo_video": "Omni 1.1",
+     "descartes": "[confirmar versões]",
+     "status": "Aprovado",
+     "trocou": false
+    },
+    {
+     "cena": "05",
+     "take": "CENA_05",
+     "modelo_imagem": "[a preencher]",
+     "modelo_video": "Omni 1.1",
+     "descartes": "—",
+     "status": "Aprovado",
+     "trocou": false
+    },
+    {
+     "cena": "06",
+     "take": "CENA_06_B",
+     "modelo_imagem": "[a preencher]",
+     "modelo_video": "Omni 1.1",
+     "descartes": "—",
+     "status": "Aprovado",
+     "trocou": false
+    },
+    {
+     "cena": "07",
+     "take": "CENA_07",
+     "modelo_imagem": "[a preencher]",
+     "modelo_video": "Omni 1.1",
+     "descartes": "—",
+     "status": "Aprovado",
+     "trocou": false
+    },
+    {
+     "cena": "08",
+     "take": "CENA_08A, 08B",
+     "modelo_imagem": "[a preencher]",
+     "modelo_video": "Seedance 2.0",
+     "descartes": "10 no Omni 1.1",
+     "status": "Trocou de modelo",
+     "trocou": true
+    }
+   ],
+   "cenas_fonte": "Pastas Cena 1–8 no Drive · [a preencher] = dado que não está na pasta",
+   "falha": {
+    "titulo": "Cena 8: onde o Omni 1.1 não entregou.",
+    "rotulo": "Planos tentados no Omni 1.1",
+    "planos": [
+     {
+      "plano": "the-car-is-completely-debadged",
+      "tentativas": 4
+     },
+     {
+      "plano": "still-looking-to-the-right",
+      "tentativas": 3
+     },
+     {
+      "plano": "jorge-works-on-the-bolt",
+      "tentativas": 2
+     },
+     {
+      "plano": "turning-the-wrench",
+      "tentativas": 1
+     }
+    ],
+    "categoria": "[F_ — a preencher]",
+    "o_que_deu_errado": "[descrição curta — a preencher]",
+    "prompt": "[a preencher]",
+    "solucao": "Seedance 2.0 → CENA_08A e CENA_08B entregues",
+    "fonte": "Pasta Cena 8 / Omni 1.1 tentativas e Seedance 2.0"
+   },
+   "pasta_url": "https://drive.google.com/drive/folders/1J6J4_Y2K3sQSXodtvSSkPsio7dKPYBCp"
+  },
+  {
+   "id": "superbet",
+   "oficial": false,
+   "projeto": "SuperBet",
+   "titulo": "SuperBet",
+   "subtitulo": "Quais modelos de imagem e vídeo usamos em cada cena, quantas tentativas cada uma levou e onde o modelo principal não entregou.",
+   "data": "[a preencher]",
+   "modelo_principal": "[a preencher]",
+   "timeline_img": "",
+   "timeline_titulo": "O filme cena a cena, com o modelo de cada uma.",
+   "timeline_fonte": "Timeline de edição + pastas de entrega",
+   "resumo_titulo": "",
+   "resumo_nota": "",
+   "resumo_fonte": "Pastas de entrega no Drive · contagem de arquivos por modelo",
+   "cenas": [
+    {
+     "cena": "01",
+     "take": "[a preencher]",
+     "modelo_imagem": "[a preencher]",
+     "modelo_video": "[a preencher]",
+     "descartes": "[a preencher]",
+     "status": "[a preencher]",
+     "trocou": false
+    }
+   ],
+   "cenas_fonte": "Pastas de cena no Drive · [a preencher] = dado que não está na pasta",
+   "falha": {
+    "titulo": "Onde o modelo principal não entregou.",
+    "rotulo": "Planos tentados",
+    "planos": [],
+    "categoria": "[F_ — a preencher]",
+    "o_que_deu_errado": "[descrição curta — a preencher]",
+    "prompt": "[a preencher]",
+    "solucao": "[a preencher]",
+    "fonte": "Pasta da cena / tentativas"
+   },
+   "pasta_url": ""
+  },
+  {
+   "id": "clearblue",
+   "oficial": false,
+   "projeto": "ClearBlue",
+   "titulo": "ClearBlue",
+   "subtitulo": "Quais modelos de imagem e vídeo usamos em cada cena, quantas tentativas cada uma levou e onde o modelo principal não entregou.",
+   "data": "[a preencher]",
+   "modelo_principal": "[a preencher]",
+   "timeline_img": "",
+   "timeline_titulo": "O filme cena a cena, com o modelo de cada uma.",
+   "timeline_fonte": "Timeline de edição + pastas de entrega",
+   "resumo_titulo": "",
+   "resumo_nota": "",
+   "resumo_fonte": "Pastas de entrega no Drive · contagem de arquivos por modelo",
+   "cenas": [
+    {
+     "cena": "01",
+     "take": "[a preencher]",
+     "modelo_imagem": "[a preencher]",
+     "modelo_video": "[a preencher]",
+     "descartes": "[a preencher]",
+     "status": "[a preencher]",
+     "trocou": false
+    }
+   ],
+   "cenas_fonte": "Pastas de cena no Drive · [a preencher] = dado que não está na pasta",
+   "falha": {
+    "titulo": "Onde o modelo principal não entregou.",
+    "rotulo": "Planos tentados",
+    "planos": [],
+    "categoria": "[F_ — a preencher]",
+    "o_que_deu_errado": "[descrição curta — a preencher]",
+    "prompt": "[a preencher]",
+    "solucao": "[a preencher]",
+    "fonte": "Pasta da cena / tentativas"
+   },
+   "pasta_url": ""
+  },
+  {
+   "id": "nespresso",
+   "oficial": false,
+   "projeto": "Nespresso",
+   "titulo": "Nespresso",
+   "subtitulo": "Quais modelos de imagem e vídeo usamos em cada cena, quantas tentativas cada uma levou e onde o modelo principal não entregou.",
+   "data": "[a preencher]",
+   "modelo_principal": "[a preencher]",
+   "timeline_img": "",
+   "timeline_titulo": "O filme cena a cena, com o modelo de cada uma.",
+   "timeline_fonte": "Timeline de edição + pastas de entrega",
+   "resumo_titulo": "",
+   "resumo_nota": "",
+   "resumo_fonte": "Pastas de entrega no Drive · contagem de arquivos por modelo",
+   "cenas": [
+    {
+     "cena": "01",
+     "take": "[a preencher]",
+     "modelo_imagem": "[a preencher]",
+     "modelo_video": "[a preencher]",
+     "descartes": "[a preencher]",
+     "status": "[a preencher]",
+     "trocou": false
+    }
+   ],
+   "cenas_fonte": "Pastas de cena no Drive · [a preencher] = dado que não está na pasta",
+   "falha": {
+    "titulo": "Onde o modelo principal não entregou.",
+    "rotulo": "Planos tentados",
+    "planos": [],
+    "categoria": "[F_ — a preencher]",
+    "o_que_deu_errado": "[descrição curta — a preencher]",
+    "prompt": "[a preencher]",
+    "solucao": "[a preencher]",
+    "fonte": "Pasta da cena / tentativas"
+   },
+   "pasta_url": ""
+  },
+  {
+   "id": "brilhante",
+   "oficial": false,
+   "projeto": "Brilhante",
+   "titulo": "Brilhante",
+   "subtitulo": "Quais modelos de imagem e vídeo usamos em cada cena, quantas tentativas cada uma levou e onde o modelo principal não entregou.",
+   "data": "[a preencher]",
+   "modelo_principal": "[a preencher]",
+   "timeline_img": "",
+   "timeline_titulo": "O filme cena a cena, com o modelo de cada uma.",
+   "timeline_fonte": "Timeline de edição + pastas de entrega",
+   "resumo_titulo": "",
+   "resumo_nota": "",
+   "resumo_fonte": "Pastas de entrega no Drive · contagem de arquivos por modelo",
+   "cenas": [
+    {
+     "cena": "01",
+     "take": "[a preencher]",
+     "modelo_imagem": "[a preencher]",
+     "modelo_video": "[a preencher]",
+     "descartes": "[a preencher]",
+     "status": "[a preencher]",
+     "trocou": false
+    }
+   ],
+   "cenas_fonte": "Pastas de cena no Drive · [a preencher] = dado que não está na pasta",
+   "falha": {
+    "titulo": "Onde o modelo principal não entregou.",
+    "rotulo": "Planos tentados",
+    "planos": [],
+    "categoria": "[F_ — a preencher]",
+    "o_que_deu_errado": "[descrição curta — a preencher]",
+    "prompt": "[a preencher]",
+    "solucao": "[a preencher]",
+    "fonte": "Pasta da cena / tentativas"
+   },
+   "pasta_url": ""
+  },
+  {
+   "id": "clear-men",
+   "oficial": false,
+   "projeto": "Clear Men",
+   "titulo": "Clear Men",
+   "subtitulo": "Quais modelos de imagem e vídeo usamos em cada cena, quantas tentativas cada uma levou e onde o modelo principal não entregou.",
+   "data": "[a preencher]",
+   "modelo_principal": "[a preencher]",
+   "timeline_img": "",
+   "timeline_titulo": "O filme cena a cena, com o modelo de cada uma.",
+   "timeline_fonte": "Timeline de edição + pastas de entrega",
+   "resumo_titulo": "",
+   "resumo_nota": "",
+   "resumo_fonte": "Pastas de entrega no Drive · contagem de arquivos por modelo",
+   "cenas": [
+    {
+     "cena": "01",
+     "take": "[a preencher]",
+     "modelo_imagem": "[a preencher]",
+     "modelo_video": "[a preencher]",
+     "descartes": "[a preencher]",
+     "status": "[a preencher]",
+     "trocou": false
+    }
+   ],
+   "cenas_fonte": "Pastas de cena no Drive · [a preencher] = dado que não está na pasta",
+   "falha": {
+    "titulo": "Onde o modelo principal não entregou.",
+    "rotulo": "Planos tentados",
+    "planos": [],
+    "categoria": "[F_ — a preencher]",
+    "o_que_deu_errado": "[descrição curta — a preencher]",
+    "prompt": "[a preencher]",
+    "solucao": "[a preencher]",
+    "fonte": "Pasta da cena / tentativas"
+   },
+   "pasta_url": ""
+  }
+ ]
+}
