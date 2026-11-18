@@ -137,7 +137,12 @@ for r in table(wb2["2026"], "ID Proyecto"):
     if not v:
         continue
     af.append({"id_projeto": str(r.get("ID Proyecto") or "").strip(), "cliente": str(r.get("Proyecto") or "").strip(),
-               "servico": str(r.get("Servicio") or "").strip(), "po": ident(r.get("PO")), "valor": clean(v)})
+               "servico": str(r.get("Servicio") or "").strip(), "po": ident(r.get("PO")), "valor": clean(v), "status": "Pendente"})
+# POs cancelados (manual.json): continuam na lista, marcados, e saem das somas da página.
+for r in af:
+    if r["po"] in manual.get("pos_cancelados", {}):
+        r["status"] = "Cancelado"
+af.sort(key=lambda r: r["status"] == "Cancelado")
 
 # ---------- producao (LATAM, aba Production) ----------
 wb3 = openpyxl.load_workbook(latam, data_only=True)
@@ -160,6 +165,10 @@ for r in rows[hi + 1:]:
         if old:
             row["projeto"], row["servico"] = old["projeto"], old["servico"]
         prod.append(row)
+for r in prod:
+    novo = next((v for k, v in manual.get("producao_status", {}).items() if k.lower() == r["projeto"].lower()), None)
+    if novo:
+        r["status"] = novo
 ordem = {"Em andamento": 0, "Congelado": 1, "Cancelado": 2}
 prod.sort(key=lambda r: ordem[r["status"]])
 

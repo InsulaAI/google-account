@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-11-18T19:23:32Z",
+ "atualizado_em": "2026-11-18T19:25:02Z",
  "origem": {
   "cuentas": "2026-09-25T20:29:02.947Z",
   "latam": "2026-11-03T21:28:24.866Z",
@@ -117,28 +117,32 @@
    "cliente": "Mercado Pago",
    "servico": "General Creative Production & Optimization",
    "po": "4100827982",
-   "valor": 110000.0
+   "valor": 110000.0,
+   "status": "Pendente"
   },
   {
    "id_projeto": "5-5366000040483",
    "cliente": "Unilever",
    "servico": "General Creative Production & Optimization",
    "po": "4100827663",
-   "valor": 110000.0
-  },
-  {
-   "id_projeto": "1-0774000041163",
-   "cliente": "Madeira Madeira",
-   "servico": "General Creative Production & Optimization",
-   "po": "4100825695",
-   "valor": 110000.0
+   "valor": 110000.0,
+   "status": "Pendente"
   },
   {
    "id_projeto": "6-4445000041296",
    "cliente": "SuperBet",
    "servico": "General Creative Production & Optimization",
    "po": "4100868559",
-   "valor": 330000.0
+   "valor": 330000.0,
+   "status": "Pendente"
+  },
+  {
+   "id_projeto": "1-0774000041163",
+   "cliente": "Madeira Madeira",
+   "servico": "General Creative Production & Optimization",
+   "po": "4100825695",
+   "valor": 110000.0,
+   "status": "Cancelado"
   }
  ],
  "producao": [
@@ -154,7 +158,7 @@
    "servico": "Projected Balance, 30\" + 3 adaptações (a definir)",
    "job": "",
    "valor": 144200.0,
-   "status": "Congelado"
+   "status": "Cancelado"
   },
   {
    "projeto": "Clear",

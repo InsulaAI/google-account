@@ -112,6 +112,8 @@ tbody tr:last-child td{border-bottom:0}
 th.num,td.num{text-align:right}
 td small{display:block;color:var(--text-3);font-size:11.5px;white-space:nowrap}
 td.muted{color:var(--text-3)}
+tr.off td{opacity:.55}
+tr.off td.num{text-decoration:line-through}
 
 .cats{display:flex;flex-wrap:wrap;gap:6px}
 .cat{font:inherit;font-size:13px;padding:6px 12px;border-radius:999px;border:1px solid var(--line-2);background:transparent;color:var(--text-2);cursor:pointer}
@@ -199,15 +201,15 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
       </div>
       <div class="card">
         <h3>Projetos em produção</h3>
-        <p class="note">Da aba de produção. Em andamento: <b data-f="em_andamento">—</b>. Congelado: <b data-f="congelado">—</b>. Cancelados aparecem abaixo, fora da conta.</p>
+        <p class="note">Da aba de produção. Em andamento: <b data-f="em_andamento">—</b>. Cancelados aparecem abaixo, fora da conta.</p>
         <div class="bars" id="producao"></div>
       </div>
     </div>
     <div class="card">
       <h3>POs a faturar</h3>
-      <p class="note">Pendentes de faturamento.</p>
+      <p class="note">Pendentes de faturamento. POs cancelados aparecem no fim, fora das somas.</p>
       <div class="tw"><table>
-        <thead><tr><th>Cliente</th><th>Serviço</th><th>ID do projeto</th><th>PO</th><th class="num">Valor</th></tr></thead>
+        <thead><tr><th>Cliente</th><th>Serviço</th><th>ID do projeto</th><th>PO</th><th class="num">Valor</th><th>Situação</th></tr></thead>
         <tbody id="afaturar"></tbody>
       </table></div>
     </div>
@@ -270,7 +272,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     return {
       pos_pagos: cred.length, credito_liquido, consumido,
       pct_consumido: credito_liquido ? consumido / credito_liquido : 0, projetos_debitados: deb.length,
-      saldo: r2(credito_liquido - consumido), a_faturar: soma(D.a_faturar, 'valor'), pos_a_faturar: D.a_faturar.length,
+      saldo: r2(credito_liquido - consumido), a_faturar: soma(D.a_faturar.filter((r) => r.status !== 'Cancelado'), 'valor'), pos_a_faturar: D.a_faturar.filter((r) => r.status !== 'Cancelado').length,
       congelado: soma(D.producao.filter((r) => r.status === 'Congelado'), 'valor'),
       contingencia: soma(D.projetos || [], 'contingencia'),
       projetos_contingencia: (D.projetos || []).filter((p) => Number(p.contingencia) > 0).length,
@@ -390,7 +392,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
   function drawPos() {
     const rows = [
       ...D.movimentos.filter((r) => r.tipo === 'Crédito').map((r) => ({ po: String(r.po), nome: r.lancamento, valor: Number(r.valor_po ?? r.valor), situacao: 'Pago' })),
-      ...D.a_faturar.map((r) => ({ po: String(r.po), nome: r.cliente, valor: Number(r.valor), situacao: 'A faturar' }))
+      ...D.a_faturar.filter((r) => r.status !== 'Cancelado').map((r) => ({ po: String(r.po), nome: r.cliente, valor: Number(r.valor), situacao: 'A faturar' }))
     ];
     donut(document.getElementById('pos'), rows, { label: 'POs aprovados em 2026', center: 'em POs', sub: (r) => `${r.situacao} · PO ${r.po}` });
   }
@@ -402,7 +404,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     const ativos = D.producao.filter((r) => r.status !== 'Cancelado'), cancelados = D.producao.filter((r) => r.status === 'Cancelado');
     const linhas = [...ativos, ...(cancelados.length ? [null, ...cancelados] : [])];
     for (const r of linhas) {
-      if (r === null) { box.appendChild(el('p', 'k sep', 'Cancelados · fora da contingência')); continue; }
+      if (r === null) { box.appendChild(el('p', 'k sep', 'Cancelados')); continue; }
       const item = el('div', r.status === 'Cancelado' ? 'bar off' : 'bar'), top = el('div', 'bar-top');
       top.append(el('span', 'nm', r.projeto), el('span', 'sv', r.servico + (r.job ? ` · job ${r.job}` : '')), el('span', 'chip ' + (cls[r.status] || 'neutral'), r.status), el('span', 'vl', money(r.valor)));
       const track = el('div', 'track'), fill = el('div', 'fill');
@@ -423,8 +425,10 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     }
     const af = document.getElementById('afaturar'); af.replaceChildren();
     for (const r of D.a_faturar) {
-      const tr = el('tr');
-      tr.append(el('td', '', r.cliente), el('td', 'muted', r.servico), el('td', 'muted', r.id_projeto), el('td', '', String(r.po)), el('td', 'num', money(r.valor)));
+      const tr = el('tr'), cancel = r.status === 'Cancelado';
+      if (cancel) tr.className = 'off';
+      const sit = el('td'); sit.appendChild(el('span', 'chip ' + (cancel ? 'bad' : 'neutral'), cancel ? 'Cancelado' : 'A faturar'));
+      tr.append(el('td', '', r.cliente), el('td', 'muted', r.servico), el('td', 'muted', r.id_projeto), el('td', '', String(r.po)), el('td', 'num', money(r.valor)), sit);
       af.appendChild(tr);
     }
   }

@@ -54,6 +54,10 @@ Mercado Pago e Nespresso, faturamento previsto de SuperBet e Mercado Pago, contr
   duas vezes.
 - `observacoes`: troca a observação de um débito da planilha, pelo nome do lançamento.
 - `nomes`: troca o nome de um lançamento da planilha (ex.: "Clear" → "Clear Men").
+- `producao_status`: troca a situação de um projeto da aba Production (ex.: Madeira Madeira →
+  Cancelado, 18/11).
+- `pos_cancelados`: POs da Á Faturar que foram cancelados (PO → motivo). Continuam na tabela,
+  riscados, e saem do total a faturar e do gráfico de POs.
 - `projetos`: a seção "Projetos: faturamento e contingência". `faturamento_status`: `previsto`
   (NF ainda vai sair), `a_receber` (faturado, aguardando pagamento) ou `pago`. Situação
   "Encerrado" vai para o fim da lista, esmaecida. Aprovado = faturamento + contingência

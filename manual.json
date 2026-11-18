@@ -115,5 +115,11 @@
  ],
  "nomes": {
   "Clear": "Clear Men"
+ },
+ "producao_status": {
+  "Madeira Madeira": "Cancelado"
+ },
+ "pos_cancelados": {
+  "4100825695": "Madeira Madeira: projeto cancelado, aporte cancelado"
  }
 }
