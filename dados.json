@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-11-18T19:20:36Z",
+ "atualizado_em": "2026-11-18T19:23:32Z",
  "origem": {
   "cuentas": "2026-09-25T20:29:02.947Z",
   "latam": "2026-11-03T21:28:24.866Z",
@@ -96,6 +96,19 @@
    "valor_po": null,
    "valor": 157705.41,
    "observacao": "Projeto 100% pago pela contingência"
+  },
+  {
+   "id": "8",
+   "manual": true,
+   "data": "2026-11-18",
+   "tipo": "Débito",
+   "lancamento": "Nespresso",
+   "servico": "Contingência",
+   "po": "",
+   "job": "",
+   "valor_po": null,
+   "valor": 48338.83,
+   "observacao": "Contingência adicional: Klike"
   }
  ],
  "a_faturar": [
@@ -992,11 +1005,11 @@
    "faturamento": null,
    "faturamento_status": "",
    "faturamento_data": "",
-   "contingencia": 157705.41,
+   "contingencia": 206044.24,
    "aporte": null,
    "executado": null,
-   "nota": "100% pago pela contingência",
-   "aprovado": 157705.41,
+   "nota": "100% pago pela contingência: R$ 157.705,41 do projeto e R$ 48.338,83 do adicional Klike",
+   "aprovado": 206044.24,
    "saldo": null
   },
   {

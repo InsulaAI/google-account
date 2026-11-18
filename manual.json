@@ -19,6 +19,15 @@
    "job": "",
    "valor": 157705.41,
    "observacao": "Projeto 100% pago pela contingência"
+  },
+  {
+   "data": "2026-11-18",
+   "lancamento": "Nespresso",
+   "servico": "Contingência",
+   "po": "",
+   "job": "",
+   "valor": 48338.83,
+   "observacao": "Contingência adicional: Klike"
   }
  ],
  "observacoes": {
@@ -59,10 +68,10 @@
    "faturamento": null,
    "faturamento_status": "",
    "faturamento_data": "",
-   "contingencia": 157705.41,
+   "contingencia": 206044.24,
    "aporte": null,
    "executado": null,
-   "nota": "100% pago pela contingência"
+   "nota": "100% pago pela contingência: R$ 157.705,41 do projeto e R$ 48.338,83 do adicional Klike"
   },
   {
    "id": "mercado-pago",
