@@ -1,11 +1,11 @@
 {
- "atualizado_em": "2026-11-19T14:55:14Z",
+ "atualizado_em": "2026-11-19T14:58:48Z",
  "origem": {
   "cuentas": "2026-09-25T20:29:02.947Z",
   "latam": "2026-11-03T21:28:24.866Z",
   "afaturar": "2026-09-30T18:34:39.223Z",
-  "tabela_sintetico": "2026-11-19T14:52:56.149Z",
-  "tabela_elenco": "2026-11-19T14:52:54.383Z"
+  "tabela_sintetico": "2026-11-19T14:56:28.083Z",
+  "tabela_elenco": "2026-11-19T14:56:46.879Z"
  },
  "movimentos": [
   {
@@ -456,9 +456,9 @@
    "categoria": "Adaptação do filme hero",
    "duracao_s": 5,
    "pacote": "P",
-   "qtd": 5,
+   "qtd": 3,
    "desconto": 0.05,
-   "valor_total": 116012.87,
+   "valor_total": 69607.72,
    "valor_por_peca": 23202.57
   },
   {
@@ -700,7 +700,7 @@
    "pacote": "G",
    "qtd": 10,
    "desconto": 0.15,
-   "valor_total": 1118684.19,
+   "valor_total": 1118684.2,
    "valor_por_peca": 111868.42
   },
   {
@@ -896,9 +896,9 @@
    "categoria": "Adaptação do filme hero",
    "duracao_s": 5,
    "pacote": "P",
-   "qtd": 5,
+   "qtd": 3,
    "desconto": 0.05,
-   "valor_total": 187544.11,
+   "valor_total": 112526.47,
    "valor_por_peca": 37508.82
   },
   {
