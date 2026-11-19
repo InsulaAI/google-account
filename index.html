@@ -144,6 +144,31 @@ td .chip+.chip{margin-left:6px}
 .mtrack b{position:relative;padding-left:8px;font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text);text-shadow:0 0 6px rgba(0,0,0,.6)}
 @media (max-width:640px){.mrow{grid-template-columns:1fr;gap:6px}.mhead{display:none}}
 .stack[hidden]{display:none}
+.pl-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+.pipe{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr 1.45fr 1fr;gap:32px;align-items:start}
+.pphase{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:grid;gap:0;align-content:start;min-width:0}
+.pphase > .k{margin-bottom:4px}
+.pphase > h3{font-family:var(--display);font-size:17px;margin-bottom:14px}
+.pphase:not(:last-child)::after{content:"";position:absolute;top:50%;right:-25px;width:18px;height:1px;background:var(--text-3)}
+.pphase:not(:last-child)::before{content:"";position:absolute;top:calc(50% - 4px);right:-26px;border:4.5px solid transparent;border-left:6px solid var(--text-3);border-right:0}
+.pst{background:var(--surface-2);border:1px solid var(--line-2);border-left:3px solid var(--cream);border-radius:var(--r);padding:10px 12px;font-size:13px;line-height:1.45;color:var(--text-2)}
+.pst b{display:block;color:var(--text);font-weight:600;font-size:13.5px}
+.pst.par{border-left-color:var(--slate)}
+.pst.out{border-left-color:var(--amber)}
+.pst.out b{color:var(--amber)}
+.pdn{height:22px;position:relative}
+.pdn::before{content:"";position:absolute;left:50%;top:2px;bottom:6px;width:1px;background:var(--text-3)}
+.pdn::after{content:"";position:absolute;left:calc(50% - 4px);bottom:1px;border:4.5px solid transparent;border-top:6px solid var(--text-3);border-bottom:0}
+.pfork{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.pfork .pst{font-size:12.5px}
+.pfan{height:16px;margin:0 16.66%;border:1px solid var(--text-3);border-bottom:0;position:relative}
+.pfan.in{border-top:0;border-bottom:1px solid var(--text-3)}
+@media (max-width:980px){
+  .pipe{grid-template-columns:minmax(0,1fr);gap:30px}
+  .pphase:not(:last-child)::after{top:auto;bottom:-24px;right:auto;left:50%;width:1px;height:18px}
+  .pphase:not(:last-child)::before{top:auto;bottom:-27px;right:auto;left:calc(50% - 4px);border:4.5px solid transparent;border-top:6px solid var(--text-3);border-bottom:0}
+}
+@media (max-width:480px){.pfork{grid-template-columns:minmax(0,1fr);margin:8px 0}.pfan{display:none}}
 .back{color:var(--text-2);text-decoration:none;font-size:13px}
 .back:hover{color:var(--text)}
 .bk-head{display:grid;gap:12px;padding-bottom:24px;border-bottom:1px solid var(--amber)}
@@ -368,6 +393,51 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
       <div><strong>Equipe incluída</strong><ul><li>Atendimento</li><li>IA Artist</li><li>Editor/Motion</li><li>Designer</li><li>Diretor de cena (Brasil)</li><li>Técnico de áudio (trilha, efeitos, locução e mix/master)</li></ul></div>
       <div><strong>Custos extras, quando necessários</strong><ul><li>Diretor de criação</li><li>Produtor de figurino</li><li>Diretor de arte</li><li>Processos tradicionais de composição</li><li>DA</li></ul></div>
     </div>
+  </section>
+
+  <section id="pipeline">
+    <div class="pl-head">
+      <h2>Pipeline de produção Insula com parceiros de IA</h2>
+      <span class="chip g">Apresentado no Google Campus</span>
+    </div>
+    <p class="sub">Cada fase passa por um parceiro especializado antes de avançar.</p>
+    <ul class="legend">
+      <li><span class="sw" style="background:var(--cream)"></span>Insula</li>
+      <li><span class="sw" style="background:var(--slate)"></span>Parceiro de IA</li>
+      <li><span class="sw" style="background:var(--amber)"></span>Veiculação</li>
+    </ul>
+    <ol class="pipe">
+      <li class="pphase">
+        <p class="k">Fase 1</p><h3>Roteiro</h3>
+        <div class="pst"><b>Insula</b>Roteiro: vem do cliente ou é criado pela Insula</div>
+        <div class="pdn" aria-hidden="true"></div>
+        <div class="pst par"><b>Klike.ai</b>Analisa o roteiro e propõe melhorias de performance</div>
+      </li>
+      <li class="pphase">
+        <p class="k">Fase 2</p><h3>Storyboard</h3>
+        <div class="pst"><b>Insula</b>Cria o storyboard do filme</div>
+        <div class="pdn" aria-hidden="true"></div>
+        <div class="pst par"><b>System1</b>Analisa com viés comportamental e recomenda melhorias</div>
+      </li>
+      <li class="pphase">
+        <p class="k">Fase 3</p><h3>Produção</h3>
+        <div class="pst"><b>Insula</b>Produz o filme master</div>
+        <div class="pfan" aria-hidden="true"></div>
+        <div class="pfork">
+          <div class="pst par"><b>Klike</b>Analisa de novo (performance)</div>
+          <div class="pst par"><b>Mantis</b>Analisa o impacto do filme</div>
+          <div class="pst par"><b>Galaxies</b>Cria audiências sintéticas para testar o filme</div>
+        </div>
+        <div class="pfan in" aria-hidden="true"></div>
+        <div class="pst"><b>Insula</b>Consolida o feedback e aprova o filme final</div>
+      </li>
+      <li class="pphase">
+        <p class="k">Fase 4</p><h3>Desdobramentos</h3>
+        <div class="pst par"><b>Begen</b>Faz o desdobramento para todos os formatos necessários</div>
+        <div class="pdn" aria-hidden="true"></div>
+        <div class="pst out"><b>CM360 e YouTube</b>Inserção direta nas plataformas</div>
+      </li>
+    </ol>
   </section>
 
 </div>
