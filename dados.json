@@ -1,11 +1,11 @@
 {
- "atualizado_em": "2026-11-19T14:38:19Z",
+ "atualizado_em": "2026-11-19T14:55:14Z",
  "origem": {
   "cuentas": "2026-09-25T20:29:02.947Z",
   "latam": "2026-11-03T21:28:24.866Z",
   "afaturar": "2026-09-30T18:34:39.223Z",
-  "tabela_sintetico": "2026-11-19T14:32:35.694Z",
-  "tabela_elenco": "2026-11-19T14:33:42.603Z"
+  "tabela_sintetico": "2026-11-19T14:52:56.149Z",
+  "tabela_elenco": "2026-11-19T14:52:54.383Z"
  },
  "movimentos": [
   {
@@ -193,9 +193,9 @@
    "duracao_s": 5,
    "pacote": "P",
    "qtd": 3,
-   "desconto": 0.0,
-   "valor_total": 183225.63,
-   "valor_por_peca": 61075.21
+   "desconto": 0.05,
+   "valor_total": 174064.35,
+   "valor_por_peca": 58021.45
   },
   {
    "id": "Filme sintético · Filme novo · 5s · M",
@@ -237,9 +237,9 @@
    "duracao_s": 10,
    "pacote": "P",
    "qtd": 3,
-   "desconto": 0.0,
-   "valor_total": 244237.61,
-   "valor_por_peca": 81412.54
+   "desconto": 0.05,
+   "valor_total": 232025.73,
+   "valor_por_peca": 77341.91
   },
   {
    "id": "Filme sintético · Filme novo · 10s · M",
@@ -281,9 +281,9 @@
    "duracao_s": 15,
    "pacote": "P",
    "qtd": 3,
-   "desconto": 0.0,
-   "valor_total": 305297.01,
-   "valor_por_peca": 101765.67
+   "desconto": 0.05,
+   "valor_total": 290032.16,
+   "valor_por_peca": 96677.39
   },
   {
    "id": "Filme sintético · Filme novo · 15s · M",
@@ -369,9 +369,9 @@
    "duracao_s": 45,
    "pacote": "P",
    "qtd": 3,
-   "desconto": 0.0,
-   "valor_total": 610594.03,
-   "valor_por_peca": 203531.34
+   "desconto": 0.05,
+   "valor_total": 580064.32,
+   "valor_por_peca": 193354.77
   },
   {
    "id": "Filme sintético · Filme novo · 45s · M",
@@ -413,9 +413,9 @@
    "duracao_s": 60,
    "pacote": "P",
    "qtd": 3,
-   "desconto": 0.0,
-   "valor_total": 696077.19,
-   "valor_por_peca": 232025.73
+   "desconto": 0.05,
+   "valor_total": 661273.33,
+   "valor_por_peca": 220424.44
   },
   {
    "id": "Filme sintético · Filme novo · 60s · M",
@@ -457,9 +457,9 @@
    "duracao_s": 5,
    "pacote": "P",
    "qtd": 5,
-   "desconto": -0.0,
-   "valor_total": 122118.81,
-   "valor_por_peca": 24423.76
+   "desconto": 0.05,
+   "valor_total": 116012.87,
+   "valor_por_peca": 23202.57
   },
   {
    "id": "Filme sintético · Adaptação do filme hero · 5s · M",
@@ -501,9 +501,9 @@
    "duracao_s": 10,
    "pacote": "P",
    "qtd": 5,
-   "desconto": 0.0,
-   "valor_total": 152648.51,
-   "valor_por_peca": 30529.7
+   "desconto": 0.05,
+   "valor_total": 145016.08,
+   "valor_por_peca": 29003.22
   },
   {
    "id": "Filme sintético · Adaptação do filme hero · 10s · M",
@@ -545,9 +545,9 @@
    "duracao_s": 15,
    "pacote": "P",
    "qtd": 5,
-   "desconto": 0.0,
-   "valor_total": 232025.73,
-   "valor_por_peca": 46405.15
+   "desconto": 0.05,
+   "valor_total": 220424.44,
+   "valor_por_peca": 44084.89
   },
   {
    "id": "Filme sintético · Adaptação do filme hero · 15s · M",
@@ -589,9 +589,9 @@
    "duracao_s": 30,
    "pacote": "P",
    "qtd": 5,
-   "desconto": -0.0,
-   "valor_total": 305297.01,
-   "valor_por_peca": 61059.4
+   "desconto": 0.05,
+   "valor_total": 290032.16,
+   "valor_por_peca": 58006.43
   },
   {
    "id": "Filme sintético · Adaptação do filme hero · 30s · M",
@@ -633,9 +633,9 @@
    "duracao_s": 5,
    "pacote": "P",
    "qtd": 3,
-   "desconto": 0.0,
-   "valor_total": 296198.94,
-   "valor_por_peca": 98732.98
+   "desconto": 0.05,
+   "valor_total": 281388.99,
+   "valor_por_peca": 93796.33
   },
   {
    "id": "Filme IA + Elenco · Filme novo · 5s · M",
@@ -677,9 +677,9 @@
    "duracao_s": 10,
    "pacote": "P",
    "qtd": 3,
-   "desconto": -0.0,
-   "valor_total": 394829.72,
-   "valor_por_peca": 131609.91
+   "desconto": 0.05,
+   "valor_total": 375088.23,
+   "valor_por_peca": 125029.41
   },
   {
    "id": "Filme IA + Elenco · Filme novo · 10s · M",
@@ -700,7 +700,7 @@
    "pacote": "G",
    "qtd": 10,
    "desconto": 0.15,
-   "valor_total": 1118684.2,
+   "valor_total": 1118684.19,
    "valor_por_peca": 111868.42
   },
   {
@@ -721,9 +721,9 @@
    "duracao_s": 15,
    "pacote": "P",
    "qtd": 3,
-   "desconto": 0.0,
-   "valor_total": 493537.14,
-   "valor_por_peca": 164512.38
+   "desconto": 0.05,
+   "valor_total": 468860.29,
+   "valor_por_peca": 156286.76
   },
   {
    "id": "Filme IA + Elenco · Filme novo · 15s · M",
@@ -809,9 +809,9 @@
    "duracao_s": 45,
    "pacote": "P",
    "qtd": 3,
-   "desconto": 0.0,
-   "valor_total": 987074.29,
-   "valor_por_peca": 329024.76
+   "desconto": 0.05,
+   "valor_total": 937720.57,
+   "valor_por_peca": 312573.52
   },
   {
    "id": "Filme IA + Elenco · Filme novo · 45s · M",
@@ -853,9 +853,9 @@
    "duracao_s": 60,
    "pacote": "P",
    "qtd": 3,
-   "desconto": 0.0,
-   "valor_total": 1125264.69,
-   "valor_por_peca": 375088.23
+   "desconto": 0.05,
+   "valor_total": 1069001.46,
+   "valor_por_peca": 356333.82
   },
   {
    "id": "Filme IA + Elenco · Filme novo · 60s · M",
@@ -897,9 +897,9 @@
    "duracao_s": 5,
    "pacote": "P",
    "qtd": 5,
-   "desconto": 0.0,
-   "valor_total": 197414.86,
-   "valor_por_peca": 39482.97
+   "desconto": 0.05,
+   "valor_total": 187544.11,
+   "valor_por_peca": 37508.82
   },
   {
    "id": "Filme IA + Elenco · Adaptação do filme hero · 5s · M",
@@ -941,9 +941,9 @@
    "duracao_s": 10,
    "pacote": "P",
    "qtd": 5,
-   "desconto": -0.0,
-   "valor_total": 246768.57,
-   "valor_por_peca": 49353.71
+   "desconto": 0.05,
+   "valor_total": 234430.14,
+   "valor_por_peca": 46886.03
   },
   {
    "id": "Filme IA + Elenco · Adaptação do filme hero · 10s · M",
@@ -985,9 +985,9 @@
    "duracao_s": 15,
    "pacote": "P",
    "qtd": 5,
-   "desconto": 0.0,
-   "valor_total": 375088.23,
-   "valor_por_peca": 75017.65
+   "desconto": 0.05,
+   "valor_total": 356333.82,
+   "valor_por_peca": 71266.76
   },
   {
    "id": "Filme IA + Elenco · Adaptação do filme hero · 15s · M",
@@ -1029,9 +1029,9 @@
    "duracao_s": 30,
    "pacote": "P",
    "qtd": 5,
-   "desconto": 0.0,
-   "valor_total": 493537.14,
-   "valor_por_peca": 98707.43
+   "desconto": 0.05,
+   "valor_total": 468860.29,
+   "valor_por_peca": 93772.06
   },
   {
    "id": "Filme IA + Elenco · Adaptação do filme hero · 30s · M",
