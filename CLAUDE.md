@@ -22,7 +22,10 @@ vendor/d3.min.js          d3 v7.9.0, servido daqui para não depender de CDN
 img/insula-logo.webp      logo da Insula (versão "SEM BG" da pasta INSULA AI no Drive), 234×240
 functions/_middleware.js  login: tela, sessão e lista do que pode ser servido
 scripts/atualizar.py      gera dados.json a partir das planilhas (nunca servido)
-backlogs.json             backlog de modelos de IA por projeto (editar à mão); abre em #backlog-<id>
+backlogs.json             backlog de modelos de IA por projeto; abre em #backlog-<id>
+backlog-envios/<id>.json  formulário do último envio da equipe para cada job (nunca servido)
+backlog-freela/           site da equipe para preencher o backlog (outro projeto no Cloudflare)
+scripts/copiar_render.py  copia o visual da página de backlog para backlog-freela/
 robots.txt
 ```
 
@@ -112,6 +115,43 @@ mesmas seções do PDF oficial: timeline, resumo, cena a cena, cena com falha e 
   só para papel (fundo branco, A4, 3 páginas: capa+timeline+resumo / comparativo+cena a cena /
   cena com falha+régua). Sai só o backlog, sem nenhum valor em reais, para o Google mandar à
   engenharia. Não existe no dashboard do claude.ai, que bloqueia impressão e download.
+
+## Site da equipe: preenchimento do backlog (`backlog-freela/`)
+
+Freelancers e equipe preenchem o backlog de cada job num site à parte, sem nenhum valor em
+reais, com os mesmos campos da página de backlog do Google. "Enviar backlog" grava direto
+neste repositório e o dashboard atualiza sozinho (decisão de 19/11: formulário do Google
+foi descartado por não lidar bem com cenas que se repetem nem mostrar o resultado).
+
+- **Hospedagem:** segundo projeto no Cloudflare Pages, `insula-backlog`, ligado a este mesmo
+  repositório com *Root directory* = `backlog-freela` (build vazio, saída `/`). Tem login
+  próprio, diferente do dashboard: usuário `equipe`; a senha não está no repositório, só o hash
+  em `backlog-freela/functions/_middleware.js` (troca igual à do dashboard, cookie `bf_s`).
+  Serve só `index.html`, o logo e `robots.txt`, mais as rotas `/api/*`.
+- **Gravação:** `functions/api/enviar.js` faz um commit no `main` pela API do GitHub com
+  `backlogs.json` (o backlog do job trocado ou acrescentado, com `enviado_por` e `enviado_em`),
+  `img/backlog-<id>-timeline.webp|png|jpg` e `backlog-envios/<id>.json` (o formulário, para
+  continuar depois). Se outro commit entrar no meio, refaz em cima do main novo. Precisa da
+  variável secreta **`GITHUB_TOKEN`** no projeto `insula-backlog` (token fine-grained só deste
+  repositório, permissão *Contents: Read and write*). Sem ela o site abre, mas não envia.
+- **Proteções:** `lib/backlog.js` refaz todo o envio campo a campo (só as chaves da página do
+  Google, tamanho máximo, links só do Google Drive, IDs do Drive validados, imagem conferida
+  pelos bytes). Backlogs com `bloqueado`, `sem_backlog` ou `link_direto` não aparecem e não
+  podem ser gravados (Mercado Pago oficial, SuperBet, Brilhante, Clear Men). O bloco `drive`
+  e os relatórios Klike já gravados são mantidos.
+- **No dashboard:** backlog enviado pela equipe aparece como "Preenchido pela equipe em
+  dd/mm"; `oficial` continua sendo só o que a Insula validou. Resumo e comparativo
+  Google × outros são calculados das cenas e dos planos preenchidos quando não há bloco
+  `drive`. Job novo, que não está em `manual.json`, entra no fim da tabela como "Novo job".
+- **Desfazer um envio:** `git revert` do commit "Backlog <job>: enviado por …".
+- **Mesmo visual:** o "Ver como o Google" do site usa uma cópia do CSS e das funções de
+  `index.html` (`bkData`, `renderBacklog`…). Mudou a página de backlog do dashboard, rodar
+  `python3 scripts/copiar_render.py` e commitar os dois arquivos juntos.
+- Status e descartes de cada cena saem dos planos tentados (seção 05), não são digitados.
+  Modelos vêm de lista fechada com "Outro…", para não repetir "Omini". O rascunho fica no
+  navegador de quem preenche (localStorage) até o envio.
+- Teste local, de dentro de `backlog-freela/`, com um GitHub falso respondendo em outra porta:
+  `npx wrangler pages dev . --port 8788 --compatibility-date=2024-09-23 --binding GITHUB_TOKEN=x --binding GITHUB_API=http://127.0.0.1:8799`
 
 ## Atualização automática
 

@@ -1,0 +1,1102 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Backlog de modelos · Preenchimento</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@400..800&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* >>> CSS copiado do dashboard por scripts/copiar_render.py: não editar aqui */
+/* Uma coluna de painéis sobre o azul-noite da Insula; âmbar só no que é saldo. */
+:root{
+  --ground:#0A1020; --surface:#111931; --surface-2:#1A2440; --line:#222E4E; --line-2:#2D3A5E;
+  --text:#E9E5DC; --text-2:#B3BACE; --text-3:#7F889F;
+  --amber:#D9A566; --steel:#A7AEC2; --cream:#E9E5DC; --slate:#6F7893; --bronze:#8F7148; --dusk:#535869;
+  --ok:#8FC79A; --warn:#D9A566; --bad:#E08A7A;
+  --display:"Mulish","Helvetica Neue",Arial,sans-serif;
+  --sans:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --maxw:76rem; --r:2px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--ground)}
+body{margin:0;background:var(--ground);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-block:40px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:44px}
+h1,h2,h3,p{margin:0}
+.k{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-3)}
+header{display:grid;gap:12px;padding-bottom:24px;border-bottom:1px solid var(--amber)}
+.logo{display:block;height:96px;width:auto;margin-bottom:8px}
+@media (max-width:600px){.logo{height:72px}}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(32px,5vw,46px);line-height:1.05;letter-spacing:-.01em;text-wrap:balance}
+.lede{color:var(--text-2);max-width:65ch;font-size:16px}
+.lede b{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums}
+
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));gap:12px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px 18px 16px;display:grid;gap:6px;align-content:start;min-width:0}
+.tile.main{border-top:2px solid var(--amber)}
+.big{font-family:var(--display);font-weight:600;font-size:clamp(20px,1.9vw,26px);line-height:1.15;font-variant-numeric:tabular-nums;white-space:nowrap}
+.note{font-size:12.5px;color:var(--text-3);line-height:1.45}
+.note b{color:var(--text-2);font-weight:600;font-variant-numeric:tabular-nums}
+
+section{display:grid;gap:14px}
+h2{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:-.005em}
+.sub{color:var(--text-2);max-width:70ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:12px}
+.grid.one{grid-template-columns:minmax(0,1fr)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:10px;align-content:start;min-width:0}
+h3{font-family:var(--sans);font-weight:600;font-size:15px}
+
+.legend{display:flex;flex-wrap:wrap;gap:4px 16px;list-style:none;margin:0;padding:0;font-size:12.5px;color:var(--text-2)}
+.legend li{display:inline-flex;align-items:center;gap:6px}
+.sw{display:inline-block;width:10px;height:10px;border-radius:1px;flex:none}
+
+.chart{position:relative;min-height:288px}
+.chart.short{min-height:240px}
+.chart svg{display:block}
+.tick{font-family:var(--mono);font-size:10.5px;fill:var(--text-3);font-variant-numeric:tabular-nums}
+.vlabel{font-family:var(--mono);font-size:10.5px;fill:var(--text);font-variant-numeric:tabular-nums}
+.xl{font-size:12px;fill:var(--text-2)}
+.tip{position:absolute;z-index:2;pointer-events:none;background:var(--surface-2);border:1px solid var(--line-2);border-radius:var(--r);box-shadow:0 8px 24px rgba(0,0,0,.35);padding:8px 10px;font-size:12.5px;min-width:10rem;max-width:16rem;display:grid;gap:2px}
+.tip[hidden]{display:none}
+.tip-t{color:var(--text-3)}
+.tip-r{display:flex;align-items:center;gap:6px}
+.tip-v{margin-left:auto;padding-left:10px;font-variant-numeric:tabular-nums}
+
+.donut{display:flex;flex-wrap:wrap;align-items:center;gap:20px;position:relative;min-height:220px}
+.donut svg{flex:none}
+.dl{flex:1 1 12rem;min-width:0;display:grid;gap:4px;list-style:none;margin:0;padding:0;font-size:12.5px}
+.dl li{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:8px;padding-block:2px;transition:opacity .15s}
+.dl .nm{min-width:0;overflow-wrap:anywhere}
+.dl small{display:block;color:var(--text-3);font-size:inherit}
+.dl .vl{text-align:right;font-variant-numeric:tabular-nums}
+.cbig{font-family:var(--display);font-weight:600;fill:var(--text);font-variant-numeric:tabular-nums}
+.csmall{font-size:11.5px;fill:var(--text-3)}
+
+.chip{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;line-height:1.5;padding:0 7px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.chip.ok{color:var(--ok)} .chip.warn{color:var(--warn)} .chip.bad{color:var(--bad)} .chip.neutral{color:var(--text-3)}
+
+.bars{display:grid;gap:16px;min-height:11rem;align-content:start}
+.pbars{display:grid;gap:18px;position:relative}
+.pbar{display:grid;gap:6px}
+.pbar.off{opacity:.65}
+.pbar-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;font-size:12.5px}
+.pbar-top .nm{font-weight:600}
+.pbar-top .sv{color:var(--text-3);flex:1 1 10rem;min-width:0}
+.pbar-top .vl{font-variant-numeric:tabular-nums;margin-left:auto}
+.ptrack{position:relative;height:18px;display:flex;gap:2px}
+.pseg{height:100%;border-radius:1px;min-width:2px}
+.pmark{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--amber)}
+.pmark span{position:absolute;top:100%;transform:translateX(-50%);margin-top:3px;font-family:var(--mono);font-size:10px;color:var(--amber);white-space:nowrap}
+.pbar.has-mark{padding-bottom:14px}
+.tick-sw{background:var(--amber);width:2px;height:12px;border-radius:0}
+td .nt{display:block;color:var(--text-3);font-size:11.5px;white-space:normal;max-width:34ch;margin-top:2px}
+.btn{display:inline-block;font:inherit;font-size:12.5px;font-weight:600;padding:6px 14px;border-radius:999px;border:1px solid var(--amber);background:var(--amber);color:var(--ground);text-decoration:none;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+.btn:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+.btn:disabled{background:transparent;color:var(--text-3);border-color:var(--line-2);cursor:not-allowed}
+td.num .nt{margin-left:auto}
+.flag{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-left:6px;white-space:nowrap}
+.bar{display:grid;gap:6px}
+.bar.off{opacity:.6}
+.sep{padding-top:12px;border-top:1px solid var(--line)}
+.bar-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;font-size:12.5px}
+.bar-top .nm{font-weight:600}
+.bar-top .sv{color:var(--text-3);flex:1 1 10rem;min-width:0}
+.bar-top .vl{font-variant-numeric:tabular-nums;margin-left:auto}
+.track{height:12px;border-radius:1px;background:var(--line);overflow:hidden}
+.fill{height:100%;border-radius:1px}
+
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);padding:8px 10px;border-bottom:1px solid var(--line-2);white-space:nowrap}
+td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+th.num,td.num{text-align:right}
+td small{display:block;color:var(--text-3);font-size:11.5px;white-space:nowrap}
+td.muted{color:var(--text-3)}
+tr.off td{opacity:.55}
+tr.off td.num{text-decoration:line-through}
+
+.cats{display:flex;flex-wrap:wrap;gap:6px}
+.cat{font:inherit;font-size:13px;padding:6px 12px;border-radius:999px;border:1px solid var(--line-2);background:transparent;color:var(--text-2);cursor:pointer}
+.cat:hover{color:var(--text)}
+.cat[aria-pressed="true"]{background:var(--amber);border-color:var(--amber);color:var(--ground);font-weight:600}
+.cat:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:12px;font-size:13px;color:var(--text-2)}
+.team ul{margin:6px 0 0;padding-left:18px}
+.team strong{color:var(--text);font-weight:600}
+
+.empty{color:var(--text-3);font-size:13px}
+.stack{display:grid;gap:44px}
+.stack-sm{display:grid;gap:18px}
+.chip.g{color:var(--amber)}
+td .chip+.chip{margin-left:6px}
+.mbars{display:grid;gap:10px}
+.mrow{display:grid;grid-template-columns:minmax(9rem,1.1fr) 2fr 1.4fr;gap:14px;align-items:center;font-size:13px}
+.mhead{padding-bottom:4px;border-bottom:1px solid var(--line)}
+.mname{display:flex;align-items:center;gap:8px;font-weight:600;flex-wrap:wrap}
+.mtrack{position:relative;height:22px;background:var(--line);border-radius:1px;display:flex;align-items:center;overflow:hidden}
+.mfill{position:absolute;inset:0 auto 0 0;border-radius:1px}
+.mfill.gfill{background:var(--amber)} .mfill.ofill{background:var(--slate)} .mfill.dfill{background:var(--dusk)}
+.mtrack b{position:relative;padding-left:8px;font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text);text-shadow:0 0 6px rgba(0,0,0,.6)}
+@media (max-width:640px){.mrow{grid-template-columns:1fr;gap:6px}.mhead{display:none}}
+.stack[hidden]{display:none}
+.back{color:var(--text-2);text-decoration:none;font-size:13px}
+.back:hover{color:var(--text)}
+.bk-head{display:grid;gap:12px;padding-bottom:24px;border-bottom:1px solid var(--amber)}
+.bk-head h1{font-family:var(--display);font-weight:600;font-size:clamp(32px,5vw,52px);line-height:1.04;letter-spacing:-.015em;text-wrap:balance}
+.bk-k{color:var(--amber)}
+.bk-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+.bk-sec{display:grid;gap:14px}
+.bk-sec h2{font-size:clamp(20px,2.6vw,28px);letter-spacing:-.01em}
+.bk-img{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:flex;justify-content:center}
+.bk-img img{display:block;max-width:100%;max-height:420px;width:auto;height:auto;object-fit:contain;border-radius:1px}
+.bk-cta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+.bk-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,7.5rem),1fr));gap:8px}
+.bk-scene{background:var(--surface);border-top:2px solid var(--line-2);padding:10px 12px;display:grid;gap:4px;font-size:13px}
+.bk-scene.alt{border-top-color:var(--amber)}
+.bk-scene.alt b,.bk-scene.alt .k{color:var(--amber)}
+.bk-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));gap:12px}
+.bk-tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:6px}
+.bk-big{font-family:var(--display);font-weight:700;font-size:46px;line-height:1;font-variant-numeric:tabular-nums}
+.bk-big.acc{color:var(--amber)}
+.bk-note{font-size:13.5px;color:var(--text-2)}
+.bk-src{color:var(--text-3)}
+tr.alt td{color:var(--amber)}
+.ph{color:var(--text-3)!important;font-style:italic}
+.bk-empty{background:var(--surface);border:1px dashed var(--line-2);border-radius:var(--r);padding:28px;text-align:center}
+.bk-plans{list-style:none;margin:0;padding:0;display:grid}
+.bk-plans li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.bk-plans li b{font-variant-numeric:tabular-nums}
+.bk-plans li.tot{color:var(--amber);border-bottom:0}
+.bk-plans .pl{display:grid;gap:6px;min-width:0}
+.vrow{display:flex;flex-wrap:wrap;gap:6px}
+.vbtn{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:500;padding:3px 9px;border-radius:999px;border:1px solid var(--amber);color:var(--amber);text-decoration:none;white-space:nowrap}
+.vbtn:hover{background:var(--amber);color:var(--ground)}
+.vbtn:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+td.vcell{white-space:nowrap}
+td.vcell .vbtn+.vbtn{margin-left:4px}
+.bk-box{border-color:var(--line-2)}
+.bk-box p:not(.k){margin-bottom:6px}
+.k.acc{color:var(--amber)}
+.bk-regua{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:10px}
+.bk-rule{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:grid;gap:4px}
+.bk-rule b{font-family:var(--display);font-weight:600;font-size:16px}
+.btn.ghost{background:transparent;color:var(--amber)}
+.btn.sm{font-size:11.5px;padding:4px 11px;justify-self:start}
+.kl-film{display:grid;gap:10px;padding-top:6px}
+.kl-film h3{font-family:var(--display);font-size:18px;font-weight:600}
+.kl-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:10px}
+.kl-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:grid;gap:12px;align-content:space-between}
+.kl-card.last{border-color:var(--amber)}
+.kl-top{display:flex;gap:12px;align-items:center}
+.kl-t{display:grid;gap:2px;min-width:0}
+.kl-grade{flex:none;width:52px;height:52px;display:grid;place-items:center;border-radius:var(--r);font-family:var(--display);font-weight:700;font-size:30px;border:1px solid var(--line-2);color:var(--text)}
+.kl-grade.gA,.kl-grade.gAp{background:var(--amber);border-color:var(--amber);color:var(--ground)}
+.kl-grade.gB{background:var(--slate);border-color:var(--slate)}
+.kl-grade.gC{background:var(--surface-2);color:var(--text-2)}
+.kl-table td.c,.kl-table th.c{text-align:center}
+.kl-dim{display:inline-grid;place-items:center;width:24px;height:22px;border-radius:2px;font-family:var(--mono);font-size:11px;font-weight:500;border:1px solid var(--line-2);color:var(--text-2)}
+.kl-dim.gA,.kl-dim.gAp{background:var(--amber);border-color:var(--amber);color:var(--ground)}
+.kl-dim.gB{background:var(--slate);border-color:var(--slate);color:var(--text)}
+.btn.ghost:hover{background:var(--amber);color:var(--ground)}
+.print-only{display:none}
+@media print{
+  :root{--ground:#fff;--surface:#f5f4f1;--surface-2:#f5f4f1;--line:#dcd9d2;--line-2:#c9c5bc;--text:#14161c;--text-2:#3a3d45;--text-3:#6b6e76;--amber:#93611c;--steel:#7d8496;--slate:#5c6478;--dusk:#9aa0ae;--cream:#c9c3b5;color-scheme:light}
+  @page{size:A4;margin:14mm}
+  html,body{background:#fff!important}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .wrap{padding:0;gap:22px;max-width:none}
+  #dash-view,footer,.back,.btn,.bk-cta{display:none!important}
+  #backlog-view{gap:20px}
+  .print-only{display:block}
+  .bk-head{padding-bottom:12px}
+  .bk-head h1{font-size:30px}
+  .bk-sec{gap:10px;break-inside:auto}
+  .bk-sec.pb{break-before:page;page-break-before:always}
+  .bk-sec h2{font-size:18px;break-after:avoid}
+  .bk-img{padding:8px}
+  .bk-img img{max-height:220px}
+  .card,.bk-tile,.bk-rule,.bk-scene,tr,.mrow,.bk-img{break-inside:avoid}
+  .bk-big{font-size:34px}
+  .vbtn{border-color:var(--line-2);color:var(--text-2);font-size:9px;padding:1px 6px}
+  .tip{display:none!important}
+  .bk-sec > .k, .bk-sec > h2{break-after:avoid;page-break-after:avoid}
+  .tw{overflow:visible}
+  table{font-size:10.5px}
+  th,td{padding:6px 6px}
+  td.vcell{white-space:normal}
+  td.vcell .vbtn{margin:0 4px 4px 0}
+  .bk-tiles{grid-template-columns:repeat(3,1fr)}
+  .bk-regua{grid-template-columns:repeat(3,1fr)}
+  .bk-strip{grid-template-columns:repeat(8,1fr)}
+  .bk-scene{padding:6px 7px;font-size:11px}
+  .grid.bk-fail{grid-template-columns:1fr 1fr}
+}
+footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);padding-top:16px}
+@media (prefers-reduced-motion:no-preference){
+  @keyframes rise{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+  .anim{transform-box:fill-box;transform-origin:bottom;animation:rise .5s cubic-bezier(.2,.7,.2,1) both}
+}
+/* <<< fim da cópia */
+
+/* ---------- formulário de preenchimento ---------- */
+.topbar{position:sticky;top:0;z-index:5;background:rgba(10,16,32,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.topbar .in{max-width:var(--maxw);margin-inline:auto;padding:10px max(16px,env(safe-area-inset-left,0px));display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.topbar img{height:34px;width:auto}
+.topbar .t{display:grid;gap:0;margin-right:auto}
+.topbar .t b{font-family:var(--display);font-weight:600;font-size:16px}
+.tabs{display:flex;gap:4px}
+.status{font-size:12px;color:var(--text-3);flex-basis:100%;min-height:1em}
+.status.ok{color:var(--ok)} .status.err{color:var(--bad)}
+.fsec{display:grid;gap:14px;padding-top:6px}
+.fsec > h2{font-size:clamp(20px,2.6vw,26px)}
+.hint{font-size:13px;color:var(--text-2);max-width:72ch}
+.hint b{color:var(--text)}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:12px 16px}
+.fgrid .wide{grid-column:1/-1}
+.f{display:grid;gap:5px;min-width:0}
+.f > span{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
+.f > span i{font-style:normal;color:var(--amber)}
+.f small{font-size:11.5px;color:var(--text-3)}
+input,select,textarea{width:100%;font:inherit;font-size:14px;color:var(--text);background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r);padding:9px 11px;outline:none;min-width:0}
+textarea{resize:vertical;min-height:4.5em;line-height:1.45}
+input:focus,select:focus,textarea:focus{border-color:var(--amber)}
+input::placeholder,textarea::placeholder{color:var(--text-3);font-style:italic}
+select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--text-3) 50%),linear-gradient(135deg,var(--text-3) 50%,transparent 50%);background-position:calc(100% - 16px) 55%,calc(100% - 11px) 55%;background-size:5px 5px;background-repeat:no-repeat;padding-right:28px}
+.mfield{display:grid;gap:6px}
+.items{display:grid;gap:10px}
+.item{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:grid;gap:12px}
+.item.alt{border-left:2px solid var(--amber)}
+.item-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.item-top b{font-family:var(--display);font-weight:600;font-size:16px}
+.item-top .calc{font-size:12px;color:var(--text-3)}
+.item-top .calc.alt{color:var(--amber)}
+.item-top .x{margin-left:auto}
+.lnk{font:inherit;font-size:12.5px;background:none;border:0;color:var(--text-3);cursor:pointer;padding:2px 4px;text-decoration:underline}
+.lnk:hover{color:var(--bad)}
+.add{justify-self:start}
+.drop{border:1px dashed var(--line-2);border-radius:var(--r);background:var(--surface);padding:22px;display:grid;gap:10px;justify-items:center;text-align:center;cursor:pointer}
+.drop.on{border-color:var(--amber)}
+.drop img{max-width:100%;max-height:360px;display:block}
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:8px}
+.cat-ck{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;cursor:pointer;font-size:13px}
+.cat-ck input{width:auto;margin-top:3px;accent-color:var(--amber)}
+.cat-ck b{display:block;font-weight:600}
+.cat-ck span{color:var(--text-3)}
+.cat-ck:has(input:checked){border-color:var(--amber)}
+.dims{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));gap:6px 12px}
+.dims label{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12.5px;color:var(--text-2)}
+.dims select{width:4.5rem;padding:5px 24px 5px 8px;font-size:13px;flex:none}
+.banner{background:var(--surface-2);border:1px solid var(--line-2);border-left:2px solid var(--amber);border-radius:var(--r);padding:12px 14px;font-size:13.5px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.banner[hidden]{display:none}
+.ro{font-size:13px;color:var(--text-2)}
+.lista-falta{margin:6px 0 0;padding-left:18px;font-size:13px;color:var(--text-2)}
+#form-view[hidden],#backlog-view[hidden]{display:none}
+@media print{.topbar,#form-view{display:none!important}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="in">
+    <img src="img/insula-logo.webp" alt="Insula AI" width="33" height="34">
+    <div class="t"><span class="k bk-k">Insula AI · Equipe</span><b>Backlog de modelos</b></div>
+    <div class="tabs" role="tablist">
+      <button class="cat" type="button" role="tab" id="tab-form" aria-pressed="true">Preencher</button>
+      <button class="cat" type="button" role="tab" id="tab-ver" aria-pressed="false">Ver como o Google</button>
+    </div>
+    <button class="btn" type="button" id="enviar">Enviar backlog</button>
+    <p class="status" id="status" role="status"></p>
+  </div>
+</div>
+
+<main class="wrap">
+<section id="form-view" class="stack-sm" style="gap:40px">
+  <header class="bk-head">
+    <p class="k bk-k">Insula AI × Google · Backlog de modelos</p>
+    <h1>Preenchimento do backlog</h1>
+    <p class="lede">Uma página por job, com os mesmos campos da página que o Google vê. Preencha o que souber e clique em <b>Enviar backlog</b>: o dashboard do Google é atualizado em cerca de um minuto. Dá para enviar de novo quantas vezes precisar; vale sempre o último envio.</p>
+    <p class="banner" id="rascunho" hidden></p>
+  </header>
+
+  <section class="fsec">
+    <p class="k bk-k">00 — Job</p>
+    <h2>Qual job e quem está preenchendo.</h2>
+    <div class="fgrid">
+      <label class="f"><span>Job <i>*</i></span><select id="f-projeto"><option value="">Carregando…</option></select></label>
+      <label class="f" id="novo-wrap" hidden><span>Nome do job novo <i>*</i></span><input data-f="novo_projeto" placeholder="ex.: Natura · Ekos" maxlength="80"></label>
+      <label class="f"><span>Seu nome <i>*</i></span><input data-f="enviado_por" autocomplete="name" maxlength="80" placeholder="Nome e sobrenome"></label>
+    </div>
+  </section>
+
+  <section class="fsec">
+    <p class="k bk-k">Cabeçalho</p>
+    <h2>O topo da página do backlog.</h2>
+    <div class="fgrid">
+      <label class="f wide"><span>Título do filme <i>*</i></span><input data-f="titulo" maxlength="160" placeholder="Cliente · Nome do filme (ex.: Mercado Pago · Conta Negócio)"></label>
+      <label class="f wide"><span>Subtítulo</span><textarea data-f="subtitulo" rows="2" maxlength="400"></textarea></label>
+      <label class="f"><span>Mês da entrega <i>*</i></span><input data-f="data_mes" type="month"></label>
+      <div class="f"><span>Modelo de vídeo principal <i>*</i></span><div data-model="video" data-mf="modelo_principal"></div><small>O modelo que deveria fazer o filme todo.</small></div>
+      <label class="f wide"><span>Pasta do backlog no Google Drive</span><input data-f="pasta_url" type="url" inputmode="url" placeholder="https://drive.google.com/drive/folders/…"><small>Vira o botão "Saiba mais". Pasta com as cenas, as tentativas e o que mais houver.</small></label>
+    </div>
+  </section>
+
+  <section class="fsec">
+    <p class="k bk-k">01 — Timeline</p>
+    <h2>Print da timeline de edição.</h2>
+    <p class="hint">Um print da timeline do filme montado, com as cenas visíveis. Clique na caixa, arraste a imagem para ela ou cole com <b>Ctrl+V</b>.</p>
+    <div class="drop" id="drop" tabindex="0" role="button" aria-label="Escolher o print da timeline">
+      <span class="note" id="drop-txt">Escolher, arrastar ou colar o print da timeline</span>
+      <img id="drop-img" alt="Print da timeline" hidden>
+    </div>
+    <input type="file" id="file" accept="image/*" hidden>
+    <div class="fgrid">
+      <label class="f wide"><span>Frase da timeline</span><input data-f="timeline_titulo" data-auto="timeline_titulo" maxlength="200"><small>Em branco, a página usa a sugestão em cinza.</small></label>
+      <label class="f wide"><span>Fonte</span><input data-f="timeline_fonte" maxlength="200"></label>
+    </div>
+  </section>
+
+  <section class="fsec">
+    <p class="k bk-k">02 — Resumo</p>
+    <h2>A conta do filme em uma frase.</h2>
+    <p class="hint">Os três números do resumo saem sozinhos das cenas (04) e dos planos tentados (05).</p>
+    <div class="bk-tiles" id="tiles"></div>
+    <div class="fgrid">
+      <label class="f wide"><span>Frase do resumo</span><input data-f="resumo_titulo" data-auto="resumo_titulo" maxlength="200"><small>Em branco, a página usa a sugestão em cinza.</small></label>
+      <label class="f wide"><span>Observação (opcional)</span><input data-f="resumo_nota" maxlength="600" placeholder="ex.: Todas as falhas do modelo principal estão nos quatro planos da cena 8."></label>
+    </div>
+  </section>
+
+  <section class="fsec">
+    <p class="k bk-k">03 — Google × outros modelos</p>
+    <h2>Calculado das cenas e dos planos.</h2>
+    <p class="hint">Não precisa preencher nada aqui. Contam como Google: Omni, Veo, Imagen, Nano Banana, Gemini e Flow.</p>
+    <div id="comp"></div>
+  </section>
+
+  <section class="fsec">
+    <p class="k bk-k">04 — Cena a cena</p>
+    <h2>O que foi usado em cada cena.</h2>
+    <p class="hint">Uma linha por cena, na ordem do filme. Descartes e status saem dos planos tentados (05). Os links dos vídeos entregues viram os botões <b>▶ Assistir</b>: um link do Drive por linha, na ordem dos takes.</p>
+    <div class="items" id="cenas"></div>
+    <button class="btn ghost add" type="button" id="add-cena">+ Adicionar cena</button>
+    <label class="f"><span>Fonte</span><input data-f="cenas_fonte" maxlength="200"></label>
+  </section>
+
+  <section class="fsec">
+    <p class="k bk-k">05 — Cena com falha</p>
+    <h2>Onde o modelo não entregou.</h2>
+    <p class="hint">Cada plano que precisou de tentativas descartadas: em que cena, em que modelo e quantas vezes. Se nenhuma cena falhou, deixe sem planos. Os links das tentativas viram os botões <b>▶ 1, ▶ 2…</b>, um por linha.</p>
+    <div class="items" id="planos"></div>
+    <button class="btn ghost add" type="button" id="add-plano">+ Adicionar plano tentado</button>
+    <div class="fgrid">
+      <label class="f wide"><span>Título da seção</span><input data-f="falha_titulo" data-auto="falha_titulo" maxlength="200"><small>Em branco, a página usa a sugestão em cinza.</small></label>
+    </div>
+    <div class="f"><span>Categoria de falha (régua F1–F9)</span><div class="cats" id="cats"></div></div>
+    <div class="fgrid">
+      <label class="f wide"><span>O que deu errado</span><textarea data-f="o_que_deu_errado" rows="3" maxlength="2000" placeholder="Descrição curta do que o modelo errou."></textarea></label>
+      <label class="f wide"><span>Prompt usado</span><textarea data-f="prompt" rows="4" maxlength="6000" placeholder="O prompt das tentativas que falharam."></textarea></label>
+      <label class="f wide"><span>Solução</span><input data-f="solucao" data-auto="solucao" maxlength="600"><small>Em branco, a página usa a sugestão em cinza.</small></label>
+      <label class="f wide"><span>Fonte</span><input data-f="falha_fonte" maxlength="200"></label>
+    </div>
+  </section>
+
+  <section class="fsec">
+    <p class="k bk-k">06 — Régua de falhas</p>
+    <h2>Uma régua comum para descrever cada falha.</h2>
+    <p class="hint">Referência para a categoria da seção 05. Aparece igual na página do Google.</p>
+    <div class="bk-regua" id="regua"></div>
+  </section>
+
+  <section class="fsec">
+    <p class="k bk-k">07 — Pontuação Klike (opcional)</p>
+    <h2>A nota do filme em cada relatório Klike.</h2>
+    <p class="hint">Só se o job tiver relatórios Klike. Um bloco por relatório, com a nota final, as 10 dimensões e o link do PDF no Drive.</p>
+    <label class="f"><span>Pasta dos relatórios Klike no Drive</span><input data-f="klike_pasta" type="url" inputmode="url" placeholder="https://drive.google.com/drive/folders/…"></label>
+    <div class="items" id="klike"></div>
+    <button class="btn ghost add" type="button" id="add-klike">+ Adicionar relatório Klike</button>
+  </section>
+
+  <div class="bk-cta">
+    <button class="btn" type="button" id="enviar2">Enviar backlog</button>
+    <button class="btn ghost" type="button" id="ver2">Ver como o Google</button>
+    <button class="lnk" type="button" id="limpar">Começar do zero</button>
+  </div>
+</section>
+
+<section id="backlog-view" class="stack" hidden></section>
+</main>
+
+<script>
+(() => {
+  'use strict';
+  const date = (s) => { if (!s) return '–'; const [y, m, d] = String(s).slice(0, 10).split('-'); return `${d}/${m}/${y}`; };
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
+  const d3 = { max: (a, f) => (a.length ? Math.max(...a.map(f)) : undefined) };
+  let B = { regua: [], klike_dimensoes: [] };
+
+  /* >>> JS copiado do dashboard por scripts/copiar_render.py: não editar aqui */
+  // ---------- backlog de modelos (uma "página" por projeto, aberta por #backlog-<id>) ----------
+  const isPh = (t) => /^\[.*\]$/.test(String(t ?? '').trim());
+  const tx = (tag, cls, t) => { const e = el(tag, cls, t); if (isPh(t)) e.classList.add('ph'); return e; };
+  const num2 = (n) => Number(n) || n;
+  const GOOGLE = /omni|veo|imagen|nano banana|gemini|flow/i;
+
+  // Comparativo por modelo a partir do que a equipe preencheu (quando não há leitura da pasta do Drive).
+  function modelosManual(cenas, planos, princ) {
+    const m = new Map();
+    const get = (nome) => { if (!m.has(nome)) m.set(nome, { modelo: nome, google: GOOGLE.test(nome), cenas_entregues: 0, takes_entregues: 0, tentativas_descartadas: 0, cenas_com_falha: 0 }); return m.get(nome); };
+    for (const c of cenas) {
+      if (!c.modelo_video || isPh(c.modelo_video)) continue;
+      for (const nome of String(c.modelo_video).split(' + ')) {
+        const x = get(nome.trim()); x.cenas_entregues++;
+        x.takes_entregues += isPh(c.take) ? 1 : Math.max(1, String(c.take || '').split(',').filter((t) => t.trim()).length);
+      }
+    }
+    const falhas = new Map();
+    for (const p of planos) {
+      const nome = p.modelo || princ; if (!nome || isPh(nome)) continue;
+      get(nome).tentativas_descartadas += Number(p.tentativas) || 0;
+      if (!falhas.has(nome)) falhas.set(nome, new Set()); falhas.get(nome).add(p.cena);
+    }
+    for (const [nome, set] of falhas) get(nome).cenas_com_falha = set.size;
+    return [...m.values()].sort((a, b) => (b.google - a.google) || (b.cenas_entregues - a.cenas_entregues));
+  }
+
+  // Junta o que veio das pastas do Drive (bloco drive) com os textos escritos à mão.
+  function bkData(b) {
+    const man = new Map((b.cenas || []).map((c) => [String(c.cena), c]));
+    if (!b.drive) {
+      const planos = (b.falha && b.falha.planos) || [];
+      return { cenas: b.cenas || [], planos, modelos: modelosManual(b.cenas || [], planos, b.modelo_principal), fonte: 'manual' };
+    }
+    const cenas = b.drive.cenas.map((dc) => {
+      const m = man.get(dc.cena) || {};
+      const ent = dc.entregue[0] || { modelo: '[a preencher]', takes: [] };
+      const ten = dc.tentativas.map((t) => ({ modelo: t.modelo, n: t.planos.reduce((a, p) => a + p.tentativas, 0) }));
+      const trocou = ten.some((t) => t.modelo !== ent.modelo);
+      const takeDrive = ent.takes.join(', ').replace(/CENA_(\d+)([A-Z]?), CENA_\1([A-Z])/g, 'CENA_$1$2, $1$3');
+      return {
+        cena: dc.cena,
+        take: m.take && !isPh(m.take) ? m.take : takeDrive || '[a preencher]',
+        modelo_imagem: m.modelo_imagem || '[a preencher]',
+        modelo_video: dc.entregue.map((e) => e.modelo).join(' + ') || '[a preencher]',
+        descartes: ten.length ? ten.map((t) => `${t.n} no ${t.modelo}`).join(', ') : (m.descartes && m.descartes !== '—' ? m.descartes : '—'),
+        status: trocou ? 'Trocou de modelo' : ten.length ? `Aprovado após ${ten[0].n} tentativas` : (m.status && !isPh(m.status) ? m.status : 'Aprovado'),
+        trocou,
+        videos: dc.entregue.flatMap((e) => (e.videos || []).map((v) => ({ ...v, modelo: e.modelo }))),
+      };
+    });
+    const planos = b.drive.cenas.flatMap((dc) => dc.tentativas.flatMap((t) => t.planos.map((p) => ({ ...p, cena: dc.cena, modelo: t.modelo }))));
+    return { cenas, planos, modelos: b.drive.modelos, fonte: 'drive' };
+  }
+
+  const driveUrl = (id) => `https://drive.google.com/file/d/${encodeURIComponent(id)}/view`;
+  function vlink(id, label, title) {
+    const a = el('a', 'vbtn', label); a.href = driveUrl(id); a.target = '_blank'; a.rel = 'noopener';
+    a.title = title || 'Assistir no Google Drive'; return a;
+  }
+  const shortTake = (t) => String(t).replace(/^CENA_/, '');
+
+  function bkSection(num, kicker, titulo) {
+    const sec = el('section', 'bk-sec'); sec.append(el('p', 'k bk-k', `${num} — ${kicker}`), tx('h2', '', titulo)); return sec;
+  }
+
+  // Barras de modelo: cenas entregues e tentativas descartadas, Google destacado.
+  function modelBars(modelos) {
+    const box = el('div', 'mbars');
+    const maxC = d3.max(modelos, (m) => m.cenas_entregues) || 1, maxT = d3.max(modelos, (m) => m.tentativas_descartadas) || 1;
+    const head = el('div', 'mrow mhead'); head.append(el('span', 'k', 'Modelo'), el('span', 'k', 'Cenas entregues'), el('span', 'k', 'Tentativas descartadas'));
+    box.appendChild(head);
+    for (const m of modelos) {
+      const r = el('div', 'mrow'), nm = el('span', 'mname', m.modelo);
+      nm.appendChild(el('span', 'chip ' + (m.google ? 'g' : 'neutral'), m.google ? 'Google' : 'Outro'));
+      const bar = (v, max, cls, label) => { const w = el('span', 'mtrack'); const f = el('span', 'mfill ' + cls); f.style.width = (v / max * 100) + '%'; w.append(f, el('b', '', label)); return w; };
+      r.append(nm, bar(m.cenas_entregues, maxC, m.google ? 'gfill' : 'ofill', `${m.cenas_entregues} cena${m.cenas_entregues === 1 ? '' : 's'} · ${m.takes_entregues} take${m.takes_entregues === 1 ? '' : 's'}`),
+        bar(m.tentativas_descartadas, maxT, 'dfill', String(m.tentativas_descartadas)));
+      box.appendChild(r);
+    }
+    return box;
+  }
+
+  const notaCls = (n) => 'g' + String(n || '').replace(/[^A-Z+]/g, '').replace('+', 'p');
+  function klikeSection(K) {
+    const rels = (K.relatorios || []).slice().sort((a, c) => String(a.data).localeCompare(String(c.data)));
+    const sec = bkSection('07', 'Pontuação Klike', rels.length ? 'A nota do filme em cada relatório Klike.' : '[pontuação Klike a preencher]');
+    sec.id = 'klike'; sec.classList.add('pb');
+    const dims = (B && B.klike_dimensoes) || [];
+    if (!rels.length) sec.appendChild(tx('p', 'bk-empty', '[relatórios Klike a preencher]'));
+    for (const fm of [...new Set(rels.map((r) => r.filme))]) {
+      const rs = rels.filter((r) => r.filme === fm);
+      const grp = el('div', 'kl-film'), first = rs[0].nota, last = rs[rs.length - 1].nota;
+      grp.append(el('h3', '', fm), el('p', 'note', rs.length > 1 ? (first === last ? `Nota ${last} nas ${rs.length} versões analisadas.` : `Subiu de ${first} para ${last} em ${rs.length} versões analisadas.`) : `Nota ${last}.`));
+      const cards = el('div', 'kl-cards');
+      rs.forEach((r, i) => {
+        const c = el('div', 'kl-card' + (i === rs.length - 1 ? ' last' : ''));
+        const top = el('div', 'kl-top'), t = el('div', 'kl-t');
+        t.append(el('b', '', r.titulo), el('span', 'note', `${r.versao} · ${date(r.data)}`));
+        top.append(el('span', 'kl-grade ' + notaCls(r.nota), r.nota), t);
+        const a = el('a', 'btn sm', 'Acessar relatório'); a.href = driveUrl(r.arquivo_id); a.target = '_blank'; a.rel = 'noopener';
+        a.title = 'Abre o relatório Klike (PDF) no Google Drive';
+        c.append(top, a); cards.appendChild(c);
+      });
+      grp.appendChild(cards);
+      if (dims.length && rs.some((r) => r.dimensoes && r.dimensoes.length)) {
+        const tw = el('div', 'tw'), tb = el('table', 'kl-table'), th = el('thead'), hr = el('tr');
+        hr.appendChild(el('th', '', 'Dimensão'));
+        for (const r of rs) hr.appendChild(el('th', 'c', `${r.versao.split(' · ')[0]} · ${date(r.data).slice(0, 5)}`));
+        th.appendChild(hr); tb.appendChild(th); const body = el('tbody');
+        dims.forEach((nm, j) => {
+          const tr = el('tr'); tr.appendChild(el('td', '', `${String(j + 1).padStart(2, '0')} · ${nm}`));
+          for (const r of rs) { const g = (r.dimensoes || [])[j] || '–'; const td = el('td', 'c'); td.appendChild(el('span', 'kl-dim ' + notaCls(g), g)); tr.appendChild(td); }
+          body.appendChild(tr);
+        });
+        tb.appendChild(body); tw.appendChild(tb); grp.appendChild(tw);
+      }
+      sec.appendChild(grp);
+    }
+    const cta = el('div', 'bk-cta');
+    if (K.pasta_url) { const a = el('a', 'btn ghost', 'Pasta de relatórios Klike'); a.href = K.pasta_url; a.target = '_blank'; a.rel = 'noopener'; cta.appendChild(a); }
+    else { const x = el('button', 'btn ghost', 'Pasta de relatórios Klike'); x.type = 'button'; x.disabled = true; cta.append(x, el('span', 'note', 'Pasta a definir')); }
+    sec.append(cta, el('p', 'k bk-src', 'Fonte: ' + (K.fonte || 'Relatórios Klike') + ' · nota final e as 10 dimensões de cada relatório, de A a C')); 
+    return sec;
+  }
+
+  function renderBacklog(b) {
+    const v = document.getElementById('backlog-view'); v.replaceChildren();
+    const nav = el('a', 'back', '← Conta corrente Google 2026'); nav.href = '#backlog'; v.appendChild(nav);
+    const head = el('header', 'bk-head');
+    const k = el('p', 'k bk-k', 'Insula AI × Google · Backlog de modelos');
+    const st = el('span', 'chip ' + (b.oficial ? 'ok' : b.enviado_em ? 'neutral' : 'warn'), b.oficial ? 'Dados oficiais' : b.enviado_em ? `Preenchido pela equipe em ${date(b.enviado_em)}` : 'Modelo · a preencher');
+    head.append(k, el('h1', '', b.titulo), tx('p', 'lede', b.subtitulo));
+    const meta = el('p', 'k'); meta.append(document.createTextNode(`Insula AI · ${b.projeto} · `), tx('span', '', b.data));
+    const row = el('div', 'bk-meta'); row.append(meta, st);
+    if (b.drive) row.appendChild(el('span', 'note', `Lido da pasta do projeto no Drive em ${date(b.drive.lido_em)}`));
+    const more = () => {
+      if (b.pasta_url && String(b.pasta_url).startsWith('https://')) {
+        const a = el('a', 'btn', 'Saiba mais'); a.href = b.pasta_url; a.target = '_blank'; a.rel = 'noopener';
+        a.title = 'Abre a pasta do backlog no Google Drive'; return a;
+      }
+      const x = el('button', 'btn', 'Saiba mais'); x.type = 'button'; x.disabled = true; x.title = 'Pasta do backlog a definir'; return x;
+    };
+    const pdf = () => {
+      const x = el('button', 'btn ghost', 'Gerar PDF'); x.type = 'button';
+      x.title = 'Gera um PDF só com o backlog, sem valores, para enviar à engenharia';
+      x.addEventListener('click', () => {
+        const t = document.title; document.title = `Backlog de modelos — ${b.titulo}`;
+        window.print(); setTimeout(() => { document.title = t; }, 500);
+      });
+      return x;
+    };
+    const klikeBtn = () => {
+      const x = el('button', 'btn ghost', 'Pontuação Klike'); x.type = 'button';
+      x.title = 'Ver a nota do filme em cada relatório Klike';
+      x.addEventListener('click', () => { const k = document.getElementById('klike'); if (k) k.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+      return x;
+    };
+    const cta = el('div', 'bk-cta'); cta.append(more()); if (b.klike) cta.appendChild(klikeBtn()); cta.append(pdf(), el('span', 'note', b.pasta_url ? 'Pasta do backlog no Google Drive, com cada cena e o PDF completo' : 'Pasta do backlog a definir'));
+    const pr = el('p', 'k print-only', `Insula AI · Backlog de modelos · ${b.projeto} · gerado em ${new Date().toLocaleDateString('pt-BR')}`);
+    head.prepend(pr);
+    if (b.pasta_url) head.appendChild(el('p', 'note print-only', 'Pasta do backlog no Google Drive: ' + b.pasta_url));
+    head.append(row, cta); v.appendChild(head);
+
+    const X = bkData(b), cenas = X.cenas, planos = X.planos, f = b.falha || {};
+    const trocas = cenas.filter((c) => c.trocou), princ = b.modelo_principal, real = (b.oficial || b.enviado_em) && cenas.length && !isPh(princ);
+    const nTrocas = trocas.map((c) => num2(c.cena)).join(', ');
+    // 01 timeline
+    const s1 = bkSection('01', 'Timeline', b.timeline_titulo);
+    if (b.timeline_img) { const fig = el('div', 'bk-img'); const im = el('img'); im.src = b.timeline_img; im.alt = 'Timeline de edição do filme'; fig.appendChild(im); s1.appendChild(fig); }
+    else s1.appendChild(tx('p', 'bk-empty', '[timeline de edição a preencher]'));
+    const strip = el('div', 'bk-strip');
+    for (const c of cenas) { const it = el('div', 'bk-scene' + (c.trocou ? ' alt' : '')); it.append(el('span', 'k', `Cena ${num2(c.cena)}`), tx('b', '', c.modelo_video)); strip.appendChild(it); }
+    s1.append(strip, el('p', 'k bk-src', 'Fonte: ' + b.timeline_fonte)); v.appendChild(s1);
+
+    // 02 resumo
+    const s2 = bkSection('02', 'Resumo', b.resumo_titulo || '[resumo a preencher]');
+    const n = cenas.length, comP = cenas.filter((c) => c.modelo_video === princ).length;
+    const desc = planos.reduce((a, p) => a + (Number(p.tentativas) || 0), 0);
+    const tiles = el('div', 'bk-tiles');
+    const tile = (big, label, accent) => { const t = el('div', 'bk-tile'); t.append(el('span', 'bk-big' + (accent ? ' acc' : ''), big), el('span', 'note', label)); tiles.appendChild(t); };
+    if (real) {
+      tile(`${comP}/${n}`, `cenas entregues com ${princ}`, true);
+      tile(String(trocas.length), trocas.length ? `cena${trocas.length === 1 ? '' : 's'} trocada${trocas.length === 1 ? '' : 's'} para ${[...new Set(trocas.map((c) => c.modelo_video))].join(', ')} (cena ${nTrocas})` : 'cenas trocadas de modelo');
+      tile(String(desc), desc ? `tentativas descartadas no ${princ}, em ${planos.length} plano${planos.length === 1 ? '' : 's'} da cena ${[...new Set(planos.map((p) => num2(p.cena)))].join(', ')}` : 'tentativas descartadas');
+    } else {
+      tile('—', 'cenas entregues com o modelo principal'); tile('—', 'cenas trocadas de modelo'); tile('—', 'tentativas descartadas');
+    }
+    s2.appendChild(tiles);
+    if (b.resumo_nota) s2.appendChild(el('p', 'bk-note', '◆  ' + b.resumo_nota));
+    s2.appendChild(el('p', 'k bk-src', 'Fonte: ' + (X.fonte === 'drive' ? 'pasta do projeto no Drive · contagem de arquivos por modelo' : b.resumo_fonte || 'contagem por cena e por plano'))); v.appendChild(s2);
+
+    // 03 Google x outros
+    const s3 = bkSection('03', 'Google × outros modelos', X.modelos.length ? 'Quanto do filme saiu do modelo do Google.' : '[comparativo a preencher]');
+    s3.classList.add('pb');
+    if (X.modelos.length) {
+      const g = X.modelos.filter((m) => m.google), o = X.modelos.filter((m) => !m.google);
+      const sum = (arr, k2) => arr.reduce((a, m) => a + m[k2], 0);
+      const gt = el('div', 'bk-tiles');
+      const t2 = (big, label, accent) => { const t = el('div', 'bk-tile'); t.append(el('span', 'bk-big' + (accent ? ' acc' : ''), big), el('span', 'note', label)); gt.appendChild(t); };
+      t2(`${Math.round(sum(g, 'cenas_entregues') / Math.max(1, sum(X.modelos, 'cenas_entregues')) * 100)}%`, `das cenas entregues com modelo do Google (${g.map((m) => m.modelo).join(', ')})`, true);
+      t2(String(sum(o, 'cenas_entregues')), `cena${sum(o, 'cenas_entregues') === 1 ? '' : 's'} com outros modelos${o.length ? ' (' + o.map((m) => m.modelo).join(', ') + ')' : ''}`);
+      t2(String(sum(g, 'tentativas_descartadas')), 'tentativas descartadas no modelo do Google antes da troca');
+      s3.append(gt, modelBars(X.modelos));
+    } else s3.appendChild(tx('p', 'bk-empty', '[comparativo gerado quando as cenas forem preenchidas]'));
+    s3.appendChild(el('p', 'k bk-src', 'Fonte: ' + (X.fonte === 'drive' ? 'pastas CENA / modelo no Drive' : 'cena a cena e planos tentados, preenchidos pela equipe') + ' · Google = Omni, Veo, Imagen, Nano Banana, Gemini')); v.appendChild(s3);
+
+    // 04 cena a cena
+    const s4 = bkSection('04', 'Cena a cena', 'O que foi usado em cada cena.');
+    const tw = el('div', 'tw'), tb = el('table'), th = el('thead'), hr = el('tr');
+    const temVideo = cenas.some((c) => c.videos && c.videos.length);
+    for (const h of ['Cena', 'Take entregue', 'Modelo de imagem', 'Modelo de vídeo', 'Descartes', 'Status'].concat(temVideo ? ['Vídeo'] : [])) hr.appendChild(el('th', '', h));
+    th.appendChild(hr); tb.appendChild(th); const body = el('tbody');
+    for (const c of cenas) {
+      const tr = el('tr', c.trocou ? 'alt' : '');
+      for (const key of ['cena', 'take', 'modelo_imagem', 'modelo_video', 'descartes', 'status']) tr.appendChild(tx('td', '', c[key]));
+      if (temVideo) {
+        const td = el('td', 'vcell');
+        const vs = c.videos || [];
+        for (const v of vs) td.appendChild(vlink(v.id, vs.length > 1 ? `▶ ${shortTake(v.take)}` : '▶ Assistir', `Assistir ${v.take} (${v.modelo}) no Google Drive`));
+        if (!vs.length) td.appendChild(el('span', 'note', '–'));
+        tr.appendChild(td);
+      }
+      body.appendChild(tr);
+    }
+    tb.appendChild(body); tw.appendChild(tb); s4.append(tw, el('p', 'k bk-src', 'Fonte: ' + b.cenas_fonte)); v.appendChild(s4);
+
+    // 05 falha
+    const s5 = bkSection('05', trocas.length ? `Cena ${nTrocas}` : 'Falhas', f.titulo || '[falhas a preencher]');
+    s5.classList.add('pb');
+    const g5 = el('div', 'grid bk-fail'), l = el('div', 'card'); l.appendChild(el('p', 'k', f.rotulo || 'Planos tentados'));
+    const ul = el('ul', 'bk-plans');
+    if (!planos.length) ul.appendChild(tx('li', '', '[planos a preencher]'));
+    for (const p of planos) {
+      const li = el('li'), nm = el('span', 'pl'); nm.appendChild(el('span', '', p.plano));
+      if (p.ids && p.ids.length) { const vs = el('span', 'vrow'); p.ids.forEach((id, i) => vs.appendChild(vlink(id, `▶ ${i + 1}`, `Assistir a tentativa ${i + 1} de ${p.plano} (${p.modelo || princ}) no Google Drive`))); nm.appendChild(vs); }
+      li.append(nm, el('b', '', `${p.tentativas}×`)); ul.appendChild(li);
+    }
+    if (planos.length) { const li = el('li', 'tot'); li.append(el('span', '', 'Total descartado'), el('b', '', String(desc))); ul.appendChild(li); }
+    l.appendChild(ul);
+    const r = el('div', 'card bk-box');
+    for (const [lab, val, acc] of [['Categoria de falha', f.categoria], ['O que deu errado', f.o_que_deu_errado], ['Prompt usado', f.prompt], ['Solução', f.solucao, true]]) {
+      r.append(el('p', 'k' + (acc ? ' acc' : ''), lab), tx('p', '', val ?? '[a preencher]'));
+    }
+    const entregues = trocas.flatMap((c) => c.videos || []);
+    if (entregues.length) {
+      const vs = el('div', 'vrow');
+      for (const v of entregues) vs.appendChild(vlink(v.id, `▶ ${shortTake(v.take)} · ${v.modelo}`, `Assistir ${v.take} (${v.modelo}) no Google Drive`));
+      r.append(el('p', 'k acc', 'Assistir o que foi entregue'), vs);
+    }
+    g5.append(l, r); s5.append(g5);
+    if (planos.some((p) => p.ids && p.ids.length)) s5.appendChild(el('p', 'note', 'Os números abrem cada tentativa descartada no Google Drive, ao lado dos takes que resolveram a cena. É preciso ter acesso à pasta do projeto no Drive.'));
+    s5.appendChild(el('p', 'k bk-src', 'Fonte: ' + (f.fonte || ''))); v.appendChild(s5);
+
+    // 06 régua
+    const s6 = bkSection('06', 'Régua de falhas', 'Uma régua comum para descrever cada falha.');
+    const gr = el('div', 'bk-regua');
+    for (const x of B.regua || []) { const c = el('div', 'bk-rule'); c.append(el('span', 'k acc', x.codigo), el('b', '', x.nome), el('span', 'note', x.descricao)); gr.appendChild(c); }
+    s6.append(gr, el('p', 'k bk-src', 'Cada descarte recebe um código F1–F9 + descrição livre')); v.appendChild(s6);
+    if (b.klike) v.appendChild(klikeSection(b.klike));
+    const end = el('div', 'bk-cta'); end.append(more(), pdf(), el('span', 'note', b.pasta_url ? 'Ver todos os detalhes na pasta do backlog' : 'Pasta do backlog a definir')); v.appendChild(end);
+  }
+  
+  /* <<< fim da cópia */
+
+  // ---------- formulário ----------
+  const $ = (id) => document.getElementById(id);
+  const PH = '[a preencher]';
+  const SUB = 'Quais modelos de imagem e vídeo usamos em cada cena, quantas tentativas cada uma levou e onde o modelo principal não entregou.';
+  const MODELOS = {
+    video: { Google: ['Omni 1.1', 'Omni Flash', 'Veo 3.1', 'Veo 3.1 Fast', 'Veo 3', 'Flow'], Outros: ['Seedance 2.0', 'Seedance 1.0 Pro', 'Kling 3.0', 'Kling 2.5', 'Kling 2.1', 'Runway Gen-4', 'Sora 2', 'Hailuo 02', 'Wan 2.5', 'Luma Ray 3', 'Higgsfield'] },
+    imagem: { Google: ['Nano Banana', 'Nano Banana Pro', 'Imagen 4', 'Gemini'], Outros: ['Midjourney', 'Flux Kontext', 'Seedream 4', 'GPT Image', 'Ideogram', 'Recraft', 'Frame do vídeo (sem modelo de imagem)'] },
+  };
+  const MESES = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+  const NUM = ['nenhuma', 'uma', 'duas', 'três', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove', 'dez', 'onze', 'doze', 'treze', 'catorze', 'quinze', 'dezesseis', 'dezessete', 'dezoito', 'dezenove', 'vinte'];
+  const num = (k) => NUM[k] || String(k);
+  const cap = (t) => t.charAt(0).toUpperCase() + t.slice(1);
+  const pad = (i) => String(i).padStart(2, '0');
+  const slug = (t) => String(t || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40);
+  const driveId = (u) => { const m = String(u || '').match(/(?:\/d\/|[?&]id=|\/folders\/)([A-Za-z0-9_-]{10,100})/); return m ? m[1] : (/^[A-Za-z0-9_-]{20,100}$/.test(String(u || '').trim()) ? String(u).trim() : ''); };
+  const linhas = (t) => String(t || '').split(/[\s,]+/).map((x) => x.trim()).filter(Boolean);
+  const vazio = (t) => !t || isPh(t);
+
+  const novoForm = () => ({
+    id: '', novo_projeto: '', enviado_por: '',
+    titulo: '', subtitulo: SUB, data_mes: '', modelo_principal: '', pasta_url: '',
+    timeline_titulo: '', timeline_fonte: 'Timeline de edição + pastas de entrega', timeline_img: '', timeline_mudou: false,
+    resumo_titulo: '', resumo_nota: '',
+    cenas: [{ take: '', modelo_imagem: '', modelo_video: '', links: '' }],
+    cenas_fonte: 'Preenchido pela equipe · [a preencher] = dado ainda não informado',
+    planos: [], categorias: [], o_que_deu_errado: '', prompt: '', solucao: '', falha_titulo: '', falha_fonte: 'Pastas das cenas com falha / tentativas',
+    klike_pasta: '', klike: [],
+  });
+  let F = novoForm();
+  let PROJETOS = [];
+
+  // ---- do formulário para o formato da página do Google (o mesmo de backlogs.json) ----
+  function projetoNome() {
+    if (F.id === '__novo') return F.novo_projeto.trim();
+    const p = PROJETOS.find((x) => x.id === F.id); return p ? p.projeto : '';
+  }
+  function build() {
+    const princ = F.modelo_principal || PH;
+    const cenas = F.cenas.map((c, i) => {
+      const n = pad(i + 1), mv = c.modelo_video || PH;
+      const grupos = [];
+      for (const p of F.planos.filter((p) => p.cena === n)) {
+        const mod = p.modelo || F.modelo_principal || PH, g = grupos.find((x) => x.modelo === mod);
+        if (g) g.n += Number(p.tentativas) || 0; else grupos.push({ modelo: mod, n: Number(p.tentativas) || 0 });
+      }
+      const trocou = grupos.some((g) => g.n > 0 && g.modelo !== mv);
+      const tot = grupos.reduce((a, g) => a + g.n, 0);
+      const takes = String(c.take || '').split(',').map((t) => t.trim()).filter(Boolean);
+      const videos = linhas(c.links).map(driveId).filter(Boolean).map((id, j) => ({ take: takes[j] || (takes[0] ? `${takes[0]} (${j + 1})` : `Cena ${n}`), id }));
+      return {
+        cena: n, take: c.take.trim() || PH, modelo_imagem: c.modelo_imagem || PH, modelo_video: mv,
+        descartes: tot ? grupos.filter((g) => g.n).map((g) => `${g.n} no ${g.modelo}`).join(', ') : '—',
+        status: trocou ? 'Trocou de modelo' : tot ? `Aprovado após ${tot} tentativas` : (c.modelo_video ? 'Aprovado' : PH),
+        trocou, videos,
+      };
+    });
+    const planos = F.planos.filter((p) => p.plano.trim() || Number(p.tentativas)).map((p) => ({
+      plano: p.plano.trim() || PH, cena: p.cena, modelo: p.modelo || F.modelo_principal || PH, tentativas: Number(p.tentativas) || 0,
+      ids: linhas(p.links).map(driveId).filter(Boolean),
+    }));
+    const trocas = cenas.filter((c) => c.trocou);
+    const modsFalha = [...new Set(planos.map((p) => p.modelo))], quemFalhou = modsFalha.length === 1 && !isPh(modsFalha[0]) ? modsFalha[0] : F.modelo_principal || 'modelo principal';
+    const n = cenas.length, comP = cenas.filter((c) => c.modelo_video === F.modelo_principal).length;
+    const auto = {
+      timeline_titulo: n ? `O filme em ${num(n)} cena${n === 1 ? '' : 's'}, com o modelo de cada uma.` : 'O filme cena a cena, com o modelo de cada uma.',
+      resumo_titulo: !F.modelo_principal || !n ? '' : comP === n ? `Todas as ${num(n)} cenas saíram do ${F.modelo_principal}.` : `${cap(num(comP))} de ${num(n)} cenas saíram do ${F.modelo_principal}.`,
+      falha_titulo: trocas.length ? `Cena ${trocas.map((c) => Number(c.cena)).join(', ')}: onde o ${quemFalhou} não entregou.` : planos.length ? `Onde o ${quemFalhou} precisou de mais tentativas.` : 'Nenhuma cena falhou: todas saíram do modelo principal.',
+      solucao: trocas.length ? trocas.map((c) => `${c.modelo_video} → ${c.take} entregue${c.take.includes(',') ? 's' : ''}`).join('; ') : planos.length ? 'Nova tentativa no mesmo modelo, aprovada' : '—',
+    };
+    const temPl = planos.length > 0;
+    const regua = B.regua || [];
+    const cat = F.categorias.map((c) => { const r = regua.find((x) => x.codigo === c); return r ? `${c} · ${r.nome}` : c; }).join(', ');
+    const b = {
+      id: F.id === '__novo' ? slug(F.novo_projeto) : F.id,
+      projeto: projetoNome(), titulo: F.titulo.trim() || projetoNome() || PH, subtitulo: F.subtitulo.trim() || SUB,
+      data: F.data_mes ? `${MESES[Number(F.data_mes.slice(5, 7)) - 1]} ${F.data_mes.slice(0, 4)}` : PH,
+      modelo_principal: princ, pasta_url: F.pasta_url.trim(),
+      timeline_img: F.timeline_img, timeline_titulo: F.timeline_titulo.trim() || auto.timeline_titulo, timeline_fonte: F.timeline_fonte.trim() || 'Timeline de edição',
+      resumo_titulo: F.resumo_titulo.trim() || auto.resumo_titulo, resumo_nota: F.resumo_nota.trim(), resumo_fonte: 'Preenchido pela equipe · contagem por cena e por plano',
+      cenas, cenas_fonte: F.cenas_fonte.trim() || 'Preenchido pela equipe',
+      falha: {
+        titulo: F.falha_titulo.trim() || auto.falha_titulo,
+        rotulo: modsFalha.length === 1 && !isPh(modsFalha[0]) ? `Planos tentados no ${modsFalha[0]}` : 'Planos tentados',
+        planos, categoria: cat || (temPl ? '[F_ — a preencher]' : '—'),
+        o_que_deu_errado: F.o_que_deu_errado.trim() || (temPl ? '[descrição curta — a preencher]' : '—'),
+        prompt: F.prompt.trim() || (temPl ? PH : '—'), solucao: F.solucao.trim() || auto.solucao, fonte: F.falha_fonte.trim(),
+      },
+      enviado_em: new Date().toISOString(),
+    };
+    if (F.klike.length || F.klike_pasta.trim()) {
+      b.klike = {
+        pasta_url: F.klike_pasta.trim(), fonte: 'Relatórios de análise de vídeo Klike',
+        relatorios: F.klike.filter((r) => r.nota).map((r) => ({ filme: r.filme.trim() || 'Filme', titulo: r.titulo.trim() || b.titulo, versao: r.versao.trim() || 'v1', data: r.data, nota: r.nota, dimensoes: r.dims.slice(0, 10), arquivo_id: driveId(r.link) })),
+      };
+    }
+    return { b, auto };
+  }
+
+  // ---- do backlog gravado para o formulário (quando o job ainda não tem envio pelo site) ----
+  function fromBacklog(b) {
+    const f = novoForm(), lim = (t) => (vazio(t) ? '' : String(t));
+    f.id = b.id; f.titulo = lim(b.titulo); f.subtitulo = lim(b.subtitulo) || SUB; f.modelo_principal = lim(b.modelo_principal); f.pasta_url = b.pasta_url || '';
+    const m = String(b.data || '').match(/^(\S+)\s+(\d{4})$/); if (m && MESES.includes(m[1])) f.data_mes = `${m[2]}-${pad(MESES.indexOf(m[1]) + 1)}`;
+    for (const k of ['timeline_fonte', 'resumo_nota', 'cenas_fonte']) if (lim(b[k])) f[k] = lim(b[k]);
+    const cs = (b.cenas || []).map((c) => ({ take: lim(c.take), modelo_imagem: lim(c.modelo_imagem), modelo_video: lim(c.modelo_video), links: (c.videos || []).map((v) => `https://drive.google.com/file/d/${v.id}/view`).join('\n') }));
+    if (cs.length) f.cenas = cs;
+    const fl = b.falha || {};
+    f.planos = (fl.planos || []).map((p) => ({ cena: p.cena ? pad(Number(p.cena)) : '01', plano: lim(p.plano), modelo: lim(p.modelo), tentativas: p.tentativas || 0, links: (p.ids || []).map((id) => `https://drive.google.com/file/d/${id}/view`).join('\n') }));
+    f.categorias = (String(fl.categoria || '').match(/F[1-9]/g) || []);
+    for (const [k, v] of [['o_que_deu_errado', fl.o_que_deu_errado], ['prompt', fl.prompt]]) f[k] = lim(v) && !/a preencher/.test(v) ? v : '';
+    if (b.klike) {
+      f.klike_pasta = b.klike.pasta_url || '';
+      f.klike = (b.klike.relatorios || []).map((r) => ({ filme: r.filme || '', titulo: r.titulo || '', versao: r.versao || '', data: r.data || '', nota: r.nota || '', dims: (r.dimensoes || []).concat(Array(10).fill('–')).slice(0, 10), link: r.arquivo_id ? `https://drive.google.com/file/d/${r.arquivo_id}/view` : '' }));
+    }
+    return f;
+  }
+
+  // ---- campos ----
+  function modelField(kind, value, onChange) {
+    const box = el('div', 'mfield'), sel = el('select'), inp = el('input');
+    inp.placeholder = 'Nome e versão do modelo'; inp.maxLength = 80;
+    sel.appendChild(new Option('Escolha…', ''));
+    for (const [grp, list] of Object.entries(MODELOS[kind])) { const og = document.createElement('optgroup'); og.label = grp; for (const m of list) og.appendChild(new Option(m, m)); sel.appendChild(og); }
+    sel.appendChild(new Option('Outro…', '__outro'));
+    const all = Object.values(MODELOS[kind]).flat();
+    if (value && !all.includes(value)) { sel.value = '__outro'; inp.value = value; } else { sel.value = value || ''; inp.hidden = true; }
+    sel.addEventListener('change', () => { inp.hidden = sel.value !== '__outro'; if (sel.value === '__outro') { inp.focus(); onChange(inp.value.trim()); } else onChange(sel.value); });
+    inp.addEventListener('input', () => onChange(inp.value.trim()));
+    box.append(sel, inp); return box;
+  }
+  const field = (label, input, cls) => { const l = el('label', 'f' + (cls ? ' ' + cls : '')); l.append(el('span', '', label), input); return l; };
+  const textIn = (val, on, ph, max) => { const i = el('input'); i.value = val || ''; if (ph) i.placeholder = ph; i.maxLength = max || 160; i.addEventListener('input', () => on(i.value)); return i; };
+  const areaIn = (val, on, ph) => { const i = el('textarea'); i.rows = 2; i.value = val || ''; if (ph) i.placeholder = ph; i.addEventListener('input', () => on(i.value)); return i; };
+
+  function drawCenas() {
+    const box = $('cenas'); box.replaceChildren();
+    const { b } = build();
+    F.cenas.forEach((c, i) => {
+      const bc = b.cenas[i], it = el('div', 'item' + (bc.trocou ? ' alt' : ''));
+      const top = el('div', 'item-top'); top.append(el('b', '', `Cena ${pad(i + 1)}`), el('span', 'calc' + (bc.trocou ? ' alt' : ''), `${bc.status === PH ? 'status a preencher' : bc.status} · descartes: ${bc.descartes}`));
+      if (F.cenas.length > 1) { const x = el('button', 'lnk x', 'remover'); x.type = 'button'; x.addEventListener('click', () => { F.cenas.splice(i, 1); F.planos = F.planos.filter((p) => p.cena !== pad(i + 1)).map((p) => (Number(p.cena) > i + 1 ? { ...p, cena: pad(Number(p.cena) - 1) } : p)); changed(true); }); top.appendChild(x); }
+      const g = el('div', 'fgrid');
+      g.append(
+        field('Take entregue', textIn(c.take, (v) => { c.take = v; changed(); }, 'ex.: CENA_02A, 02B')),
+        field('Modelo de imagem', modelField('imagem', c.modelo_imagem, (v) => { c.modelo_imagem = v; changed(); })),
+        field('Modelo de vídeo', modelField('video', c.modelo_video, (v) => { c.modelo_video = v; changed(true); })),
+        field('Links dos vídeos entregues (Drive)', areaIn(c.links, (v) => { c.links = v; changed(); }, 'https://drive.google.com/file/d/…'), 'wide'),
+      );
+      it.append(top, g); box.appendChild(it);
+    });
+  }
+
+  function drawPlanos() {
+    const box = $('planos'); box.replaceChildren();
+    if (!F.planos.length) box.appendChild(el('p', 'ro', 'Nenhum plano tentado: todas as cenas saíram de primeira.'));
+    F.planos.forEach((p, i) => {
+      const it = el('div', 'item'), top = el('div', 'item-top');
+      top.append(el('b', '', `Plano ${i + 1}`));
+      const x = el('button', 'lnk x', 'remover'); x.type = 'button'; x.addEventListener('click', () => { F.planos.splice(i, 1); changed(true); }); top.appendChild(x);
+      const sel = el('select'); F.cenas.forEach((_, j) => sel.appendChild(new Option(`Cena ${pad(j + 1)}`, pad(j + 1)))); sel.value = p.cena;
+      sel.addEventListener('change', () => { p.cena = sel.value; changed(true); });
+      const nt = el('input'); nt.type = 'number'; nt.min = '0'; nt.max = '999'; nt.inputMode = 'numeric'; nt.value = p.tentativas || '';
+      nt.addEventListener('input', () => { p.tentativas = Math.max(0, Math.round(Number(nt.value) || 0)); changed(); });
+      nt.addEventListener('change', () => changed(true));
+      const g = el('div', 'fgrid');
+      g.append(field('Cena', sel), field('Plano (nome curto)', textIn(p.plano, (v) => { p.plano = v; changed(); }, 'ex.: still-looking-to-the-right')),
+        field('Modelo que falhou', modelField('video', p.modelo, (v) => { p.modelo = v; changed(true); })), field('Tentativas descartadas', nt),
+        field('Links das tentativas (Drive)', areaIn(p.links, (v) => { p.links = v; changed(); }, 'Um link por linha: tentativa 1, 2, 3…'), 'wide'));
+      it.append(top, g); box.appendChild(it);
+    });
+  }
+
+  function drawCats() {
+    const box = $('cats'); box.replaceChildren();
+    for (const r of B.regua || []) {
+      const l = el('label', 'cat-ck'), ck = el('input'); ck.type = 'checkbox'; ck.checked = F.categorias.includes(r.codigo);
+      ck.addEventListener('change', () => { F.categorias = (B.regua || []).map((x) => x.codigo).filter((c) => (c === r.codigo ? ck.checked : F.categorias.includes(c))); changed(); });
+      const t = el('div'); t.append(el('b', '', `${r.codigo} · ${r.nome}`), el('span', '', r.descricao)); l.append(ck, t); box.appendChild(l);
+    }
+    const rg = $('regua'); rg.replaceChildren();
+    for (const x of B.regua || []) { const c = el('div', 'bk-rule'); c.append(el('span', 'k acc', x.codigo), el('b', '', x.nome), el('span', 'note', x.descricao)); rg.appendChild(c); }
+  }
+
+  function drawKlike() {
+    const box = $('klike'); box.replaceChildren();
+    const dims = B.klike_dimensoes || [];
+    F.klike.forEach((r, i) => {
+      const it = el('div', 'item'), top = el('div', 'item-top');
+      top.append(el('b', '', `Relatório ${i + 1}`));
+      const x = el('button', 'lnk x', 'remover'); x.type = 'button'; x.addEventListener('click', () => { F.klike.splice(i, 1); changed(true); }); top.appendChild(x);
+      const nota = el('select'); for (const o of ['', 'A', 'B', 'C']) nota.appendChild(new Option(o || 'Escolha…', o)); nota.value = r.nota; nota.addEventListener('change', () => { r.nota = nota.value; changed(); });
+      const dt = el('input'); dt.type = 'date'; dt.value = r.data; dt.addEventListener('input', () => { r.data = dt.value; changed(); });
+      const g = el('div', 'fgrid');
+      g.append(field('Filme', textIn(r.filme, (v) => { r.filme = v; changed(); }, 'ex.: Filme 1', 80)), field('Título', textIn(r.titulo, (v) => { r.titulo = v; changed(); }, 'Título do filme no relatório')),
+        field('Versão', textIn(r.versao, (v) => { r.versao = v; changed(); }, 'ex.: v2 · 16:9', 80)), field('Data do relatório', dt), field('Nota final', nota),
+        field('Link do relatório (PDF no Drive)', textIn(r.link, (v) => { r.link = v; changed(); }, 'https://drive.google.com/file/d/…', 400), 'wide'));
+      const dw = el('div', 'dims');
+      dims.forEach((nm, j) => { const l = el('label'), s = el('select'); for (const o of ['–', 'A', 'B', 'C']) s.appendChild(new Option(o, o)); s.value = r.dims[j] || '–'; s.addEventListener('change', () => { r.dims[j] = s.value; changed(); }); l.append(el('span', '', `${pad(j + 1)} · ${nm}`), s); dw.appendChild(l); });
+      const fd = el('div', 'f wide'); fd.append(el('span', '', 'As 10 dimensões'), dw); g.appendChild(fd);
+      it.append(top, g); box.appendChild(it);
+    });
+  }
+
+  function drawLive() {
+    const { b, auto } = build();
+    for (const inp of document.querySelectorAll('[data-auto]')) inp.placeholder = auto[inp.dataset.auto] || '';
+    // 02: os três números
+    const X = bkData(b), cenas = X.cenas, planos = X.planos, princ = b.modelo_principal;
+    const trocas = cenas.filter((c) => c.trocou), n = cenas.length, comP = cenas.filter((c) => c.modelo_video === princ).length;
+    const desc = planos.reduce((a, p) => a + (Number(p.tentativas) || 0), 0);
+    const tiles = $('tiles'); tiles.replaceChildren();
+    const tile = (big, label, accent) => { const t = el('div', 'bk-tile'); t.append(el('span', 'bk-big' + (accent ? ' acc' : ''), big), el('span', 'note', label)); tiles.appendChild(t); };
+    const ok = !isPh(princ) && n;
+    tile(ok ? `${comP}/${n}` : '—', ok ? `cenas entregues com ${princ}` : 'cenas entregues com o modelo principal', true);
+    tile(ok ? String(trocas.length) : '—', 'cenas trocadas de modelo');
+    tile(ok ? String(desc) : '—', 'tentativas descartadas');
+    // 03: comparativo
+    const comp = $('comp'); comp.replaceChildren();
+    if (X.modelos.length) comp.appendChild(modelBars(X.modelos)); else comp.appendChild(tx('p', 'bk-empty', '[aparece quando as cenas tiverem modelo de vídeo]'));
+    // rótulos das cenas (status e descartes calculados)
+    document.querySelectorAll('#cenas .item').forEach((it, i) => {
+      const bc = b.cenas[i]; if (!bc) return;
+      it.classList.toggle('alt', bc.trocou);
+      const c = it.querySelector('.calc'); c.textContent = `${bc.status === PH ? 'status a preencher' : bc.status} · descartes: ${bc.descartes}`; c.classList.toggle('alt', bc.trocou);
+    });
+  }
+
+  function drawAllForm() {
+    for (const inp of document.querySelectorAll('[data-f]')) inp.value = F[inp.dataset.f] ?? '';
+    for (const box of document.querySelectorAll('[data-mf]')) {
+      const k = box.dataset.mf; box.replaceChildren(modelField(box.dataset.model, F[k], (v) => { F[k] = v; changed(true); }));
+    }
+    $('novo-wrap').hidden = F.id !== '__novo';
+    $('f-projeto').value = F.id;
+    drawTimeline(); drawCenas(); drawPlanos(); drawCats(); drawKlike(); drawLive();
+  }
+
+  function drawTimeline() {
+    const im = $('drop-img');
+    if (F.timeline_img) { im.src = F.timeline_img; im.hidden = false; $('drop-txt').textContent = 'Trocar o print da timeline'; }
+    else { im.hidden = true; im.removeAttribute('src'); $('drop-txt').textContent = 'Escolher, arrastar ou colar o print da timeline'; }
+  }
+
+  // ---- rascunho neste navegador ----
+  let tSave;
+  function changed(redraw) {
+    clearTimeout(tSave);
+    tSave = setTimeout(() => { try { localStorage.setItem('bk-rascunho', JSON.stringify({ F, em: new Date().toISOString() })); setStatus(`Rascunho salvo neste navegador às ${new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}. Ainda não enviado.`); } catch { /* sem espaço ou bloqueado */ } }, 400);
+    if (redraw) { drawCenas(); drawPlanos(); drawKlike(); }
+    drawLive();
+  }
+  const setStatus = (t, cls) => { const s = $('status'); s.textContent = t; s.className = 'status' + (cls ? ' ' + cls : ''); };
+
+  for (const inp of document.querySelectorAll('[data-f]')) {
+    inp.addEventListener('input', () => {
+      F[inp.dataset.f] = inp.value;
+      if (inp.dataset.f === 'novo_projeto') { const s = slug(inp.value), p = PROJETOS.find((x) => x.id === s); if (p) setStatus(`Já existe um job "${p.projeto}". Escolha ele na lista em vez de criar um novo.`, 'err'); }
+      changed(inp.dataset.f === 'modelo_principal');
+    });
+  }
+
+  // ---- imagem da timeline ----
+  function lerImagem(file) {
+    if (!file || !/^image\//.test(file.type)) return;
+    const fr = new FileReader();
+    fr.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        const W = Math.min(2400, img.naturalWidth), H = Math.round(img.naturalHeight * W / img.naturalWidth);
+        const cv = document.createElement('canvas'); cv.width = W; cv.height = H; cv.getContext('2d').drawImage(img, 0, 0, W, H);
+        let url = cv.toDataURL('image/webp', 0.85);
+        if (!url.startsWith('data:image/webp')) url = cv.toDataURL('image/jpeg', 0.88);
+        if (url.length > 5.3e6) { setStatus('A imagem ficou grande demais. Use um print menor.', 'err'); return; }
+        F.timeline_img = url; F.timeline_mudou = true; drawTimeline(); changed();
+      };
+      img.src = fr.result;
+    };
+    fr.readAsDataURL(file);
+  }
+  const drop = $('drop');
+  drop.addEventListener('click', () => $('file').click());
+  drop.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); $('file').click(); } });
+  $('file').addEventListener('change', (e) => lerImagem(e.target.files[0]));
+  drop.addEventListener('dragover', (e) => { e.preventDefault(); drop.classList.add('on'); });
+  drop.addEventListener('dragleave', () => drop.classList.remove('on'));
+  drop.addEventListener('drop', (e) => { e.preventDefault(); drop.classList.remove('on'); lerImagem(e.dataTransfer.files[0]); });
+  document.addEventListener('paste', (e) => {
+    if ($('form-view').hidden) return;
+    const it = [...(e.clipboardData && e.clipboardData.items) || []].find((x) => x.type.startsWith('image/'));
+    if (it) { e.preventDefault(); lerImagem(it.getAsFile()); }
+  });
+
+  // ---- botões ----
+  $('add-cena').addEventListener('click', () => { F.cenas.push({ take: '', modelo_imagem: '', modelo_video: F.modelo_principal || '', links: '' }); changed(true); });
+  $('add-plano').addEventListener('click', () => { F.planos.push({ cena: pad(F.cenas.length), plano: '', modelo: F.modelo_principal || '', tentativas: 1, links: '' }); changed(true); });
+  $('add-klike').addEventListener('click', () => { F.klike.push({ filme: '', titulo: F.titulo, versao: '', data: '', nota: '', dims: Array(10).fill('–'), link: '' }); changed(true); });
+  $('limpar').addEventListener('click', () => {
+    if (!confirm('Apagar tudo o que está preenchido nesta página? O que já foi enviado continua no dashboard.')) return;
+    const quem = F.enviado_por; F = novoForm(); F.enviado_por = quem; try { localStorage.removeItem('bk-rascunho'); } catch { /* */ } $('rascunho').hidden = true; drawAllForm(); setStatus('');
+  });
+
+  function ver(on) {
+    $('form-view').hidden = on; $('backlog-view').hidden = !on;
+    $('tab-form').setAttribute('aria-pressed', String(!on)); $('tab-ver').setAttribute('aria-pressed', String(on));
+    if (on) { renderBacklog(build().b); const bk = document.querySelector('#backlog-view .back'); if (bk) bk.remove(); }
+    window.scrollTo(0, 0);
+  }
+  $('tab-form').addEventListener('click', () => ver(false));
+  $('tab-ver').addEventListener('click', () => ver(true));
+  $('ver2').addEventListener('click', () => ver(true));
+
+  // ---- projetos ----
+  const api = (u, opt) => fetch(u, { cache: 'no-store', credentials: 'same-origin', ...opt }).then(async (r) => { const j = await r.json().catch(() => ({})); if (!r.ok) throw new Error(j.erro || `Erro ${r.status}`); return j; });
+
+  function fillProjetos() {
+    const sel = $('f-projeto'); sel.replaceChildren(new Option('Escolha o job…', ''));
+    for (const p of PROJETOS) sel.appendChild(new Option(p.projeto + (p.enviado_em ? ` · enviado em ${date(p.enviado_em)}` : ''), p.id));
+    sel.appendChild(new Option('Job novo…', '__novo'));
+    sel.value = F.id;
+  }
+
+  $('f-projeto').addEventListener('change', async (e) => {
+    const id = e.target.value, quem = F.enviado_por;
+    const temAlgo = F.titulo || F.cenas.some((c) => c.take || c.modelo_video) || F.planos.length;
+    if (id === '__novo' || !id) { F.id = id; $('novo-wrap').hidden = id !== '__novo'; changed(); return; }
+    if (temAlgo && F.id && F.id !== id && !confirm('Trocar de job? O que está preenchido aqui será substituído pelo que já foi enviado para o outro job.')) { e.target.value = F.id; return; }
+    setStatus('Carregando o que já foi enviado para este job…');
+    try {
+      const r = await api(`api/backlog?id=${encodeURIComponent(id)}`);
+      if (temAlgo && (F.id === id || !F.id) && !confirm('Carregar a última versão enviada deste job? O que está preenchido aqui será substituído. (Cancelar mantém o que está na tela.)')) { F.id = id; changed(); setStatus(''); return; }
+      F = r.form ? { ...novoForm(), ...r.form } : fromBacklog(r.backlog);
+      F.id = id; F.enviado_por = quem || F.enviado_por || '';
+      F.timeline_img = r.timeline || ''; F.timeline_mudou = false;
+      drawAllForm(); changed();
+      setStatus(r.backlog.enviado_em ? `Carregado o envio de ${r.backlog.enviado_por || 'alguém da equipe'} em ${new Date(r.backlog.enviado_em).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' })}.` : 'Job sem envio pelo site ainda: comece pelo título e pelas cenas.', 'ok');
+    } catch (err) { setStatus(err.message, 'err'); }
+  });
+
+  // ---- enviar ----
+  function faltando(b) {
+    const bloqueia = [], aviso = [];
+    if (!F.enviado_por.trim()) bloqueia.push('seu nome');
+    if (!F.id || (F.id === '__novo' && !F.novo_projeto.trim())) bloqueia.push('o job');
+    if (F.id === '__novo' && PROJETOS.some((p) => p.id === slug(F.novo_projeto))) bloqueia.push('o job (esse nome já existe na lista: escolha ele em vez de criar um novo)');
+    if (!F.titulo.trim()) aviso.push('título do filme');
+    if (!F.data_mes) aviso.push('mês da entrega');
+    if (!F.modelo_principal) aviso.push('modelo de vídeo principal');
+    if (!F.timeline_img) aviso.push('print da timeline');
+    b.cenas.forEach((c) => { if (isPh(c.take)) aviso.push(`take entregue da cena ${c.cena}`); if (isPh(c.modelo_video)) aviso.push(`modelo de vídeo da cena ${c.cena}`); if (isPh(c.modelo_imagem)) aviso.push(`modelo de imagem da cena ${c.cena}`); });
+    if (b.falha.planos.length) { if (!F.categorias.length) aviso.push('categoria de falha (F1–F9)'); if (!F.o_que_deu_errado.trim()) aviso.push('o que deu errado'); if (!F.prompt.trim()) aviso.push('prompt usado'); }
+    const links = [F.pasta_url, F.klike_pasta].filter((u) => u.trim() && !/^https:\/\/(drive|docs)\.google\.com\//.test(u.trim()));
+    if (links.length) aviso.push('links de pasta que não são do Google Drive (serão ignorados)');
+    return { bloqueia, aviso };
+  }
+
+  async function enviar() {
+    const { b } = build();
+    const { bloqueia, aviso } = faltando(b);
+    if (bloqueia.length) { setStatus('Antes de enviar, preencha: ' + bloqueia.join(', ') + '.', 'err'); $('form-view').hidden || window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+    if (aviso.length && !confirm(`Ainda faltam ${aviso.length} item(ns), que vão aparecer como [a preencher] para o Google:\n\n• ${aviso.slice(0, 14).join('\n• ')}${aviso.length > 14 ? '\n• …' : ''}\n\nEnviar assim mesmo? Dá para completar e enviar de novo depois.`)) return;
+    for (const x of [$('enviar'), $('enviar2')]) x.disabled = true;
+    setStatus('Enviando…');
+    try {
+      const form = { ...F, timeline_img: '', timeline_mudou: false };
+      const r = await api('api/enviar', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: b.id, enviado_por: F.enviado_por.trim(), form, backlog: b, imagem: F.timeline_mudou ? F.timeline_img : null, manter_imagem: !F.timeline_mudou && !!F.timeline_img }) });
+      if (F.id === '__novo') { F.id = r.id; F.novo_projeto = ''; }
+      F.timeline_mudou = false;
+      const pj = await api('api/projetos').catch(() => null); if (pj) { PROJETOS = pj.projetos; fillProjetos(); }
+      drawAllForm(); try { localStorage.setItem('bk-rascunho', JSON.stringify({ F, em: new Date().toISOString() })); } catch { /* */ }
+      setStatus(`Enviado às ${new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}. O dashboard do Google atualiza em cerca de um minuto.`, 'ok');
+    } catch (err) { setStatus('Não foi enviado: ' + err.message, 'err'); }
+    finally { for (const x of [$('enviar'), $('enviar2')]) x.disabled = false; }
+  }
+  $('enviar').addEventListener('click', enviar);
+  $('enviar2').addEventListener('click', enviar);
+
+  // ---- início ----
+  try {
+    const r = JSON.parse(localStorage.getItem('bk-rascunho') || 'null');
+    if (r && r.F) {
+      F = { ...novoForm(), ...r.F };
+      const bn = $('rascunho'); bn.hidden = false;
+      bn.append(el('span', '', `Rascunho deste navegador, de ${new Date(r.em).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' })}, recuperado.`));
+    }
+  } catch { /* sem rascunho */ }
+  drawAllForm();
+  api('api/projetos').then((j) => {
+    PROJETOS = j.projetos; B = { regua: j.regua, klike_dimensoes: j.klike_dimensoes };
+    if (F.id && F.id !== '__novo' && !PROJETOS.some((p) => p.id === F.id)) F.id = '';
+    fillProjetos(); drawAllForm();
+  }).catch((err) => setStatus('Não foi possível carregar a lista de jobs: ' + err.message, 'err'));
+})();
+</script>
+</body>
+</html>

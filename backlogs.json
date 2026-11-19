@@ -1,5 +1,5 @@
 {
- "_leia": "Backlog de modelos de IA por projeto (exigência do Google). Campos de texto editados à mão; o bloco 'drive' é gerado por scripts/backlog.py a partir da pasta do projeto no Drive (pasta_id). Só o Mercado Pago tem pasta e dados oficiais; Brilhante e Clear Men foram 100% Google, sem backlog (sem_backlog); os outros são o modelo vazio ([a preencher]).",
+ "_leia": "Backlog de modelos de IA por projeto (exigência do Google). Os textos vêm do site de preenchimento da equipe (backlog-freela/, cada envio é um commit com enviado_por e enviado_em) ou são editados à mão; o bloco 'drive' é gerado por scripts/backlog.py a partir da pasta do projeto no Drive (pasta_id). 'bloqueado', 'sem_backlog' e 'link_direto' impedem a edição pelo site da equipe.",
  "regua": [
   {
    "codigo": "F1",
@@ -383,7 +383,8 @@
      }
     ]
    },
-   "pasta_id": "1J6J4_Y2K3sQSXodtvSSkPsio7dKPYBCp"
+   "pasta_id": "1J6J4_Y2K3sQSXodtvSSkPsio7dKPYBCp",
+   "bloqueado": true
   },
   {
    "id": "superbet",

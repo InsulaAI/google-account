@@ -397,13 +397,35 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
   const isPh = (t) => /^\[.*\]$/.test(String(t ?? '').trim());
   const tx = (tag, cls, t) => { const e = el(tag, cls, t); if (isPh(t)) e.classList.add('ph'); return e; };
   const num2 = (n) => Number(n) || n;
+  const GOOGLE = /omni|veo|imagen|nano banana|gemini|flow/i;
+
+  // Comparativo por modelo a partir do que a equipe preencheu (quando não há leitura da pasta do Drive).
+  function modelosManual(cenas, planos, princ) {
+    const m = new Map();
+    const get = (nome) => { if (!m.has(nome)) m.set(nome, { modelo: nome, google: GOOGLE.test(nome), cenas_entregues: 0, takes_entregues: 0, tentativas_descartadas: 0, cenas_com_falha: 0 }); return m.get(nome); };
+    for (const c of cenas) {
+      if (!c.modelo_video || isPh(c.modelo_video)) continue;
+      for (const nome of String(c.modelo_video).split(' + ')) {
+        const x = get(nome.trim()); x.cenas_entregues++;
+        x.takes_entregues += isPh(c.take) ? 1 : Math.max(1, String(c.take || '').split(',').filter((t) => t.trim()).length);
+      }
+    }
+    const falhas = new Map();
+    for (const p of planos) {
+      const nome = p.modelo || princ; if (!nome || isPh(nome)) continue;
+      get(nome).tentativas_descartadas += Number(p.tentativas) || 0;
+      if (!falhas.has(nome)) falhas.set(nome, new Set()); falhas.get(nome).add(p.cena);
+    }
+    for (const [nome, set] of falhas) get(nome).cenas_com_falha = set.size;
+    return [...m.values()].sort((a, b) => (b.google - a.google) || (b.cenas_entregues - a.cenas_entregues));
+  }
 
   // Junta o que veio das pastas do Drive (bloco drive) com os textos escritos à mão.
   function bkData(b) {
     const man = new Map((b.cenas || []).map((c) => [String(c.cena), c]));
     if (!b.drive) {
       const planos = (b.falha && b.falha.planos) || [];
-      return { cenas: b.cenas || [], planos, modelos: [], fonte: 'manual' };
+      return { cenas: b.cenas || [], planos, modelos: modelosManual(b.cenas || [], planos, b.modelo_principal), fonte: 'manual' };
     }
     const cenas = b.drive.cenas.map((dc) => {
       const m = man.get(dc.cena) || {};
@@ -502,7 +524,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     const nav = el('a', 'back', '← Conta corrente Google 2026'); nav.href = '#backlog'; v.appendChild(nav);
     const head = el('header', 'bk-head');
     const k = el('p', 'k bk-k', 'Insula AI × Google · Backlog de modelos');
-    const st = el('span', 'chip ' + (b.oficial ? 'ok' : 'warn'), b.oficial ? 'Dados oficiais' : 'Modelo · a preencher');
+    const st = el('span', 'chip ' + (b.oficial ? 'ok' : b.enviado_em ? 'neutral' : 'warn'), b.oficial ? 'Dados oficiais' : b.enviado_em ? `Preenchido pela equipe em ${date(b.enviado_em)}` : 'Modelo · a preencher');
     head.append(k, el('h1', '', b.titulo), tx('p', 'lede', b.subtitulo));
     const meta = el('p', 'k'); meta.append(document.createTextNode(`Insula AI · ${b.projeto} · `), tx('span', '', b.data));
     const row = el('div', 'bk-meta'); row.append(meta, st);
@@ -536,7 +558,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     head.append(row, cta); v.appendChild(head);
 
     const X = bkData(b), cenas = X.cenas, planos = X.planos, f = b.falha || {};
-    const trocas = cenas.filter((c) => c.trocou), princ = b.modelo_principal, real = b.oficial && cenas.length && !isPh(princ);
+    const trocas = cenas.filter((c) => c.trocou), princ = b.modelo_principal, real = (b.oficial || b.enviado_em) && cenas.length && !isPh(princ);
     const nTrocas = trocas.map((c) => num2(c.cena)).join(', ');
     // 01 timeline
     const s1 = bkSection('01', 'Timeline', b.timeline_titulo);
@@ -555,13 +577,13 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     if (real) {
       tile(`${comP}/${n}`, `cenas entregues com ${princ}`, true);
       tile(String(trocas.length), trocas.length ? `cena${trocas.length === 1 ? '' : 's'} trocada${trocas.length === 1 ? '' : 's'} para ${[...new Set(trocas.map((c) => c.modelo_video))].join(', ')} (cena ${nTrocas})` : 'cenas trocadas de modelo');
-      tile(String(desc), desc ? `tentativas descartadas no ${princ}, em ${planos.length} planos da cena ${[...new Set(planos.map((p) => num2(p.cena)))].join(', ')}` : 'tentativas descartadas');
+      tile(String(desc), desc ? `tentativas descartadas no ${princ}, em ${planos.length} plano${planos.length === 1 ? '' : 's'} da cena ${[...new Set(planos.map((p) => num2(p.cena)))].join(', ')}` : 'tentativas descartadas');
     } else {
       tile('—', 'cenas entregues com o modelo principal'); tile('—', 'cenas trocadas de modelo'); tile('—', 'tentativas descartadas');
     }
     s2.appendChild(tiles);
     if (b.resumo_nota) s2.appendChild(el('p', 'bk-note', '◆  ' + b.resumo_nota));
-    s2.appendChild(el('p', 'k bk-src', 'Fonte: ' + (X.fonte === 'drive' ? 'pasta do projeto no Drive · contagem de arquivos por modelo' : b.resumo_fonte))); v.appendChild(s2);
+    s2.appendChild(el('p', 'k bk-src', 'Fonte: ' + (X.fonte === 'drive' ? 'pasta do projeto no Drive · contagem de arquivos por modelo' : b.resumo_fonte || 'contagem por cena e por plano'))); v.appendChild(s2);
 
     // 03 Google x outros
     const s3 = bkSection('03', 'Google × outros modelos', X.modelos.length ? 'Quanto do filme saiu do modelo do Google.' : '[comparativo a preencher]');
@@ -575,8 +597,8 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
       t2(String(sum(o, 'cenas_entregues')), `cena${sum(o, 'cenas_entregues') === 1 ? '' : 's'} com outros modelos${o.length ? ' (' + o.map((m) => m.modelo).join(', ') + ')' : ''}`);
       t2(String(sum(g, 'tentativas_descartadas')), 'tentativas descartadas no modelo do Google antes da troca');
       s3.append(gt, modelBars(X.modelos));
-    } else s3.appendChild(tx('p', 'bk-empty', '[comparativo gerado quando a pasta do projeto estiver ligada]'));
-    s3.appendChild(el('p', 'k bk-src', 'Fonte: pastas CENA / modelo no Drive · Google = Omni, Veo, Imagen, Nano Banana, Gemini')); v.appendChild(s3);
+    } else s3.appendChild(tx('p', 'bk-empty', '[comparativo gerado quando as cenas forem preenchidas]'));
+    s3.appendChild(el('p', 'k bk-src', 'Fonte: ' + (X.fonte === 'drive' ? 'pastas CENA / modelo no Drive' : 'cena a cena e planos tentados, preenchidos pela equipe') + ' · Google = Omni, Veo, Imagen, Nano Banana, Gemini')); v.appendChild(s3);
 
     // 04 cena a cena
     const s4 = bkSection('04', 'Cena a cena', 'O que foi usado em cada cena.');
@@ -639,7 +661,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     const box = document.getElementById('comparativo-corpo'); if (!box) return; box.replaceChildren();
     if (!B) { box.appendChild(el('p', 'empty', 'Carregando backlogs…')); return; }
     const agg = new Map();
-    for (const b of B.backlogs) for (const m of (b.drive && b.drive.modelos) || []) {
+    for (const b of B.backlogs) for (const m of bkData(b).modelos) {
       const a = agg.get(m.modelo) || { ...m, cenas_entregues: 0, takes_entregues: 0, tentativas_descartadas: 0, cenas_com_falha: 0 };
       for (const k2 of ['cenas_entregues', 'takes_entregues', 'tentativas_descartadas', 'cenas_com_falha']) a[k2] += m[k2];
       agg.set(m.modelo, a);
@@ -653,11 +675,12 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     const ordem = (b) => { const i = P.findIndex((p) => p.id === b.id); return i < 0 ? 99 : i; };
     for (const b of [...B.backlogs].sort((a, c) => ordem(a) - ordem(c))) {
       const tr = el('tr'), nome = el('td', '', b.projeto);
-      if (b.drive) {
-        const ms = b.drive.modelos, g = ms.filter((m) => m.google), o = ms.filter((m) => !m.google);
+      const ms = bkData(b).modelos;
+      if (ms.length) {
+        const g = ms.filter((m) => m.google), o = ms.filter((m) => !m.google);
         const sum = (arr, k2) => arr.reduce((a, m) => a + m[k2], 0);
         const mu = el('td'); for (const m of ms) mu.appendChild(el('span', 'chip ' + (m.google ? 'g' : 'neutral'), m.modelo));
-        tr.append(nome, mu, el('td', 'num', String(sum(g, 'cenas_entregues'))), el('td', 'num', String(sum(o, 'cenas_entregues'))), el('td', 'num', String(sum(g, 'tentativas_descartadas'))), el('td', 'muted', 'Pasta do projeto no Drive'));
+        tr.append(nome, mu, el('td', 'num', String(sum(g, 'cenas_entregues'))), el('td', 'num', String(sum(o, 'cenas_entregues'))), el('td', 'num', String(sum(g, 'tentativas_descartadas'))), el('td', 'muted', b.drive ? 'Pasta do projeto no Drive' : 'Preenchido pela equipe'));
       } else if (b.link_direto) {
         tr.append(nome, tx('td', '', '[sem backlog completo]'), el('td', 'num muted', '–'), el('td', 'num muted', '–'), el('td', 'num muted', '–'), el('td', 'muted', b.interrompido ? 'Interrompido · pasta de backup' : 'Pasta no Drive'));
       } else if (b.so_google) {
@@ -950,7 +973,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
         acao.append(el('span', 'chip g', bk.so_google ? '100% Google' : 'Sem backlog'), el('span', 'nt', 'sem backlog'));
       } else if (bk) {
         const a = el('a', 'btn', 'Backlog'); a.href = '#backlog-' + bk.id;
-        acao.append(a, el('span', 'nt', bk.oficial ? 'dados oficiais' : 'modelo, a preencher'));
+        acao.append(a, el('span', 'nt', bk.oficial ? 'dados oficiais' : bk.enviado_em ? `preenchido pela equipe em ${date(bk.enviado_em)}` : 'modelo, a preencher'));
         const kr = bk.klike && bk.klike.relatorios && bk.klike.relatorios.length ? bk.klike.relatorios.slice().sort((x, y) => String(x.data).localeCompare(String(y.data))) : null;
         if (kr) acao.appendChild(el('span', 'nt', `Klike: nota ${kr[kr.length - 1].nota} no último relatório`));
       } else if (p.backlog_url) {
@@ -961,6 +984,14 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
         acao.append(b, el('span', 'nt', 'link em breve'));
       }
       tr.append(nome, sit, acao); bt.appendChild(tr);
+    }
+    // Backlogs que a equipe criou para jobs que ainda não estão em manual.json.
+    for (const bk of (B ? B.backlogs : []).filter((x) => !P.some((p) => p.id === x.id) && !x.sem_backlog && !x.link_direto)) {
+      const tr = el('tr'), sit = el('td'), acao = el('td', 'num');
+      sit.appendChild(el('span', 'chip neutral', 'Novo job'));
+      const a = el('a', 'btn', 'Backlog'); a.href = '#backlog-' + bk.id;
+      acao.append(a, el('span', 'nt', bk.enviado_em ? `preenchido pela equipe em ${date(bk.enviado_em)}` : 'modelo, a preencher'));
+      tr.append(el('td', '', bk.projeto), sit, acao); bt.appendChild(tr);
     }
   }
 

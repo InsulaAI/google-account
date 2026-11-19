@@ -45,7 +45,7 @@ async function validSession(request) {
 
 function servable(path) {
   if (["/", "/index.html", "/dados.json", "/backlogs.json", "/vendor/d3.min.js"].includes(path)) return true;
-  return /^\/img\/[a-z0-9-]+\.webp$/.test(path);
+  return /^\/img\/[a-z0-9-]+\.webp$/.test(path) || /^\/img\/backlog-[a-z0-9-]+-timeline\.(png|jpg)$/.test(path);
 }
 
 function safeNext(n) {
