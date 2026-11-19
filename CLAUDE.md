@@ -31,18 +31,26 @@ robots.txt
 
 ## De onde vêm os dados
 
-Três planilhas no drive compartilhado da Insula (pasta da conta Google):
+Planilhas no drive compartilhado da Insula (as três primeiras na pasta da conta Google):
 
 | Planilha | fileId | Abas usadas | Vira |
 |---|---|---|---|
 | Cuentas Proyectos Google 2026.xlsx | 1lszMOS89dOwsN9eV1W1QGMPilqe0zRVW | 2026 | `movimentos` |
-| LATAM_ Projectos Google 2026.xlsx | 1UmUZaGe89dCViedMOen6f_hlwHRekyyH | Production, Ticket Google | `producao`, `precos` |
+| LATAM_ Projectos Google 2026.xlsx | 1UmUZaGe89dCViedMOen6f_hlwHRekyyH | Production | `producao` |
 | Á Faturar Proyectos Google 2026.xlsx | 1Q0YKCn-Jf_9AMR9d8NEQqx0whOOhq1oZ | 2026 | `a_faturar` |
+| Insula_IA_2027 Sintetico.xlsx | 1iIH32xjIyVtah90Wp2jDg2HSkKNuaeKU | Ticket Google | `precos` (Filme sintético) |
+| Insula_IA_2027_Elenco.xlsx | 1V4RxjvlRP04-xhhJO0yFchYktDkmuxid | Ticket Google | `precos` (Filme IA + Elenco) |
 
 - Crédito é linha da aba 2026 com valor na coluna Google (o que entrou na conta); débito, com
   valor na coluna Insula. `valor_po` é o valor do próprio PO, usado só no gráfico de POs.
-- **Preços vêm da aba Ticket Google da LATAM**, atualizada em 03/11 (30" a R$ 117.420, sem
-  pacotes OOH). A cópia da aba na Cuentas ficou com a tabela antiga (30" a R$ 97.850) e não é usada.
+- **Preços vêm das duas tabelas Ticket Google 2027** (19/11), na pasta "Tabela de preços" do Drive
+  (1xYrNIRjUdZFbKgupLGvnPxXiVfGc6feT): `Insula_IA_2027 Sintetico.xlsx` (1iIH32xjIyVtah90Wp2jDg2HSkKNuaeKU)
+  e `Insula_IA_2027_Elenco.xlsx` (1V4RxjvlRP04-xhhJO0yFchYktDkmuxid), aba Ticket Google de cada uma.
+  Viram as abas "Filme sintético" e "Filme IA + Elenco" da tabela de preços (campo `tipo` em
+  `precos`); só aparecem as categorias que a tabela tem (hoje Filme novo e Adaptação do filme hero).
+  A aba "Simulação" da Elenco fica de fora. `atualizar.py --tabelas <sint> <elenco> --origem-tabelas
+  <mt> <mt>`; sem `--tabelas`, os preços atuais são mantidos. A aba Ticket Google da LATAM (30" a
+  R$ 117.420) deixou de ser usada.
 - **Contingência = verba que sai do saldo do Google para um projeto** (definição da equipe em
   12/11). Ex.: os R$ 160.445 da SuperBet. Não confundir com projeto congelado: a aba Production
   da LATAM mostra em andamento, congelado e cancelado; congelado não entra em conta nenhuma e

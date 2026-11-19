@@ -125,6 +125,13 @@ tr.off td.num{text-decoration:line-through}
 .cat:hover{color:var(--text)}
 .cat[aria-pressed="true"]{background:var(--amber);border-color:var(--amber);color:var(--ground);font-weight:600}
 .cat:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+.cat[hidden]{display:none}
+.tipos{display:flex;flex-wrap:wrap;gap:0 4px;border-bottom:1px solid var(--line-2)}
+.tipos[hidden]{display:none}
+.tipo{font-family:var(--display);font-weight:600;font-size:16px;padding:10px 16px 9px;margin-bottom:-1px;background:none;border:0;border-bottom:2px solid transparent;color:var(--text-3);cursor:pointer}
+.tipo:hover{color:var(--text-2)}
+.tipo[aria-selected="true"]{color:var(--text);border-bottom-color:var(--amber)}
+.tipo:focus-visible{outline:2px solid var(--text);outline-offset:-2px}
 .team{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:12px;font-size:13px;color:var(--text-2)}
 .team ul{margin:6px 0 0;padding-left:18px}
 .team strong{color:var(--text);font-weight:600}
@@ -367,7 +374,11 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
 
   <section id="precos">
     <h2>Tabela de preços</h2>
-    <p class="sub">Valores da tabela Ticket Google. Pacotes maiores têm desconto sobre o preço unitário. Acima de 60", acrescentar 30% a cada 30" adicionais.</p>
+    <p class="sub">Valores da tabela Ticket Google 2027, em duas versões: filme sintético e filme IA + elenco. Pacotes maiores têm desconto sobre o preço unitário. Acima de 60", acrescentar 30% a cada 30" adicionais.</p>
+    <div class="tipos" role="tablist" aria-label="Tipo de filme" id="tipos" hidden>
+      <button type="button" class="tipo" role="tab" data-tipo="Filme sintético" aria-selected="true">Filme sintético</button>
+      <button type="button" class="tipo" role="tab" data-tipo="Filme IA + Elenco" aria-selected="false">Filme IA + Elenco</button>
+    </div>
     <div class="cats" role="group" aria-label="Categoria">
       <button type="button" class="cat" data-cat="Filme novo" aria-pressed="true">Filme novo</button>
       <button type="button" class="cat" data-cat="Adaptação do filme hero" aria-pressed="false">Adaptação do filme hero</button>
@@ -381,7 +392,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
         <div class="chart short" id="precos-chart"></div>
       </div>
       <div class="card">
-        <h3>Valor por pacote (em atualização)</h3>
+        <h3>Valor por pacote</h3>
         <p class="note">Total do pacote, com a quantidade de peças e o desconto aplicado.</p>
         <div class="tw"><table>
           <thead><tr><th>Duração</th><th class="num">Unitário</th><th class="num">P</th><th class="num">M</th><th class="num">G</th></tr></thead>
@@ -390,7 +401,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
       </div>
     </div>
     <div class="card team">
-      <div><strong>Equipe incluída</strong><ul><li>Atendimento</li><li>IA Artist</li><li>Editor/Motion</li><li>Designer</li><li>Diretor de cena (Brasil)</li><li>Técnico de áudio (trilha, efeitos, locução e mix/master)</li></ul></div>
+      <div><strong>Equipe incluída</strong><ul><li>Atendimento</li><li>IA Artist</li><li>Editor/Motion</li><li>Color</li><li>Diretor de cena (Brasil)</li><li>Técnico de áudio (trilha, efeitos, locução e mix/master)</li></ul></div>
       <div><strong>Custos extras, quando necessários</strong><ul><li>Diretor de criação</li><li>Produtor de figurino</li><li>Diretor de arte</li><li>Processos tradicionais de composição</li><li>DA</li></ul></div>
     </div>
   </section>
@@ -461,7 +472,7 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
   const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
   const soma = (rows, f) => rows.reduce((s, r) => s + (Number(r[f]) || 0), 0);
   const r2 = (v) => Math.round(v * 100) / 100;
-  let D = null, B = null, cat = 'Filme novo';
+  let D = null, B = null, cat = 'Filme novo', tipo = 'Filme sintético';
 
   // ---------- backlog de modelos (uma "página" por projeto, aberta por #backlog-<id>) ----------
   const isPh = (t) => /^\[.*\]$/.test(String(t ?? '').trim());
@@ -942,9 +953,21 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     }
   }
 
+  // Preços: tipo de filme (aba) e categoria. Só aparecem as categorias que existem na tabela do tipo.
+  const temTipos = () => D.precos.some((r) => r.tipo);
+  const doTipo = () => D.precos.filter((r) => !temTipos() || r.tipo === tipo);
+  const precosAtuais = () => doTipo().filter((r) => r.categoria === cat);
+  function syncPrecosUI() {
+    const tabs = document.getElementById('tipos'); tabs.hidden = !temTipos();
+    for (const b of document.querySelectorAll('.tipo')) b.setAttribute('aria-selected', String(b.dataset.tipo === tipo));
+    const cats = new Set(doTipo().map((r) => r.categoria));
+    if (!cats.has(cat)) cat = [...document.querySelectorAll('.cat')].map((b) => b.dataset.cat).find((c) => cats.has(c)) || cat;
+    for (const b of document.querySelectorAll('.cat')) { b.hidden = !cats.has(b.dataset.cat); b.setAttribute('aria-pressed', String(b.dataset.cat === cat)); }
+  }
+
   function drawPrecosChart() {
     const box = document.getElementById('precos-chart'); box.replaceChildren();
-    const rows = D.precos.filter((r) => r.categoria === cat && r.pacote === 'Unitário').map((r) => ({ dur: Number(r.duracao_s), valor: Number(r.valor_por_peca) })).sort((a, b) => a.dur - b.dur);
+    const rows = precosAtuais().filter((r) => r.pacote === 'Unitário').map((r) => ({ dur: Number(r.duracao_s), valor: Number(r.valor_por_peca) })).sort((a, b) => a.dur - b.dur);
     const W = Math.max(260, box.clientWidth), H = 240, mt = 22, mb = 26;
     const svg = d3.select(box).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Preço unitário por duração');
     const y = d3.scaleLinear([0, d3.max(rows, (r) => r.valor) || 1], [H - mb, mt]).nice(4);
@@ -957,13 +980,13 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
     g.selectAll('text.x').data(rows).join('text').attr('class', 'tick').attr('text-anchor', 'middle').attr('x', (r) => x(r.dur) + x.bandwidth() / 2).attr('y', H - 8).text((r) => `${r.dur}"`);
     const t = tip(box);
     g.selectAll('rect.h').data(rows).join('rect').attr('x', (r) => x(r.dur) - (x.step() - x.bandwidth()) / 2).attr('width', x.step()).attr('y', mt).attr('height', H - mb - mt).attr('fill', 'transparent')
-      .on('pointermove', (ev, r) => { bars.attr('opacity', (b) => (b === r ? 1 : 0.45)); t.show(ev, `${cat} · ${r.dur}"`, [{ label: 'Preço unitário', value: money(r.valor) }]); })
+      .on('pointermove', (ev, r) => { bars.attr('opacity', (b) => (b === r ? 1 : 0.45)); t.show(ev, `${temTipos() ? tipo + ' · ' : ''}${cat} · ${r.dur}"`, [{ label: 'Preço unitário', value: money(r.valor) }]); })
       .on('pointerleave', () => { bars.attr('opacity', 1); t.hide(); });
   }
 
   function drawPrecosTabela() {
     const campo = { 'Unitário': 'unitario', 'P': 'p', 'M': 'm', 'G': 'g', 'OOH 1': 'ooh1', 'OOH 2': 'ooh2' }, m = new Map();
-    for (const r of D.precos.filter((x) => x.categoria === cat)) {
+    for (const r of precosAtuais()) {
       if (!m.has(r.duracao_s)) m.set(r.duracao_s, { duracao_s: Number(r.duracao_s) });
       const o = m.get(r.duracao_s), f = campo[r.pacote];
       o[f] = Number(r.valor_total); o[f + '_qtd'] = Number(r.qtd); o[f + '_desc'] = Number(r.desconto);
@@ -1066,18 +1089,21 @@ footer{color:var(--text-3);font-size:12.5px;border-top:1px solid var(--line);pad
   }
 
   function drawAll() {
-    drawResumo(); drawCascata(); drawDestino(); drawPos(); drawProjetos(); drawComparativo(); drawProducao(); drawTabelas(); drawPrecosChart(); drawPrecosTabela();
+    drawResumo(); drawCascata(); drawDestino(); drawPos(); drawProjetos(); drawComparativo(); drawProducao(); drawTabelas(); syncPrecosUI(); drawPrecosChart(); drawPrecosTabela();
     if (D.atualizado_em) {
       const d = new Date(D.atualizado_em);
       document.getElementById('rodape').textContent = `Dados das planilhas de controle da Insula AI, atualizados em ${d.toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short', timeZone: 'America/Sao_Paulo' })}.`;
     }
   }
 
+  for (const b of document.querySelectorAll('.tipo')) {
+    b.addEventListener('click', () => { tipo = b.dataset.tipo; if (D) { syncPrecosUI(); drawPrecosChart(); drawPrecosTabela(); } });
+  }
   for (const b of document.querySelectorAll('.cat')) {
     b.addEventListener('click', () => {
       cat = b.dataset.cat;
       for (const o of document.querySelectorAll('.cat')) o.setAttribute('aria-pressed', String(o === b));
-      if (D) { drawPrecosChart(); drawPrecosTabela(); }
+      if (D) { syncPrecosUI(); drawPrecosChart(); drawPrecosTabela(); }
     });
   }
   let rt; let lastW = window.innerWidth;

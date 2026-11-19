@@ -126,6 +126,13 @@ tr.off td.num{text-decoration:line-through}
 .cat:hover{color:var(--text)}
 .cat[aria-pressed="true"]{background:var(--amber);border-color:var(--amber);color:var(--ground);font-weight:600}
 .cat:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+.cat[hidden]{display:none}
+.tipos{display:flex;flex-wrap:wrap;gap:0 4px;border-bottom:1px solid var(--line-2)}
+.tipos[hidden]{display:none}
+.tipo{font-family:var(--display);font-weight:600;font-size:16px;padding:10px 16px 9px;margin-bottom:-1px;background:none;border:0;border-bottom:2px solid transparent;color:var(--text-3);cursor:pointer}
+.tipo:hover{color:var(--text-2)}
+.tipo[aria-selected="true"]{color:var(--text);border-bottom-color:var(--amber)}
+.tipo:focus-visible{outline:2px solid var(--text);outline-offset:-2px}
 .team{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:12px;font-size:13px;color:var(--text-2)}
 .team ul{margin:6px 0 0;padding-left:18px}
 .team strong{color:var(--text);font-weight:600}

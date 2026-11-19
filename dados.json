@@ -1,9 +1,11 @@
 {
- "atualizado_em": "2026-11-18T19:53:35Z",
+ "atualizado_em": "2026-11-19T14:38:19Z",
  "origem": {
   "cuentas": "2026-09-25T20:29:02.947Z",
   "latam": "2026-11-03T21:28:24.866Z",
-  "afaturar": "2026-09-30T18:34:39.223Z"
+  "afaturar": "2026-09-30T18:34:39.223Z",
+  "tabela_sintetico": "2026-11-19T14:32:35.694Z",
+  "tabela_elenco": "2026-11-19T14:33:42.603Z"
  },
  "movimentos": [
   {
@@ -174,804 +176,884 @@
  ],
  "precos": [
   {
-   "id": "Filme novo · 5s · Unitário",
+   "id": "Filme sintético · Filme novo · 5s · Unitário",
+   "tipo": "Filme sintético",
    "categoria": "Filme novo",
    "duracao_s": 5,
    "pacote": "Unitário",
    "qtd": 1,
    "desconto": 0.0,
-   "valor_total": 38635.0,
-   "valor_por_peca": 38635.0
+   "valor_total": 61075.21,
+   "valor_por_peca": 61075.21
   },
   {
-   "id": "Filme novo · 5s · P",
+   "id": "Filme sintético · Filme novo · 5s · P",
+   "tipo": "Filme sintético",
    "categoria": "Filme novo",
    "duracao_s": 5,
    "pacote": "P",
-   "qtd": 5,
+   "qtd": 3,
    "desconto": 0.0,
-   "valor_total": 193175.0,
-   "valor_por_peca": 38635.0
+   "valor_total": 183225.63,
+   "valor_por_peca": 61075.21
   },
   {
-   "id": "Filme novo · 5s · M",
+   "id": "Filme sintético · Filme novo · 5s · M",
+   "tipo": "Filme sintético",
    "categoria": "Filme novo",
    "duracao_s": 5,
    "pacote": "M",
-   "qtd": 10,
+   "qtd": 5,
    "desconto": 0.1,
-   "valor_total": 347715.0,
-   "valor_por_peca": 34771.5
+   "valor_total": 274838.45,
+   "valor_por_peca": 54967.69
   },
   {
-   "id": "Filme novo · 5s · G",
+   "id": "Filme sintético · Filme novo · 5s · G",
+   "tipo": "Filme sintético",
    "categoria": "Filme novo",
    "duracao_s": 5,
    "pacote": "G",
-   "qtd": 15,
+   "qtd": 10,
    "desconto": 0.15,
-   "valor_total": 492596.25,
-   "valor_por_peca": 32839.75
+   "valor_total": 519139.28,
+   "valor_por_peca": 51913.93
   },
   {
-   "id": "Filme novo · 10s · Unitário",
+   "id": "Filme sintético · Filme novo · 10s · Unitário",
+   "tipo": "Filme sintético",
    "categoria": "Filme novo",
    "duracao_s": 10,
    "pacote": "Unitário",
    "qtd": 1,
    "desconto": 0.0,
-   "valor_total": 61800.0,
-   "valor_por_peca": 61800.0
+   "valor_total": 81412.54,
+   "valor_por_peca": 81412.54
   },
   {
-   "id": "Filme novo · 10s · P",
+   "id": "Filme sintético · Filme novo · 10s · P",
+   "tipo": "Filme sintético",
    "categoria": "Filme novo",
    "duracao_s": 10,
    "pacote": "P",
-   "qtd": 5,
+   "qtd": 3,
    "desconto": 0.0,
-   "valor_total": 309000.0,
-   "valor_por_peca": 61800.0
+   "valor_total": 244237.61,
+   "valor_por_peca": 81412.54
   },
   {
-   "id": "Filme novo · 10s · M",
+   "id": "Filme sintético · Filme novo · 10s · M",
+   "tipo": "Filme sintético",
    "categoria": "Filme novo",
    "duracao_s": 10,
    "pacote": "M",
-   "qtd": 10,
+   "qtd": 5,
    "desconto": 0.1,
-   "valor_total": 556200.0,
-   "valor_por_peca": 55620.0
+   "valor_total": 366356.42,
+   "valor_por_peca": 73271.28
   },
   {
-   "id": "Filme novo · 10s · G",
+   "id": "Filme sintético · Filme novo · 10s · G",
+   "tipo": "Filme sintético",
    "categoria": "Filme novo",
    "duracao_s": 10,
    "pacote": "G",
-   "qtd": 15,
+   "qtd": 10,
    "desconto": 0.15,
-   "valor_total": 787950.0,
-   "valor_por_peca": 52530.0
+   "valor_total": 692006.56,
+   "valor_por_peca": 69200.66
   },
   {
-   "id": "Filme novo · 15s · Unitário",
+   "id": "Filme sintético · Filme novo · 15s · Unitário",
+   "tipo": "Filme sintético",
    "categoria": "Filme novo",
    "duracao_s": 15,
    "pacote": "Unitário",
    "qtd": 1,
    "desconto": 0.0,
-   "valor_total": 77250.0,
-   "valor_por_peca": 77250.0
+   "valor_total": 101765.67,
+   "valor_por_peca": 101765.67
   },
   {
-   "id": "Filme novo · 15s · P",
+   "id": "Filme sintético · Filme novo · 15s · P",
+   "tipo": "Filme sintético",
    "categoria": "Filme novo",
    "duracao_s": 15,
    "pacote": "P",
-   "qtd": 5,
+   "qtd": 3,
    "desconto": 0.0,
-   "valor_total": 386250.0,
-   "valor_por_peca": 77250.0
+   "valor_total": 305297.01,
+   "valor_por_peca": 101765.67
   },
   {
-   "id": "Filme novo · 15s · M",
+   "id": "Filme sintético · Filme novo · 15s · M",
+   "tipo": "Filme sintético",
    "categoria": "Filme novo",
    "duracao_s": 15,
    "pacote": "M",
-   "qtd": 10,
+   "qtd": 5,
    "desconto": 0.1,
-   "valor_total": 695250.0,
-   "valor_por_peca": 69525.0
+   "valor_total": 457945.52,
+   "valor_por_peca": 91589.1
   },
   {
-   "id": "Filme novo · 15s · G",
+   "id": "Filme sintético · Filme novo · 15s · G",
+   "tipo": "Filme sintético",
    "categoria": "Filme novo",
    "duracao_s": 15,
    "pacote": "G",
-   "qtd": 15,
+   "qtd": 10,
    "desconto": 0.15,
-   "valor_total": 984937.5,
-   "valor_por_peca": 65662.5
+   "valor_total": 865008.2,
+   "valor_por_peca": 86500.82
   },
   {
-   "id": "Filme novo · 30s · Unitário",
+   "id": "Filme sintético · Filme novo · 30s · Unitário",
+   "tipo": "Filme sintético",
    "categoria": "Filme novo",
    "duracao_s": 30,
    "pacote": "Unitário",
    "qtd": 1,
    "desconto": 0.0,
-   "valor_total": 117420.0,
-   "valor_por_peca": 117420.0
+   "valor_total": 154683.82,
+   "valor_por_peca": 154683.82
   },
   {
-   "id": "Filme novo · 30s · P",
+   "id": "Filme sintético · Filme novo · 30s · P",
+   "tipo": "Filme sintético",
    "categoria": "Filme novo",
    "duracao_s": 30,
    "pacote": "P",
-   "qtd": 5,
-   "desconto": 0.0,
-   "valor_total": 587100.0,
-   "valor_por_peca": 117420.0
+   "qtd": 3,
+   "desconto": 0.05,
+   "valor_total": 440848.89,
+   "valor_por_peca": 146949.63
   },
   {
-   "id": "Filme novo · 30s · M",
+   "id": "Filme sintético · Filme novo · 30s · M",
+   "tipo": "Filme sintético",
    "categoria": "Filme novo",
    "duracao_s": 30,
    "pacote": "M",
-   "qtd": 10,
+   "qtd": 5,
    "desconto": 0.1,
-   "valor_total": 1056780.0,
-   "valor_por_peca": 105678.0
+   "valor_total": 696077.19,
+   "valor_por_peca": 139215.44
   },
   {
-   "id": "Filme novo · 30s · G",
+   "id": "Filme sintético · Filme novo · 30s · G",
+   "tipo": "Filme sintético",
    "categoria": "Filme novo",
    "duracao_s": 30,
    "pacote": "G",
-   "qtd": 15,
+   "qtd": 10,
    "desconto": 0.15,
-   "valor_total": 1497105.0,
-   "valor_por_peca": 99807.0
+   "valor_total": 1314812.47,
+   "valor_por_peca": 131481.25
   },
   {
-   "id": "Filme novo · 45s · Unitário",
+   "id": "Filme sintético · Filme novo · 45s · Unitário",
+   "tipo": "Filme sintético",
    "categoria": "Filme novo",
    "duracao_s": 45,
    "pacote": "Unitário",
    "qtd": 1,
    "desconto": 0.0,
-   "valor_total": 154500.0,
-   "valor_por_peca": 154500.0
+   "valor_total": 203531.34,
+   "valor_por_peca": 203531.34
   },
   {
-   "id": "Filme novo · 45s · P",
+   "id": "Filme sintético · Filme novo · 45s · P",
+   "tipo": "Filme sintético",
    "categoria": "Filme novo",
    "duracao_s": 45,
    "pacote": "P",
-   "qtd": 5,
+   "qtd": 3,
    "desconto": 0.0,
-   "valor_total": 772500.0,
-   "valor_por_peca": 154500.0
+   "valor_total": 610594.03,
+   "valor_por_peca": 203531.34
   },
   {
-   "id": "Filme novo · 45s · M",
+   "id": "Filme sintético · Filme novo · 45s · M",
+   "tipo": "Filme sintético",
    "categoria": "Filme novo",
    "duracao_s": 45,
    "pacote": "M",
-   "qtd": 10,
+   "qtd": 5,
    "desconto": 0.1,
-   "valor_total": 1390500.0,
-   "valor_por_peca": 139050.0
+   "valor_total": 915891.04,
+   "valor_por_peca": 183178.21
   },
   {
-   "id": "Filme novo · 45s · G",
+   "id": "Filme sintético · Filme novo · 45s · G",
+   "tipo": "Filme sintético",
    "categoria": "Filme novo",
    "duracao_s": 45,
    "pacote": "G",
-   "qtd": 15,
+   "qtd": 10,
    "desconto": 0.15,
-   "valor_total": 1969875.0,
-   "valor_por_peca": 131325.0
+   "valor_total": 1730016.41,
+   "valor_por_peca": 173001.64
   },
   {
-   "id": "Filme novo · 60s · Unitário",
+   "id": "Filme sintético · Filme novo · 60s · Unitário",
+   "tipo": "Filme sintético",
    "categoria": "Filme novo",
    "duracao_s": 60,
    "pacote": "Unitário",
    "qtd": 1,
    "desconto": 0.0,
-   "valor_total": 176130.0,
-   "valor_por_peca": 176130.0
+   "valor_total": 232025.73,
+   "valor_por_peca": 232025.73
   },
   {
-   "id": "Filme novo · 60s · P",
+   "id": "Filme sintético · Filme novo · 60s · P",
+   "tipo": "Filme sintético",
    "categoria": "Filme novo",
    "duracao_s": 60,
    "pacote": "P",
-   "qtd": 5,
+   "qtd": 3,
    "desconto": 0.0,
-   "valor_total": 880650.0,
-   "valor_por_peca": 176130.0
+   "valor_total": 696077.19,
+   "valor_por_peca": 232025.73
   },
   {
-   "id": "Filme novo · 60s · M",
+   "id": "Filme sintético · Filme novo · 60s · M",
+   "tipo": "Filme sintético",
    "categoria": "Filme novo",
    "duracao_s": 60,
    "pacote": "M",
-   "qtd": 10,
+   "qtd": 5,
    "desconto": 0.1,
-   "valor_total": 1585170.0,
-   "valor_por_peca": 158517.0
+   "valor_total": 1044115.79,
+   "valor_por_peca": 208823.16
   },
   {
-   "id": "Filme novo · 60s · G",
+   "id": "Filme sintético · Filme novo · 60s · G",
+   "tipo": "Filme sintético",
    "categoria": "Filme novo",
    "duracao_s": 60,
    "pacote": "G",
-   "qtd": 15,
+   "qtd": 10,
    "desconto": 0.15,
-   "valor_total": 2245657.5,
-   "valor_por_peca": 149710.5
+   "valor_total": 1972218.71,
+   "valor_por_peca": 197221.87
   },
   {
-   "id": "Adaptação do filme hero · 5s · Unitário",
+   "id": "Filme sintético · Adaptação do filme hero · 5s · Unitário",
+   "tipo": "Filme sintético",
    "categoria": "Adaptação do filme hero",
    "duracao_s": 5,
    "pacote": "Unitário",
    "qtd": 1,
    "desconto": 0.0,
-   "valor_total": 18540.0,
-   "valor_por_peca": 18540.0
+   "valor_total": 24423.76,
+   "valor_por_peca": 24423.76
   },
   {
-   "id": "Adaptação do filme hero · 5s · P",
+   "id": "Filme sintético · Adaptação do filme hero · 5s · P",
+   "tipo": "Filme sintético",
    "categoria": "Adaptação do filme hero",
    "duracao_s": 5,
    "pacote": "P",
    "qtd": 5,
-   "desconto": 0.0,
-   "valor_total": 92700.0,
-   "valor_por_peca": 18540.0
+   "desconto": -0.0,
+   "valor_total": 122118.81,
+   "valor_por_peca": 24423.76
   },
   {
-   "id": "Adaptação do filme hero · 5s · M",
+   "id": "Filme sintético · Adaptação do filme hero · 5s · M",
+   "tipo": "Filme sintético",
    "categoria": "Adaptação do filme hero",
    "duracao_s": 5,
    "pacote": "M",
    "qtd": 10,
    "desconto": 0.1,
-   "valor_total": 166860.0,
-   "valor_por_peca": 16686.0
+   "valor_total": 219813.85,
+   "valor_por_peca": 21981.38
   },
   {
-   "id": "Adaptação do filme hero · 5s · G",
+   "id": "Filme sintético · Adaptação do filme hero · 5s · G",
+   "tipo": "Filme sintético",
    "categoria": "Adaptação do filme hero",
    "duracao_s": 5,
    "pacote": "G",
    "qtd": 15,
    "desconto": 0.15,
-   "valor_total": 236385.0,
-   "valor_por_peca": 15759.0
+   "valor_total": 311402.95,
+   "valor_por_peca": 20760.2
   },
   {
-   "id": "Adaptação do filme hero · 10s · Unitário",
+   "id": "Filme sintético · Adaptação do filme hero · 10s · Unitário",
+   "tipo": "Filme sintético",
    "categoria": "Adaptação do filme hero",
    "duracao_s": 10,
    "pacote": "Unitário",
    "qtd": 1,
    "desconto": 0.0,
-   "valor_total": 23175.0,
-   "valor_por_peca": 23175.0
+   "valor_total": 30529.7,
+   "valor_por_peca": 30529.7
   },
   {
-   "id": "Adaptação do filme hero · 10s · P",
+   "id": "Filme sintético · Adaptação do filme hero · 10s · P",
+   "tipo": "Filme sintético",
    "categoria": "Adaptação do filme hero",
-   "duracao_s": 10,
-   "pacote": "P",
-   "qtd": 5,
-   "desconto": 0.0,
-   "valor_total": 115875.0,
-   "valor_por_peca": 23175.0
-  },
-  {
-   "id": "Adaptação do filme hero · 10s · M",
-   "categoria": "Adaptação do filme hero",
-   "duracao_s": 10,
-   "pacote": "M",
-   "qtd": 10,
-   "desconto": 0.1,
-   "valor_total": 208575.0,
-   "valor_por_peca": 20857.5
-  },
-  {
-   "id": "Adaptação do filme hero · 10s · G",
-   "categoria": "Adaptação do filme hero",
-   "duracao_s": 10,
-   "pacote": "G",
-   "qtd": 15,
-   "desconto": 0.15,
-   "valor_total": 295481.25,
-   "valor_por_peca": 19698.75
-  },
-  {
-   "id": "Adaptação do filme hero · 15s · Unitário",
-   "categoria": "Adaptação do filme hero",
-   "duracao_s": 15,
-   "pacote": "Unitário",
-   "qtd": 1,
-   "desconto": 0.0,
-   "valor_total": 35226.0,
-   "valor_por_peca": 35226.0
-  },
-  {
-   "id": "Adaptação do filme hero · 15s · P",
-   "categoria": "Adaptação do filme hero",
-   "duracao_s": 15,
-   "pacote": "P",
-   "qtd": 5,
-   "desconto": 0.0,
-   "valor_total": 176130.0,
-   "valor_por_peca": 35226.0
-  },
-  {
-   "id": "Adaptação do filme hero · 15s · M",
-   "categoria": "Adaptação do filme hero",
-   "duracao_s": 15,
-   "pacote": "M",
-   "qtd": 10,
-   "desconto": 0.1,
-   "valor_total": 317034.0,
-   "valor_por_peca": 31703.4
-  },
-  {
-   "id": "Adaptação do filme hero · 15s · G",
-   "categoria": "Adaptação do filme hero",
-   "duracao_s": 15,
-   "pacote": "G",
-   "qtd": 15,
-   "desconto": 0.15,
-   "valor_total": 449131.5,
-   "valor_por_peca": 29942.1
-  },
-  {
-   "id": "Adaptação do filme hero · 30s · Unitário",
-   "categoria": "Adaptação do filme hero",
-   "duracao_s": 30,
-   "pacote": "Unitário",
-   "qtd": 1,
-   "desconto": 0.0,
-   "valor_total": 46350.0,
-   "valor_por_peca": 46350.0
-  },
-  {
-   "id": "Adaptação do filme hero · 30s · P",
-   "categoria": "Adaptação do filme hero",
-   "duracao_s": 30,
-   "pacote": "P",
-   "qtd": 5,
-   "desconto": 0.0,
-   "valor_total": 231750.0,
-   "valor_por_peca": 46350.0
-  },
-  {
-   "id": "Adaptação do filme hero · 30s · M",
-   "categoria": "Adaptação do filme hero",
-   "duracao_s": 30,
-   "pacote": "M",
-   "qtd": 10,
-   "desconto": 0.1,
-   "valor_total": 417150.0,
-   "valor_por_peca": 41715.0
-  },
-  {
-   "id": "Adaptação do filme hero · 30s · G",
-   "categoria": "Adaptação do filme hero",
-   "duracao_s": 30,
-   "pacote": "G",
-   "qtd": 15,
-   "desconto": 0.15,
-   "valor_total": 590962.5,
-   "valor_por_peca": 39397.5
-  },
-  {
-   "id": "Redução ou corte do filme hero · 5s · Unitário",
-   "categoria": "Redução ou corte do filme hero",
-   "duracao_s": 5,
-   "pacote": "Unitário",
-   "qtd": 1,
-   "desconto": 0.0,
-   "valor_total": 12360.0,
-   "valor_por_peca": 12360.0
-  },
-  {
-   "id": "Redução ou corte do filme hero · 5s · P",
-   "categoria": "Redução ou corte do filme hero",
-   "duracao_s": 5,
-   "pacote": "P",
-   "qtd": 5,
-   "desconto": 0.0,
-   "valor_total": 61800.0,
-   "valor_por_peca": 12360.0
-  },
-  {
-   "id": "Redução ou corte do filme hero · 5s · M",
-   "categoria": "Redução ou corte do filme hero",
-   "duracao_s": 5,
-   "pacote": "M",
-   "qtd": 10,
-   "desconto": 0.1,
-   "valor_total": 111240.0,
-   "valor_por_peca": 11124.0
-  },
-  {
-   "id": "Redução ou corte do filme hero · 5s · G",
-   "categoria": "Redução ou corte do filme hero",
-   "duracao_s": 5,
-   "pacote": "G",
-   "qtd": 15,
-   "desconto": 0.15,
-   "valor_total": 157590.0,
-   "valor_por_peca": 10506.0
-  },
-  {
-   "id": "Redução ou corte do filme hero · 10s · Unitário",
-   "categoria": "Redução ou corte do filme hero",
-   "duracao_s": 10,
-   "pacote": "Unitário",
-   "qtd": 1,
-   "desconto": 0.0,
-   "valor_total": 15450.0,
-   "valor_por_peca": 15450.0
-  },
-  {
-   "id": "Redução ou corte do filme hero · 10s · P",
-   "categoria": "Redução ou corte do filme hero",
    "duracao_s": 10,
    "pacote": "P",
    "qtd": 5,
    "desconto": 0.0,
-   "valor_total": 77250.0,
-   "valor_por_peca": 15450.0
+   "valor_total": 152648.51,
+   "valor_por_peca": 30529.7
   },
   {
-   "id": "Redução ou corte do filme hero · 10s · M",
-   "categoria": "Redução ou corte do filme hero",
+   "id": "Filme sintético · Adaptação do filme hero · 10s · M",
+   "tipo": "Filme sintético",
+   "categoria": "Adaptação do filme hero",
    "duracao_s": 10,
    "pacote": "M",
    "qtd": 10,
    "desconto": 0.1,
-   "valor_total": 139050.0,
-   "valor_por_peca": 13905.0
+   "valor_total": 274767.31,
+   "valor_por_peca": 27476.73
   },
   {
-   "id": "Redução ou corte do filme hero · 10s · G",
-   "categoria": "Redução ou corte do filme hero",
+   "id": "Filme sintético · Adaptação do filme hero · 10s · G",
+   "tipo": "Filme sintético",
+   "categoria": "Adaptação do filme hero",
    "duracao_s": 10,
    "pacote": "G",
    "qtd": 15,
    "desconto": 0.15,
-   "valor_total": 196987.5,
-   "valor_por_peca": 13132.5
+   "valor_total": 389253.69,
+   "valor_por_peca": 25950.25
   },
   {
-   "id": "Redução ou corte do filme hero · 15s · Unitário",
-   "categoria": "Redução ou corte do filme hero",
+   "id": "Filme sintético · Adaptação do filme hero · 15s · Unitário",
+   "tipo": "Filme sintético",
+   "categoria": "Adaptação do filme hero",
    "duracao_s": 15,
    "pacote": "Unitário",
    "qtd": 1,
    "desconto": 0.0,
-   "valor_total": 23484.0,
-   "valor_por_peca": 23484.0
+   "valor_total": 46405.15,
+   "valor_por_peca": 46405.15
   },
   {
-   "id": "Redução ou corte do filme hero · 15s · P",
-   "categoria": "Redução ou corte do filme hero",
+   "id": "Filme sintético · Adaptação do filme hero · 15s · P",
+   "tipo": "Filme sintético",
+   "categoria": "Adaptação do filme hero",
    "duracao_s": 15,
    "pacote": "P",
    "qtd": 5,
    "desconto": 0.0,
-   "valor_total": 117420.0,
-   "valor_por_peca": 23484.0
+   "valor_total": 232025.73,
+   "valor_por_peca": 46405.15
   },
   {
-   "id": "Redução ou corte do filme hero · 15s · M",
-   "categoria": "Redução ou corte do filme hero",
+   "id": "Filme sintético · Adaptação do filme hero · 15s · M",
+   "tipo": "Filme sintético",
+   "categoria": "Adaptação do filme hero",
    "duracao_s": 15,
    "pacote": "M",
    "qtd": 10,
    "desconto": 0.1,
-   "valor_total": 211356.0,
-   "valor_por_peca": 21135.6
+   "valor_total": 417646.31,
+   "valor_por_peca": 41764.63
   },
   {
-   "id": "Redução ou corte do filme hero · 15s · G",
-   "categoria": "Redução ou corte do filme hero",
+   "id": "Filme sintético · Adaptação do filme hero · 15s · G",
+   "tipo": "Filme sintético",
+   "categoria": "Adaptação do filme hero",
    "duracao_s": 15,
    "pacote": "G",
    "qtd": 15,
    "desconto": 0.15,
-   "valor_total": 299421.0,
-   "valor_por_peca": 19961.4
+   "valor_total": 591665.61,
+   "valor_por_peca": 39444.37
   },
   {
-   "id": "Redução ou corte do filme hero · 30s · Unitário",
-   "categoria": "Redução ou corte do filme hero",
+   "id": "Filme sintético · Adaptação do filme hero · 30s · Unitário",
+   "tipo": "Filme sintético",
+   "categoria": "Adaptação do filme hero",
    "duracao_s": 30,
    "pacote": "Unitário",
    "qtd": 1,
    "desconto": 0.0,
-   "valor_total": 30900.0,
-   "valor_por_peca": 30900.0
+   "valor_total": 61059.4,
+   "valor_por_peca": 61059.4
   },
   {
-   "id": "Redução ou corte do filme hero · 30s · P",
-   "categoria": "Redução ou corte do filme hero",
+   "id": "Filme sintético · Adaptação do filme hero · 30s · P",
+   "tipo": "Filme sintético",
+   "categoria": "Adaptação do filme hero",
    "duracao_s": 30,
    "pacote": "P",
    "qtd": 5,
-   "desconto": 0.0,
-   "valor_total": 154500.0,
-   "valor_por_peca": 30900.0
+   "desconto": -0.0,
+   "valor_total": 305297.01,
+   "valor_por_peca": 61059.4
   },
   {
-   "id": "Redução ou corte do filme hero · 30s · M",
-   "categoria": "Redução ou corte do filme hero",
+   "id": "Filme sintético · Adaptação do filme hero · 30s · M",
+   "tipo": "Filme sintético",
+   "categoria": "Adaptação do filme hero",
    "duracao_s": 30,
    "pacote": "M",
    "qtd": 10,
    "desconto": 0.1,
-   "valor_total": 278100.0,
-   "valor_por_peca": 27810.0
+   "valor_total": 549534.62,
+   "valor_por_peca": 54953.46
   },
   {
-   "id": "Redução ou corte do filme hero · 30s · G",
-   "categoria": "Redução ou corte do filme hero",
+   "id": "Filme sintético · Adaptação do filme hero · 30s · G",
+   "tipo": "Filme sintético",
+   "categoria": "Adaptação do filme hero",
    "duracao_s": 30,
    "pacote": "G",
    "qtd": 15,
    "desconto": 0.15,
-   "valor_total": 393975.0,
-   "valor_por_peca": 26265.0
+   "valor_total": 778507.38,
+   "valor_por_peca": 51900.49
   },
   {
-   "id": "Formato 9:16 e 1:1 · 5s · Unitário",
-   "categoria": "Formato 9:16 e 1:1",
+   "id": "Filme IA + Elenco · Filme novo · 5s · Unitário",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Filme novo",
    "duracao_s": 5,
    "pacote": "Unitário",
    "qtd": 1,
    "desconto": 0.0,
-   "valor_total": 737.88,
-   "valor_por_peca": 737.88
+   "valor_total": 98732.98,
+   "valor_por_peca": 98732.98
   },
   {
-   "id": "Formato 9:16 e 1:1 · 5s · P",
-   "categoria": "Formato 9:16 e 1:1",
+   "id": "Filme IA + Elenco · Filme novo · 5s · P",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Filme novo",
    "duracao_s": 5,
    "pacote": "P",
-   "qtd": 10,
+   "qtd": 3,
    "desconto": 0.0,
-   "valor_total": 7378.8,
-   "valor_por_peca": 737.88
+   "valor_total": 296198.94,
+   "valor_por_peca": 98732.98
   },
   {
-   "id": "Formato 9:16 e 1:1 · 5s · M",
-   "categoria": "Formato 9:16 e 1:1",
+   "id": "Filme IA + Elenco · Filme novo · 5s · M",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Filme novo",
    "duracao_s": 5,
    "pacote": "M",
-   "qtd": 20,
+   "qtd": 5,
    "desconto": 0.1,
-   "valor_total": 13281.84,
-   "valor_por_peca": 664.09
+   "valor_total": 444298.41,
+   "valor_por_peca": 88859.68
   },
   {
-   "id": "Formato 9:16 e 1:1 · 5s · G",
-   "categoria": "Formato 9:16 e 1:1",
+   "id": "Filme IA + Elenco · Filme novo · 5s · G",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Filme novo",
    "duracao_s": 5,
    "pacote": "G",
-   "qtd": 30,
+   "qtd": 10,
    "desconto": 0.15,
-   "valor_total": 18815.94,
-   "valor_por_peca": 627.2
+   "valor_total": 839230.33,
+   "valor_por_peca": 83923.03
   },
   {
-   "id": "Formato 9:16 e 1:1 · 10s · Unitário",
-   "categoria": "Formato 9:16 e 1:1",
+   "id": "Filme IA + Elenco · Filme novo · 10s · Unitário",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Filme novo",
    "duracao_s": 10,
    "pacote": "Unitário",
    "qtd": 1,
    "desconto": 0.0,
-   "valor_total": 1287.0,
-   "valor_por_peca": 1287.0
+   "valor_total": 131609.91,
+   "valor_por_peca": 131609.91
   },
   {
-   "id": "Formato 9:16 e 1:1 · 10s · P",
-   "categoria": "Formato 9:16 e 1:1",
+   "id": "Filme IA + Elenco · Filme novo · 10s · P",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Filme novo",
    "duracao_s": 10,
    "pacote": "P",
-   "qtd": 10,
-   "desconto": 0.0,
-   "valor_total": 12870.0,
-   "valor_por_peca": 1287.0
+   "qtd": 3,
+   "desconto": -0.0,
+   "valor_total": 394829.72,
+   "valor_por_peca": 131609.91
   },
   {
-   "id": "Formato 9:16 e 1:1 · 10s · M",
-   "categoria": "Formato 9:16 e 1:1",
+   "id": "Filme IA + Elenco · Filme novo · 10s · M",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Filme novo",
    "duracao_s": 10,
    "pacote": "M",
-   "qtd": 20,
+   "qtd": 5,
    "desconto": 0.1,
-   "valor_total": 23166.0,
-   "valor_por_peca": 1158.3
+   "valor_total": 592244.57,
+   "valor_por_peca": 118448.91
   },
   {
-   "id": "Formato 9:16 e 1:1 · 10s · G",
-   "categoria": "Formato 9:16 e 1:1",
+   "id": "Filme IA + Elenco · Filme novo · 10s · G",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Filme novo",
    "duracao_s": 10,
    "pacote": "G",
-   "qtd": 30,
+   "qtd": 10,
    "desconto": 0.15,
-   "valor_total": 32818.5,
-   "valor_por_peca": 1093.95
+   "valor_total": 1118684.2,
+   "valor_por_peca": 111868.42
   },
   {
-   "id": "Formato 9:16 e 1:1 · 15s · Unitário",
-   "categoria": "Formato 9:16 e 1:1",
+   "id": "Filme IA + Elenco · Filme novo · 15s · Unitário",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Filme novo",
    "duracao_s": 15,
    "pacote": "Unitário",
    "qtd": 1,
    "desconto": 0.0,
-   "valor_total": 1630.2,
-   "valor_por_peca": 1630.2
+   "valor_total": 164512.38,
+   "valor_por_peca": 164512.38
   },
   {
-   "id": "Formato 9:16 e 1:1 · 15s · P",
-   "categoria": "Formato 9:16 e 1:1",
+   "id": "Filme IA + Elenco · Filme novo · 15s · P",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Filme novo",
    "duracao_s": 15,
    "pacote": "P",
-   "qtd": 10,
+   "qtd": 3,
    "desconto": 0.0,
-   "valor_total": 16302.0,
-   "valor_por_peca": 1630.2
+   "valor_total": 493537.14,
+   "valor_por_peca": 164512.38
   },
   {
-   "id": "Formato 9:16 e 1:1 · 15s · M",
-   "categoria": "Formato 9:16 e 1:1",
+   "id": "Filme IA + Elenco · Filme novo · 15s · M",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Filme novo",
    "duracao_s": 15,
    "pacote": "M",
-   "qtd": 20,
+   "qtd": 5,
    "desconto": 0.1,
-   "valor_total": 29343.6,
-   "valor_por_peca": 1467.18
+   "valor_total": 740305.72,
+   "valor_por_peca": 148061.14
   },
   {
-   "id": "Formato 9:16 e 1:1 · 15s · G",
-   "categoria": "Formato 9:16 e 1:1",
+   "id": "Filme IA + Elenco · Filme novo · 15s · G",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Filme novo",
    "duracao_s": 15,
    "pacote": "G",
-   "qtd": 30,
+   "qtd": 10,
    "desconto": 0.15,
-   "valor_total": 41570.1,
-   "valor_por_peca": 1385.67
+   "valor_total": 1398355.24,
+   "valor_por_peca": 139835.52
   },
   {
-   "id": "Formato 9:16 e 1:1 · 30s · Unitário",
-   "categoria": "Formato 9:16 e 1:1",
+   "id": "Filme IA + Elenco · Filme novo · 30s · Unitário",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Filme novo",
    "duracao_s": 30,
    "pacote": "Unitário",
    "qtd": 1,
    "desconto": 0.0,
-   "valor_total": 2145.0,
-   "valor_por_peca": 2145.0
+   "valor_total": 250058.82,
+   "valor_por_peca": 250058.82
   },
   {
-   "id": "Formato 9:16 e 1:1 · 30s · P",
-   "categoria": "Formato 9:16 e 1:1",
+   "id": "Filme IA + Elenco · Filme novo · 30s · P",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Filme novo",
    "duracao_s": 30,
    "pacote": "P",
-   "qtd": 10,
-   "desconto": 0.0,
-   "valor_total": 21450.0,
-   "valor_por_peca": 2145.0
+   "qtd": 3,
+   "desconto": 0.05,
+   "valor_total": 712667.64,
+   "valor_por_peca": 237555.88
   },
   {
-   "id": "Formato 9:16 e 1:1 · 30s · M",
-   "categoria": "Formato 9:16 e 1:1",
+   "id": "Filme IA + Elenco · Filme novo · 30s · M",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Filme novo",
    "duracao_s": 30,
    "pacote": "M",
-   "qtd": 20,
+   "qtd": 5,
    "desconto": 0.1,
-   "valor_total": 38610.0,
-   "valor_por_peca": 1930.5
+   "valor_total": 1125264.69,
+   "valor_por_peca": 225052.94
   },
   {
-   "id": "Formato 9:16 e 1:1 · 30s · G",
-   "categoria": "Formato 9:16 e 1:1",
+   "id": "Filme IA + Elenco · Filme novo · 30s · G",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Filme novo",
    "duracao_s": 30,
    "pacote": "G",
-   "qtd": 30,
+   "qtd": 10,
    "desconto": 0.15,
-   "valor_total": 54697.5,
-   "valor_por_peca": 1823.25
+   "valor_total": 2125499.97,
+   "valor_por_peca": 212550.0
   },
   {
-   "id": "Formato 9:16 e 1:1 · 45s · Unitário",
-   "categoria": "Formato 9:16 e 1:1",
+   "id": "Filme IA + Elenco · Filme novo · 45s · Unitário",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Filme novo",
    "duracao_s": 45,
    "pacote": "Unitário",
    "qtd": 1,
    "desconto": 0.0,
-   "valor_total": 2831.4,
-   "valor_por_peca": 2831.4
+   "valor_total": 329024.76,
+   "valor_por_peca": 329024.76
   },
   {
-   "id": "Formato 9:16 e 1:1 · 45s · P",
-   "categoria": "Formato 9:16 e 1:1",
+   "id": "Filme IA + Elenco · Filme novo · 45s · P",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Filme novo",
    "duracao_s": 45,
    "pacote": "P",
-   "qtd": 10,
+   "qtd": 3,
    "desconto": 0.0,
-   "valor_total": 28314.0,
-   "valor_por_peca": 2831.4
+   "valor_total": 987074.29,
+   "valor_por_peca": 329024.76
   },
   {
-   "id": "Formato 9:16 e 1:1 · 45s · M",
-   "categoria": "Formato 9:16 e 1:1",
+   "id": "Filme IA + Elenco · Filme novo · 45s · M",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Filme novo",
    "duracao_s": 45,
    "pacote": "M",
-   "qtd": 20,
+   "qtd": 5,
    "desconto": 0.1,
-   "valor_total": 50965.2,
-   "valor_por_peca": 2548.26
+   "valor_total": 1480611.43,
+   "valor_por_peca": 296122.29
   },
   {
-   "id": "Formato 9:16 e 1:1 · 45s · G",
-   "categoria": "Formato 9:16 e 1:1",
+   "id": "Filme IA + Elenco · Filme novo · 45s · G",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Filme novo",
    "duracao_s": 45,
    "pacote": "G",
-   "qtd": 30,
+   "qtd": 10,
    "desconto": 0.15,
-   "valor_total": 72200.7,
-   "valor_por_peca": 2406.69
+   "valor_total": 2796710.49,
+   "valor_por_peca": 279671.05
   },
   {
-   "id": "Formato 9:16 e 1:1 · 60s · Unitário",
-   "categoria": "Formato 9:16 e 1:1",
+   "id": "Filme IA + Elenco · Filme novo · 60s · Unitário",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Filme novo",
    "duracao_s": 60,
    "pacote": "Unitário",
    "qtd": 1,
    "desconto": 0.0,
-   "valor_total": 3380.52,
-   "valor_por_peca": 3380.52
+   "valor_total": 375088.23,
+   "valor_por_peca": 375088.23
   },
   {
-   "id": "Formato 9:16 e 1:1 · 60s · P",
-   "categoria": "Formato 9:16 e 1:1",
+   "id": "Filme IA + Elenco · Filme novo · 60s · P",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Filme novo",
    "duracao_s": 60,
    "pacote": "P",
-   "qtd": 10,
+   "qtd": 3,
    "desconto": 0.0,
-   "valor_total": 33805.2,
-   "valor_por_peca": 3380.52
+   "valor_total": 1125264.69,
+   "valor_por_peca": 375088.23
   },
   {
-   "id": "Formato 9:16 e 1:1 · 60s · M",
-   "categoria": "Formato 9:16 e 1:1",
+   "id": "Filme IA + Elenco · Filme novo · 60s · M",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Filme novo",
    "duracao_s": 60,
    "pacote": "M",
-   "qtd": 20,
+   "qtd": 5,
    "desconto": 0.1,
-   "valor_total": 60849.36,
-   "valor_por_peca": 3042.47
+   "valor_total": 1687897.03,
+   "valor_por_peca": 337579.41
   },
   {
-   "id": "Formato 9:16 e 1:1 · 60s · G",
-   "categoria": "Formato 9:16 e 1:1",
+   "id": "Filme IA + Elenco · Filme novo · 60s · G",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Filme novo",
    "duracao_s": 60,
    "pacote": "G",
-   "qtd": 30,
+   "qtd": 10,
    "desconto": 0.15,
-   "valor_total": 86203.26,
-   "valor_por_peca": 2873.44
+   "valor_total": 3188249.96,
+   "valor_por_peca": 318825.0
+  },
+  {
+   "id": "Filme IA + Elenco · Adaptação do filme hero · 5s · Unitário",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 5,
+   "pacote": "Unitário",
+   "qtd": 1,
+   "desconto": 0.0,
+   "valor_total": 39482.97,
+   "valor_por_peca": 39482.97
+  },
+  {
+   "id": "Filme IA + Elenco · Adaptação do filme hero · 5s · P",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 5,
+   "pacote": "P",
+   "qtd": 5,
+   "desconto": 0.0,
+   "valor_total": 197414.86,
+   "valor_por_peca": 39482.97
+  },
+  {
+   "id": "Filme IA + Elenco · Adaptação do filme hero · 5s · M",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 5,
+   "pacote": "M",
+   "qtd": 10,
+   "desconto": 0.1,
+   "valor_total": 355346.74,
+   "valor_por_peca": 35534.67
+  },
+  {
+   "id": "Filme IA + Elenco · Adaptação do filme hero · 5s · G",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 5,
+   "pacote": "G",
+   "qtd": 15,
+   "desconto": 0.15,
+   "valor_total": 503407.89,
+   "valor_por_peca": 33560.53
+  },
+  {
+   "id": "Filme IA + Elenco · Adaptação do filme hero · 10s · Unitário",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 10,
+   "pacote": "Unitário",
+   "qtd": 1,
+   "desconto": 0.0,
+   "valor_total": 49353.71,
+   "valor_por_peca": 49353.71
+  },
+  {
+   "id": "Filme IA + Elenco · Adaptação do filme hero · 10s · P",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 10,
+   "pacote": "P",
+   "qtd": 5,
+   "desconto": -0.0,
+   "valor_total": 246768.57,
+   "valor_por_peca": 49353.71
+  },
+  {
+   "id": "Filme IA + Elenco · Adaptação do filme hero · 10s · M",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 10,
+   "pacote": "M",
+   "qtd": 10,
+   "desconto": 0.1,
+   "valor_total": 444183.43,
+   "valor_por_peca": 44418.34
+  },
+  {
+   "id": "Filme IA + Elenco · Adaptação do filme hero · 10s · G",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 10,
+   "pacote": "G",
+   "qtd": 15,
+   "desconto": 0.15,
+   "valor_total": 629259.86,
+   "valor_por_peca": 41950.66
+  },
+  {
+   "id": "Filme IA + Elenco · Adaptação do filme hero · 15s · Unitário",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 15,
+   "pacote": "Unitário",
+   "qtd": 1,
+   "desconto": 0.0,
+   "valor_total": 75017.65,
+   "valor_por_peca": 75017.65
+  },
+  {
+   "id": "Filme IA + Elenco · Adaptação do filme hero · 15s · P",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 15,
+   "pacote": "P",
+   "qtd": 5,
+   "desconto": 0.0,
+   "valor_total": 375088.23,
+   "valor_por_peca": 75017.65
+  },
+  {
+   "id": "Filme IA + Elenco · Adaptação do filme hero · 15s · M",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 15,
+   "pacote": "M",
+   "qtd": 10,
+   "desconto": 0.1,
+   "valor_total": 675158.81,
+   "valor_por_peca": 67515.88
+  },
+  {
+   "id": "Filme IA + Elenco · Adaptação do filme hero · 15s · G",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 15,
+   "pacote": "G",
+   "qtd": 15,
+   "desconto": 0.15,
+   "valor_total": 956474.99,
+   "valor_por_peca": 63765.0
+  },
+  {
+   "id": "Filme IA + Elenco · Adaptação do filme hero · 30s · Unitário",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 30,
+   "pacote": "Unitário",
+   "qtd": 1,
+   "desconto": 0.0,
+   "valor_total": 98707.43,
+   "valor_por_peca": 98707.43
+  },
+  {
+   "id": "Filme IA + Elenco · Adaptação do filme hero · 30s · P",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 30,
+   "pacote": "P",
+   "qtd": 5,
+   "desconto": 0.0,
+   "valor_total": 493537.14,
+   "valor_por_peca": 98707.43
+  },
+  {
+   "id": "Filme IA + Elenco · Adaptação do filme hero · 30s · M",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 30,
+   "pacote": "M",
+   "qtd": 10,
+   "desconto": 0.1,
+   "valor_total": 888366.86,
+   "valor_por_peca": 88836.69
+  },
+  {
+   "id": "Filme IA + Elenco · Adaptação do filme hero · 30s · G",
+   "tipo": "Filme IA + Elenco",
+   "categoria": "Adaptação do filme hero",
+   "duracao_s": 30,
+   "pacote": "G",
+   "qtd": 15,
+   "desconto": 0.15,
+   "valor_total": 1258519.72,
+   "valor_por_peca": 83901.31
   }
  ],
  "projetos": [

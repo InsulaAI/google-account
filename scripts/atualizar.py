@@ -3,7 +3,13 @@
 Uso:
   python3 -I scripts/atualizar.py <cuentas.xlsx> <latam.xlsx> <afaturar.xlsx> \
       --origem <modifiedTime cuentas> <modifiedTime latam> <modifiedTime afaturar> \
+      [--tabelas <sintetico.xlsx> <elenco.xlsx> --origem-tabelas <mt sintetico> <mt elenco>] \
       [--json-separados <pasta>]
+
+Preços: com --tabelas, vêm das duas tabelas Ticket Google 2027 (pasta "Tabela de preços" no Drive,
+1xYrNIRjUdZFbKgupLGvnPxXiVfGc6feT), cada linha com "tipo" = Filme sintético ou Filme IA + Elenco.
+Sem --tabelas, os preços do dados.json atual são mantidos (a aba Ticket Google da LATAM só é lida
+se o dados.json ainda não tiver as tabelas 2027).
 
 Lê o dados.json atual (na raiz do repositório) para manter os textos de linhas que já existiam
 (lançamento, serviço, observação, nome do projeto) e o sobrescreve. Linhas novas ganham texto
@@ -16,6 +22,8 @@ import openpyxl
 ap = argparse.ArgumentParser()
 ap.add_argument("cuentas"); ap.add_argument("latam"); ap.add_argument("afaturar")
 ap.add_argument("--origem", nargs=3, metavar=("CUENTAS", "LATAM", "AFATURAR"), required=True)
+ap.add_argument("--tabelas", nargs=2, metavar=("SINTETICO", "ELENCO"))
+ap.add_argument("--origem-tabelas", nargs=2, metavar=("SINTETICO", "ELENCO"))
 ap.add_argument("--json-separados")
 args = ap.parse_args()
 cuentas, latam, afaturar = args.cuentas, args.latam, args.afaturar
@@ -176,11 +184,9 @@ for r in prod:
 ordem = {"Em andamento": 0, "Congelado": 1, "Cancelado": 2}
 prod.sort(key=lambda r: ordem[r["status"]])
 
-# ---------- precos (LATAM, aba Ticket Google) ----------
-# A tabela vigente fica na LATAM (atualizada em 03/11/2026, com o 30" a R$ 117.420). A cópia da
-# aba Ticket Google na Cuentas ficou com os preços antigos e não é usada.
-ws = wb3["Ticket Google"]
+# ---------- precos (tabelas Ticket Google 2027; antes, aba Ticket Google da LATAM) ----------
 pacotes = [("Unitário", 1), ("P", 4), ("M", 7), ("G", 10), ("OOH 1", 13), ("OOH 2", 16)]  # coluna da quantidade (0-based)
+TIPOS = ("Filme sintético", "Filme IA + Elenco")
 
 
 def categoria(a):
@@ -196,29 +202,51 @@ def categoria(a):
     return None
 
 
-precos, cat = [], None
-for r in ws.iter_rows(values_only=True):
-    a = str(r[0] or "").strip()
-    if any(str(c or "").strip() in ("Qtd", "Quantity") for c in r[1:]) and categoria(a):
-        cat = categoria(a)
-        continue
-    m = re.search(r"(\d+)\s*(?:s\b|-second)", a)
-    if not cat or not m:
-        continue
-    dur = int(m[1])
-    unit = num(r[3])
-    if not unit:
-        continue
-    for pac, qc in pacotes:
-        if qc + 2 >= len(r):
+def ler_precos(ws, tipo=None):
+    out, cat = [], None
+    for r in ws.iter_rows(values_only=True):
+        a = str(r[0] or "").strip()
+        if any(str(c or "").strip() in ("Qtd", "Quantity") for c in r[1:]) and categoria(a):
+            cat = categoria(a)
             continue
-        q, v = num(r[qc]), num(r[qc + 2])
-        if v is None or q is None:
+        m = re.search(r"(\d+)\s*(?:s\b|-second)", a)
+        if not cat or not m:
             continue
-        q = 1 if pac == "Unitário" else int(q)
-        precos.append({"id": f"{cat} · {dur}s · {pac}", "categoria": cat, "duracao_s": dur, "pacote": pac, "qtd": q,
-                       "desconto": round(1 - v / (q * unit), 4), "valor_total": round(v, 2), "valor_por_peca": round(v / q, 2)})
+        dur = int(m[1])
+        unit = num(r[3])
+        if not unit:
+            continue
+        for pac, qc in pacotes:
+            if qc + 2 >= len(r):
+                continue
+            q, v = num(r[qc]), num(r[qc + 2])
+            if v is None or q is None:
+                continue
+            q = 1 if pac == "Unitário" else int(q)
+            linha = {"id": f"{tipo + ' · ' if tipo else ''}{cat} · {dur}s · {pac}", "categoria": cat, "duracao_s": dur, "pacote": pac, "qtd": q,
+                     "desconto": round(1 - v / (q * unit), 4), "valor_total": round(v, 2), "valor_por_peca": round(v / q, 2)}
+            if tipo:
+                linha = {"id": linha["id"], "tipo": tipo, **{k: v2 for k, v2 in linha.items() if k != "id"}}
+            out.append(linha)
+    return out
 
+
+origem_tabelas = {}
+if args.tabelas:
+    precos = []
+    for tipo, arq in zip(TIPOS, args.tabelas):
+        wbt = openpyxl.load_workbook(arq, data_only=True)
+        linhas = ler_precos(wbt["Ticket Google"], tipo)
+        if not linhas:
+            sys.exit(f"tabela de preços {tipo} saiu vazia: confira a planilha")
+        precos += linhas
+    if args.origem_tabelas:
+        origem_tabelas = {"tabela_sintetico": args.origem_tabelas[0], "tabela_elenco": args.origem_tabelas[1]}
+elif any(r.get("tipo") for r in anterior.get("precos", [])):
+    precos = anterior["precos"]
+    origem_tabelas = {k: v for k, v in anterior.get("origem", {}).items() if k.startswith("tabela_")}
+else:
+    precos = ler_precos(wb3["Ticket Google"])
 
 
 projetos = []
@@ -237,7 +265,7 @@ for nome, linhas in saida.items():
         sys.exit(f"{nome} saiu vazio: confira a planilha antes de publicar")
 novo = {
     "atualizado_em": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-    "origem": {"cuentas": args.origem[0], "latam": args.origem[1], "afaturar": args.origem[2]},
+    "origem": {"cuentas": args.origem[0], "latam": args.origem[1], "afaturar": args.origem[2], **origem_tabelas},
     **saida,
 }
 mudou = any(anterior.get(k) != v for k, v in saida.items())
